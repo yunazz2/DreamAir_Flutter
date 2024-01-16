@@ -95,7 +95,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       const SizedBox(height: 50.0),
                       ButtonGlobalWithoutIcon(
-                        buttontext: lang.S.of(context).createAccButton,
+                        buttontext: '회원가입',
                         buttonDecoration: kButtonDecoration.copyWith(
                           color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(30.0),
@@ -106,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         buttonTextColor: kWhite,
                       ),
                       ButtonGlobalWithoutIcon(
-                        buttontext: lang.S.of(context).loginButton,
+                        buttontext: '로그인',
                         buttonDecoration: kButtonDecoration.copyWith(
                           color: Colors.white,
                           border: Border.all(color: kPrimaryColor),

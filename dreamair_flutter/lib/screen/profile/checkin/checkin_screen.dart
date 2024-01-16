@@ -1,7 +1,4 @@
-import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../widgets/constant.dart';
 
