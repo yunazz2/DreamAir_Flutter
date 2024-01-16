@@ -31,21 +31,6 @@ class _BoardStoryState extends State<BoardStory> {
             ),
           ],
         ),
-        const SizedBox(
-          height: 5,
-        ),
-        // Container(
-        //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        //   child: const Column(
-        //     children: [
-        //       SizedBox(
-        //         height: 5,
-        //       ),
-        //       Text("test"),
-        //     ],
-        //   ),
-        // ),
-
         // 이미지
         const SizedBox(
           height: 10,
@@ -54,6 +39,7 @@ class _BoardStoryState extends State<BoardStory> {
         const SizedBox(
           height: 10,
         ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -90,22 +76,41 @@ class _BoardStoryState extends State<BoardStory> {
                 ],
               ),
             ),
-            // const SizedBox(
-            //   child: Row(
-            //     children: [
-            //       Icon(
-            //         Icons.share,
-            //         color: Colors.green,
-            //       ),
-            //       SizedBox(
-            //         width: 5,
-            //       ),
-            //       Text('공유하기'),
-            //     ],
-            //   ),
-            // ),
+            const SizedBox(
+              width: 20,
+            ),
+            const SizedBox(
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.share,
+                    color: Colors.green,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text('공유하기'),
+                ],
+              ),
+            ),
           ],
-        )
+        ),
+        // 내용
+        const SizedBox(
+          height: 5,
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: const Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                  "content content content content content content content content content content content content content"),
+            ],
+          ),
+        ),
       ],
     );
   }

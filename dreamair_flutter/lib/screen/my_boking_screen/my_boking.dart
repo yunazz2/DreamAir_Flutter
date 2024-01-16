@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../ticket status/ticket_status.dart';
 
 class MyBooking extends StatefulWidget {
-  const MyBooking({Key? key}) : super(key: key);
+  const MyBooking({super.key});
 
   @override
   State<MyBooking> createState() => _MyBookingState();
@@ -81,7 +81,8 @@ class _MyBookingState extends State<MyBooking> {
                                   ),
                                   Text(
                                     'Convenience Fee Added',
-                                    style: kTextStyle.copyWith(fontSize: 12, color: kSubTitleColor),
+                                    style: kTextStyle.copyWith(
+                                        fontSize: 12, color: kSubTitleColor),
                                   )
                                 ],
                               ),
@@ -115,14 +116,17 @@ class _MyBookingState extends State<MyBooking> {
                               width: 34.0,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                                image: DecorationImage(
+                                    image: AssetImage('images/indigo.png'),
+                                    fit: BoxFit.cover),
                               ),
                             ),
                             title: Row(
                               children: [
                                 Text(
                                   'Dhaka',
-                                  style: kTextStyle.copyWith(color: kTitleColor),
+                                  style:
+                                      kTextStyle.copyWith(color: kTitleColor),
                                 ),
                                 const SizedBox(width: 2.0),
                                 const Icon(
@@ -132,13 +136,15 @@ class _MyBookingState extends State<MyBooking> {
                                 const SizedBox(width: 2.0),
                                 Text(
                                   'New Delhi',
-                                  style: kTextStyle.copyWith(fontSize: 14, color: kTitleColor),
+                                  style: kTextStyle.copyWith(
+                                      fontSize: 14, color: kTitleColor),
                                 )
                               ],
                             ),
                             subtitle: Text(
                               'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                              style: kTextStyle.copyWith(fontSize: 12, color: kSubTitleColor),
+                              style: kTextStyle.copyWith(
+                                  fontSize: 12, color: kSubTitleColor),
                             ),
                           ),
                           const SizedBox(

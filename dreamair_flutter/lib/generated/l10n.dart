@@ -461,21 +461,31 @@ class S {
     );
   }
 
-  /// `Board`
+  /// `Schedule`
   String get navBarTitle4 {
     return Intl.message(
-      'Board',
+      'Schedule',
       name: 'navBarTitle4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Profile`
+  /// `Board`
   String get navBarTitle5 {
     return Intl.message(
-      'Profile',
+      '커뮤니티',
       name: 'navBarTitle5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get navBarTitle6 {
+    return Intl.message(
+      'Profile',
+      name: 'navBarTitle6',
       desc: '',
       args: [],
     );
@@ -496,6 +506,36 @@ class S {
     return Intl.message(
       'Book Your\nFlight',
       name: 'bookFlightTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get ScheduleTitle {
+    return Intl.message(
+      '출도착 조회',
+      name: 'ScheudleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Board`
+  String get BoardTitle {
+    return Intl.message(
+      '커뮤니티',
+      name: 'BoardTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BoardUpload`
+  String get BoardUploadTitle {
+    return Intl.message(
+      '글작성',
+      name: 'BoardUploadTitle',
       desc: '',
       args: [],
     );
@@ -994,7 +1034,7 @@ class S {
   /// `Board`
   String get boardTitle {
     return Intl.message(
-      'Board',
+      '커뮤니티',
       name: 'boardTitle',
       desc: '',
       args: [],
