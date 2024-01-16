@@ -7,8 +7,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../payment/payment.dart';
-import '../seat/seat.dart';
 import '../widgets/constant.dart';
 import '../widgets/data_widgets.dart';
 
