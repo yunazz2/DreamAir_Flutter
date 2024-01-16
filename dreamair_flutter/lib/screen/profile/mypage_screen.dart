@@ -1,8 +1,8 @@
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flight_booking/screen/profile/Privacy_Policy/privicy_policy.dart';
-import 'package:flight_booking/screen/profile/my_profile/my_profile.dart';
-import 'package:flight_booking/screen/profile/payments/paymetns.dart';
-import 'package:flight_booking/screen/profile/setting/setting.dart';
+import 'package:flight_booking/screen/profile/mybooking/mybooking_screen.dart';
+import 'package:flight_booking/screen/profile/delete_account/delete_account_screen.dart';
+import 'package:flight_booking/screen/profile/mileage/mileage_screen.dart';
+import 'package:flight_booking/screen/profile/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/profile/update_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
@@ -87,7 +87,7 @@ class _MypageState extends State<Mypage> {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ListTile(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Setting()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckInScreen()));
                     },
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
@@ -117,7 +117,7 @@ class _MypageState extends State<Mypage> {
                 child: ListTile(
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePayments()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MileageScreen()));
                   },
                   leading: Container(
                     height: 34,
@@ -133,7 +133,7 @@ class _MypageState extends State<Mypage> {
                 ),
               ),
 
-              // 나의 탑승권 관리
+              // 나의 탑승권 조회
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -143,20 +143,20 @@ class _MypageState extends State<Mypage> {
                 ),
                 child: ListTile(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBookingScreen()));
                   },
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   leading: Container(
                     height: 34,
                     width: 34,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: const Color(0xff009F5E).withOpacity(0.1)),
-                    child: const Icon(CommunityMaterialIcons.alert_circle, color: Colors.grey,),
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.withOpacity(0.1)),
+                    child: const Icon(Icons.airplane_ticket, color: Colors.grey,),
                   ),
-                  title: const Text('나의 탑승권 관리'),
+                  title: const Text('나의 탑승권 조회'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
-
+              
               // 회원 탈퇴
               const SizedBox(height: 10),
               Card(
@@ -166,22 +166,18 @@ class _MypageState extends State<Mypage> {
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
                 child: ListTile(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const DeleteAccountScreen()));
+                  },
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   leading: Container(
                     height: 34,
                     width: 34,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey.withOpacity(0.1),
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.withOpacity(0.1)),
                     child: const Icon(Icons.person_off, color: Colors.grey,),
                   ),
-                  title: Text('회원 탈퇴', style: kTextStyle.copyWith(color: kTitleColor),),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: kSubTitleColor,
-                  ),
+                  title: const Text('회원 탈퇴'),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
 

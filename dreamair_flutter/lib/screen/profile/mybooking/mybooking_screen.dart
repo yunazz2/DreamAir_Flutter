@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../widgets/constant.dart';
 
-class PrivacyPolicy extends StatefulWidget {
-  const PrivacyPolicy({Key? key}) : super(key: key);
+// 나의 탑승권 조회 페이지
+class MyBookingScreen extends StatefulWidget {
+  const MyBookingScreen({Key? key}) : super(key: key);
 
   @override
-  State<PrivacyPolicy> createState() => _PrivacyPolicyState();
+  State<MyBookingScreen> createState() => _MyBookingScreenState();
 }
 
-class _PrivacyPolicyState extends State<PrivacyPolicy> {
+class _MyBookingScreenState extends State<MyBookingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,12 +18,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: kWhite),
-        title: Text(
-          'Privacy Policy',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
+        title: Text('나의 탑승권 조회', style: TextStyle(color: Colors.white,),),
         centerTitle: true,
       ),
       body: Container(

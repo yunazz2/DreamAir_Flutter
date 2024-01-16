@@ -1,10 +1,11 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flight_booking/screen/profile/mypage_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'dart:io';
 import '../../widgets/constant.dart';
-import '../my_profile/my_profile.dart';
+import '../delete_account/delete_account_screen.dart';
 
 // 회원 정보 수정 페이지
 class EditProfile extends StatefulWidget {
@@ -51,12 +52,12 @@ class _EditProfileState extends State<EditProfile> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyProfile(),
+                      builder: (context) => const Mypage(),
                     ),
                   );
                 },
                 child: Text(
-                  '수정하기',
+                  '수정 완료',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -94,53 +95,6 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 25,
               ),
-              Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Container(
-                    height: 90,
-                    width: 90,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        image: image == null
-                            ? const DecorationImage(image: AssetImage('images/man.png'), fit: BoxFit.cover)
-                            : DecorationImage(image: FileImage(File(image!.path)), fit: BoxFit.cover)),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 1.0,
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.camera_alt_outlined,
-                      size: 17,
-                      color: Colors.white,
-                    ).onTap(() => getImage()),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-               Text(
-                'Sahidul Islam',
-                style: kTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                'shaidulislamma@gmail.com',
-                style: kTextStyle.copyWith(fontSize: 14, color: kSubTitleColor),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
               Container(
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -161,36 +115,63 @@ class _EditProfileState extends State<EditProfile> {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      // 이름
+                      const SizedBox(height: 20,),
                       AppTextField(
                         cursorColor: kTitleColor,
-                        textFieldType: TextFieldType.NAME,
+                        textFieldType: TextFieldType.USERNAME,
                         decoration: kInputDecoration.copyWith(
-                          hintText: 'Sahidul Islam',
-                          labelText: 'Full Name',
+                          labelText: '이름',
                         ),
                       ),
+
+                      // 비밀번호
                       const SizedBox(height: 20.0),
                       AppTextField(
                         cursorColor: kTitleColor,
-                        textFieldType: TextFieldType.NAME,
+                        textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
-                          hintText: 'shaidulislam@gmail.com',
-                          labelText: 'Email',
+                          labelText: '비밀번호',
                         ),
                       ),
+
+                      // 비밀번호 확인
                       const SizedBox(height: 20.0),
                       AppTextField(
                         cursorColor: kTitleColor,
-                        textFieldType: TextFieldType.NUMBER,
+                        textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
-                          hintText: '017XXXXXXXX',
-                          prefixIcon: CountryCodePicker(
-                            showFlag: true,
-                            initialSelection: 'Bangladesh',
-                          ),
+                          labelText: '비밀번호 확인',
+                        ),
+                      ),
+                      
+                      // 핸드폰 번호
+                      const SizedBox(height: 20.0),
+                      AppTextField(
+                        cursorColor: kTitleColor,
+                        textFieldType: TextFieldType.PHONE,
+                        decoration: kInputDecoration.copyWith(
+                          labelText: '핸드폰 번호',
+                        ),
+                      ),
+
+                      // 이메일
+                      const SizedBox(height: 20.0),
+                      AppTextField(
+                        cursorColor: kTitleColor,
+                        textFieldType: TextFieldType.EMAIL,
+                        decoration: kInputDecoration.copyWith(
+                          labelText: '이메일',
+                        ),
+                      ),
+
+                      // 주소
+                      const SizedBox(height: 20.0),
+                      AppTextField(
+                        cursorColor: kTitleColor,
+                        textFieldType: TextFieldType.ADDRESS,
+                        decoration: kInputDecoration.copyWith(
+                          labelText: '주소',
                         ),
                       ),
                     ],
