@@ -36,7 +36,7 @@ class _TicketStatusState extends State<TicketStatus> {
               topLeft: Radius.circular(30.0),
               topRight: Radius.circular(30.0),
             ),
-            color: kWhite,
+            color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: kDarkWhite,
@@ -100,7 +100,7 @@ class _TicketStatusState extends State<TicketStatus> {
             padding: const EdgeInsets.all(10.0),
             child: Container(
               padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(color: kWhite, borderRadius: BorderRadius.circular(16.0)),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.0)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -251,7 +251,7 @@ class _TicketStatusState extends State<TicketStatus> {
                                             child: const Icon(
                                               Icons.arrow_right_alt_outlined,
                                               size: 16,
-                                              color: kWhite,
+                                              color: Colors.white,
                                             ),
                                           ),
                                         ],
@@ -260,7 +260,7 @@ class _TicketStatusState extends State<TicketStatus> {
                                         height: 10.0,
                                         width: 10.0,
                                         decoration: BoxDecoration(
-                                          color: kWhite,
+                                          color: Colors.white,
                                           shape: BoxShape.circle,
                                           border: Border.all(color: kPrimaryColor),
                                         ),
@@ -848,7 +848,7 @@ class _TicketStatusState extends State<TicketStatus> {
                                     height: 52,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                      color: kWhite,
+                                      color: Colors.white,
                                       border: Border.all(color: kBorderColorTextField),
                                       borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(8.0),
@@ -867,7 +867,7 @@ class _TicketStatusState extends State<TicketStatus> {
                                     height: 52,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                      color: kWhite,
+                                      color: Colors.white,
                                       border: Border.all(color: kBorderColorTextField),
                                     ),
                                     child: Text(
@@ -886,7 +886,7 @@ class _TicketStatusState extends State<TicketStatus> {
                               height: 52,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: kWhite,
+                                color: Colors.white,
                                 borderRadius: const BorderRadius.only(
                                   bottomRight: Radius.circular(8.0),
                                 ),

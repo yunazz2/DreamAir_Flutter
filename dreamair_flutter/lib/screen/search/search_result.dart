@@ -40,7 +40,7 @@ class _SearchResultState extends State<SearchResult> {
           title: Text(
             'Dhaka - New Delhi',
             style: kTextStyle.copyWith(
-              color: kWhite,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -54,7 +54,7 @@ class _SearchResultState extends State<SearchResult> {
             children: [
               const Icon(
                 IconlyBold.edit,
-                color: kWhite,
+                color: Colors.white,
                 size: 18.0,
               ),
               const SizedBox(height: 2.0),
@@ -73,7 +73,7 @@ class _SearchResultState extends State<SearchResult> {
         child: Container(
           width: context.width(),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0),
@@ -145,7 +145,7 @@ class _SearchResultState extends State<SearchResult> {
                         padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -287,7 +287,7 @@ class _SearchResultState extends State<SearchResult> {
                                                         child: const Icon(
                                                           Icons.flight_land_outlined,
                                                           size: 16,
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                         ),
                                                       ),
                                                     ],
@@ -296,7 +296,7 @@ class _SearchResultState extends State<SearchResult> {
                                                     height: 10.0,
                                                     width: 10.0,
                                                     decoration: BoxDecoration(
-                                                      color: kWhite,
+                                                      color: Colors.white,
                                                       shape: BoxShape.circle,
                                                       border: Border.all(color: kPrimaryColor),
                                                     ),
@@ -418,7 +418,7 @@ class _SearchResultState extends State<SearchResult> {
                                                         child: const Icon(
                                                           Icons.flight_land_outlined,
                                                           size: 16,
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                         ),
                                                       ),
                                                     ),
@@ -428,7 +428,7 @@ class _SearchResultState extends State<SearchResult> {
                                                   height: 10.0,
                                                   width: 10.0,
                                                   decoration: BoxDecoration(
-                                                    color: kWhite,
+                                                    color: Colors.white,
                                                     shape: BoxShape.circle,
                                                     border: Border.all(color: kPrimaryColor),
                                                   ),

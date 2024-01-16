@@ -3,6 +3,7 @@ import 'package:flight_booking/screen/profile/Privacy_Policy/privicy_policy.dart
 import 'package:flight_booking/screen/profile/my_profile/my_profile.dart';
 import 'package:flight_booking/screen/profile/payments/paymetns.dart';
 import 'package:flight_booking/screen/profile/setting/setting.dart';
+import 'package:flight_booking/screen/profile/update_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:nb_utils/nb_utils.dart';
@@ -10,6 +11,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../Authentication/welcome_screen.dart';
 import '../widgets/constant.dart';
 
+// 마이 페이지
 class Mypage extends StatefulWidget {
   const Mypage({Key? key}) : super(key: key);
 
@@ -25,12 +27,10 @@ class _MypageState extends State<Mypage> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
-          lang.S.of(context).profileTitle,
-          style: kTextStyle.copyWith(
-            color: kWhite,
-          ),
+          '마이 페이지',
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -40,7 +40,7 @@ class _MypageState extends State<Mypage> {
           padding: const EdgeInsets.all(10.0),
           width: double.infinity,
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30),
               topLeft: Radius.circular(30),
@@ -51,42 +51,8 @@ class _MypageState extends State<Mypage> {
               const SizedBox(
                 height: 20,
               ),
-              Center(
-                child: Container(
-                  height: 80.0,
-                  width: 80.0,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'images/man.png',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              const Center(
-                child: Text(
-                  'Sahidul Islam',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Center(
-                child: Text(
-                  'shaidulislamma@gmail.com',
-                  style: kTextStyle.copyWith(fontSize: 14, color: kSubTitleColor),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
+              // 메뉴 목록
+              // 회원 정보 수정
               Card(
                 elevation: 1.3,
                 shape: RoundedRectangleBorder(
@@ -95,26 +61,21 @@ class _MypageState extends State<Mypage> {
                 ),
                 child: ListTile(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Mypage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));
                   },
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   leading: Container(
                     height: 34,
                     width: 34,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: kPrimaryColor.withOpacity(0.2)),
-                    child: const Icon(
-                      Icons.person,
-                      color: kPrimaryColor,
-                    ),
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.withOpacity(0.2)),
+                    child: const Icon(Icons.person, color: Colors.grey,),
                   ),
-                  title: const Text('My Mypage'),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: kSubTitleColor,
-                  ),
+                  title: const Text('회원 정보 수정'),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
+
+              // 체크인
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -132,13 +93,10 @@ class _MypageState extends State<Mypage> {
                     leading: Container(
                       height: 34,
                       width: 34,
-                      decoration: BoxDecoration(shape: BoxShape.circle, color: const Color(0xff009F5E).withOpacity(0.2)),
-                      child: const Icon(
-                        Icons.settings,
-                        color: Color(0xff00CD46),
-                      ),
+                      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.withOpacity(0.2)),
+                      child: const Icon(Icons.airplane_ticket, color: Colors.grey,),
                     ),
-                    title: const Text('Setting'),
+                    title: const Text('체크인'),
                     trailing: const Icon(
                       Icons.arrow_forward_ios,
                       size: 18,
@@ -147,6 +105,8 @@ class _MypageState extends State<Mypage> {
                   ),
                 ),
               ),
+
+              // 마일리지 조회
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -164,24 +124,16 @@ class _MypageState extends State<Mypage> {
                     width: 34,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kPrimaryColor.withOpacity(0.2),
+                      color: Colors.grey.withOpacity(0.2),
                     ),
-                    child: const Icon(
-                      Icons.payment_rounded,
-                      color: kPrimaryColor,
-                    ),
+                    child: const Icon(Icons.credit_card, color: Colors.grey,),
                   ),
-                  title: Text(
-                    'Payments',
-                    style: kTextStyle.copyWith(color: kTitleColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: kSubTitleColor,
-                  ),
+                  title: Text('마일리지 조회', style: kTextStyle.copyWith(color: kTitleColor),),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
+
+              // 나의 탑승권 관리
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -198,19 +150,14 @@ class _MypageState extends State<Mypage> {
                     height: 34,
                     width: 34,
                     decoration: BoxDecoration(shape: BoxShape.circle, color: const Color(0xff009F5E).withOpacity(0.1)),
-                    child: const Icon(
-                      CommunityMaterialIcons.alert_circle,
-                      color: Color(0xff00CD46),
-                    ),
+                    child: const Icon(CommunityMaterialIcons.alert_circle, color: Colors.grey,),
                   ),
-                  title: const Text('Privacy policy'),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: kSubTitleColor,
-                  ),
+                  title: const Text('나의 탑승권 관리'),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
+
+              // 회원 탈퇴
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -225,17 +172,11 @@ class _MypageState extends State<Mypage> {
                     width: 34,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xffFF3B30).withOpacity(0.1),
+                      color: Colors.grey.withOpacity(0.1),
                     ),
-                    child: const Icon(
-                      Icons.share,
-                      color: Color(0xffFF3B30),
-                    ),
+                    child: const Icon(Icons.person_off, color: Colors.grey,),
                   ),
-                  title: Text(
-                    'Share App',
-                    style: kTextStyle.copyWith(color: kTitleColor),
-                  ),
+                  title: Text('회원 탈퇴', style: kTextStyle.copyWith(color: kTitleColor),),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
                     size: 18,
@@ -243,6 +184,8 @@ class _MypageState extends State<Mypage> {
                   ),
                 ),
               ),
+
+              // 로그아웃
               const SizedBox(height: 10),
               Card(
                 elevation: 1.3,
@@ -260,19 +203,12 @@ class _MypageState extends State<Mypage> {
                     width: 34,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kPrimaryColor.withOpacity(0.2),
+                      color: Colors.grey.withOpacity(0.2),
                     ),
-                    child: const Icon(
-                      Icons.logout,
-                      color: kPrimaryColor,
-                    ),
+                    child: const Icon(Icons.logout, color: Colors.grey,),
                   ),
-                  title: const Text('Log Out'),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18,
-                    color: kSubTitleColor,
-                  ),
+                  title: const Text('로그아웃'),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               )
             ],

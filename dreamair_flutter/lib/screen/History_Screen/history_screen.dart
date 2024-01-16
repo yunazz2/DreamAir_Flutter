@@ -24,12 +24,12 @@ class _HistoryState extends State<History> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(
-          color: kWhite,
+          color: Colors.white,
         ),
         title: Text(
           'History',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -46,7 +46,7 @@ class _HistoryState extends State<History> {
               // popupmenu item 2
             ],
             offset: const Offset(0, 30),
-            color: kWhite,
+            color: Colors.white,
             elevation: 1.0,
           )
         ],
@@ -54,7 +54,7 @@ class _HistoryState extends State<History> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),
@@ -78,7 +78,7 @@ class _HistoryState extends State<History> {
                         border: Border.all(
                           color: kBorderColorTextField,
                         ),
-                        color: kWhite,
+                        color: Colors.white,
                       ),
                       child: Column(
                         children: [
@@ -197,7 +197,7 @@ class _HistoryState extends State<History> {
                                                                       child: const Text(
                                                                         'Yes',
                                                                         style: TextStyle(
-                                                                          color: kWhite,
+                                                                          color: Colors.white,
                                                                         ),
                                                                       )),
                                                                 ),

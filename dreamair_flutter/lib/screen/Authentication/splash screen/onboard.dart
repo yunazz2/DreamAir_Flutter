@@ -112,7 +112,7 @@ class _OnBoardState extends State<OnBoard> {
                           topLeft: Radius.circular(36.0),
                           topRight: Radius.circular(36.0),
                         ),
-                        color: kWhite,
+                        color: Colors.white,
                         boxShadow: [BoxShadow(color: kDarkWhite, spreadRadius: 2, blurRadius: 7, offset: Offset(0, -2))]),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -187,7 +187,7 @@ class _OnBoardState extends State<OnBoard> {
                                 decoration: const BoxDecoration(shape: BoxShape.circle, color: kPrimaryColor),
                                 child: const Icon(
                                   FeatherIcons.chevronsRight,
-                                  color: kWhite,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),

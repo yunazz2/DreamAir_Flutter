@@ -47,7 +47,7 @@ class _CurrencyState extends State<Currency> {
           'Currency',
           style: TextStyle(
             fontSize: 18,
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -58,7 +58,7 @@ class _CurrencyState extends State<Currency> {
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: kWhite,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30),
                   topLeft: Radius.circular(30),
@@ -78,7 +78,7 @@ class _CurrencyState extends State<Currency> {
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: kWhite, border: Border.all(width: 1.0, color: kBorderColorTextField), borderRadius: BorderRadius.circular(10.0)),
+                                  color: Colors.white, border: Border.all(width: 1.0, color: kBorderColorTextField), borderRadius: BorderRadius.circular(10.0)),
                               child: ListTile(
                                 onTap: () {
                                   setState(() {

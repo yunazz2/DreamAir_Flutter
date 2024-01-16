@@ -60,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: context.width(),
                 height: context.height(),
                 decoration: const BoxDecoration(
-                  color: kWhite,
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30.0),
                     topLeft: Radius.circular(30.0),
@@ -108,7 +108,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ButtonGlobalWithoutIcon(
                         buttontext: lang.S.of(context).loginButton,
                         buttonDecoration: kButtonDecoration.copyWith(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kPrimaryColor),
                           borderRadius: BorderRadius.circular(30.0),
                         ),

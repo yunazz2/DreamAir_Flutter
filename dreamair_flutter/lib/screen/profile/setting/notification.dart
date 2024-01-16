@@ -23,7 +23,7 @@ class _NotificationScState extends State<NotificationSc> {
         title: Text(
           'Notification',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -37,7 +37,7 @@ class _NotificationScState extends State<NotificationSc> {
               // popupmenu item 2
             ],
             offset: const Offset(0, 30),
-            color: kWhite,
+            color: Colors.white,
             elevation: 1.0,
           )
         ],
@@ -46,7 +46,7 @@ class _NotificationScState extends State<NotificationSc> {
         padding: const EdgeInsets.only(top: 25, bottom: 15, left: 15, right: 10),
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),

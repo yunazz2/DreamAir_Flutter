@@ -50,7 +50,7 @@ class CancellationWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(color: kBorderColorTextField),
                   ),
                   child: Column(
@@ -99,7 +99,7 @@ class CancellationWidget extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -124,7 +124,7 @@ class CancellationWidget extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -188,7 +188,7 @@ class CancellationWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(color: kBorderColorTextField),
                   ),
                   child: Column(
@@ -237,7 +237,7 @@ class CancellationWidget extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -262,7 +262,7 @@ class CancellationWidget extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -348,7 +348,7 @@ class DateChangePolicy extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(color: kBorderColorTextField),
                   ),
                   child: Column(
@@ -397,7 +397,7 @@ class DateChangePolicy extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -422,7 +422,7 @@ class DateChangePolicy extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -486,7 +486,7 @@ class DateChangePolicy extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(color: kBorderColorTextField),
                   ),
                   child: Column(
@@ -535,7 +535,7 @@ class DateChangePolicy extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -560,7 +560,7 @@ class DateChangePolicy extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Column(
@@ -652,7 +652,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(
@@ -668,7 +668,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(
@@ -692,7 +692,7 @@ class BaggagePolicy extends StatelessWidget {
                               height: 40,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: kWhite,
+                                color: Colors.white,
                                 border: Border.all(color: kBorderColorTextField),
                               ),
                               child: Text(
@@ -708,7 +708,7 @@ class BaggagePolicy extends StatelessWidget {
                               height: 40,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: kWhite,
+                                color: Colors.white,
                                 border: Border.all(color: kBorderColorTextField),
                               ),
                               child: Text(
@@ -727,7 +727,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(
@@ -777,7 +777,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(
@@ -793,7 +793,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(
@@ -817,7 +817,7 @@ class BaggagePolicy extends StatelessWidget {
                               height: 40,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: kWhite,
+                                color: Colors.white,
                                 border: Border.all(color: kBorderColorTextField),
                               ),
                               child: Text(
@@ -833,7 +833,7 @@ class BaggagePolicy extends StatelessWidget {
                               height: 40,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: kWhite,
+                                color: Colors.white,
                                 border: Border.all(color: kBorderColorTextField),
                               ),
                               child: Text(
@@ -852,7 +852,7 @@ class BaggagePolicy extends StatelessWidget {
                         height: 40,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kBorderColorTextField),
                         ),
                         child: Text(

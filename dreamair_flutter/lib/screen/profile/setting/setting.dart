@@ -29,7 +29,7 @@ class _SettingState extends State<Setting> {
         title: Text(
           lang.S.of(context).settingTitle,
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -38,7 +38,7 @@ class _SettingState extends State<Setting> {
         padding: const EdgeInsets.all(10.0),
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),

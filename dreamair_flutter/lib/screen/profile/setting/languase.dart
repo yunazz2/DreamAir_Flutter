@@ -30,7 +30,7 @@ class _LanguageState extends State<Language> {
           lang.S.of(context).language,
           style: const TextStyle(
             fontSize: 18,
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -40,7 +40,7 @@ class _LanguageState extends State<Language> {
         height: context.height(),
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),

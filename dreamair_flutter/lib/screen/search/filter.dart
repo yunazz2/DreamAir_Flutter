@@ -72,7 +72,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(5.0),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -81,7 +81,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                 child: ButtonGlobalWithoutIcon(
                   buttontext: lang.S.of(context).cancelButton,
                   buttonDecoration: kButtonDecoration.copyWith(
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(color: Colors.red),
                   ),
                   onPressed: () {
@@ -115,14 +115,14 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
             onTap: () => Navigator.pop(context),
             child: const Icon(
               FeatherIcons.x,
-              color: kWhite,
+              color: Colors.white,
             ),
           ),
         ),
         body: Container(
           padding: const EdgeInsets.all(10.0),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0),
@@ -137,7 +137,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                   padding: const EdgeInsets.all(10.0),
                   width: context.width(),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(color: kBorderColorTextField),
                     boxShadow: const [
@@ -191,7 +191,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                 const SizedBox(height: 20.0),
                 Container(
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(color: kBorderColorTextField),
                     boxShadow: const [
@@ -411,7 +411,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(color: kBorderColorTextField),
                     boxShadow: const [
@@ -477,7 +477,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(color: kBorderColorTextField),
                     boxShadow: const [

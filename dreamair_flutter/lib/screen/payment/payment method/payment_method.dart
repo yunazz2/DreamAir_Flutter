@@ -129,7 +129,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
       body: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
@@ -224,7 +224,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
         ),
         child: ButtonGlobalWithoutIcon(
           buttontext: 'Pay',

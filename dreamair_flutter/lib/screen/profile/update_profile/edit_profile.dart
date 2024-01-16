@@ -1,19 +1,20 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flight_booking/screen/profile/my_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'dart:io';
 import '../../widgets/constant.dart';
+import '../my_profile/my_profile.dart';
 
-class MyProfile extends StatefulWidget {
-  const MyProfile({Key? key}) : super(key: key);
+// 회원 정보 수정 페이지
+class EditProfile extends StatefulWidget {
+  const EditProfile({Key? key}) : super(key: key);
 
   @override
-  State<MyProfile> createState() => _MyProfileState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _MyProfileState extends State<MyProfile> {
+class _EditProfileState extends State<EditProfile> {
   final ImagePicker _picker = ImagePicker();
   XFile? image;
 
@@ -50,12 +51,12 @@ class _MyProfileState extends State<MyProfile> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const EditProfile(),
+                      builder: (context) => const MyProfile(),
                     ),
                   );
                 },
                 child: Text(
-                  'Edit',
+                  'Update',
                   style: kTextStyle.copyWith(color: kWhite),
                 ),
               ),
@@ -68,7 +69,7 @@ class _MyProfileState extends State<MyProfile> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
-          'My Profile',
+          'Edit Profile',
           style: kTextStyle.copyWith(
             color: Colors.white,
           ),
@@ -126,9 +127,9 @@ class _MyProfileState extends State<MyProfile> {
               const SizedBox(
                 height: 12,
               ),
-              const Text(
+               Text(
                 'Sahidul Islam',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: kTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const SizedBox(
                 height: 5,

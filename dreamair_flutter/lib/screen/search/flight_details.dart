@@ -67,7 +67,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
             padding: const EdgeInsets.only(top: 40.0),
             child: Container(
               decoration: const BoxDecoration(
-                color: kWhite,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
@@ -103,7 +103,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                        color: kWhite,
+                        color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(30.0),
                           topLeft: Radius.circular(30.0),
@@ -195,7 +195,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                       width: context.width(),
                                       padding: const EdgeInsets.all(10.0),
                                       decoration: BoxDecoration(
-                                        color: kWhite,
+                                        color: Colors.white,
                                         borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(8.0),
                                           bottomRight: Radius.circular(8.0),
@@ -266,7 +266,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         height: 15.0,
                                                         width: 15.0,
                                                         decoration: BoxDecoration(
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           shape: BoxShape.circle,
                                                           border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                         ),
@@ -357,7 +357,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         height: 15.0,
                                                         width: 15.0,
                                                         decoration: BoxDecoration(
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           shape: BoxShape.circle,
                                                           border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                         ),
@@ -474,7 +474,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                   width: context.width(),
                                   padding: const EdgeInsets.all(10.0),
                                   decoration: BoxDecoration(
-                                    color: kWhite,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(8.0),
                                       bottomRight: Radius.circular(8.0),
@@ -522,7 +522,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                     height: 15.0,
                                                     width: 15.0,
                                                     decoration: BoxDecoration(
-                                                      color: kWhite,
+                                                      color: Colors.white,
                                                       shape: BoxShape.circle,
                                                       border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                     ),
@@ -613,7 +613,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                       padding: const EdgeInsets.only(bottom: 10.0),
                                       child: Container(
                                         decoration:
-                                            BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: kWhite, border: Border.all(color: kSecondaryColor)),
+                                            BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: Colors.white, border: Border.all(color: kSecondaryColor)),
                                         child: Column(
                                           children: [
                                             ListTile(

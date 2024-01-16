@@ -26,7 +26,7 @@ class _OtpVerificationState extends State<OtpVerification> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.0),
             topLeft: Radius.circular(30.0),

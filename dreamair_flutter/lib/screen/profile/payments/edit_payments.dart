@@ -47,7 +47,7 @@ class _EditPaymentsProfileState extends State<EditPaymentsProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        color: kWhite,
+        color: Colors.white,
         child: Container(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
           height: 90,
@@ -56,7 +56,7 @@ class _EditPaymentsProfileState extends State<EditPaymentsProfile> {
               topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0),
             ),
-            color: kWhite,
+            color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: kBorderColorTextField,
@@ -96,7 +96,7 @@ class _EditPaymentsProfileState extends State<EditPaymentsProfile> {
         title: Text(
           'Edit',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -109,7 +109,7 @@ class _EditPaymentsProfileState extends State<EditPaymentsProfile> {
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             decoration: const BoxDecoration(
-              color: kWhite,
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
                 topLeft: Radius.circular(30),

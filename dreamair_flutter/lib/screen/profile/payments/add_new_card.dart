@@ -48,7 +48,7 @@ class _AddNewCardState extends State<AddNewCard> {
       bottomNavigationBar: Container(
         height: 105,
         decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: kBorderColorTextField,
@@ -110,12 +110,12 @@ class _AddNewCardState extends State<AddNewCard> {
         backgroundColor: Colors.transparent,
         leading: const Icon(
           Icons.arrow_back,
-          color: kWhite,
+          color: Colors.white,
         ).onTap(() => Navigator.pop(context)),
         title:  Text(
           'Add New Card',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -127,7 +127,7 @@ class _AddNewCardState extends State<AddNewCard> {
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             decoration: const BoxDecoration(
-                color: kWhite,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))),
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -26,7 +26,7 @@ class _SearchState extends State<Search> {
           onTap: () => Navigator.pop(context),
           child: const Icon(
             FeatherIcons.x,
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
       ),
@@ -34,7 +34,7 @@ class _SearchState extends State<Search> {
         height: context.height(),
         padding: const EdgeInsets.all(20.0),
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),

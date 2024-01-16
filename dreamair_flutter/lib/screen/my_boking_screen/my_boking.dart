@@ -26,7 +26,7 @@ class _MyBookingState extends State<MyBooking> {
         title: Text(
           lang.S.of(context).myBookingTitle,
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -37,7 +37,7 @@ class _MyBookingState extends State<MyBooking> {
           width: double.infinity,
           padding: const EdgeInsets.all(10.0),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30),
               topLeft: Radius.circular(30),

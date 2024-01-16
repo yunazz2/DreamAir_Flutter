@@ -61,7 +61,7 @@ class _PaymentState extends State<Payment> {
         title: Text(
           lang.S.of(context).paymentTitle,
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -69,7 +69,7 @@ class _PaymentState extends State<Payment> {
       body: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.0),
             topLeft: Radius.circular(30.0),
@@ -85,7 +85,7 @@ class _PaymentState extends State<Payment> {
                 padding: const EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(
                       color: kBorderColorTextField,
                     ),
@@ -180,7 +180,7 @@ class _PaymentState extends State<Payment> {
                                             Container(
                                               padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 20),
                                               decoration: const BoxDecoration(
-                                                color: kWhite,
+                                                color: Colors.white,
                                                 borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(30.0),
                                                   topLeft: Radius.circular(30.0),
@@ -525,7 +525,7 @@ class _PaymentState extends State<Payment> {
                                     const SizedBox(height: 10.0),
                                     Container(
                                       decoration: const BoxDecoration(
-                                        color: kWhite,
+                                        color: Colors.white,
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(30.0),
                                           topLeft: Radius.circular(30.0),
@@ -659,7 +659,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 decoration: BoxDecoration(
-                  color: kWhite,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(color: kBorderColorTextField),
                   boxShadow: const [
@@ -680,7 +680,7 @@ class _PaymentState extends State<Payment> {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                           border: Border.all(color: kBorderColorTextField),
                           boxShadow: const [

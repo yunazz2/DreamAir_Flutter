@@ -94,7 +94,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
             title: Text(
               'Trip To',
               style: kTextStyle.copyWith(
-                color: kWhite,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -140,7 +140,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
         body: Container(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0),
@@ -156,7 +156,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -234,7 +234,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                       ButtonGlobalWithoutIcon(
                           buttontext: 'View Flight & Fare Details',
                           buttonDecoration: kButtonDecoration.copyWith(
-                            color: kWhite,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
                             border: Border.all(color: kPrimaryColor.withOpacity(0.2)),
                           ),
@@ -250,7 +250,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 //_________________________________________________________________________Baggage_policy
                 Container(
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -480,7 +480,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 //_________________________________________________________________________cancellation_refund_policy
                 Container(
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -595,7 +595,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -763,7 +763,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                   width: context.width(),
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -820,7 +820,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            color: kWhite,
+                            color: Colors.white,
                             boxShadow: const [BoxShadow(color: kBorderColorTextField, blurRadius: 7.0, spreadRadius: 2.0, offset: Offset(0, 2))]),
                         child: ListTile(
                           contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -845,7 +845,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         buttonTextColor: kPrimaryColor,
                         buttonIcon: FeatherIcons.plus,
                         buttonDecoration: kButtonDecoration.copyWith(
-                          color: kWhite,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(8.0),
                           border: Border.all(
                             color: kPrimaryColor.withOpacity(0.5),
@@ -901,7 +901,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                             Container(
                                               width: context.width(),
                                               decoration: const BoxDecoration(
-                                                color: kWhite,
+                                                color: Colors.white,
                                                 borderRadius: BorderRadius.only(
                                                   topLeft: Radius.circular(30.0),
                                                   topRight: Radius.circular(30.0),
@@ -1078,7 +1078,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                   width: context.width(),
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -1154,7 +1154,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                 Container(
                                                   width: context.width(),
                                                   decoration: const BoxDecoration(
-                                                    color: kWhite,
+                                                    color: Colors.white,
                                                     borderRadius: BorderRadius.only(
                                                       topLeft: Radius.circular(30.0),
                                                       topRight: Radius.circular(30.0),

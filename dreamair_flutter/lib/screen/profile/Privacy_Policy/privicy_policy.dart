@@ -20,7 +20,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
         title: Text(
           'Privacy Policy',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -28,7 +28,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),

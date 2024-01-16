@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
         title: Text(
           lang.S.of(context).profileTitle,
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -40,7 +40,7 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(10.0),
           width: double.infinity,
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30),
               topLeft: Radius.circular(30),

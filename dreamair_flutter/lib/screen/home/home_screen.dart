@@ -154,20 +154,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   Text('안녕하세요!', style: TextStyle(color: Colors.white, fontSize: 16.0),),
                                 ],
                               ),
-                              // 메인 화면 프로필
-                              trailing: GestureDetector(
-                                onTap: () {
-                                  print('클릭!');
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.all(5.0),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(color: Colors.white),
-                                  ),
-                                  child: const Icon(Icons.person, color: Colors.white),
-                                ),
-                              ),
                             ),
                             // 메인 화면 Dream Air 문구
                             const SizedBox(height: 30),
@@ -193,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         child: Container(
                           padding: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
-                            color: kWhite,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           child: Column(
@@ -311,7 +297,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
-                                            color: kWhite,
+                                            color: Colors.white,
                                             border: Border.all(
                                               color: kPrimaryColor.withOpacity(0.3),
                                             ),
@@ -441,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             topRight: Radius.circular(30.0),
                                                             topLeft: Radius.circular(30.0),
                                                           ),
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           boxShadow: [
                                                             BoxShadow(
                                                               color: kDarkWhite,
@@ -800,7 +786,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  color: kWhite,
+                                                  color: Colors.white,
                                                   border: Border.all(
                                                     color: kPrimaryColor.withOpacity(0.3),
                                                   ),
@@ -882,7 +868,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ButtonGlobalWithoutIcon(
                                     buttontext: lang.S.of(context).addFlightButton,
                                     buttonDecoration: kButtonDecoration.copyWith(
-                                      color: kWhite,
+                                      color: Colors.white,
                                       border: Border.all(color: kPrimaryColor),
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
@@ -970,7 +956,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: kWhite,
+                                                        color: Colors.white,
                                                         border: Border.all(
                                                           color: kPrimaryColor.withOpacity(0.3),
                                                         ),
@@ -1083,7 +1069,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             topRight: Radius.circular(30.0),
                                                             topLeft: Radius.circular(30.0),
                                                           ),
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           boxShadow: [
                                                             BoxShadow(
                                                               color: kDarkWhite,

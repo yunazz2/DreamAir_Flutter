@@ -36,7 +36,7 @@ class _ProfilePaymentsState extends State<ProfilePayments> {
         title: Text(
           'Payment Method',
           style: kTextStyle.copyWith(
-            color: kWhite,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -44,7 +44,7 @@ class _ProfilePaymentsState extends State<ProfilePayments> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),
@@ -186,7 +186,7 @@ class _ProfilePaymentsState extends State<ProfilePayments> {
                                                             )),
                                                         child: const Text(
                                                           'Yes',
-                                                          style: TextStyle(color: kWhite, fontWeight: FontWeight.w500),
+                                                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
                                                         )),
                                                   ),
                                                 ],
@@ -212,7 +212,7 @@ class _ProfilePaymentsState extends State<ProfilePayments> {
                               ),
                             ],
                             offset: const Offset(0, 40),
-                            color: kWhite,
+                            color: Colors.white,
                             elevation: 1.0,
                           ),
                         ),
