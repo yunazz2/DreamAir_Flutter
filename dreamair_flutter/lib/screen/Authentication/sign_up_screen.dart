@@ -70,7 +70,7 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 10.0),
                     Text(
                       lang.S.of(context).loginTitle,
-                      style: kTextStyle.copyWith(
+                      style: TextStyle(
                         color: kTitleColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -174,7 +174,7 @@ class _SignUpState extends State<SignUp> {
                           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                           child: Text(
                             lang.S.of(context).orSignUpTitle,
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                         ),
                         const Expanded(
@@ -217,18 +217,18 @@ class _SignUpState extends State<SignUp> {
       bottomNavigationBar: SizedBox(
         height: 50,
         child: Container(
-          decoration: const BoxDecoration(color: kWhite),
+          decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
             onTap: () => const LogIn().launch(context),
             child: Center(
               child: RichText(
                 text: TextSpan(
                   text: lang.S.of(context).alreadyHaveAcc,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).loginButton,
-                      style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

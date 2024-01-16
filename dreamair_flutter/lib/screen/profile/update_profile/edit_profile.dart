@@ -68,7 +68,7 @@ class _EditProfileState extends State<EditProfile> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
           '회원 정보 수정',
           style: TextStyle(

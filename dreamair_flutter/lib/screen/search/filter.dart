@@ -154,7 +154,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                     children: [
                       Text(
                         'Stops',
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8.0),
                       HorizontalList(
@@ -179,7 +179,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                               ),
                               Text(
                                 titleList[i],
-                                style: kTextStyle.copyWith(color: kSubTitleColor),
+                                style: TextStyle(color: kSubTitleColor),
                               ),
                             ],
                           );
@@ -263,7 +263,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                           children: [
                             Text(
                               'Departure from Dhaka',
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -319,7 +319,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                       ),
                                       Text(
                                         departureTime[i],
-                                        style: kTextStyle.copyWith(color: selectedDepartureTime == departureTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
+                                        style: TextStyle(color: selectedDepartureTime == departureTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
                                       ),
                                     ],
                                   ),
@@ -338,7 +338,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                           children: [
                             Text(
                               'Arrive in New Delhi',
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -394,7 +394,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                       ),
                                       Text(
                                         arrivalTime[i],
-                                        style: kTextStyle.copyWith(color: selectedArrivalTime == arrivalTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
+                                        style: TextStyle(color: selectedArrivalTime == arrivalTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
                                       ),
                                     ],
                                   ),
@@ -428,17 +428,17 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                     children: [
                       Text(
                         'Price',
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       Center(
                         child: RichText(
                           text: TextSpan(
                             text: 'Up to USD ',
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                             children: [
                               TextSpan(
                                 text: '$currencySign${150000}',
-                                style: kTextStyle.copyWith(color: kTitleColor),
+                                style: TextStyle(color: kTitleColor),
                               ),
                             ],
                           ),
@@ -461,12 +461,12 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                         children: [
                           Text(
                             'USD $currencySign${price.toString()}',
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                           const Spacer(),
                           Text(
                             'USD \$1500000.00',
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                         ],
                       ),
@@ -494,7 +494,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                     children: [
                       Text(
                         'Airlines',
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       ListTileTheme(
                         minLeadingWidth: 10,
@@ -511,7 +511,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.zero,
                           title: Text(
                             'Select All',
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                           leading: Icon(
                             selectedFlightNameList.length == flightNameList.length ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
@@ -525,7 +525,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                         contentPadding: EdgeInsets.zero,
                         title: Text(
                           'Show Alliances',
-                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                         ),
                         trailing: Switch(
                           activeColor: kPrimaryColor,
@@ -592,7 +592,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                       const SizedBox(width: 10.0),
                                       Text(
                                         flightNameList[i],
-                                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),

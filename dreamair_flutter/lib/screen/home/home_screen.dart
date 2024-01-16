@@ -242,13 +242,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                   onTap: ()=>const Search().launch(context),
                                                   title: Text(
                                                     '(DAC)',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   subtitle: Text(
                                                     'Dhaka, Bangladesh',
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                   ),
                                                   horizontalTitleGap: 0,
                                                   contentPadding: const EdgeInsets.only(left: 5.0),
@@ -275,13 +275,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                   onTap: ()=>const Search().launch(context),
                                                   title: Text(
                                                     '(NYC)',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   subtitle: Text(
                                                     'New Your, United State',
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                   ),
                                                   horizontalTitleGap: 0,
                                                   contentPadding: const EdgeInsets.only(left: 5.0),
@@ -401,7 +401,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               children: [
                                                                 Text(
                                                                   lang.S.of(context).travellerTitle,
-                                                                  style: kTextStyle.copyWith(
+                                                                  style: TextStyle(
                                                                     color: kTitleColor,
                                                                     fontSize: 18.0,
                                                                     fontWeight: FontWeight.bold,
@@ -415,7 +415,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             ),
                                                             Text(
                                                               'Dhaka to New York, Thu 6 Jan 2023',
-                                                              style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                              style: TextStyle(color: kSubTitleColor),
                                                             ),
                                                           ],
                                                         ),
@@ -447,11 +447,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).adults,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       '12+ years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -512,11 +512,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).child,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       '2-12 years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -575,11 +575,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).infants,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       'Under 2 Years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -698,7 +698,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           children: [
                                             Text(
                                               'Flight ${flightNumber + 1}',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                             ),
                                             const Spacer(),
                                             const Icon(
@@ -730,13 +730,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                         
                                                         title: Text(
                                                           '(DAC)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         subtitle: Text(
                                                           'Dhaka, Bangladesh',
                                                           maxLines: 1,
                                                           overflow: TextOverflow.ellipsis,
-                                                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                          style: TextStyle(color: kSubTitleColor),
                                                         ),
                                                         horizontalTitleGap: 0,
                                                         contentPadding: const EdgeInsets.only(left: 5.0),
@@ -764,13 +764,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                         onTap: ()=>const Search().launch(context),
                                                         title: Text(
                                                           '(NYC)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         subtitle: Text(
                                                           'New Your, United State',
                                                           maxLines: 1,
                                                           overflow: TextOverflow.ellipsis,
-                                                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                          style: TextStyle(color: kSubTitleColor),
                                                         ),
                                                         horizontalTitleGap: 0,
                                                         contentPadding: const EdgeInsets.only(left: 5.0),
@@ -845,7 +845,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               children: [
                                                 Text(
                                                   'Flight ${i + 2}'.toString(),
-                                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                                 const Spacer(),
                                                 GestureDetector(
@@ -901,13 +901,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               onTap: ()=>const Search().launch(context),
                                                               title: Text(
                                                                 '(DAC)',
-                                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                               ),
                                                               subtitle: Text(
                                                                 'Dhaka, Bangladesh',
                                                                 maxLines: 1,
                                                                 overflow: TextOverflow.ellipsis,
-                                                                style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                style: TextStyle(color: kSubTitleColor),
                                                               ),
                                                               horizontalTitleGap: 0,
                                                               contentPadding: const EdgeInsets.only(left: 5.0),
@@ -934,13 +934,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               onTap: ()=>const Search().launch(context),
                                                               title: Text(
                                                                 '(NYC)',
-                                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                               ),
                                                               subtitle: Text(
                                                                 'New Your, United State',
                                                                 maxLines: 1,
                                                                 overflow: TextOverflow.ellipsis,
-                                                                style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                style: TextStyle(color: kSubTitleColor),
                                                               ),
                                                               horizontalTitleGap: 0,
                                                               contentPadding: const EdgeInsets.only(left: 5.0),
@@ -1043,7 +1043,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               children: [
                                                                 Text(
                                                                   lang.S.of(context).travellerTitle,
-                                                                  style: kTextStyle.copyWith(
+                                                                  style: TextStyle(
                                                                     color: kTitleColor,
                                                                     fontSize: 18.0,
                                                                     fontWeight: FontWeight.bold,
@@ -1057,7 +1057,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             ),
                                                             Text(
                                                               'Dhaka to New York, Thu 6 Jan 2023',
-                                                              style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                              style: TextStyle(color: kSubTitleColor),
                                                             ),
                                                           ],
                                                         ),
@@ -1089,11 +1089,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).adults,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       '12+ years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -1154,11 +1154,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).child,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       '2-12 years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -1217,11 +1217,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       lang.S.of(context).infants,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                                     ),
                                                                     Text(
                                                                       'Under 2 Years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                      style: TextStyle(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -1345,7 +1345,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                             child: Text(
                               lang.S.of(context).recentSearch,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                             ),
                           ),
                           HorizontalList(
@@ -1366,7 +1366,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       'Dhaka to New York',
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                     ),
                                     const SizedBox(
                                       height: 5.0,
@@ -1375,7 +1375,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       '17 Jan - 18 Jan ',
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                                      style: TextStyle(color: kSubTitleColor),
                                     ),
                                   ],
                                 ),

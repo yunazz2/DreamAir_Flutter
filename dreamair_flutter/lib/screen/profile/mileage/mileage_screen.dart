@@ -31,7 +31,7 @@ class _MileageScreenState extends State<MileageScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text('마일리지 조회', style: TextStyle(color: Colors.white,),),
         centerTitle: true,
       ),

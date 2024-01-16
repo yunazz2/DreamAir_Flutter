@@ -84,7 +84,7 @@ class _OnBoardState extends State<OnBoard> {
                       onTap: () => const WelcomeScreen().launch(context),
                       child: Text(
                         lang.S.of(context).skipButton,
-                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                        style: TextStyle(color: kSubTitleColor),
                       ),
                     ),
                   ),
@@ -143,7 +143,7 @@ class _OnBoardState extends State<OnBoard> {
                                     ? lang.S.of(context).onBoardTitle2
                                     : lang.S.of(context).onBoardTitle3,
                             textAlign: TextAlign.center,
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                           ),
                           const SizedBox(height: 20.0),
                           Text(
@@ -152,7 +152,7 @@ class _OnBoardState extends State<OnBoard> {
                                 : currentIndexPage == 1
                                     ? lang.S.of(context).onBoardSubTitle2
                                     : lang.S.of(context).onBoardSubTitle3,
-                            style: kTextStyle.copyWith(
+                            style: TextStyle(
                               color: kSubTitleColor,
                             ),
                             maxLines: 3,

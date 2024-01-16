@@ -80,18 +80,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       const SizedBox(height: 20.0),
                       Text(
                         lang.S.of(context).wcTitle,
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 5.0),
                       Text(
                         lang.S.of(context).wcSubTitle,
-                        style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 20.0),
                       Text(
                         lang.S.of(context).wcDescription,
                         textAlign: TextAlign.center,
-                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                        style: TextStyle(color: kSubTitleColor),
                       ),
                       const SizedBox(height: 50.0),
                       ButtonGlobalWithoutIcon(

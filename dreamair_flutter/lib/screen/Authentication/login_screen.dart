@@ -70,7 +70,7 @@ class _LogInState extends State<LogIn> {
                     const SizedBox(height: 10.0),
                     Text(
                       lang.S.of(context).loginTitle,
-                      style: kTextStyle.copyWith(
+                      style: TextStyle(
                         color: kTitleColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -123,7 +123,7 @@ class _LogInState extends State<LogIn> {
                           onTap: () => const ForgotPassword().launch(context),
                           child: Text(
                             lang.S.of(context).forgotPassword,
-                            style: kTextStyle.copyWith(
+                            style: TextStyle(
                               color: kPrimaryColor,
                             ),
                           ),
@@ -155,7 +155,7 @@ class _LogInState extends State<LogIn> {
                           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                           child: Text(
                             lang.S.of(context).orSignUpTitle,
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                         ),
                         const Expanded(
@@ -198,18 +198,18 @@ class _LogInState extends State<LogIn> {
       bottomNavigationBar: SizedBox(
         height: 50,
         child: Container(
-          decoration: const BoxDecoration(color: kWhite),
+          decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
             onTap: () => const SignUp().launch(context),
             child: Center(
               child: RichText(
                 text: TextSpan(
                   text: lang.S.of(context).noAccTitle1,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).noAccTitle2,
-                      style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

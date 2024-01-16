@@ -21,11 +21,11 @@ class _MyBookingState extends State<MyBooking> {
         titleSpacing: 0,
         elevation: 0,
         backgroundColor: kPrimaryColor,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
         title: Text(
           lang.S.of(context).myBookingTitle,
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -71,7 +71,7 @@ class _MyBookingState extends State<MyBooking> {
                                 children: [
                                   Text(
                                     'Paid: \$14500.',
-                                    style: kTextStyle.copyWith(
+                                    style: TextStyle(
                                       fontSize: 14,
                                       color: kTitleColor,
                                     ),
@@ -81,13 +81,13 @@ class _MyBookingState extends State<MyBooking> {
                                   ),
                                   Text(
                                     'Convenience Fee Added',
-                                    style: kTextStyle.copyWith(fontSize: 12, color: kSubTitleColor),
+                                    style: TextStyle(fontSize: 12, color: kSubTitleColor),
                                   )
                                 ],
                               ),
                               Text(
                                 'Completed',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                   fontSize: 12,
                                   color: const Color(0xff00CD46),
                                 ),
@@ -122,7 +122,7 @@ class _MyBookingState extends State<MyBooking> {
                               children: [
                                 Text(
                                   'Dhaka',
-                                  style: kTextStyle.copyWith(color: kTitleColor),
+                                  style: TextStyle(color: kTitleColor),
                                 ),
                                 const SizedBox(width: 2.0),
                                 const Icon(
@@ -132,13 +132,13 @@ class _MyBookingState extends State<MyBooking> {
                                 const SizedBox(width: 2.0),
                                 Text(
                                   'New Delhi',
-                                  style: kTextStyle.copyWith(fontSize: 14, color: kTitleColor),
+                                  style: TextStyle(fontSize: 14, color: kTitleColor),
                                 )
                               ],
                             ),
                             subtitle: Text(
                               'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                              style: kTextStyle.copyWith(fontSize: 12, color: kSubTitleColor),
+                              style: TextStyle(fontSize: 12, color: kSubTitleColor),
                             ),
                           ),
                           const SizedBox(

@@ -61,7 +61,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 const SizedBox(height: 20.0),
                 Text(
                   'Payment Succeed!',
-                  style: kTextStyle.copyWith(
+                  style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 21,
@@ -70,7 +70,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 Text(
                   'Thank you for purchase the ticket!',
                   textAlign: TextAlign.center,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
                 const SizedBox(height: 10.0),
                 ButtonGlobalWithoutIcon(
@@ -102,7 +102,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       Text(
                         'Back to Home',
                         textAlign: TextAlign.center,
-                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                        style: TextStyle(color: kSubTitleColor),
                       ),
                     ],
                   ),
@@ -124,7 +124,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
         centerTitle: true,
         backgroundColor: kPrimaryColor,
         title: Text(lang.S.of(context).paymentMethod),
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
@@ -141,7 +141,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
             const SizedBox(height: 10.0),
             Text(
               lang.S.of(context).paymentCardTitle,
-              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
             ),
             CreditCardWidget(
               // padding: AppConstants.creditCardPadding,
@@ -177,7 +177,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 ),
                 Text(
                   'Use as the payment methord',
-                  style: kTextStyle.copyWith(color: kTitleColor),
+                  style: TextStyle(color: kTitleColor),
                 ),
               ],
             ),
@@ -215,7 +215,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 ),
                 Text(
                   'Use as the payment method',
-                  style: kTextStyle.copyWith(color: kTitleColor),
+                  style: TextStyle(color: kTitleColor),
                 ),
               ],
             ),

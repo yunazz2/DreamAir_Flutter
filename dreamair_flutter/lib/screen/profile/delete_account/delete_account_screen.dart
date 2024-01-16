@@ -64,7 +64,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text('회원 탈퇴', style: TextStyle(color: Colors.white,),),
         centerTitle: true,
       ),

@@ -22,7 +22,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text('체크인',style: TextStyle(color: Colors.white,),),
         centerTitle: true,
       ),

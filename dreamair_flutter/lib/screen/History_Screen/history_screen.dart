@@ -109,21 +109,21 @@ class _HistoryState extends State<History> {
                                       children: [
                                         Text(
                                           name[i],
-                                          style: kTextStyle.copyWith(fontWeight: FontWeight.bold, color: kWhite),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         ),
                                         const SizedBox(
                                           height: 15,
                                         ),
                                         Text(
                                           'Economy',
-                                          style: kTextStyle.copyWith(fontSize: 12, color: Colors.white),
+                                          style: TextStyle(fontSize: 12, color: Colors.white),
                                         ),
                                       ],
                                     ),
                                     Column(
                                       children: [
                                         Container(
-                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: kWhite),
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: InkWell(
@@ -219,7 +219,7 @@ class _HistoryState extends State<History> {
                                         ),
                                         const Text(
                                           '\$3,000',
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: kWhite),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         )
                                       ],
                                     )

@@ -31,7 +31,7 @@ class _SearchResultState extends State<SearchResult> {
         titleSpacing: 0,
         elevation: 0,
         backgroundColor: kPrimaryColor,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: ListTile(
           dense: true,
           visualDensity: const VisualDensity(vertical: -2),
@@ -39,7 +39,7 @@ class _SearchResultState extends State<SearchResult> {
           contentPadding: const EdgeInsets.only(right: 15.0),
           title: Text(
             'Dhaka - New Delhi',
-            style: kTextStyle.copyWith(
+            style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -87,7 +87,7 @@ class _SearchResultState extends State<SearchResult> {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
                 child: Text(
                   'Flight to New Delhi',
-                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                 ),
               ),
               HorizontalList(
@@ -125,7 +125,7 @@ class _SearchResultState extends State<SearchResult> {
                             const SizedBox(width: 5.0).visible(i == 0),
                             Text(
                               filterTitleList[i],
-                              style: kTextStyle.copyWith(color: kSubTitleColor),
+                              style: TextStyle(color: kSubTitleColor),
                             ),
                           ],
                         ),
@@ -169,7 +169,7 @@ class _SearchResultState extends State<SearchResult> {
                                 ),
                                 title: Text(
                                   'IndiGo',
-                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                 ),
                                 trailing: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -179,18 +179,18 @@ class _SearchResultState extends State<SearchResult> {
                                       children: [
                                         Text(
                                           '$currencySign${15000}',
-                                          style: kTextStyle.copyWith(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
+                                          style: TextStyle(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
                                         ),
                                         const SizedBox(width: 5.0),
                                         Text(
                                           '$currencySign${12000}',
-                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     Text(
                                       '$currencySign${322} Deal',
-                                      style: kTextStyle.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
+                                      style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
@@ -222,7 +222,7 @@ class _SearchResultState extends State<SearchResult> {
                                         contentPadding: EdgeInsets.zero,
                                         title: Text(
                                           'IndiGo',
-                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                         ),
                                         subtitle: Row(
                                           children: [
@@ -233,7 +233,7 @@ class _SearchResultState extends State<SearchResult> {
                                             const SizedBox(width: 5.0),
                                             Text(
                                               '2h 35m Layover at new york',
-                                              style: kTextStyle.copyWith(color: kSubTitleColor),
+                                              style: TextStyle(color: kSubTitleColor),
                                             ),
                                           ],
                                         ),
@@ -245,11 +245,11 @@ class _SearchResultState extends State<SearchResult> {
                                             children: [
                                               Text(
                                                 '5.50',
-                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                               ),
                                               Text(
                                                 'Dhaka',
-                                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                                style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                               ),
                                             ],
                                           ),
@@ -258,7 +258,7 @@ class _SearchResultState extends State<SearchResult> {
                                             children: [
                                               Text(
                                                 '3h 40m',
-                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                               ),
                                               const SizedBox(height: 2.0),
                                               Row(
@@ -306,7 +306,7 @@ class _SearchResultState extends State<SearchResult> {
                                               const SizedBox(height: 2.0),
                                               Text(
                                                 '1 Stop',
-                                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                                style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                               ),
                                             ],
                                           ),
@@ -315,18 +315,18 @@ class _SearchResultState extends State<SearchResult> {
                                             children: [
                                               Text(
                                                 '7.30',
-                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                               ),
                                               Text(
                                                 'New Delhi',
-                                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                                style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                               ),
                                             ],
                                           ),
                                           const SizedBox(width: 5.0),
                                           Text(
                                             '+ 2 Option',
-                                            style: kTextStyle.copyWith(color: kPrimaryColor, fontSize: 12.0),
+                                            style: TextStyle(color: kPrimaryColor, fontSize: 12.0),
                                           ),
                                         ],
                                       )
@@ -351,7 +351,7 @@ class _SearchResultState extends State<SearchResult> {
                                       contentPadding: EdgeInsets.zero,
                                       title: Text(
                                         'IndiGo',
-                                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                       ),
                                       subtitle: Row(
                                         children: [
@@ -362,7 +362,7 @@ class _SearchResultState extends State<SearchResult> {
                                           const SizedBox(width: 5.0),
                                           Text(
                                             '2h 35m Layover at new york',
-                                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                                            style: TextStyle(color: kSubTitleColor),
                                           ),
                                         ],
                                       ),
@@ -374,11 +374,11 @@ class _SearchResultState extends State<SearchResult> {
                                           children: [
                                             Text(
                                               '5.50',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                             ),
                                             Text(
                                               'Dhaka',
-                                              style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                              style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                             ),
                                           ],
                                         ),
@@ -387,7 +387,7 @@ class _SearchResultState extends State<SearchResult> {
                                           children: [
                                             Text(
                                               '3h 40m',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                             ),
                                             const SizedBox(height: 2.0),
                                             Row(
@@ -438,7 +438,7 @@ class _SearchResultState extends State<SearchResult> {
                                             const SizedBox(height: 2.0),
                                             Text(
                                               '1 Stop',
-                                              style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                              style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                             ),
                                           ],
                                         ),
@@ -447,18 +447,18 @@ class _SearchResultState extends State<SearchResult> {
                                           children: [
                                             Text(
                                               '7.30',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
+                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                             ),
                                             Text(
                                               'New Delhi',
-                                              style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                              style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                             ),
                                           ],
                                         ),
                                         const SizedBox(width: 5.0),
                                         Text(
                                           '2 Seats left\nat this price',
-                                          style: kTextStyle.copyWith(color: Colors.red, fontSize: 12.0),
+                                          style: TextStyle(color: Colors.red, fontSize: 12.0),
                                         ),
                                       ],
                                     )
@@ -480,7 +480,7 @@ class _SearchResultState extends State<SearchResult> {
                                       'Use Code MMTFEST to get RS, 644 instant Discount',
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12.0),
+                                      style: TextStyle(color: kTitleColor, fontSize: 12.0),
                                     ),
                                   ),
                                 ],

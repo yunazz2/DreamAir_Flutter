@@ -128,7 +128,7 @@ class _MypageState extends State<Mypage> {
                     ),
                     child: const Icon(Icons.credit_card, color: Colors.grey,),
                   ),
-                  title: Text('마일리지 조회', style: kTextStyle.copyWith(color: kTitleColor),),
+                  title: Text('마일리지 조회', style: TextStyle(color: kTitleColor),),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),

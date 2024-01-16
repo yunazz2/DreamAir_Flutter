@@ -42,7 +42,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(height: 10.0),
                 Text(
                   lang.S.of(context).fpAppBarTitle,
-                  style: kTextStyle.copyWith(
+                  style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.0,
@@ -52,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   lang.S.of(context).fpDesc1,
                   textAlign: TextAlign.center,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
                 const SizedBox(height: 30.0),
                 TextFormField(

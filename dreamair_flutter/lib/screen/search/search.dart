@@ -90,11 +90,11 @@ class _SearchState extends State<Search> {
                 ),
                 title: Text(
                   lang.S.of(context).currentLocation,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
                 subtitle: Text(
                   lang.S.of(context).useCurrentLocation,
-                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                 ),
               ),
               const Divider(
@@ -104,7 +104,7 @@ class _SearchState extends State<Search> {
               const SizedBox(height: 10.0),
               Text(
                 lang.S.of(context).recentPlaceTitle,
-                style: kTextStyle.copyWith(color: kSubTitleColor, fontWeight: FontWeight.bold),
+                style: TextStyle(color: kSubTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
               ListView.builder(
@@ -130,7 +130,7 @@ class _SearchState extends State<Search> {
                           ),
                           title: Text(
                             'Dhaka',
-                            style: kTextStyle.copyWith(
+                            style: TextStyle(
                               color: kTitleColor,
                               fontWeight: FontWeight.bold,
                             ),
@@ -139,7 +139,7 @@ class _SearchState extends State<Search> {
                             'Hazrat Shahjala International Airport',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                            style: TextStyle(color: kSubTitleColor),
                           ),
                         ),
                         const Divider(

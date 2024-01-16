@@ -36,7 +36,7 @@ class CancellationWidget extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -62,13 +62,13 @@ class CancellationWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Time frame',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 'From scheduled flight departure',
                                 textAlign: TextAlign.start,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -78,13 +78,13 @@ class CancellationWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Airline Fee + MMT Fee',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 '(Per Passenger)',
                                 textAlign: TextAlign.end,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -106,14 +106,14 @@ class CancellationWidget extends StatelessWidget {
                           children: [
                             Text(
                               '0 hours to 24 hours*',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               '24 Hours to 365 day*',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -131,14 +131,14 @@ class CancellationWidget extends StatelessWidget {
                           children: [
                             Text(
                               'ADULT: Non Refundable',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               'ADULT: Non Refundable',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -152,7 +152,7 @@ class CancellationWidget extends StatelessWidget {
                 ),
                 Text(
                   'From the date of departure',
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
               ],
             ),
@@ -174,7 +174,7 @@ class CancellationWidget extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -200,13 +200,13 @@ class CancellationWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Time frame',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 'From scheduled flight departure',
                                 textAlign: TextAlign.start,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -216,13 +216,13 @@ class CancellationWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Airline Fee + MMT Fee',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 '(Per Passenger)',
                                 textAlign: TextAlign.end,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -244,14 +244,14 @@ class CancellationWidget extends StatelessWidget {
                           children: [
                             Text(
                               '0 hours to 24 hours*',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               '24 Hours to 365 day*',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -269,14 +269,14 @@ class CancellationWidget extends StatelessWidget {
                           children: [
                             Text(
                               'ADULT: Non Refundable',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               'ADULT: Non Refundable',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -290,7 +290,7 @@ class CancellationWidget extends StatelessWidget {
                 ),
                 Text(
                   'From the date of departure',
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
               ],
             ),
@@ -334,7 +334,7 @@ class DateChangePolicy extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -360,13 +360,13 @@ class DateChangePolicy extends StatelessWidget {
                             children: [
                               Text(
                                 'Time frame',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 'From scheduled flight departure',
                                 textAlign: TextAlign.start,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -376,13 +376,13 @@ class DateChangePolicy extends StatelessWidget {
                             children: [
                               Text(
                                 'Airline Fee + MMT Fee',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 '(Per Passenger)',
                                 textAlign: TextAlign.end,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -404,14 +404,14 @@ class DateChangePolicy extends StatelessWidget {
                           children: [
                             Text(
                               '0 hours to 24 hours*',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               '24 Hours to 365 day*',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -429,14 +429,14 @@ class DateChangePolicy extends StatelessWidget {
                           children: [
                             Text(
                               'ADULT: Non Refundable',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               'ADULT: Non Refundable',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -450,7 +450,7 @@ class DateChangePolicy extends StatelessWidget {
                 ),
                 Text(
                   'From the date of departure',
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
               ],
             ),
@@ -472,7 +472,7 @@ class DateChangePolicy extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -498,13 +498,13 @@ class DateChangePolicy extends StatelessWidget {
                             children: [
                               Text(
                                 'Time frame',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 'From scheduled flight departure',
                                 textAlign: TextAlign.start,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -514,13 +514,13 @@ class DateChangePolicy extends StatelessWidget {
                             children: [
                               Text(
                                 'Airline Fee + MMT Fee',
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                     color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                               ),
                               Text(
                                 '(Per Passenger)',
                                 textAlign: TextAlign.end,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 10),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 10),
                               ),
                             ],
                           ),
@@ -542,14 +542,14 @@ class DateChangePolicy extends StatelessWidget {
                           children: [
                             Text(
                               '0 hours to 24 hours*',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               '24 Hours to 365 day*',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -567,14 +567,14 @@ class DateChangePolicy extends StatelessWidget {
                           children: [
                             Text(
                               'ADULT: Non Refundable',
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                             ),
                             const SizedBox(height: 20.0),
                             Text(
                               'ADULT: Non Refundable',
                               textAlign: TextAlign.start,
-                              style: kTextStyle.copyWith(
+                              style: TextStyle(
                                   color: kTitleColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -588,7 +588,7 @@ class DateChangePolicy extends StatelessWidget {
                 ),
                 Text(
                   'From the date of departure',
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
               ],
             ),
@@ -633,7 +633,7 @@ class BaggagePolicy extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -658,7 +658,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           'Cabin',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                          style: TextStyle(color: kTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
@@ -674,7 +674,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           'Check -in',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                          style: TextStyle(color: kTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
@@ -698,7 +698,7 @@ class BaggagePolicy extends StatelessWidget {
                               child: Text(
                                 'ADULT',
                                 textAlign: TextAlign.center,
-                                style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                                style: TextStyle(color: kTitleColor, fontSize: 12),
                               ),
                             ),
                           ),
@@ -714,7 +714,7 @@ class BaggagePolicy extends StatelessWidget {
                               child: Text(
                                 '8 kgs (1 piece only)',
                                 textAlign: TextAlign.center,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 12),
                               ),
                             ),
                           ),
@@ -733,7 +733,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           '30 Kgs',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                          style: TextStyle(color: kSubTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
@@ -758,7 +758,7 @@ class BaggagePolicy extends StatelessWidget {
             title: Text(
               'DAC - CCU',
               maxLines: 1,
-              style: kTextStyle.copyWith(
+              style: TextStyle(
                 color: kTitleColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -783,7 +783,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           'Cabin',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                          style: TextStyle(color: kTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
@@ -799,7 +799,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           'Check -in',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                          style: TextStyle(color: kTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
@@ -823,7 +823,7 @@ class BaggagePolicy extends StatelessWidget {
                               child: Text(
                                 'ADULT',
                                 textAlign: TextAlign.center,
-                                style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12),
+                                style: TextStyle(color: kTitleColor, fontSize: 12),
                               ),
                             ),
                           ),
@@ -839,7 +839,7 @@ class BaggagePolicy extends StatelessWidget {
                               child: Text(
                                 '8 kgs (1 piece only)',
                                 textAlign: TextAlign.center,
-                                style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                style: TextStyle(color: kSubTitleColor, fontSize: 12),
                               ),
                             ),
                           ),
@@ -858,7 +858,7 @@ class BaggagePolicy extends StatelessWidget {
                         child: Text(
                           '30 Kgs',
                           textAlign: TextAlign.center,
-                          style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                          style: TextStyle(color: kSubTitleColor, fontSize: 12),
                         ),
                       ),
                     ),
