@@ -1,5 +1,6 @@
 import 'package:flight_booking/screen/History_Screen/history_screen.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
+import 'package:flight_booking/screen/profile/mypage_screen.dart';
 import 'package:flight_booking/screen/search/schedule_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
     History(), // 체크인 -> 변경해야함
     ScheduleScreen(), //  출도착 조회
     BoardScreen(), // 게시판
-    // Profile(),
+    Mypage(),  // 마이페이지
   ];
 
   @override
@@ -64,6 +65,10 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.description),
               label: '게시판'
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '마이페이지'
             ),
           ],
           onTap: (int index) {
