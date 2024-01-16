@@ -1,6 +1,6 @@
 import 'package:flight_booking/screen/History_Screen/history_screen.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
-import 'package:flight_booking/screen/search/schedule_screen.dart';
+import 'package:flight_booking/screen/schedule/schedule_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
