@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "DoneButton": MessageLookupByLibrary.simpleMessage("Done"),
         "SendOtpTitle": MessageLookupByLibrary.simpleMessage("Send OTP"),
-        "addFightButton": MessageLookupByLibrary.simpleMessage("Add Fight"),
+        "addFightButton": MessageLookupByLibrary.simpleMessage("Add Flight"),
         "addNewCardTitle": MessageLookupByLibrary.simpleMessage("Add New Card"),
         "adults": MessageLookupByLibrary.simpleMessage("Adults"),
         "alreadyHaveAcc":

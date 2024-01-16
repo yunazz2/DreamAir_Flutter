@@ -660,10 +660,10 @@ class S {
     );
   }
 
-  /// `Add Fight`
-  String get addFightButton {
+  /// `Add Flight`
+  String get addFlightButton {
     return Intl.message(
-      'Add Fight',
+      'Add Flight',
       name: 'addFightButton',
       desc: '',
       args: [],

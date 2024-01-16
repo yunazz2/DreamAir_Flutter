@@ -103,24 +103,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
   }
 
-  // void _showReturnDate() async {
-  //   final DateTimeRange? result = await showDateRangePicker(
-  //     context: context,
-  //     firstDate: selectedDate,
-  //     lastDate: DateTime(2030, 12, 31),
-  //     currentDate: DateTime.now(),
-  //     saveText: 'Done',
-  //   );
-  //   if (result != null && result != _selectedDateRange) {
-  //     setState(
-  //       () {
-  //         _selectedDateRange = result;
-  //         returnDateTitle = _selectedDateRange.toString().substring(26, 36);
-  //       },
-  //     );
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -165,36 +147,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
+                              // 메인 화면 왼쪽 위
                               title: Row(
                                 children: [
-                                  Text(
-                                    lang.S.of(context).hello,
-                                    style: kTextStyle.copyWith(color: kWhite, fontSize: 14),
-                                  ),
+                                  Text('안녕하세요!', style: TextStyle(color: Colors.white, fontSize: 16.0),),
                                 ],
                               ),
-                              subtitle: Text(
-                                'Shaidul Islam',
-                                style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold),
-                              ),
-                              trailing: Container(
-                                padding: const EdgeInsets.all(5.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.transparent,
-                                  border: Border.all(color: kWhite),
-                                ),
-                                child: const Icon(
-                                  FeatherIcons.bell,
-                                  color: kWhite,
+                              // 메인 화면 프로필
+                              trailing: GestureDetector(
+                                onTap: () {
+                                  print('클릭!');
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(5.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.white),
+                                  ),
+                                  child: const Icon(Icons.person, color: Colors.white),
                                 ),
                               ),
                             ),
+                            // 메인 화면 Dream Air 문구
                             const SizedBox(height: 30),
-                            Text(
-                              lang.S.of(context).bookFlightTitle,
-                              style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold, fontSize: 25.0),
-                            ),
+                            Text('Dream Air',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30.0),),
                           ],
                         ),
                       ),
@@ -243,10 +219,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   },
                                   tabs: [
                                     Tab(
-                                      text: lang.S.of(context).tab1,
+                                      text: '편도',
                                     ),
                                     Tab(
-                                      text: lang.S.of(context).tab2,
+                                      text: '왕복',
                                     ),
                                     Tab(
                                       text: lang.S.of(context).tab3,
@@ -903,7 +879,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         );
                                       }),
                                   ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).addFightButton,
+                                    buttontext: lang.S.of(context).addFlightButton,
                                     buttonDecoration: kButtonDecoration.copyWith(
                                       color: kWhite,
                                       border: Border.all(color: kPrimaryColor),
