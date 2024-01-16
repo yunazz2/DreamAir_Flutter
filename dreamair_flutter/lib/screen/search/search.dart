@@ -13,6 +13,23 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+
+  List<String> airportItems = [
+    '김포(GMP)',
+    '제주(CJU)',
+    '부산(PUS)',
+    '울산(USN)',
+    '여수(RSU)',
+  ];
+
+  List<String> subTitleItems = [
+    '대한민국 김포',
+    '대한민국 제주',
+    '대한민국 부산',
+    '대한민국 울산',
+    '대한민국 여수',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +38,7 @@ class _SearchState extends State<Search> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text(lang.S.of(context).searchScreenTitle),
+        title: Text('목적지'),
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: const Icon(
@@ -46,71 +63,74 @@ class _SearchState extends State<Search> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              TextFormField(
-                onFieldSubmitted: (val) {
-                  Navigator.pop(context);
-                },
-                showCursor: false,
-                keyboardType: TextInputType.name,
-                cursorColor: kTitleColor,
-                textInputAction: TextInputAction.next,
-                decoration: kInputDecoration.copyWith(
-                  contentPadding: const EdgeInsets.only(left: 10, right: 10),
-                  hintText: 'Country, city or airport',
-                  hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                  focusColor: kTitleColor,
-                  border: const OutlineInputBorder(),
-                  prefixIcon: const Icon(
-                    FeatherIcons.search,
-                    color: kSubTitleColor,
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30.0),
-                    ),
-                    borderSide: BorderSide(color: kBorderColorTextField, width: 1),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30.0),
-                    ),
-                    borderSide: BorderSide(color: kPrimaryColor, width: 1),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              ListTile(
-                dense: true,
-                visualDensity: const VisualDensity(vertical: -4),
-                horizontalTitleGap: 0.0,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(
-                  IconlyBold.send,
-                  color: kSubTitleColor,
-                ),
-                title: Text(
-                  lang.S.of(context).currentLocation,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
-                ),
-                subtitle: Text(
-                  lang.S.of(context).useCurrentLocation,
-                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const Divider(
-                thickness: 1.0,
-                color: kBorderColorTextField,
-              ),
-              const SizedBox(height: 10.0),
+              // 검색창
+              // TextFormField(
+              //   onFieldSubmitted: (val) {
+              //     Navigator.pop(context);
+              //   },
+              //   showCursor: false,
+              //   keyboardType: TextInputType.name,
+              //   cursorColor: kTitleColor,
+              //   textInputAction: TextInputAction.next,
+              //   decoration: kInputDecoration.copyWith(
+              //     contentPadding: const EdgeInsets.only(left: 10, right: 10),
+              //     hintText: 'Country, city or airport',
+              //     hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+              //     focusColor: kTitleColor,
+              //     border: const OutlineInputBorder(),
+              //     prefixIcon: const Icon(
+              //       FeatherIcons.search,
+              //       color: kSubTitleColor,
+              //     ),
+              //     enabledBorder: const OutlineInputBorder(
+              //       borderRadius: BorderRadius.all(
+              //         Radius.circular(30.0),
+              //       ),
+              //       borderSide: BorderSide(color: kBorderColorTextField, width: 1),
+              //     ),
+              //     focusedBorder: const OutlineInputBorder(
+              //       borderRadius: BorderRadius.all(
+              //         Radius.circular(30.0),
+              //       ),
+              //       borderSide: BorderSide(color: kPrimaryColor, width: 1),
+              //     ),
+              //   ),
+              // ),
+              
+              // const SizedBox(height: 20.0),
+              // ListTile(
+              //   dense: true,
+              //   visualDensity: const VisualDensity(vertical: -4),
+              //   horizontalTitleGap: 0.0,
+              //   contentPadding: EdgeInsets.zero,
+              //   leading: const Icon(
+              //     IconlyBold.send,
+              //     color: kSubTitleColor,
+              //   ),
+              //   title: Text(
+              //     lang.S.of(context).currentLocation,
+              //     style: kTextStyle.copyWith(color: kSubTitleColor),
+              //   ),
+              //   subtitle: Text(
+              //     lang.S.of(context).useCurrentLocation,
+              //     style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+              // const Divider(
+              //   thickness: 1.0,
+              //   color: kBorderColorTextField,
+              // ),
+              // const SizedBox(height: 10.0),
               Text(
-                lang.S.of(context).recentPlaceTitle,
+                '목적지를 선택하세요.',
                 style: kTextStyle.copyWith(color: kSubTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
+              // 출발지 목록
               ListView.builder(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: airportItems.length,
                   shrinkWrap: true,
                   itemBuilder: (_, i) {
                     return Column(
@@ -129,24 +149,28 @@ class _SearchState extends State<Search> {
                             ),
                           ),
                           title: Text(
-                            'Dhaka',
+                            '${airportItems[i]}',
                             style: kTextStyle.copyWith(
                               color: kTitleColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           subtitle: Text(
-                            'Hazrat Shahjala International Airport',
+                            '${subTitleItems[i]}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: kTextStyle.copyWith(color: kSubTitleColor),
                           ),
+                          onTap: () {
+                            // provider에 값을 넣고 화면이동
+
+                            Navigator.pop(context);
+                          },
                         ),
                         const Divider(
                           thickness: 1.0,
                           color: kBorderColorTextField,
                         ),
-
                       ],
                     );
                   })

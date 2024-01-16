@@ -14,6 +14,9 @@ class SearchResult extends StatefulWidget {
 }
 
 class _SearchResultState extends State<SearchResult> {
+
+  // model 객체 만들어서 객체 안에 데이터 넣어서 값을 넣기
+  
   List<String> filterTitleList = [
     'Filter',
     'Non Stop',
@@ -38,33 +41,17 @@ class _SearchResultState extends State<SearchResult> {
           horizontalTitleGap: 00.0,
           contentPadding: const EdgeInsets.only(right: 15.0),
           title: Text(
-            'Dhaka - New Delhi',
+            '김포 - 제주',      // 서버 데이터
             style: kTextStyle.copyWith(
               color: kWhite,
               fontWeight: FontWeight.bold,
             ),
           ),
           subtitle: Text(
-            'Thu 6 Jan | 1 Adult, 0 Child, 0 Infant',
+            '2024/01/17 | 1 성인',    // 서버 데이터
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: kTextStyle.copyWith(color: kWhite),
-          ),
-          trailing: Column(
-            children: [
-              const Icon(
-                IconlyBold.edit,
-                color: kWhite,
-                size: 18.0,
-              ),
-              const SizedBox(height: 2.0),
-              Text(
-                'Edit',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: kTextStyle.copyWith(color: kWhite),
-              ),
-            ],
           ),
         ),
       ),
@@ -86,53 +73,53 @@ class _SearchResultState extends State<SearchResult> {
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
                 child: Text(
-                  'Flight to New Delhi',
+                  '항공편 일정',
                   style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                 ),
               ),
-              HorizontalList(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                  itemCount: filterTitleList.length,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (_, i) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedFilter.contains(filterTitleList[i])
-                              ? selectedFilter.remove(filterTitleList[i])
-                              : selectedFilter.add(
-                                  filterTitleList[i],
-                                );
-                          i == 0 ? Navigator.push(context, MaterialPageRoute(builder: (context) => const Filter())) : null;
-                        });
-                      },
-                      child: Container(
-                        height: 35,
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0, bottom: 5.0),
-                        decoration: BoxDecoration(
-                          color: selectedFilter.contains(filterTitleList[i]) ? kPrimaryColor.withOpacity(0.1) : kWhite,
-                          borderRadius: BorderRadius.circular(30.0),
-                          border: Border.all(
-                            color: kBorderColorTextField,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.sort,
-                              color: kSubTitleColor,
-                            ).visible(i == 0),
-                            const SizedBox(width: 5.0).visible(i == 0),
-                            Text(
-                              filterTitleList[i],
-                              style: kTextStyle.copyWith(color: kSubTitleColor),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-              const SizedBox(height: 10.0),
+              // HorizontalList(
+              //     padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+              //     itemCount: filterTitleList.length,
+              //     physics: const BouncingScrollPhysics(),
+              //     itemBuilder: (_, i) {
+              //       return GestureDetector(
+              //         onTap: () {
+              //           setState(() {
+              //             selectedFilter.contains(filterTitleList[i])
+              //                 ? selectedFilter.remove(filterTitleList[i])
+              //                 : selectedFilter.add(
+              //                     filterTitleList[i],
+              //                   );
+              //             i == 0 ? Navigator.push(context, MaterialPageRoute(builder: (context) => const Filter())) : null;
+              //           });
+              //         },
+              //         child: Container(
+              //           height: 35,
+              //           padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0, bottom: 5.0),
+              //           decoration: BoxDecoration(
+              //             color: selectedFilter.contains(filterTitleList[i]) ? kPrimaryColor.withOpacity(0.1) : kWhite,
+              //             borderRadius: BorderRadius.circular(30.0),
+              //             border: Border.all(
+              //               color: kBorderColorTextField,
+              //             ),
+              //           ),
+              //           child: Row(
+              //             children: [
+              //               const Icon(
+              //                 Icons.sort,
+              //                 color: kSubTitleColor,
+              //               ).visible(i == 0),
+              //               const SizedBox(width: 5.0).visible(i == 0),
+              //               Text(
+              //                 filterTitleList[i],
+              //                 style: kTextStyle.copyWith(color: kSubTitleColor),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       );
+              //     }),
+              // const SizedBox(height: 10.0),
               ListView.builder(
                   itemCount: 10,
                   shrinkWrap: true,
@@ -168,7 +155,7 @@ class _SearchResultState extends State<SearchResult> {
                                   ),
                                 ),
                                 title: Text(
-                                  'IndiGo',
+                                  'Dream Air',
                                   style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                 ),
                                 trailing: Column(
@@ -178,18 +165,18 @@ class _SearchResultState extends State<SearchResult> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          '$currencySign${15000}',
+                                          '$currencySign${15000}',    // 원래가격
                                           style: kTextStyle.copyWith(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
                                         ),
                                         const SizedBox(width: 5.0),
                                         Text(
-                                          '$currencySign${12000}',
+                                          '$currencySign${12000}',    // 할인가격
                                           style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     Text(
-                                      '$currencySign${322} Deal',
+                                      '$currencySign${322} Deal',   // 최종가격
                                       style: kTextStyle.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
                                     ),
                                   ],

@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   List<Widget> flights = [];
@@ -66,11 +66,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   DateTimeRange? _selectedDateRange;
 
-  String departureDateTitle = 'Departure Date';
-  String returnDateTitle = 'Return Date';
+  String departureDateTitle = '출발 날짜';
+  String returnDateTitle = '돌아오는 날짜';
 
   DateTime selectedDate = DateTime.now();
 
+  // 단일 날짜 선택
   // Future<void> _selectDate(BuildContext context) async {
   //   final DateTime? picked = await showDatePicker(
   //     context: context,
@@ -86,20 +87,36 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   //   }
   // }
 
+  // 편도 날짜 선택
+
+  // 왕복 날짜 선택
   void _showDepartureDate() async {
     final DateTimeRange? result = await showDateRangePicker(
       context: context,
+      locale: Locale('ko'),
       firstDate: selectedDate,
       lastDate: DateTime(2030, 12, 31),
       currentDate: DateTime.now(),
-      saveText: 'Done',
+      saveText: '선택완료',
     );
     if (result != null && result != _selectedDateRange) {
       setState(() {
         _selectedDateRange = result;
-        returnDateTitle = _selectedDateRange.toString().substring(26, 36);
 
-        departureDateTitle = _selectedDateRange.toString().substring(0, 10);
+        departureDateTitle = _selectedDateRange.toString().substring(0, 10);    // 가는편 날짜
+        var parts = departureDateTitle.split("-");
+        departureDateTitle = parts[0] + "/" + parts[1] + "/" + parts[2];
+        print(departureDateTitle);
+
+
+        returnDateTitle = _selectedDateRange.toString().substring(26, 36);    // 돌아오는편 날짜
+        parts = returnDateTitle.split("-");
+        returnDateTitle = parts[0] + "/" + parts[1] + "/" + parts[2];
+        print(returnDateTitle);
+
+        var resultDate = departureDateTitle + " ~ " + returnDateTitle;
+        print(resultDate);
+
       });
     }
   }
@@ -109,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return SafeArea(
       child: DefaultTabController(
         initialIndex: 1,
-        length: 3,
+        length: 2,
         child: Scaffold(
           backgroundColor: kDarkWhite,
           body: Stack(
@@ -225,9 +242,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Tab(
                                       text: '왕복',
                                     ),
-                                    Tab(
-                                      text: lang.S.of(context).tab3,
-                                    ),
                                   ],
                                 ),
                               ),
@@ -245,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               child: InputDecorator(
                                                 decoration: kInputDecoration.copyWith(
                                                   contentPadding: const EdgeInsets.only(left: 10.0),
-                                                  labelText: lang.S.of(context).fromTitle,
+                                                  labelText: '출발지',
                                                   labelStyle: kTextStyle.copyWith(color: kTitleColor),
                                                   floatingLabelBehavior: FloatingLabelBehavior.always,
                                                   border: OutlineInputBorder(
@@ -255,11 +269,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 child: ListTile(
                                                   onTap: ()=>const Search().launch(context),
                                                   title: Text(
-                                                    '(DAC)',
+                                                    '(GMP)',
                                                     style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   subtitle: Text(
-                                                    'Dhaka, Bangladesh',
+                                                    '김포',
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
                                                     style: kTextStyle.copyWith(color: kSubTitleColor),
@@ -278,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               child: InputDecorator(
                                                 decoration: kInputDecoration.copyWith(
                                                   contentPadding: const EdgeInsets.only(left: 10.0),
-                                                  labelText: lang.S.of(context).toTitle,
+                                                  labelText: '도착지',
                                                   labelStyle: kTextStyle.copyWith(color: kTitleColor),
                                                   floatingLabelBehavior: FloatingLabelBehavior.always,
                                                   border: OutlineInputBorder(
@@ -288,11 +302,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 child: ListTile(
                                                   onTap: ()=>const Search().launch(context),
                                                   title: Text(
-                                                    '(NYC)',
+                                                    '(GMP)',
                                                     style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   subtitle: Text(
-                                                    'New Your, United State',
+                                                    '김포',
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
                                                     style: kTextStyle.copyWith(color: kSubTitleColor),
@@ -324,6 +338,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       ),
                                     ],
                                   ),
+                                  // visible(selectedIndex == 0) 일때 싱글데이터 피커사용하기 
                                   TextFormField(
                                     readOnly: true,
                                     keyboardType: TextInputType.name,
@@ -331,7 +346,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     showCursor: false,
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
-                                      labelText: lang.S.of(context).dateTitle,
+                                      labelText: '날짜',
                                       labelStyle: kTextStyle.copyWith(color: kTitleColor),
                                       hintText: departureDateTitle,
                                       hintStyle: kTextStyle.copyWith(color: kTitleColor),
@@ -341,7 +356,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       suffixIcon: GestureDetector(
                                         onTap: () {
                                           setState(() {
-                                            _showDepartureDate();
+                                            // _selectDate(context);  
+                                            _showDepartureDate();   // 단일 날짜선택 불러오기;
                                           });
                                         },
                                         child: const Icon(
@@ -352,6 +368,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   const SizedBox(height: 20.0).visible(selectedIndex == 1),
+                                  // 왕복날짜 2개 만들기
                                   TextFormField(
                                     readOnly: true,
                                     keyboardType: TextInputType.name,
@@ -359,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     showCursor: false,
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
-                                      labelText: lang.S.of(context).returnDate,
+                                      labelText: '날짜',
                                       labelStyle: kTextStyle.copyWith(color: kTitleColor),
                                       hintText: returnDateTitle,
                                       hintStyle: kTextStyle.copyWith(color: kTitleColor),
@@ -367,12 +384,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       border: const OutlineInputBorder(),
                                       floatingLabelBehavior: FloatingLabelBehavior.always,
                                       suffixIcon: GestureDetector(
-                                        // onTap: () {
-                                        //   setState(() {
-                                        //     _showDepartureDate();
-                                        //     isReturn == true;
-                                        //   });
-                                        // },
+                                        onTap: () {
+                                          setState(() {
+                                            _showDepartureDate();
+                                            // isReturn == true;
+                                          });
+                                        },
                                         child: const Icon(
                                           IconlyLight.calendar,
                                           color: kSubTitleColor,
@@ -388,9 +405,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     showCursor: false,
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
-                                      labelText: lang.S.of(context).travellerTitle,
+                                      labelText: '탑승객 인원',
                                       labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                      hintText: '$adultCount Adult,$childCount child,$infantCount Infants',
+                                      hintText: '$adultCount 성인',
                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                       border: const OutlineInputBorder(),
                                       floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -414,7 +431,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  lang.S.of(context).travellerTitle,
+                                                                  '탑승객 인원',
                                                                   style: kTextStyle.copyWith(
                                                                     color: kTitleColor,
                                                                     fontSize: 18.0,
@@ -428,7 +445,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               ],
                                                             ),
                                                             Text(
-                                                              'Dhaka to New York, Thu 6 Jan 2023',
+                                                              '탑승객 인원을 선택해주세요.',
                                                               style: kTextStyle.copyWith(color: kSubTitleColor),
                                                             ),
                                                           ],
@@ -460,12 +477,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                   children: [
                                                                     Text(
-                                                                      lang.S.of(context).adults,
+                                                                      '성인',
                                                                       style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      '12+ years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -517,137 +530,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                               thickness: 1.0,
                                                               color: kBorderColorTextField,
                                                             ),
-                                                            const SizedBox(height: 15.0),
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      lang.S.of(context).child,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      '2-12 years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                const Spacer(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: childCount == 0 ? kPrimaryColor.withOpacity(0.2) : kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.minus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      childCount > 0 ? childCount-- : childCount = 1;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Text(childCount.toString()),
-                                                                const SizedBox(width: 10.0),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: const BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.plus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      childCount++;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Divider(
-                                                              thickness: 1.0,
-                                                              color: kBorderColorTextField,
-                                                            ),
-                                                            const SizedBox(height: 15.0),
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      lang.S.of(context).infants,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      'Under 2 Years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                const Spacer(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: infantCount == 0 ? kPrimaryColor.withOpacity(0.2) : kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.minus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      infantCount > 0 ? infantCount-- : infantCount = 1;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Text(infantCount.toString()),
-                                                                const SizedBox(width: 10.0),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: const BoxDecoration(shape: BoxShape.circle, color: kPrimaryColor),
-                                                                  child: const Icon(FeatherIcons.plus, color: Colors.white, size: 14.0).onTap(() {
-                                                                    setStated(() {
-                                                                      infantCount++;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Divider(
-                                                              thickness: 1.0,
-                                                              color: kBorderColorTextField,
-                                                            ),
                                                             const SizedBox(
                                                               height: 20.0,
                                                             ),
                                                             ButtonGlobal(
-                                                                buttontext: lang.S.of(context).done,
+                                                                buttontext: '선택 완료',
                                                                 buttonDecoration: kButtonDecoration.copyWith(color: kPrimaryColor),
                                                                 onPressed: () {
                                                                   setState(() {
                                                                     finish(context);
                                                                     childCount = childCount;
-                                                                    adultCount = adultCount;
-                                                                    infantCount = infantCount;
+                                                                    // adultCount = adultCount;
+                                                                    // infantCount = infantCount;
                                                                   });
                                                                 }),
                                                           ],
@@ -664,26 +558,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 20.0),
-                                  FormField(
-                                    builder: (FormFieldState<dynamic> field) {
-                                      return InputDecorator(
-                                        decoration: kInputDecoration.copyWith(
-                                          enabledBorder: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(8.0),
-                                            ),
-                                            borderSide: BorderSide(color: kBorderColorTextField, width: 2),
-                                          ),
-                                          contentPadding: const EdgeInsets.all(7.0),
-                                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                                          labelText: lang.S.of(context).classTitle,
-                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                        ),
-                                        child: DropdownButtonHideUnderline(child: getClass()),
-                                      );
-                                    },
                                   ),
                                   const SizedBox(height: 10.0),
                                   ButtonGlobalWithoutIcon(
@@ -699,705 +573,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   )
                                 ],
                               ).visible(selectedIndex != 2),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(color: Colors.transparent),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Flight ${flightNumber + 1}',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                            ),
-                                            const Spacer(),
-                                            const Icon(
-                                              FeatherIcons.x,
-                                              color: kSubTitleColor,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 20.0),
-                                        Stack(
-                                          alignment: Alignment.center,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    height: 90,
-                                                    child: InputDecorator(
-                                                      decoration: kInputDecoration.copyWith(
-                                                        contentPadding: const EdgeInsets.only(left: 10.0),
-                                                        labelText: lang.S.of(context).fromTitle,
-                                                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                        border: OutlineInputBorder(
-                                                          borderRadius: BorderRadius.circular(8.0),
-                                                        ),
-                                                      ),
-                                                      child: ListTile(
-                                                        
-                                                        title: Text(
-                                                          '(DAC)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                        ),
-                                                        subtitle: Text(
-                                                          'Dhaka, Bangladesh',
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow.ellipsis,
-                                                          style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                        ),
-                                                        horizontalTitleGap: 0,
-                                                        contentPadding: const EdgeInsets.only(left: 5.0),
-                                                        minVerticalPadding: 0.0,
-                                                        onTap: ()=>const Search().launch(context),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 10),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    height: 90,
-                                                    child: InputDecorator(
-                                                      decoration: kInputDecoration.copyWith(
-                                                        contentPadding: const EdgeInsets.only(left: 10.0),
-                                                        labelText: lang.S.of(context).toTitle,
-                                                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                        border: OutlineInputBorder(
-                                                          borderRadius: BorderRadius.circular(8.0),
-                                                        ),
-                                                      ),
-                                                      child: ListTile(
-                                                        onTap: ()=>const Search().launch(context),
-                                                        title: Text(
-                                                          '(NYC)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                        ),
-                                                        subtitle: Text(
-                                                          'New Your, United State',
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow.ellipsis,
-                                                          style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                        ),
-                                                        horizontalTitleGap: 0,
-                                                        contentPadding: const EdgeInsets.only(left: 5.0),
-                                                        minVerticalPadding: 0.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(bottom: 20.0),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: kWhite,
-                                                  border: Border.all(
-                                                    color: kPrimaryColor.withOpacity(0.3),
-                                                  ),
-                                                ),
-                                                child: const Icon(
-                                                  Icons.swap_horiz_outlined,
-                                                  color: kPrimaryColor,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        TextFormField(
-                                          readOnly: true,
-                                          keyboardType: TextInputType.name,
-                                          cursorColor: kTitleColor,
-                                          showCursor: false,
-                                          textInputAction: TextInputAction.next,
-                                          decoration: kInputDecoration.copyWith(
-                                            labelText: lang.S.of(context).dateTitle,
-                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            hintText: departureDateTitle,
-                                            hintStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            focusColor: kTitleColor,
-                                            border: const OutlineInputBorder(),
-                                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                                            suffixIcon: GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  _showDepartureDate();
-                                                });
-                                              },
-                                              child: const Icon(
-                                                IconlyLight.calendar,
-                                                color: kSubTitleColor,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const Divider(
-                                          thickness: 1.0,
-                                          color: kBorderColorTextField,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  ListView.builder(
-                                      shrinkWrap: true,
-                                      physics: const NeverScrollableScrollPhysics(),
-                                      itemCount: flights.length,
-                                      itemBuilder: (_, i) {
-                                        return Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  'Flight ${i + 2}'.toString(),
-                                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                ),
-                                                const Spacer(),
-                                                GestureDetector(
-                                                  child: const Icon(
-                                                    FeatherIcons.x,
-                                                    color: kSubTitleColor,
-                                                  ),
-                                                  onTap: () {
-                                                    setState(() {
-                                                      flights.remove(flights[i]);
-                                                    });
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                            flights[i],
-                                          ],
-                                        );
-                                      }),
-                                  ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).addFlightButton,
-                                    buttonDecoration: kButtonDecoration.copyWith(
-                                      color: kWhite,
-                                      border: Border.all(color: kPrimaryColor),
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        flights.add(Container(
-                                          decoration: const BoxDecoration(color: Colors.transparent),
-                                          child: Column(
-                                            children: [
-                                              const SizedBox(height: 20.0),
-                                              Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: SizedBox(
-                                                          height: 90,
-                                                          child: InputDecorator(
-                                                            decoration: kInputDecoration.copyWith(
-                                                              contentPadding: const EdgeInsets.only(left: 10.0),
-                                                              labelText: lang.S.of(context).fromTitle,
-                                                              labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                              border: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(8.0),
-                                                              ),
-                                                            ),
-                                                            child: ListTile(
-                                                              onTap: ()=>const Search().launch(context),
-                                                              title: Text(
-                                                                '(DAC)',
-                                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                              ),
-                                                              subtitle: Text(
-                                                                'Dhaka, Bangladesh',
-                                                                maxLines: 1,
-                                                                overflow: TextOverflow.ellipsis,
-                                                                style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                              ),
-                                                              horizontalTitleGap: 0,
-                                                              contentPadding: const EdgeInsets.only(left: 5.0),
-                                                              minVerticalPadding: 0.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(width: 10),
-                                                      Expanded(
-                                                        child: SizedBox(
-                                                          height: 90,
-                                                          child: InputDecorator(
-                                                            decoration: kInputDecoration.copyWith(
-                                                              contentPadding: const EdgeInsets.only(left: 10.0),
-                                                              labelText: lang.S.of(context).toTitle,
-                                                              labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                              border: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(8.0),
-                                                              ),
-                                                            ),
-                                                            child: ListTile(
-                                                              onTap: ()=>const Search().launch(context),
-                                                              title: Text(
-                                                                '(NYC)',
-                                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                              ),
-                                                              subtitle: Text(
-                                                                'New Your, United State',
-                                                                maxLines: 1,
-                                                                overflow: TextOverflow.ellipsis,
-                                                                style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                              ),
-                                                              horizontalTitleGap: 0,
-                                                              contentPadding: const EdgeInsets.only(left: 5.0),
-                                                              minVerticalPadding: 0.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(bottom: 20.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        color: kWhite,
-                                                        border: Border.all(
-                                                          color: kPrimaryColor.withOpacity(0.3),
-                                                        ),
-                                                      ),
-                                                      child: const Icon(
-                                                        Icons.swap_horiz_outlined,
-                                                        color: kPrimaryColor,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              TextFormField(
-                                                readOnly: true,
-                                                keyboardType: TextInputType.name,
-                                                cursorColor: kTitleColor,
-                                                showCursor: false,
-                                                textInputAction: TextInputAction.next,
-                                                decoration: kInputDecoration.copyWith(
-                                                  labelText: lang.S.of(context).dateTitle,
-                                                  labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                  hintText: departureDateTitle,
-                                                  hintStyle: kTextStyle.copyWith(color: kTitleColor),
-                                                  focusColor: kTitleColor,
-                                                  border: const OutlineInputBorder(),
-                                                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                  suffixIcon: GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        _showDepartureDate();
-                                                      });
-                                                    },
-                                                    child: const Icon(
-                                                      IconlyLight.calendar,
-                                                      color: kSubTitleColor,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(height: 10.0),
-                                              const Divider(
-                                                thickness: 1.0,
-                                                color: kBorderColorTextField,
-                                              ),
-                                            ],
-                                          ),
-                                        ));
-                                      });
-                                    },
-                                    buttonTextColor: kPrimaryColor,
-                                  ),
-                                  const SizedBox(height: 20.0),
-                                  TextFormField(
-                                    readOnly: true,
-                                    keyboardType: TextInputType.name,
-                                    cursorColor: kTitleColor,
-                                    showCursor: false,
-                                    textInputAction: TextInputAction.next,
-                                    decoration: kInputDecoration.copyWith(
-                                      labelText: lang.S.of(context).travellerTitle,
-                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                      hintText: '$adultCount Adult,$childCount child,$infantCount Infants',
-                                      hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                      border: const OutlineInputBorder(),
-                                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                                      suffixIcon: GestureDetector(
-                                        onTap: (() => showModalBottomSheet(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(30.0),
-                                              ),
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return StatefulBuilder(builder: (BuildContext context, setStated) {
-                                                  return Column(
-                                                    mainAxisSize: MainAxisSize.min,
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.all(20.0),
-                                                        child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  lang.S.of(context).travellerTitle,
-                                                                  style: kTextStyle.copyWith(
-                                                                    color: kTitleColor,
-                                                                    fontSize: 18.0,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-                                                                ),
-                                                                const Spacer(),
-                                                                const Icon(FeatherIcons.x, size: 18.0, color: kTitleColor).onTap(
-                                                                  () => finish(context),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Text(
-                                                              'Dhaka to New York, Thu 6 Jan 2023',
-                                                              style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        padding: const EdgeInsets.all(20.0),
-                                                        decoration: const BoxDecoration(
-                                                          borderRadius: BorderRadius.only(
-                                                            topRight: Radius.circular(30.0),
-                                                            topLeft: Radius.circular(30.0),
-                                                          ),
-                                                          color: kWhite,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: kDarkWhite,
-                                                              spreadRadius: 5.0,
-                                                              blurRadius: 7.0,
-                                                              offset: Offset(0, -5),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        child: Column(
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      lang.S.of(context).adults,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      '12+ years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                const Spacer(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: adultCount == 1 ? kPrimaryColor.withOpacity(0.2) : kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.minus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      adultCount > 1 ? adultCount-- : adultCount = 1;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Text(
-                                                                  adultCount.toString(),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: const BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.plus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      adultCount++;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Divider(
-                                                              thickness: 1.0,
-                                                              color: kBorderColorTextField,
-                                                            ),
-                                                            const SizedBox(height: 15.0),
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      lang.S.of(context).child,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      '2-12 years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                const Spacer(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: childCount == 0 ? kPrimaryColor.withOpacity(0.2) : kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.minus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      childCount > 0 ? childCount-- : childCount = 1;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Text(childCount.toString()),
-                                                                const SizedBox(width: 10.0),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: const BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.plus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      childCount++;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Divider(
-                                                              thickness: 1.0,
-                                                              color: kBorderColorTextField,
-                                                            ),
-                                                            const SizedBox(height: 15.0),
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                Column(
-                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                  children: [
-                                                                    Text(
-                                                                      lang.S.of(context).infants,
-                                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                    ),
-                                                                    Text(
-                                                                      'Under 2 Years',
-                                                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                const Spacer(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: BoxDecoration(
-                                                                    shape: BoxShape.circle,
-                                                                    color: infantCount == 0 ? kPrimaryColor.withOpacity(0.2) : kPrimaryColor,
-                                                                  ),
-                                                                  child: const Icon(
-                                                                    FeatherIcons.minus,
-                                                                    color: Colors.white,
-                                                                    size: 14.0,
-                                                                  ).onTap(() {
-                                                                    setStated(() {
-                                                                      infantCount > 0 ? infantCount-- : infantCount = 1;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                                const SizedBox(width: 10.0),
-                                                                Text(infantCount.toString()),
-                                                                const SizedBox(width: 10.0),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(
-                                                                    5.0,
-                                                                  ),
-                                                                  decoration: const BoxDecoration(shape: BoxShape.circle, color: kPrimaryColor),
-                                                                  child: const Icon(FeatherIcons.plus, color: Colors.white, size: 14.0).onTap(() {
-                                                                    setStated(() {
-                                                                      infantCount++;
-                                                                    });
-                                                                  }),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const Divider(
-                                                              thickness: 1.0,
-                                                              color: kBorderColorTextField,
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 20.0,
-                                                            ),
-                                                            ButtonGlobal(
-                                                                buttontext: lang.S.of(context).done,
-                                                                buttonDecoration: kButtonDecoration.copyWith(color: kPrimaryColor),
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    finish(context);
-                                                                    childCount = childCount;
-                                                                    adultCount = adultCount;
-                                                                    infantCount = infantCount;
-                                                                  });
-                                                                }),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  );
-                                                });
-                                              },
-                                            )),
-                                        child: const Icon(
-                                          IconlyLight.arrowDown2,
-                                          color: kSubTitleColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20.0),
-                                  FormField(
-                                    builder: (FormFieldState<dynamic> field) {
-                                      return InputDecorator(
-                                        decoration: kInputDecoration.copyWith(
-                                          enabledBorder: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(8.0),
-                                            ),
-                                            borderSide: BorderSide(color: kBorderColorTextField, width: 2),
-                                          ),
-                                          contentPadding: const EdgeInsets.all(7.0),
-                                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                                          labelText: lang.S.of(context).classTitle,
-                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                        ),
-                                        child: DropdownButtonHideUnderline(child: getClass()),
-                                      );
-                                    },
-                                  ),
-                                  const SizedBox(height: 10.0),
-                                  ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).searchFlight,
-                                    buttonDecoration: kButtonDecoration.copyWith(
-                                      color: kPrimaryColor,
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                      const SearchResult().launch(context);
-                                      });
-                                    },
-                                    buttonTextColor: kWhite,
-                                  )
-                                ],
-                              ).visible(selectedIndex == 2)
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(height: 20.0),
-                    Container(
-                      width: context.width(),
-                      decoration: const BoxDecoration(color: kDarkWhite),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                            child: Text(
-                              lang.S.of(context).recentSearch,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          HorizontalList(
-                            padding: const EdgeInsets.only(left: 10.0, top: 15.0, bottom: 10.0),
-                            itemCount: 10,
-                            itemBuilder: (_, i) {
-                              return Container(
-                                padding: const EdgeInsets.all(10.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6.0),
-                                  color: const Color(0xFFEDF0FF),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Dhaka to New York',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(
-                                      height: 5.0,
-                                    ),
-                                    Text(
-                                      '17 Jan - 18 Jan ',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: kTextStyle.copyWith(color: kSubTitleColor),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 10.0),
-                        ],
                       ),
                     ),
                   ],
