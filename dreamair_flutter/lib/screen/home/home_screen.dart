@@ -1,9 +1,10 @@
+// 항공권 예약 페이지
+import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../search/search.dart';
 import '../search/search_result.dart';
@@ -103,24 +104,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
   }
 
-  // void _showReturnDate() async {
-  //   final DateTimeRange? result = await showDateRangePicker(
-  //     context: context,
-  //     firstDate: selectedDate,
-  //     lastDate: DateTime(2030, 12, 31),
-  //     currentDate: DateTime.now(),
-  //     saveText: 'Done',
-  //   );
-  //   if (result != null && result != _selectedDateRange) {
-  //     setState(
-  //       () {
-  //         _selectedDateRange = result;
-  //         returnDateTitle = _selectedDateRange.toString().substring(26, 36);
-  //       },
-  //     );
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -165,36 +148,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
+                              // 메인 화면 왼쪽 위
                               title: Row(
                                 children: [
-                                  Text(
-                                    lang.S.of(context).hello,
-                                    style: kTextStyle.copyWith(color: kWhite, fontSize: 14),
-                                  ),
+                                  Text('안녕하세요!', style: TextStyle(color: Colors.white, fontSize: 16.0),),
                                 ],
                               ),
-                              subtitle: Text(
-                                'Shaidul Islam',
-                                style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold),
-                              ),
-                              trailing: Container(
-                                padding: const EdgeInsets.all(5.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.transparent,
-                                  border: Border.all(color: kWhite),
-                                ),
-                                child: const Icon(
-                                  FeatherIcons.bell,
-                                  color: kWhite,
+                              // 메인 화면 프로필
+                              trailing: GestureDetector(
+                                onTap: () {
+                                  print('클릭!');
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(5.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.white),
+                                  ),
+                                  child: const Icon(Icons.person, color: Colors.white),
                                 ),
                               ),
                             ),
+                            // 메인 화면 Dream Air 문구
                             const SizedBox(height: 30),
-                            Text(
-                              lang.S.of(context).bookFlightTitle,
-                              style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold, fontSize: 25.0),
-                            ),
+                            Text('Dream Air',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30.0),),
                           ],
                         ),
                       ),
@@ -243,10 +220,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   },
                                   tabs: [
                                     Tab(
-                                      text: lang.S.of(context).tab1,
+                                      text: '편도',
                                     ),
                                     Tab(
-                                      text: lang.S.of(context).tab2,
+                                      text: '왕복',
                                     ),
                                     Tab(
                                       text: lang.S.of(context).tab3,
@@ -710,7 +687,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ),
                                   const SizedBox(height: 10.0),
                                   ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).searchFlight,
+                                    buttontext: '항공권 조회',
                                     buttonDecoration: kButtonDecoration.copyWith(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.circular(30.0),
@@ -903,7 +880,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         );
                                       }),
                                   ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).addFightButton,
+                                    buttontext: lang.S.of(context).addFlightButton,
                                     buttonDecoration: kButtonDecoration.copyWith(
                                       color: kWhite,
                                       border: Border.all(color: kPrimaryColor),
@@ -1420,109 +1397,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             },
                           ),
                           const SizedBox(height: 10.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                            child: Text(
-                              lang.S.of(context).flightOfferTitle,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          HorizontalList(
-                            padding: const EdgeInsets.only(
-                              left: 10.0,
-                              top: 15.0,
-                              bottom: 15.0,
-                              right: 10.0,
-                            ),
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (_, i) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: const Color(0xFFEDF0FF),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: 120,
-                                      width: context.width() / 1.2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                        color: kWhite,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 120,
-                                            width: 100,
-                                            decoration: const BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(8.0),
-                                                bottomLeft: Radius.circular(8.0),
-                                              ),
-                                              image: DecorationImage(
-                                                image: AssetImage('images/offer1.png'),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      'Dhaka',
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                    ),
-                                                    const SizedBox(width: 10.0),
-                                                    const Icon(
-                                                      Icons.flight_land,
-                                                      color: kSubTitleColor,
-                                                    ),
-                                                    const SizedBox(width: 10.0),
-                                                    Text(
-                                                      'New York',
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 5.0),
-                                                Container(
-                                                  height: 1.0,
-                                                  width: 120,
-                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
-                                                ),
-                                                const SizedBox(height: 5.0),
-                                                SizedBox(
-                                                  width: 180,
-                                                  child: Text(
-                                                    'Lorem ipsum dolor sit am et consectetur adipiscing elit, sed do eiusmod',
-                                                    maxLines: 3,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
                         ],
                       ),
                     ),

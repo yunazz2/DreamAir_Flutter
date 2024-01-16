@@ -1,6 +1,7 @@
+// 예약 조회 페이지
+import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../ticket status/ticket_status.dart';
 

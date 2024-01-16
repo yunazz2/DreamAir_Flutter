@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "DoneButton": MessageLookupByLibrary.simpleMessage("Done"),
         "SendOtpTitle": MessageLookupByLibrary.simpleMessage("Send OTP"),
-        "addFightButton": MessageLookupByLibrary.simpleMessage("Add Fight"),
+        "addFightButton": MessageLookupByLibrary.simpleMessage("Add Flight"),
         "addNewCardTitle": MessageLookupByLibrary.simpleMessage("Add New Card"),
         "adults": MessageLookupByLibrary.simpleMessage("Adults"),
         "alreadyHaveAcc":
@@ -80,8 +80,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("First & Middle Name"),
         "navBarTitle1": MessageLookupByLibrary.simpleMessage("Home"),
         "navBarTitle2": MessageLookupByLibrary.simpleMessage("My Booking"),
-        "navBarTitle3": MessageLookupByLibrary.simpleMessage("History"),
-        "navBarTitle4": MessageLookupByLibrary.simpleMessage("Profile"),
+        "navBarTitle3": MessageLookupByLibrary.simpleMessage("CheckIn"),
+        "navBarTitle4": MessageLookupByLibrary.simpleMessage("Board"),
+        "navBarTitle5": MessageLookupByLibrary.simpleMessage("Profile"),
         "noAccTitle1":
             MessageLookupByLibrary.simpleMessage("Don’t have an account? "),
         "noAccTitle2":
