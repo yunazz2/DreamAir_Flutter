@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\LYN\\Flutter\\Flutter\\Dreamair_flutter\\dreamair_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-my\\values-my.xml",
+            "outputFile": "D:\\LYN\\Flutter\\Flutter\\Dreamair_flutter\\DreamAir_Flutter\\dreamair_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-my\\values-my.xml",
             "map": [
                 {
                     "source": "C:\\Users\\tj-bu\\.gradle\\caches\\transforms-3\\a99382bd16082f300bdfbe4cedd061ba\\transformed\\jetified-play-services-base-18.0.1\\res\\values-my\\values.xml",

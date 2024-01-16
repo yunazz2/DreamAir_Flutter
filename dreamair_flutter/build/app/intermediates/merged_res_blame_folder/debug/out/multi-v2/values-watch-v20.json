@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\LYN\\Flutter\\Flutter\\Dreamair_flutter\\dreamair_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "D:\\LYN\\Flutter\\Flutter\\Dreamair_flutter\\DreamAir_Flutter\\dreamair_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\tj-bu\\.gradle\\caches\\transforms-3\\0bad7eefa7caa0ee98867fe5424489aa\\transformed\\jetified-play-services-auth-20.4.0\\res\\values-watch-v20\\values.xml",

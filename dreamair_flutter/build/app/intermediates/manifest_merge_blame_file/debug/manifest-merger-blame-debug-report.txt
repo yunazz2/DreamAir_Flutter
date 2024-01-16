@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\android\app\src\debug\AndroidManifest.xml:7:5-66
+15-->D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\android\app\src\debug\AndroidManifest.xml:7:22-64
 16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-16-->[:nb_utils] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\nb_utils\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-79
-16-->[:nb_utils] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\nb_utils\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-76
+16-->[:nb_utils] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\nb_utils\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-79
+16-->[:nb_utils] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\nb_utils\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-76
 17
 18    <permission
 18-->[androidx.core:core:1.10.1] C:\Users\tj-bu\.gradle\caches\transforms-3\33ea6619dad66716f45041239e9188c1\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
@@ -71,21 +71,21 @@
 61            android:value="2" />
 62
 63        <provider
-63-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+63-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 64            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-64-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+64-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
 65            android:authorities="com.joeun.dreamair_flutter.flutter.image_provider"
-65-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+65-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
 66            android:exported="false"
-66-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+66-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 67            android:grantUriPermissions="true" >
-67-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+67-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 68            <meta-data
-68-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+68-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
 69                android:name="android.support.FILE_PROVIDER_PATHS"
-69-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+69-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 70                android:resource="@xml/flutter_image_picker_file_paths" />
-70-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+70-->[:image_picker_android] D:\LYN\Flutter\Flutter\Dreamair_flutter\DreamAir_Flutter\dreamair_flutter\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
 71        </provider>
 72
 73        <activity
