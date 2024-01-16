@@ -1,4 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flight_booking/generated/l10n.dart' as lang;
+import 'package:flight_booking/screen/Seat/seat.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -6,9 +8,8 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../payment/payment.dart';
+import '../seat/seat.dart';
 import '../widgets/constant.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
-
 import '../widgets/data_widgets.dart';
 
 class BookProceed extends StatefulWidget {
@@ -123,14 +124,14 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
             trailing: SizedBox(
               width: 200,
               child: ButtonGlobalWithoutIcon(
-                buttontext: lang.S.of(context).continueButton,
+                buttontext: '다음으로',
                 buttonDecoration: kButtonDecoration.copyWith(
                   color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 onPressed: () {
                   setState(() {
-                    const Payment().launch(context);
+                    const Seat().launch(context);
                   });
                 },
                 buttonTextColor: kWhite,
@@ -842,7 +843,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                       ),
                       const SizedBox(height: 10.0),
                       ButtonGlobalWithIcon(
-                        buttontext: 'Add New Adult',
+                        buttontext: '인원 추가',
                         buttonTextColor: kPrimaryColor,
                         buttonIcon: FeatherIcons.plus,
                         buttonDecoration: kButtonDecoration.copyWith(

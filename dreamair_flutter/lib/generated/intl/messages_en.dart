@@ -80,8 +80,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("First & Middle Name"),
         "navBarTitle1": MessageLookupByLibrary.simpleMessage("Home"),
         "navBarTitle2": MessageLookupByLibrary.simpleMessage("My Booking"),
-        "navBarTitle3": MessageLookupByLibrary.simpleMessage("History"),
-        "navBarTitle4": MessageLookupByLibrary.simpleMessage("Profile"),
+        "navBarTitle3": MessageLookupByLibrary.simpleMessage("CheckIn"),
+        "navBarTitle4": MessageLookupByLibrary.simpleMessage("Board"),
+        "navBarTitle5": MessageLookupByLibrary.simpleMessage("Profile"),
         "noAccTitle1":
             MessageLookupByLibrary.simpleMessage("Don’t have an account? "),
         "noAccTitle2":

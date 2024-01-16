@@ -1,9 +1,10 @@
+// 항공권 예약 페이지
+import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../search/search.dart';
 import '../search/search_result.dart';
@@ -686,7 +687,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   ),
                                   const SizedBox(height: 10.0),
                                   ButtonGlobalWithoutIcon(
-                                    buttontext: lang.S.of(context).searchFlight,
+                                    buttontext: '항공권 조회',
                                     buttonDecoration: kButtonDecoration.copyWith(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.circular(30.0),
@@ -1396,109 +1397,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             },
                           ),
                           const SizedBox(height: 10.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                            child: Text(
-                              lang.S.of(context).flightOfferTitle,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          HorizontalList(
-                            padding: const EdgeInsets.only(
-                              left: 10.0,
-                              top: 15.0,
-                              bottom: 15.0,
-                              right: 10.0,
-                            ),
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (_, i) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: const Color(0xFFEDF0FF),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: 120,
-                                      width: context.width() / 1.2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                        color: kWhite,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 120,
-                                            width: 100,
-                                            decoration: const BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(8.0),
-                                                bottomLeft: Radius.circular(8.0),
-                                              ),
-                                              image: DecorationImage(
-                                                image: AssetImage('images/offer1.png'),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      'Dhaka',
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                    ),
-                                                    const SizedBox(width: 10.0),
-                                                    const Icon(
-                                                      Icons.flight_land,
-                                                      color: kSubTitleColor,
-                                                    ),
-                                                    const SizedBox(width: 10.0),
-                                                    Text(
-                                                      'New York',
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 5.0),
-                                                Container(
-                                                  height: 1.0,
-                                                  width: 120,
-                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
-                                                ),
-                                                const SizedBox(height: 5.0),
-                                                SizedBox(
-                                                  width: 180,
-                                                  child: Text(
-                                                    'Lorem ipsum dolor sit am et consectetur adipiscing elit, sed do eiusmod',
-                                                    maxLines: 3,
-                                                    overflow: TextOverflow.ellipsis,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
                         ],
                       ),
                     ),

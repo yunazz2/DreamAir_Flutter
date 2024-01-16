@@ -1,10 +1,11 @@
 import 'package:flight_booking/screen/History_Screen/history_screen.dart';
+import 'package:flight_booking/screen/board/board_screen.dart';
+import 'package:flight_booking/screen/search/schedule_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
+
 import '../my_boking_screen/my_boking.dart';
-import '../profile/profile_screen.dart';
 import 'home_screen.dart';
 
 class Home extends StatefulWidget {
@@ -18,10 +19,12 @@ class _HomeState extends State<Home> {
   int _currentPage = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    MyBooking(),
-    History(),
-    Profile(),
+    HomeScreen(), // 항공권 예약
+    MyBooking(), // 예약 조회
+    History(), // 체크인 -> 변경해야함
+    ScheduleScreen(), //  출도착 조회
+    BoardScreen(), // 게시판
+    // Profile(),
   ];
 
   @override
@@ -36,26 +39,31 @@ class _HomeState extends State<Home> {
           unselectedItemColor: kSubTitleColor,
           backgroundColor: Colors.white,
           showUnselectedLabels: true,
-          items: [
-            /// Home
+          items: const [
+            /// 항공권 예약
             BottomNavigationBarItem(
-              icon: const Icon(IconlyBold.home),
-              label: lang.S.of(context).navBarTitle1,
+              icon: Icon(Icons.flight),
+              label: '항공권 예약'
             ),
-
-            BottomNavigationBarItem(
-              icon: const Icon(IconlyBold.bookmark),
-              label: lang.S.of(context).navBarTitle2,
+            /// 예약 조회
+           BottomNavigationBarItem(
+              icon: Icon(IconlyBold.bookmark),
+              label: '예약 조회'
             ),
-
+            /// 체크인
             BottomNavigationBarItem(
-              icon: const Icon(IconlyBold.document),
-              label: lang.S.of(context).navBarTitle3,
+              icon: Icon(Icons.airplane_ticket),
+              label: '체크인',
             ),
-
+            // 출도착조회
             BottomNavigationBarItem(
-              icon: const Icon(IconlyBold.profile),
-              label: lang.S.of(context).navBarTitle4,
+              icon: Icon(Icons.schedule),
+              label: '출도착 조회'
+            ),
+            // 게시판
+            BottomNavigationBarItem(
+              icon: Icon(Icons.description),
+              label: '게시판'
             ),
           ],
           onTap: (int index) {

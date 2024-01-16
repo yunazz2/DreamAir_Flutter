@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -450,21 +451,31 @@ class S {
     );
   }
 
-  /// `History`
+  /// `Chekin`
   String get navBarTitle3 {
     return Intl.message(
-      'History',
+      'CheckIn',
       name: 'navBarTitle3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Profile`
+  /// `Board`
   String get navBarTitle4 {
     return Intl.message(
-      'Profile',
+      'Board',
       name: 'navBarTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get navBarTitle5 {
+    return Intl.message(
+      'Profile',
+      name: 'navBarTitle5',
       desc: '',
       args: [],
     );
@@ -975,6 +986,16 @@ class S {
     return Intl.message(
       'My Booking',
       name: 'myBookingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Board`
+  String get boardTitle {
+    return Intl.message(
+      'Board',
+      name: 'boardTitle',
       desc: '',
       args: [],
     );
