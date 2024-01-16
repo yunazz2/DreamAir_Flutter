@@ -1,9 +1,10 @@
+// 항공권 예약 페이지
+import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../search/search.dart';
 import '../search/search_result.dart';
