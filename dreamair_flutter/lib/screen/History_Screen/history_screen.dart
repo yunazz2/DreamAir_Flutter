@@ -28,7 +28,7 @@ class _HistoryState extends State<History> {
         ),
         title: Text(
           'History',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

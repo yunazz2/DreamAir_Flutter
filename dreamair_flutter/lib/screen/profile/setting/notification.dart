@@ -22,7 +22,7 @@ class _NotificationScState extends State<NotificationSc> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           'Notification',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

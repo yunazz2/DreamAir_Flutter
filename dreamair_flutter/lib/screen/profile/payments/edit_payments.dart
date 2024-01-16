@@ -95,7 +95,7 @@ class _EditPaymentsProfileState extends State<EditPaymentsProfile> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           'Edit',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

@@ -35,7 +35,7 @@ class _ProfilePaymentsState extends State<ProfilePayments> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           'Payment Method',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

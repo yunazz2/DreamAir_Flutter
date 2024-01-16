@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const kPrimaryColor = Color(0xFF0061FF); // 선택되었을 때 아이콘 색상
-const kSubSubTitleColor=Color(0xffCAC2F5);
+const kPrimaryColor = Color.fromARGB(255, 84, 173, 255); // 선택되었을 때 아이콘 색상
+const kSubSubTitleColor=Color.fromARGB(255, 245, 194, 237);
 const kTitleColor = Color(0xFF030508);
 const kSecondaryColor = Color(0xFFEDF0FF);
 const kSubTitleColor = Color(0xFF6F7B8C);

@@ -56,7 +56,7 @@ class _MyProfileState extends State<MyProfile> {
                 },
                 child: Text(
                   'Edit',
-                  style: kTextStyle.copyWith(color: kWhite),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             )
@@ -69,7 +69,7 @@ class _MyProfileState extends State<MyProfile> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           'My Profile',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

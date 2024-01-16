@@ -102,7 +102,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
               'New Delhi',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: kTextStyle.copyWith(color: kWhite),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -632,7 +632,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             ),
                             child: Text(
                               lang.S.of(context).viewAllButton,
-                              style: kTextStyle.copyWith(color: kWhite),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ],

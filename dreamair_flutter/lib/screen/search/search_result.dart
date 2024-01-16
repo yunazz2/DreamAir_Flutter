@@ -48,7 +48,7 @@ class _SearchResultState extends State<SearchResult> {
             'Thu 6 Jan | 1 Adult, 0 Child, 0 Infant',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: kTextStyle.copyWith(color: kWhite),
+            style: TextStyle(color: Colors.white),
           ),
           trailing: Column(
             children: [
@@ -62,7 +62,7 @@ class _SearchResultState extends State<SearchResult> {
                 'Edit',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: kTextStyle.copyWith(color: kWhite),
+                style: TextStyle(color: Colors.white),
               ),
             ],
           ),

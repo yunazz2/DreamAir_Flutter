@@ -56,8 +56,8 @@ class _EditProfileState extends State<EditProfile> {
                   );
                 },
                 child: Text(
-                  'Update',
-                  style: kTextStyle.copyWith(color: kWhite),
+                  '수정하기',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             )
@@ -69,8 +69,8 @@ class _EditProfileState extends State<EditProfile> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
-          'Edit Profile',
-          style: kTextStyle.copyWith(
+          '회원 정보 수정',
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

@@ -19,7 +19,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           'Privacy Policy',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

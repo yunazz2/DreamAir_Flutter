@@ -36,7 +36,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       },
                       child: Text(
                         lang.S.of(context).skipButton,
-                        style: kTextStyle.copyWith(color: kWhite),
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),

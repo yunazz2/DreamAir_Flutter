@@ -114,7 +114,7 @@ class _AddNewCardState extends State<AddNewCard> {
         ).onTap(() => Navigator.pop(context)),
         title:  Text(
           'Add New Card',
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

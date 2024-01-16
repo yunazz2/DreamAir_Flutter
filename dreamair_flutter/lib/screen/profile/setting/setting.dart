@@ -28,7 +28,7 @@ class _SettingState extends State<Setting> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           lang.S.of(context).settingTitle,
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),

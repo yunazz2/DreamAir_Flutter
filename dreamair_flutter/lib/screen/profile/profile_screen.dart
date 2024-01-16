@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
         iconTheme: const IconThemeData(color: kWhite),
         title: Text(
           lang.S.of(context).profileTitle,
-          style: kTextStyle.copyWith(
+          style: TextStyle(
             color: Colors.white,
           ),
         ),
