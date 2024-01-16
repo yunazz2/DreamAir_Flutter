@@ -1,7 +1,4 @@
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 import '../../widgets/constant.dart';
 
@@ -46,9 +43,8 @@ class _MileageScreenState extends State<MileageScreen> {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 50,),
+            Text('보유 마일리지 : ', style: TextStyle(fontSize: 20.0),)
           ],
         ),
       ),
