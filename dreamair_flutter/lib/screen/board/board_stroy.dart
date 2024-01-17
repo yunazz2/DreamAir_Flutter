@@ -40,10 +40,15 @@ class _BoardStoryState extends State<BoardStory> {
           height: 10,
         ),
         // 이미지 불러오는 자리
-        const Placeholder(),
+        const Image(
+          width: 350,
+          height: 400,
+          image: AssetImage('images/board1.jpg'),
+        ),
         const SizedBox(
           height: 10,
         ),
+
 
         // 좋아요 버튼
          Row(
