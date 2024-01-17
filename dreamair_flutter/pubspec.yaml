@@ -56,7 +56,10 @@ dependencies:
   community_material_icon: ^5.9.55
   image_picker: ^1.0.4
   flag: ^7.0.0
-
+  insta_like_button: ^0.1.1
+  dropdown_button2: ^2.3.9
+  like_button: ^2.0.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

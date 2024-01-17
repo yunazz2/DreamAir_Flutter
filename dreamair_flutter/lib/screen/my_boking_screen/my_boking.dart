@@ -1,3 +1,5 @@
+// 예약 조회 페이지
+import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +7,7 @@ import '../ticket status/ticket_status.dart';
 
 // 나의 탑승권 조회 페이지
 class MyBooking extends StatefulWidget {
-  const MyBooking({Key? key}) : super(key: key);
+  const MyBooking({super.key});
 
   @override
   State<MyBooking> createState() => _MyBookingState();

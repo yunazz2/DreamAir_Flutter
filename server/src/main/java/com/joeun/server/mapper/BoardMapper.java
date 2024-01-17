@@ -5,12 +5,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.joeun.server.dto.Board;
+import com.joeun.server.dto.Page;
  
 @Mapper
 public interface BoardMapper {
 
     // 게시글 목록
-    public List<Board> list() throws Exception;
+    public List<Board> list(Page page) throws Exception;
 
     // 메인 이미지 목록
     public List<Board> mainList() throws Exception;
@@ -33,6 +34,8 @@ public interface BoardMapper {
     // 게시글 조회수
     public int views(int count, int boardNo) throws Exception;
     
+    // 게시글 개수
+	public int count() throws Exception;
 }
 
 
