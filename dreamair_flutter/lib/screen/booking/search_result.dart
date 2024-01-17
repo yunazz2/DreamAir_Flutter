@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'filter.dart';
 
 class SearchResult extends StatefulWidget {
   const SearchResult({Key? key}) : super(key: key);
