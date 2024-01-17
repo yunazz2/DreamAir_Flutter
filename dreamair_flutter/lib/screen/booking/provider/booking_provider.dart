@@ -45,7 +45,7 @@ class BookingProvider extends ChangeNotifier {
 
   set setPasCount(int pasCount) {
     _pasCount = pasCount;
-    notifyListeners();
+    // notifyListeners();
   }
 
   set setDeprtureDate(String departureDate) {

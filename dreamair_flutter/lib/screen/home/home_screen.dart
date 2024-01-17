@@ -576,9 +576,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                       onPressed: () {
                                                                         setState(() {
                                                                           finish(context);
-                                                                          // 데이터
                                                                           adultCount = adultCount;
-                                                                          // booking.set
+                                                                          booking.setPasCount = adultCount;
                                                                         });
                                                                       }),
                                                                 ],
