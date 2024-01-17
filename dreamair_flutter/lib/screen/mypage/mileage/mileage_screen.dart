@@ -32,7 +32,7 @@ class _MileageScreenState extends State<MileageScreen> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: Text('마일리지 조회', style: TextStyle(color: Colors.white,),),
+        title: Text('마일리지 조회', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: Container(

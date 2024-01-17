@@ -69,12 +69,7 @@ class _EditProfileState extends State<EditProfile> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(
-          '회원 정보 수정',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
+        title: Text('회원 정보 수정', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

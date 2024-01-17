@@ -22,7 +22,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
 
   // 조회 버튼 클릭 후 보여질 내용
   List<Widget> generateResultRows() {
-    return List.generate(9, (index) {
+    return List.generate(10, (index) {
       String title;
       String content;
 
@@ -51,9 +51,21 @@ class _CheckInScreenState extends State<CheckInScreen> {
       } else if (index == 7) {
         title = '선택 좌석';
         content = '';
-      } else {
+      } else if (index == 8) {
         title = '';
         content = '$selectedSeatNo';
+      } else {
+        // '체크인' 버튼 행 추가
+        return Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                // '체크인' 버튼이 눌렸을 때 처리 로직 추가
+              },
+              child: Text('체크인'),
+            ),
+          ],
+        );
       }
 
       return Column(
@@ -79,12 +91,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          '체크인',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
+        title: const Text('체크인', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: Container(

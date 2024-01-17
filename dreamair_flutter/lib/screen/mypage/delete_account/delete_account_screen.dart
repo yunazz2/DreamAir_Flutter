@@ -55,7 +55,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                     ),
                   );
                 },
-                child: Text('회원 탈퇴', style: TextStyle(color: Colors.white),),
+                child: Text('회원 탈퇴', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
               ),
             )
           ],

@@ -44,11 +44,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Center(
                 child: Container(
                   height: 142,
-                  width: 160,
+                  width: 200,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/logo2.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/white_logo_name.png'),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

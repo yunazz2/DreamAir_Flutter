@@ -1,11 +1,9 @@
-import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flight_booking/screen/mypage/mybooking/mybooking_screen.dart';
+import 'package:flight_booking/screen/my_boking_screen/my_boking.dart';
+import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/delete_account/delete_account_screen.dart';
 import 'package:flight_booking/screen/mypage/mileage/mileage_screen.dart';
-import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:nb_utils/nb_utils.dart';
 
 import '../Authentication/welcome_screen.dart';
@@ -28,10 +26,7 @@ class _MypageState extends State<Mypage> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(
-          '마이 페이지',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: Text('마이 페이지', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -143,7 +138,7 @@ class _MypageState extends State<Mypage> {
                 ),
                 child: ListTile(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBookingScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBooking()));
                   },
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   leading: Container(
