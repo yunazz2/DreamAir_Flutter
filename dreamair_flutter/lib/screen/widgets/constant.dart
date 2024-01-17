@@ -64,9 +64,9 @@ bool isReturn = false;
 int selectedIndex = 0;
 
 List<String> titleList = [
-  'Saver',
-  'Flexi Plus',
-  'Super 6E',
+  'Saver 패키지',
+  'Flexi 패키지',
+  'Super 패키지',
 ];
 String gValue = 'Saver';
 

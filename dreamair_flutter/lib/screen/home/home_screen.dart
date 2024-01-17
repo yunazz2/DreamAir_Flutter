@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../booking/goSearch.dart';
 // import '../booking/backSearch.dart';
-import '../booking/search_result.dart';
+import '../booking/go_search_result.dart';
 import '../widgets/button_global.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -336,9 +336,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             suffixIcon: GestureDetector(
                                               onTap: () {
                                                 setState(() {
-                                                  _selectDate(context);  
                                                   booking.setDeprtureDate = singleDepDate;
                                                   print(booking.getDepartureDate);
+                                                  _selectDate(context);  
                                                 });
                                               },
                                               child: const Icon(
@@ -419,7 +419,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           decoration: kInputDecoration.copyWith(
                                             labelText: '탑승객 인원',
                                             labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            hintText: '$adultCount 성인',     // 데이터
+                                            hintText: '$adultCount 성인',     
                                             hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                             border: const OutlineInputBorder(),
                                             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -578,7 +578,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.circular(30.0),
                                           ),
                                           onPressed: () {
-                                            const SearchResult().launch(context);
+                                            const GoSearchResult().launch(context);
                                           },
                                           buttonTextColor: kWhite,
                                         )
