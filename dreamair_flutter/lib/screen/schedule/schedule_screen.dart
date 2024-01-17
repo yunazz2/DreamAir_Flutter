@@ -75,8 +75,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                               contentPadding: EdgeInsets.zero,
                               minLeadingWidth: 0,
                               leading: Container(
-                                height: 34.0,
-                                width: 34.0,
+                                height: 40.0,
+                                width: 40.0,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(

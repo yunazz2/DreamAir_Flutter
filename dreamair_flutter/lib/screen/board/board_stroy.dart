@@ -1,8 +1,11 @@
 // 게시판 component
+import 'package:flight_booking/screen/board/comment_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
+
 
 class BoardStory extends StatefulWidget {
-  const BoardStory({super.key});
+  const BoardStory({Key? key}) : super(key: key);
 
   @override
   State<BoardStory> createState() => _BoardStoryState();
@@ -16,18 +19,16 @@ class _BoardStoryState extends State<BoardStory> {
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              child: Row(
-                // 작성자 정보
-                children: [
-                  // ProfileImage(imageurl: 'assets/images/profile2.png'),
-                  Icon(Icons.face),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('작성자'),
-                ],
-              ),
+            Row(
+              // 작성자 정보
+              children: [
+                // ProfileImage(imageurl: 'assets/images/profile2.png'),
+                Icon(Icons.face),
+                SizedBox(
+                  width: 5,
+                ),
+                Text('작성자'),
+              ],
             ),
           ],
         ),
@@ -35,66 +36,71 @@ class _BoardStoryState extends State<BoardStory> {
         const SizedBox(
           height: 10,
         ),
+        // 이미지 불러오는 자리
         const Placeholder(),
         const SizedBox(
           height: 10,
         ),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        // 좋아요 버튼
+         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.favorite_outline,
-                    color: Colors.pink,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('좋아요'),
-                ],
-              ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
             SizedBox(
               child: Row(
                 children: [
-                  Icon(
-                    Icons.comment_outlined,
-                    color: Colors.amber[700],
+                  LikeButton(
+                    likeBuilder: (bool isLiked) {
+                      return isLiked ? const Icon(Icons.favorite, color: Colors.pink) : const Icon(Icons.favorite_outline, color: Colors.pink);
+                    },
                   ),
                   const SizedBox(
                     width: 5,
                   ),
-                  const Text(
-                    '댓글 달기',
-                  ),
+                  const Text('좋아요'),
                 ],
               ),
+            ),
+            
+         
+            const SizedBox(
+              width: 20,
+            ),
+
+            // 댓글 달기
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const CommentScreen(),
+                      ),
+                    );
+                  },
+                  child: Icon(
+                    Icons.comment_outlined,
+                    color: Colors.amber[700],
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text(
+                  '댓글 달기',
+                ),
+              ],
             ),
             const SizedBox(
               width: 20,
             ),
-            const SizedBox(
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.share,
-                    color: Colors.green,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('공유하기'),
-                ],
-              ),
-            ),
           ],
         ),
+          //  IconButton(
+          //   iconSize: 72,
+          //   icon: const Icon(Icons.favorite),
+          //         ),
         // 내용
         const SizedBox(
           height: 5,
@@ -107,7 +113,8 @@ class _BoardStoryState extends State<BoardStory> {
                 height: 5,
               ),
               Text(
-                  "content content content content content content content content content content content content content"),
+                "content content content content content content content content content content content content content",
+              ),
             ],
           ),
         ),

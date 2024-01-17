@@ -531,6 +531,15 @@ class S {
     );
   }
 
+  /// `Comment`
+  String get CommentTitle {
+    return Intl.message(
+      '댓글 달기',
+      name: 'CommentTitle',
+      desc: '',
+      args: [],
+    );
+  }
   /// `BoardUpload`
   String get BoardUploadTitle {
     return Intl.message(
@@ -676,6 +685,17 @@ class S {
     return Intl.message(
       'Search Flight',
       name: 'searchFlight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  
+  /// `uploadbutton`
+  String get uploadbutton {
+    return Intl.message(
+      '등록',
+      name: 'uploadbutton',
       desc: '',
       args: [],
     );

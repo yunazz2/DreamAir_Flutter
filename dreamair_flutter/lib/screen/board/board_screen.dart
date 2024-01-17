@@ -35,6 +35,10 @@ class _BoardScreenState extends State<BoardScreen> {
           heroTag: 'upload',
           backgroundColor: Colors.amber[300],
           foregroundColor: Theme.of(context).primaryColor,
+          splashColor: Colors.blue,
+          hoverColor: Colors.green,
+          elevation: 10,
+          highlightElevation: 20,
           onPressed: () {
             Navigator.push(
               context,
@@ -42,44 +46,53 @@ class _BoardScreenState extends State<BoardScreen> {
                 builder: (BuildContext context) => const BoardUploadScreen(),
               ),
             );
-          }),
+          },
+          child: const Icon(
+            Icons.upgrade,
+            size: 30,
+          ),
+          
+          ),
       body: SingleChildScrollView(
         primary: false,
         physics: const BouncingScrollPhysics(),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
-          decoration: const BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
+        child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: 500),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(10.0),
+              decoration: const BoxDecoration(
+                color: kWhite,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
+              ),
+              child: Column(children: [
+                ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 4, // 상태 값 줘야함
+                  itemBuilder: (_, i) {
+                    return Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: kBorderColorTextField,
+                            )),
+                        child: const BoardStory(),
+                      ),
+                    );
+                  },
+                )
+              ]),
             ),
           ),
-          child: Column(children: [
-            ListView.builder(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 4, // 상태 값 줘야함
-              itemBuilder: (_, i) {
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: kBorderColorTextField,
-                        )),
-                    child: const BoardStory(),
-                  ),
-                );
-              },
-            )
-          ]),
-        ),
       ),
     );
   }
