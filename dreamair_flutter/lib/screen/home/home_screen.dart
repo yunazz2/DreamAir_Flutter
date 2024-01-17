@@ -154,36 +154,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 children: [
                                   ListTile(
                                     contentPadding: EdgeInsets.zero,
-                                    leading: Container(
-                                      height: 44,
-                                      width: 44,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image: AssetImage('images/profile1.png'),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
                                     // 메인 화면 왼쪽 위
                                     title: Row(
                                       children: [
                                         Text('안녕하세요!', style: TextStyle(color: Colors.white, fontSize: 16.0),),
                                       ],
-                                    ),
-                                    // 메인 화면 프로필
-                                    trailing: GestureDetector(
-                                      onTap: () {
-                                        print('클릭!');
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(5.0),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(color: Colors.white),
-                                        ),
-                                        child: const Icon(Icons.person, color: Colors.white),
-                                      ),
                                     ),
                                   ),
                                   // 메인 화면 Dream Air 문구
