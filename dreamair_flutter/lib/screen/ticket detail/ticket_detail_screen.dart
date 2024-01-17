@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 import '../widgets/constant.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 // 티켓 상세 조회 페이지
-class TicketStatus extends StatefulWidget {
-  const TicketStatus({Key? key}) : super(key: key);
+class TicketDetailScreen extends StatefulWidget {
+  const TicketDetailScreen({Key? key}) : super(key: key);
 
   @override
-  State<TicketStatus> createState() => _TicketStatusState();
+  State<TicketDetailScreen> createState() => _TicketDetailScreenState();
 }
 
-class _TicketStatusState extends State<TicketStatus> {
+class _TicketDetailScreenState extends State<TicketDetailScreen> {
 
-  
+  int ticketNo = 1;
+  String departure = '김포';
+  String destination = '제주';
+  String departureDate = '2024/01/20';
+  String destinationDate = '2024/01/20';
+  String selectedSeatNo = 'A1';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +44,8 @@ class _TicketStatusState extends State<TicketStatus> {
             ),
             color: Colors.white,
           ),
+
+          // 버튼
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -95,8 +100,9 @@ class _TicketStatusState extends State<TicketStatus> {
             child: Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.0)),
+              
+              // 탑승권 맨 위 Dream Air 로고, 타이틀
               child: Column(
-                // 탑승권 맨 위 Dream Air 로고, 타이틀
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
@@ -127,13 +133,24 @@ class _TicketStatusState extends State<TicketStatus> {
                         )),
                   ),
 
+                  // QR 이미지
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        width: 150.0,
+                        height: 150.0,
+                        image: AssetImage('images/QR1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+
                   // 탑승권 상세 내용
                   const SizedBox(height: 15.0),
-                  Text(
-                    'Traveler Details',
-                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                  ),
+                  Text('탑승권 번호 : $ticketNo', style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),),
                   const SizedBox(height: 10.0),
+                  
                   Container(
                     padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), border: Border.all(color: kBorderColorTextField)),
@@ -141,6 +158,7 @@ class _TicketStatusState extends State<TicketStatus> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        // 출발지
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,62 +169,20 @@ class _TicketStatusState extends State<TicketStatus> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Passenger Name',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    'Mr.Shiadul Islam',
-                                    style: TextStyle(color: kTitleColor, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Airline PNR',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    'A70G26',
-                                    style: TextStyle(color: kTitleColor, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Ticket Number',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    '999458154454',
-                                    style: TextStyle(color: kTitleColor, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
+                                  Text('출발지', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$departure', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 5.0),
-                        const Divider(
-                          thickness: 1.0,
-                          color: kBorderColorTextField,
-                        ),
-                        const SizedBox(height: 5.0),
+
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+                        
+                        // 도착지
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -217,56 +193,136 @@ class _TicketStatusState extends State<TicketStatus> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Travel Insurance',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    'Not Confirmed',
-                                    style: TextStyle(color: kTitleColor, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
+                                  Text('도착지', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$destination', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
+                          ],
+                        ),
+                        
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+                        
+                        // 출발일
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                             Expanded(
                               flex: 2,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Class | Cabin',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    'V | Economy',
-                                    style: TextStyle(color: kTitleColor, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Status',
-                                    style: TextStyle(color: kSubTitleColor, fontSize: 10.0),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    'Confirm',
-                                    style: TextStyle(color: Colors.green, fontSize: 10.0, fontWeight: FontWeight.bold),
-                                  ),
+                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
                           ],
                         ),
+
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+
+                        // 선택 좌석
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('선택 좌석', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$selectedSeatNo', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+
+                        // 예매자 명
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+
+                        // 핸드폰 번호
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 5.0),
+                        Divider(thickness: 1.0, color: kBorderColorTextField,),
+                        SizedBox(height: 5.0),
+
+                        // 이메일
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  SizedBox(height: 5.0),
+                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+
                       ],
                     ),
                   ),

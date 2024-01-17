@@ -201,7 +201,8 @@ class _MypageState extends State<Mypage> {
                   title: const Text('로그아웃'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
-              )
+              ),
+              SizedBox(height: 200.0,),
             ],
           ),
         ),

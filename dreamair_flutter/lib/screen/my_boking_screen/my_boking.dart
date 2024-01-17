@@ -3,7 +3,7 @@ import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 
-import '../ticket status/ticket_status.dart';
+import '../ticket detail/ticket_detail_screen.dart';
 
 // 나의 탑승권 조회 페이지
 class MyBooking extends StatefulWidget {
@@ -80,7 +80,7 @@ class _MyBookingState extends State<MyBooking> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const TicketStatus(), // 티켓 상세조회 페이지
+                                  builder: (context) => const TicketDetailScreen(), // 티켓 상세조회 페이지
                                 ),
                               );
                             },
