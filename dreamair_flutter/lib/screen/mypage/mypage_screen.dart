@@ -1,9 +1,9 @@
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:flight_booking/screen/profile/mybooking/mybooking_screen.dart';
-import 'package:flight_booking/screen/profile/delete_account/delete_account_screen.dart';
-import 'package:flight_booking/screen/profile/mileage/mileage_screen.dart';
-import 'package:flight_booking/screen/profile/checkin/checkin_screen.dart';
-import 'package:flight_booking/screen/profile/update_profile/edit_profile.dart';
+import 'package:flight_booking/screen/mypage/mybooking/mybooking_screen.dart';
+import 'package:flight_booking/screen/mypage/delete_account/delete_account_screen.dart';
+import 'package:flight_booking/screen/mypage/mileage/mileage_screen.dart';
+import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
+import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:nb_utils/nb_utils.dart';

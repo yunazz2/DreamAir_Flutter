@@ -10,16 +10,19 @@ class MileageScreen extends StatefulWidget {
 }
 
 class _MileageScreenState extends State<MileageScreen> {
-  List<String> image = [
-    'images/visa.png',
-    'images/payment.png',
-    'images/stripe.png',
-  ];
-  List<String> name = [
-    'Visa Card',
-    'Paypal',
-    'Stripe',
-  ];
+
+  int _mileage = 5000;
+
+  // List<String> image = [
+  //   'images/visa.png',
+  //   'images/payment.png',
+  //   'images/stripe.png',
+  // ];
+  // List<String> name = [
+  //   'Visa Card',
+  //   'Paypal',
+  //   'Stripe',
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class _MileageScreenState extends State<MileageScreen> {
         child: Column(
           children: [
             const SizedBox(height: 50,),
-            Text('보유 마일리지 : ', style: TextStyle(fontSize: 20.0),)
+            Text('보유 마일리지 : $_mileage', style: TextStyle(fontSize: 20.0),)
           ],
         ),
       ),

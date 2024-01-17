@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const kPrimaryColor = Color.fromARGB(255, 84, 173, 255); // 선택되었을 때 아이콘 색상
-const kSubSubTitleColor=Color.fromARGB(255, 245, 194, 237);
+const kPrimaryColor = Color.fromARGB(255, 85, 170, 255); // 메인 색상
+const kSubSubTitleColor=Color.fromARGB(255, 245, 200, 240); // 서브 색상
 const kTitleColor = Color(0xFF030508);
 const kSecondaryColor = Color(0xFFEDF0FF);
 const kSubTitleColor = Color(0xFF6F7B8C);
@@ -10,7 +10,7 @@ const kLightNeutralColor = Color(0xFF96BCFF);
 const kDarkWhite = Color(0xFFF9F9F9);
 const kWhite = Color(0xFFFFFFFF);
 const kBorderColorTextField = Color(0xFFE3E7EA);
-const ratingBarColor = Color(0xFFFFB33E);
+const ratingBarColor = Color.fromARGB(255, 0, 175, 255);
 
 final kTextStyle = GoogleFonts.inter(
   color: kTitleColor,

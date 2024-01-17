@@ -34,9 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       onTap: () {
                         const Home().launch(context);
                       },
-                      child: Text(
-                        lang.S.of(context).skipButton,
-                        style: TextStyle(color: Colors.white),
+                      child: Text('건너뛰기', style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -78,24 +76,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
                       ),
                       const SizedBox(height: 20.0),
-                      Text(
-                        lang.S.of(context).wcTitle,
+                      Text('Dream Air와 함께 하세요!',
                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 5.0),
-                      Text(
-                        lang.S.of(context).wcSubTitle,
+                      Text('항공권 예매',
                         style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 20.0),
-                      Text(
-                        lang.S.of(context).wcDescription,
+                      Text('Dream Air와 함께 즐거운 여행을 떠나보세요!',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: kSubTitleColor),
                       ),
                       const SizedBox(height: 50.0),
                       ButtonGlobalWithoutIcon(
-                        buttontext: '회원가입',
+                        buttontext: '회원 가입',
                         buttonDecoration: kButtonDecoration.copyWith(
                           color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(30.0),

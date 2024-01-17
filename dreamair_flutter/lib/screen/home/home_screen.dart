@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 decoration: kInputDecoration.copyWith(
                                                   contentPadding: const EdgeInsets.only(left: 10.0),
                                                   labelText: lang.S.of(context).fromTitle,
-                                                  labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                  labelStyle: TextStyle(color: kTitleColor),
                                                   floatingLabelBehavior: FloatingLabelBehavior.always,
                                                   border: OutlineInputBorder(
                                                     borderRadius: BorderRadius.circular(8.0),
@@ -265,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 decoration: kInputDecoration.copyWith(
                                                   contentPadding: const EdgeInsets.only(left: 10.0),
                                                   labelText: lang.S.of(context).toTitle,
-                                                  labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                  labelStyle: TextStyle(color: kTitleColor),
                                                   floatingLabelBehavior: FloatingLabelBehavior.always,
                                                   border: OutlineInputBorder(
                                                     borderRadius: BorderRadius.circular(8.0),
@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
                                       labelText: lang.S.of(context).dateTitle,
-                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                      labelStyle: TextStyle(color: kTitleColor),
                                       hintText: departureDateTitle,
                                       hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                       focusColor: kTitleColor,
@@ -346,7 +346,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
                                       labelText: lang.S.of(context).returnDate,
-                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                      labelStyle: TextStyle(color: kTitleColor),
                                       hintText: returnDateTitle,
                                       hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                       focusColor: kTitleColor,
@@ -375,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
                                       labelText: lang.S.of(context).travellerTitle,
-                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                      labelStyle: TextStyle(color: kTitleColor),
                                       hintText: '$adultCount Adult,$childCount child,$infantCount Infants',
                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                       border: const OutlineInputBorder(),
@@ -665,7 +665,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           contentPadding: const EdgeInsets.all(7.0),
                                           floatingLabelBehavior: FloatingLabelBehavior.always,
                                           labelText: lang.S.of(context).classTitle,
-                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                          labelStyle: TextStyle(color: kTitleColor),
                                         ),
                                         child: DropdownButtonHideUnderline(child: getClass()),
                                       );
@@ -720,7 +720,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                       decoration: kInputDecoration.copyWith(
                                                         contentPadding: const EdgeInsets.only(left: 10.0),
                                                         labelText: lang.S.of(context).fromTitle,
-                                                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                        labelStyle: TextStyle(color: kTitleColor),
                                                         floatingLabelBehavior: FloatingLabelBehavior.always,
                                                         border: OutlineInputBorder(
                                                           borderRadius: BorderRadius.circular(8.0),
@@ -754,7 +754,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                       decoration: kInputDecoration.copyWith(
                                                         contentPadding: const EdgeInsets.only(left: 10.0),
                                                         labelText: lang.S.of(context).toTitle,
-                                                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                        labelStyle: TextStyle(color: kTitleColor),
                                                         floatingLabelBehavior: FloatingLabelBehavior.always,
                                                         border: OutlineInputBorder(
                                                           borderRadius: BorderRadius.circular(8.0),
@@ -807,7 +807,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           textInputAction: TextInputAction.next,
                                           decoration: kInputDecoration.copyWith(
                                             labelText: lang.S.of(context).dateTitle,
-                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                            labelStyle: TextStyle(color: kTitleColor),
                                             hintText: departureDateTitle,
                                             hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                             focusColor: kTitleColor,
@@ -891,7 +891,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             decoration: kInputDecoration.copyWith(
                                                               contentPadding: const EdgeInsets.only(left: 10.0),
                                                               labelText: lang.S.of(context).fromTitle,
-                                                              labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                              labelStyle: TextStyle(color: kTitleColor),
                                                               floatingLabelBehavior: FloatingLabelBehavior.always,
                                                               border: OutlineInputBorder(
                                                                 borderRadius: BorderRadius.circular(8.0),
@@ -924,7 +924,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             decoration: kInputDecoration.copyWith(
                                                               contentPadding: const EdgeInsets.only(left: 10.0),
                                                               labelText: lang.S.of(context).toTitle,
-                                                              labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                              labelStyle: TextStyle(color: kTitleColor),
                                                               floatingLabelBehavior: FloatingLabelBehavior.always,
                                                               border: OutlineInputBorder(
                                                                 borderRadius: BorderRadius.circular(8.0),
@@ -977,7 +977,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 textInputAction: TextInputAction.next,
                                                 decoration: kInputDecoration.copyWith(
                                                   labelText: lang.S.of(context).dateTitle,
-                                                  labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                  labelStyle: TextStyle(color: kTitleColor),
                                                   hintText: departureDateTitle,
                                                   hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                                   focusColor: kTitleColor,
@@ -1017,7 +1017,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     textInputAction: TextInputAction.next,
                                     decoration: kInputDecoration.copyWith(
                                       labelText: lang.S.of(context).travellerTitle,
-                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                      labelStyle: TextStyle(color: kTitleColor),
                                       hintText: '$adultCount Adult,$childCount child,$infantCount Infants',
                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                       border: const OutlineInputBorder(),
@@ -1307,7 +1307,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           contentPadding: const EdgeInsets.all(7.0),
                                           floatingLabelBehavior: FloatingLabelBehavior.always,
                                           labelText: lang.S.of(context).classTitle,
-                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                          labelStyle: TextStyle(color: kTitleColor),
                                         ),
                                         child: DropdownButtonHideUnderline(child: getClass()),
                                       );

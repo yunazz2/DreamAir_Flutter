@@ -1,14 +1,10 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flight_booking/screen/Authentication/login_screen.dart';
+import 'package:flight_booking/screen/home/home.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../widgets/button_global.dart';
-import '../widgets/icon.dart';
-import 'otp_verication.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -19,6 +15,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool hidePassword = true;
+  bool hidePasswordCheck = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,7 @@ class _SignUpState extends State<SignUp> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text(lang.S.of(context).signUpButton),
+        title: Text('회원가입', style: TextStyle(color: Colors.white),),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -56,7 +53,7 @@ class _SignUpState extends State<SignUp> {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 width: context.width(),
-                height: context.height() / 1.1,
+                height: context.height(),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -68,74 +65,34 @@ class _SignUpState extends State<SignUp> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 10.0),
-                    Text(
-                      lang.S.of(context).loginTitle,
-                      style: TextStyle(
-                        color: kTitleColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                      ),
+                    Text('회원 가입을 진행합니다.',
+                      style: TextStyle(color: kTitleColor, fontSize: 18.0,),
                     ),
+
+                    // 아이디
                     const SizedBox(height: 40.0),
                     TextFormField(
-                      keyboardType: TextInputType.name,
+                      keyboardType: TextInputType.text,
                       cursorColor: kTitleColor,
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
-                        labelText: lang.S.of(context).nameLabel,
-                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                        hintText: lang.S.of(context).nameHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                        labelText: '아이디',
+                        labelStyle: TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 20.0),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
-                      decoration: kInputDecoration.copyWith(
-                        labelText: lang.S.of(context).emailLabel,
-                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                        hintText: lang.S.of(context).emailHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                        focusColor: kTitleColor,
-                        border: const OutlineInputBorder(),
-                      ),
-                    ),
-                    const SizedBox(height: 20.0),
-                    TextFormField(
-                      keyboardType: TextInputType.phone,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
-                      decoration: kInputDecoration.copyWith(
-                        hintText: lang.S.of(context).phoneHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                        focusColor: kTitleColor,
-                        border: const OutlineInputBorder(),
-                        prefixIcon: CountryCodePicker(
-                          padding: EdgeInsets.zero,
-                          onChanged: print,
-                          initialSelection: 'BD',
-                          showFlag: true,
-                          showDropDownButton: true,
-                          alignLeft: false,
-                        ),
-                      ),
-                    ),
+
+                    // 비밀번호
                     const SizedBox(height: 20.0),
                     TextFormField(
                       cursorColor: kTitleColor,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.text, // TextInputType.emailAddress에서 TextInputType.text로 변경
                       obscureText: hidePassword,
-                      textInputAction: TextInputAction.done,
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
-                        labelText: lang.S.of(context).passwordLabel,
-                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                        hintText: lang.S.of(context).passwordHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                        labelText: '비밀번호',
+                        labelStyle: TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -148,64 +105,102 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                       ),
+                      textInputAction: TextInputAction.next,
                     ),
+                    
+                    // 비밀번호 확인
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      cursorColor: kTitleColor,
+                      keyboardType: TextInputType.text,
+                      obscureText: hidePasswordCheck,
+                      decoration: kInputDecoration.copyWith(
+                        border: const OutlineInputBorder(),
+                        labelText: '비밀번호 확인',
+                        labelStyle: TextStyle(color: kTitleColor),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              hidePasswordCheck = !hidePasswordCheck;
+                            });
+                          },
+                          icon: Icon(
+                            hidePasswordCheck ? Icons.visibility_off : Icons.visibility,
+                            color: kSubTitleColor,
+                          ),
+                        ),
+                      ),
+                      textInputAction: TextInputAction.next,
+                    ),
+
+                    // 아이디
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
+                      decoration: kInputDecoration.copyWith(
+                        labelText: '이름',
+                        labelStyle: TextStyle(color: kTitleColor),
+                        focusColor: kTitleColor,
+                        border: const OutlineInputBorder(),
+                      ),
+                    ),
+                    
+                    // 핸드폰 번호
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      keyboardType: TextInputType.phone,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
+                      decoration: kInputDecoration.copyWith(
+                        labelText: '핸드폰 번호',
+                        labelStyle: TextStyle(color: kTitleColor),
+                        focusColor: kTitleColor,
+                        border: const OutlineInputBorder(),
+                      ),
+                    ),
+                    
+                    // 이메일
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
+                      decoration: kInputDecoration.copyWith(
+                        labelText: '이메일',
+                        labelStyle: TextStyle(color: kTitleColor),
+                        focusColor: kTitleColor,
+                        border: const OutlineInputBorder(),
+                      ),
+                    ),
+
+                    // 주소
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      keyboardType: TextInputType.streetAddress,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.join,
+                      decoration: kInputDecoration.copyWith(
+                        labelText: '주소',
+                        labelStyle: TextStyle(color: kTitleColor),
+                        focusColor: kTitleColor,
+                        border: const OutlineInputBorder(),
+                      ),
+                    ),
+
+                    // 회원 가입 버튼
                     const SizedBox(height: 20.0),
                     ButtonGlobalWithoutIcon(
-                      buttontext: lang.S.of(context).signUpButton,
+                      buttontext: '회원 가입',
                       buttonDecoration: kButtonDecoration.copyWith(
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       onPressed: () {
-                        const OtpVerification().launch(context);
+                        const Home().launch(context);
                       },
                       buttonTextColor: kWhite,
-                    ),
-                    const SizedBox(height: 20.0),
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1.0,
-                            color: kBorderColorTextField,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: Text(
-                            lang.S.of(context).orSignUpTitle,
-                            style: TextStyle(color: kSubTitleColor),
-                          ),
-                        ),
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1.0,
-                            color: kBorderColorTextField,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          SocialIcon(
-                            bgColor: kTitleColor,
-                            iconColor: kWhite,
-                            icon: FontAwesomeIcons.facebookF,
-                            borderColor: Colors.transparent,
-                          ),
-                          SizedBox(width: 20.0),
-                          SocialIcon(
-                            bgColor: kWhite,
-                            iconColor: kTitleColor,
-                            icon: FontAwesomeIcons.google,
-                            borderColor: kBorderColorTextField,
-                          ),
-                        ],
-                      ),
                     ),
                   ],
                 ),
@@ -214,8 +209,7 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 50,
+      bottomNavigationBar: SizedBox(height: 50,
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
@@ -223,11 +217,11 @@ class _SignUpState extends State<SignUp> {
             child: Center(
               child: RichText(
                 text: TextSpan(
-                  text: lang.S.of(context).alreadyHaveAcc,
+                  text: '이미 계정이 있으신가요? ',
                   style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
-                      text: lang.S.of(context).loginButton,
+                      text: '로그인 하기',
                       style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],

@@ -937,7 +937,7 @@ class _SeatState extends State<Seat> {
                                                     textInputAction: TextInputAction.next,
                                                     decoration: kInputDecoration.copyWith(
                                                       labelText: lang.S.of(context).nameTitle,
-                                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                      labelStyle: TextStyle(color: kTitleColor),
                                                       hintText: lang.S.of(context).nameHint,
                                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                       focusColor: kTitleColor,
@@ -951,7 +951,7 @@ class _SeatState extends State<Seat> {
                                                     textInputAction: TextInputAction.next,
                                                     decoration: kInputDecoration.copyWith(
                                                       labelText: lang.S.of(context).lastNameTitle,
-                                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                      labelStyle: TextStyle(color: kTitleColor),
                                                       hintText: lang.S.of(context).lastNameHint,
                                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                       focusColor: kTitleColor,
@@ -997,7 +997,7 @@ class _SeatState extends State<Seat> {
                                                           textInputAction: TextInputAction.next,
                                                           decoration: kInputDecoration.copyWith(
                                                             labelText: 'Frequent Flyer Airline',
-                                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                            labelStyle: TextStyle(color: kTitleColor),
                                                             hintText: 'Enter frequent flyer airline',
                                                             hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                             focusColor: kTitleColor,
@@ -1011,7 +1011,7 @@ class _SeatState extends State<Seat> {
                                                           textInputAction: TextInputAction.next,
                                                           decoration: kInputDecoration.copyWith(
                                                             labelText: 'Frequent Flyer No',
-                                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                            labelStyle: TextStyle(color: kTitleColor),
                                                             hintText: 'Enter frequent flyer no',
                                                             hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                             focusColor: kTitleColor,
@@ -1164,7 +1164,7 @@ class _SeatState extends State<Seat> {
                                                         textInputAction: TextInputAction.next,
                                                         decoration: kInputDecoration.copyWith(
                                                           labelText: lang.S.of(context).emailHint,
-                                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                          labelStyle: TextStyle(color: kTitleColor),
                                                           hintText: lang.S.of(context).emailHint,
                                                           hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                           focusColor: kTitleColor,

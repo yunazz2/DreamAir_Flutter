@@ -50,13 +50,6 @@ class _MyBookingScreenState extends State<MyBookingScreen> {
                 height: 20,
               ),
               Text('Legal Disclaimer', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                'Food First envisions a world in which all people have access to healthy, ecologically produced, and culturally appropriate food. After 40 years of analysis of the global food system, we know that making this vision a reality involves more than tech nic al solutions—it requires political Food First envisions a world in which all people have access to healthy, ecologically produced, and culturally appropriate food. After 40 years of analysis of the global food system, we know that making this vision a reality involves more than tech nical ',
-                style: TextStyle(color: kSubTitleColor, height: 1.5),
-              )
             ],
           ),
         ),

@@ -28,7 +28,7 @@ class _LogInState extends State<LogIn> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text(lang.S.of(context).loginButton),
+        title: Text('로그인', style: TextStyle(color: Colors.white),),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -69,39 +69,35 @@ class _LogInState extends State<LogIn> {
                   children: [
                     const SizedBox(height: 10.0),
                     Text(
-                      lang.S.of(context).loginTitle,
-                      style: TextStyle(
-                        color: kTitleColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                      ),
+                      '로그인을 진행합니다.',
+                      style: TextStyle(color: kTitleColor, fontSize: 18.0,),
                     ),
+
+                    // 아이디
                     const SizedBox(height: 40.0),
                     TextFormField(
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.text,
                       cursorColor: kTitleColor,
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
-                        labelText: lang.S.of(context).emailLabel,
-                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                        hintText: lang.S.of(context).emailHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                        labelText: '아이디',
+                        labelStyle: TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
+                    
+                    // 비밀번호
                     const SizedBox(height: 20.0),
                     TextFormField(
                       cursorColor: kTitleColor,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.visiblePassword,
                       obscureText: hidePassword,
                       textInputAction: TextInputAction.done,
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
-                        labelText: lang.S.of(context).passwordLabel,
-                        labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                        hintText: lang.S.of(context).passwordHint,
-                        hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                        labelText: '비밀번호',
+                        labelStyle: TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -115,24 +111,11 @@ class _LogInState extends State<LogIn> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () => const ForgotPassword().launch(context),
-                          child: Text(
-                            lang.S.of(context).forgotPassword,
-                            style: TextStyle(
-                              color: kPrimaryColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+
+                    // 로그인 버튼
                     const SizedBox(height: 20.0),
                     ButtonGlobalWithoutIcon(
-                      buttontext: lang.S.of(context).loginButton,
+                      buttontext: '로그인',
                       buttonDecoration: kButtonDecoration.copyWith(
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(30.0),
@@ -142,52 +125,6 @@ class _LogInState extends State<LogIn> {
                       },
                       buttonTextColor: kWhite,
                     ),
-                    const SizedBox(height: 20.0),
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1.0,
-                            color: kBorderColorTextField,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: Text(
-                            lang.S.of(context).orSignUpTitle,
-                            style: TextStyle(color: kSubTitleColor),
-                          ),
-                        ),
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1.0,
-                            color: kBorderColorTextField,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          SocialIcon(
-                            bgColor: kTitleColor,
-                            iconColor: kWhite,
-                            icon: FontAwesomeIcons.facebookF,
-                            borderColor: Colors.transparent,
-                          ),
-                          SizedBox(width: 20.0),
-                          SocialIcon(
-                            bgColor: kWhite,
-                            iconColor: kTitleColor,
-                            icon: FontAwesomeIcons.google,
-                            borderColor: kBorderColorTextField,
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               )
@@ -195,8 +132,7 @@ class _LogInState extends State<LogIn> {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 50,
+      bottomNavigationBar: SizedBox(height: 50,
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
@@ -204,11 +140,11 @@ class _LogInState extends State<LogIn> {
             child: Center(
               child: RichText(
                 text: TextSpan(
-                  text: lang.S.of(context).noAccTitle1,
+                  text: '아직 계정이 없으신가요? ',
                   style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
-                      text: lang.S.of(context).noAccTitle2,
+                      text: '회원 가입',
                       style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
