@@ -1,11 +1,13 @@
 // 게시판 component
 import 'package:flight_booking/screen/board/comment_screen.dart';
+import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 
 class BoardStory extends StatefulWidget {
-  const BoardStory({Key? key}) : super(key: key);
+  const BoardStory({super.key});
 
   @override
   State<BoardStory> createState() => _BoardStoryState();
@@ -30,6 +32,7 @@ class _BoardStoryState extends State<BoardStory> {
                 Text('작성자'),
               ],
             ),
+            
           ],
         ),
         // 이미지
@@ -44,7 +47,7 @@ class _BoardStoryState extends State<BoardStory> {
 
         // 좋아요 버튼
          Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               child: Row(
@@ -97,6 +100,37 @@ class _BoardStoryState extends State<BoardStory> {
             ),
           ],
         ),
+
+        // 더보기(수정/삭제) 기능
+        Column(
+          children: [
+          PopupMenuButton<int>(
+            padding: EdgeInsets.zero,
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                child: Center(
+                  child: const Text('수정').onTap(() {
+                  setState(() {});
+                  Navigator.pop(context);
+                }),
+                ),
+              ),
+              PopupMenuItem(
+                child: Center(
+                  child: const Text('삭제').onTap(() {
+                  setState(() {});
+                  Navigator.pop(context);
+                }),
+                ),
+              ),
+              // popupmenu item 2
+            ],
+            offset: const Offset(0, 30),
+            color: kWhite,
+            elevation: 1.0,
+          )
+        ],),
+        
           //  IconButton(
           //   iconSize: 72,
           //   icon: const Icon(Icons.favorite),

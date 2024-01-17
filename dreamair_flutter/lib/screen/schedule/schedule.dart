@@ -1,9 +1,9 @@
 class Schedule {
 
   // 플라이 여부
-  String? flightNo;
+  int? flightNo;
   String? flightName;
-  String? routeNo;
+  int? routeNo;
   String? departure;
   String? departureDate;
   String? departureTime;
@@ -23,7 +23,6 @@ class Schedule {
       required this.destination,
       required this.destinationDate,
       required this.destinationTime,
-      
     }
   );
 }

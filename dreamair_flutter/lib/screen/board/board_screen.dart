@@ -57,7 +57,7 @@ class _BoardScreenState extends State<BoardScreen> {
         primary: false,
         physics: const BouncingScrollPhysics(),
         child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: 500),
+            constraints: const BoxConstraints(minHeight: 700),
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(10.0),
@@ -74,7 +74,7 @@ class _BoardScreenState extends State<BoardScreen> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4, // 상태 값 줘야함
-                  itemBuilder: (_, i) {
+                  itemBuilder: (context, index) {
                     return Padding(
                       padding:
                           const EdgeInsets.symmetric(horizontal: 15, vertical: 10),

@@ -550,6 +550,16 @@ class S {
     );
   }
 
+    /// `BoardUpdate`
+  String get BoardUpdateTitle {
+    return Intl.message(
+      '글 수정',
+      name: 'BoardUpdateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `From`
   String get fromTitle {
     return Intl.message(
@@ -696,6 +706,26 @@ class S {
     return Intl.message(
       '등록',
       name: 'uploadbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+    /// `updatebutton`
+  String get updatebutton {
+    return Intl.message(
+      '수정',
+      name: 'updatebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+    /// `deletebutton`
+  String get deletebutton {
+    return Intl.message(
+      '삭제',
+      name: 'deletebutton',
       desc: '',
       args: [],
     );
