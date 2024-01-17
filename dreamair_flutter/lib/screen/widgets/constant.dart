@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const kPrimaryColor = Color.fromARGB(255, 85, 170, 255); // 메인 색상
-const kSubSubTitleColor=Color.fromARGB(255, 245, 200, 240); // 서브 색상
+const kSubSubTitleColor=Color.fromARGB(255, 255, 197, 229); // 서브 색상
 const kTitleColor = Color(0xFF030508);
 const kSecondaryColor = Color(0xFFEDF0FF);
 const kSubTitleColor = Color(0xFF6F7B8C);

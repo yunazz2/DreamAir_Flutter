@@ -62,7 +62,8 @@ class _CheckInScreenState extends State<CheckInScreen> {
               onPressed: () {
                 // '체크인' 버튼이 눌렸을 때 처리 로직 추가
               },
-              child: Text('체크인'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 1.0,),
+              child: Text('체크인', style: TextStyle(color: Colors.black),),
             ),
           ],
         );
@@ -72,8 +73,8 @@ class _CheckInScreenState extends State<CheckInScreen> {
         children: [
           Row(  // 가로로 나열 됨
             children: [
-              Text(title, style: TextStyle(fontSize: 15.0, color: const Color.fromARGB(255, 109, 109, 109)),),
-              Text(content, style: TextStyle(fontSize: 20.0),),
+              Text(title, style: TextStyle(fontSize: 12.0, color: const Color.fromARGB(255, 109, 109, 109)),),
+              Text(content, style: TextStyle(fontSize: 16.0),),
             ],
           ),
           // 짝수 인덱스일 때만 구분선 추가
@@ -141,7 +142,8 @@ class _CheckInScreenState extends State<CheckInScreen> {
                 // 키패드 숨기기
                 FocusScope.of(context).unfocus();
               },
-              child: Text('조회'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 1.0,),
+              child: Text('조회', style: TextStyle(color: Colors.black),),
             ),
 
             // 탑승권 정보(조회 버튼을 누른 후)

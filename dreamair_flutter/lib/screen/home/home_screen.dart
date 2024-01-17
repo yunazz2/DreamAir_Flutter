@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         labelColor: Colors.white,
                                         indicator: BoxDecoration(
                                           borderRadius: BorderRadius.circular(30.0),
-                                          color: kPrimaryColor,
+                                          color: Color.fromARGB(255, 255, 183, 213),
                                         ),
                                         onTap: (index) {
                                           if (index == 0) {
@@ -223,6 +223,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             text: '왕복',
                                           ),
                                         ],
+                                        indicatorSize: TabBarIndicatorSize.tab,
                                       ),
                                     ),
                                     const SizedBox(height: 20.0),
