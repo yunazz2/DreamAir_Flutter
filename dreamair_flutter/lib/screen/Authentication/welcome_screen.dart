@@ -34,9 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       onTap: () {
                         const Home().launch(context);
                       },
-                      child: Text(
-                        lang.S.of(context).skipButton,
-                        style: kTextStyle.copyWith(color: kWhite),
+                      child: Text('건너뛰기', style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -46,11 +44,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Center(
                 child: Container(
                   height: 142,
-                  width: 160,
+                  width: 200,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/logo2.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/white_logo_name.png'),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -60,7 +58,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: context.width(),
                 height: context.height(),
                 decoration: const BoxDecoration(
-                  color: kWhite,
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30.0),
                     topLeft: Radius.circular(30.0),
@@ -78,24 +76,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
                       ),
                       const SizedBox(height: 20.0),
-                      Text(
-                        lang.S.of(context).wcTitle,
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                      Text('Dream Air와 함께 하세요!',
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 5.0),
-                      Text(
-                        lang.S.of(context).wcSubTitle,
-                        style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                      Text('항공권 예매',
+                        style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 20.0),
-                      Text(
-                        lang.S.of(context).wcDescription,
+                      Text('Dream Air와 함께 즐거운 여행을 떠나보세요!',
                         textAlign: TextAlign.center,
-                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                        style: TextStyle(color: kSubTitleColor),
                       ),
                       const SizedBox(height: 50.0),
                       ButtonGlobalWithoutIcon(
-                        buttontext: lang.S.of(context).createAccButton,
+                        buttontext: '회원 가입',
                         buttonDecoration: kButtonDecoration.copyWith(
                           color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(30.0),
@@ -106,9 +101,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         buttonTextColor: kWhite,
                       ),
                       ButtonGlobalWithoutIcon(
-                        buttontext: lang.S.of(context).loginButton,
+                        buttontext: '로그인',
                         buttonDecoration: kButtonDecoration.copyWith(
-                          color: kWhite,
+                          color: Colors.white,
                           border: Border.all(color: kPrimaryColor),
                           borderRadius: BorderRadius.circular(30.0),
                         ),

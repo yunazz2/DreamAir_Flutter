@@ -1,6 +1,7 @@
 import 'package:flight_booking/screen/History_Screen/history_screen.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
-import 'package:flight_booking/screen/search/schedule_screen.dart';
+import 'package:flight_booking/screen/mypage/mypage_screen.dart';
+import 'package:flight_booking/screen/schedule/schedule_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -9,7 +10,7 @@ import '../my_boking_screen/my_boking.dart';
 import 'home_screen.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
     History(), // 체크인 -> 변경해야함
     ScheduleScreen(), //  출도착 조회
     BoardScreen(), // 게시판
-    // Profile(),
+    Mypage(),  // 마이페이지
   ];
 
   @override
@@ -41,15 +42,12 @@ class _HomeState extends State<Home> {
           showUnselectedLabels: true,
           items: const [
             /// 항공권 예약
-            BottomNavigationBarItem(
-              icon: Icon(Icons.flight),
-              label: '항공권 예약'
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.flight), label: '항공권 예약'),
+
             /// 예약 조회
-           BottomNavigationBarItem(
-              icon: Icon(IconlyBold.bookmark),
-              label: '예약 조회'
-            ),
+            BottomNavigationBarItem(
+                icon: Icon(IconlyBold.bookmark), label: '예약 조회'),
+
             /// 체크인
             BottomNavigationBarItem(
               icon: Icon(Icons.airplane_ticket),
@@ -57,14 +55,12 @@ class _HomeState extends State<Home> {
             ),
             // 출도착조회
             BottomNavigationBarItem(
-              icon: Icon(Icons.schedule),
-              label: '출도착 조회'
-            ),
+                icon: Icon(Icons.schedule), label: '출도착 조회'),
             // 게시판
             BottomNavigationBarItem(
-              icon: Icon(Icons.description),
-              label: '게시판'
-            ),
+                icon: Icon(Icons.description), label: '커뮤니티'),
+            // 마이 페이지
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: '마이페이지'),
           ],
           onTap: (int index) {
             setState(() => _currentPage = index);

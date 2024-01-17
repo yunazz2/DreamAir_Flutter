@@ -8,9 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <!-- 게시글 목록 -->
     <select id="list" resultType="Board">
-        SELECT *
+        <!-- SELECT *
         FROM board
-        ORDER BY reg_date DESC
+        ORDER BY reg_date DESC -->
+        SELECT *
+		FROM board
+		ORDER BY reg_date DESC
+		LIMIT #{index}, #{rowsPerPage}
     </select>
 
     <!-- 최신 목록 -->
@@ -61,5 +65,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SET views = views + 1
         WHERE board_no = #{boardNo}
     </update>
+
+    <!-- 게시글 개수 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM board
+	</select>
 
 </mapper>

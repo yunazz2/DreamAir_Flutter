@@ -56,12 +56,12 @@ class _PaymentState extends State<Payment> {
         titleSpacing: 0,
         elevation: 0,
         backgroundColor: kPrimaryColor,
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
         title: Text(
           lang.S.of(context).paymentTitle,
-          style: kTextStyle.copyWith(
-            color: kWhite,
+          style: TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -69,7 +69,7 @@ class _PaymentState extends State<Payment> {
       body: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.0),
             topLeft: Radius.circular(30.0),
@@ -85,7 +85,7 @@ class _PaymentState extends State<Payment> {
                 padding: const EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: kWhite,
+                    color: Colors.white,
                     border: Border.all(
                       color: kBorderColorTextField,
                     ),
@@ -109,7 +109,7 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Text(
                             'Total Due:$currencySign${14500}',
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                           ),
                           const SizedBox(width: 2.0),
                           const Icon(
@@ -119,13 +119,13 @@ class _PaymentState extends State<Payment> {
                           const SizedBox(width: 2.0),
                           Text(
                             'You save $currencySign${500}',
-                            style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                            style: TextStyle(color: kSubTitleColor, fontSize: 12),
                           ),
                         ],
                       ),
                       subtitle: Text(
                         'Convenience Fee Added',
-                        style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                        style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                       ),
                       trailing: GestureDetector(
                         onTap: () {
@@ -159,7 +159,7 @@ class _PaymentState extends State<Payment> {
                                                 children: [
                                                   Text(
                                                     'View Details',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   const Spacer(),
                                                   GestureDetector(
@@ -180,7 +180,7 @@ class _PaymentState extends State<Payment> {
                                             Container(
                                               padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 20),
                                               decoration: const BoxDecoration(
-                                                color: kWhite,
+                                                color: Colors.white,
                                                 borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(30.0),
                                                   topLeft: Radius.circular(30.0),
@@ -207,7 +207,7 @@ class _PaymentState extends State<Payment> {
                                                       children: [
                                                         Text(
                                                           'Total Due:$currencySign${14500}',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                                                         ),
                                                         const SizedBox(width: 2.0),
                                                         const Icon(
@@ -217,13 +217,13 @@ class _PaymentState extends State<Payment> {
                                                         const SizedBox(width: 2.0),
                                                         Text(
                                                           'You save $currencySign${500}',
-                                                          style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12),
+                                                          style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                                         ),
                                                       ],
                                                     ),
                                                     subtitle: Text(
                                                       'Convenience Fee Added',
-                                                      style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
@@ -234,24 +234,24 @@ class _PaymentState extends State<Payment> {
                                                   const SizedBox(height: 10.0),
                                                   Text(
                                                     'Fare Summary',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   const SizedBox(height: 10.0),
                                                   Text(
                                                     'Adult x1',
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                   ),
                                                   const SizedBox(height: 10.0),
                                                   Row(
                                                     children: [
                                                       Text(
                                                         'Basic Fare',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                       const Spacer(),
                                                       Text(
                                                         '$currencySign${13000}',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
@@ -260,12 +260,12 @@ class _PaymentState extends State<Payment> {
                                                     children: [
                                                       Text(
                                                         'Taxes',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                       const Spacer(),
                                                       Text(
                                                         '$currencySign${20000}',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
@@ -274,12 +274,12 @@ class _PaymentState extends State<Payment> {
                                                     children: [
                                                       Text(
                                                         'Reschedule Charges',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                       const Spacer(),
                                                       Text(
                                                         '$currencySign${0}',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
@@ -288,12 +288,12 @@ class _PaymentState extends State<Payment> {
                                                     children: [
                                                       Text(
                                                         'K3',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                       const Spacer(),
                                                       Text(
                                                         '$currencySign${0}',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
@@ -302,12 +302,12 @@ class _PaymentState extends State<Payment> {
                                                     children: [
                                                       Text(
                                                         'Coupon',
-                                                        style: kTextStyle.copyWith(color: kPrimaryColor),
+                                                        style: TextStyle(color: kPrimaryColor),
                                                       ),
                                                       const Spacer(),
                                                       Text(
                                                         '$currencySign${-500}',
-                                                        style: kTextStyle.copyWith(color: kPrimaryColor),
+                                                        style: TextStyle(color: kPrimaryColor),
                                                       ),
                                                     ],
                                                   ),
@@ -317,7 +317,7 @@ class _PaymentState extends State<Payment> {
                                                   ),
                                                   Text(
                                                     'Round Trip',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   ListTile(
                                                     dense: true,
@@ -336,13 +336,13 @@ class _PaymentState extends State<Payment> {
                                                       children: [
                                                         Text(
                                                           'Depart (DAC - CCU)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                                                         ),
                                                       ],
                                                     ),
                                                     subtitle: Text(
                                                       'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                                                      style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
@@ -366,13 +366,13 @@ class _PaymentState extends State<Payment> {
                                                       children: [
                                                         Text(
                                                           'Depart (DAC - CCU)',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                                                         ),
                                                       ],
                                                     ),
                                                     subtitle: Text(
                                                       'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                                                      style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
@@ -381,14 +381,14 @@ class _PaymentState extends State<Payment> {
                                                   ),
                                                   Text(
                                                     'Shaidul Islam (Male)',
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kSubTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   const SizedBox(
                                                     height: 10.0,
                                                   ),
                                                   Text(
                                                     'shaidulislma@gmail.com',
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kSubTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   const SizedBox(
                                                     height: 10.0,
@@ -408,7 +408,7 @@ class _PaymentState extends State<Payment> {
                         },
                         child: Text(
                           lang.S.of(context).viewDetails,
-                          style: kTextStyle.copyWith(
+                          style: TextStyle(
                             color: kPrimaryColor,
                             fontSize: 14.0,
                           ),
@@ -437,7 +437,7 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Text(
                             'Dhaka',
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                           ),
                           const SizedBox(width: 2.0),
                           const RotatedBox(
@@ -450,13 +450,13 @@ class _PaymentState extends State<Payment> {
                           const SizedBox(width: 2.0),
                           Text(
                             'New Delhi ',
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
                           ),
                         ],
                       ),
                       subtitle: Text(
                         'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                        style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                        style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                       ),
                     ),
                     const Divider(
@@ -467,7 +467,7 @@ class _PaymentState extends State<Payment> {
                     const SizedBox(height: 10.0),
                     Text(
                       'Shaidul Islam (Male)',
-                      style: kTextStyle.copyWith(color: kTitleColor, fontSize: 12.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: kTitleColor, fontSize: 12.0, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -505,7 +505,7 @@ class _PaymentState extends State<Payment> {
                                         children: [
                                           Text(
                                             'View Details',
-                                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                           ),
                                           const Spacer(),
                                           GestureDetector(
@@ -525,7 +525,7 @@ class _PaymentState extends State<Payment> {
                                     const SizedBox(height: 10.0),
                                     Container(
                                       decoration: const BoxDecoration(
-                                        color: kWhite,
+                                        color: Colors.white,
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(30.0),
                                           topLeft: Radius.circular(30.0),
@@ -639,7 +639,7 @@ class _PaymentState extends State<Payment> {
                   children: [
                     Text(
                       lang.S.of(context).paymentMethod,
-                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                     ),
                     const Spacer(),
                     const Icon(
@@ -650,7 +650,7 @@ class _PaymentState extends State<Payment> {
                     const SizedBox(width: 2.0),
                     Text(
                       'New card',
-                      style: kTextStyle.copyWith(color: kSubTitleColor),
+                      style: TextStyle(color: kSubTitleColor),
                     ),
                   ],
                 ),
@@ -659,7 +659,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 decoration: BoxDecoration(
-                  color: kWhite,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(color: kBorderColorTextField),
                   boxShadow: const [
@@ -680,7 +680,7 @@ class _PaymentState extends State<Payment> {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: kWhite,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                           border: Border.all(color: kBorderColorTextField),
                           boxShadow: const [
@@ -706,7 +706,7 @@ class _PaymentState extends State<Payment> {
                             contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                             title: Text(
                               paymentMethod[index],
-                              style: kTextStyle.copyWith(color: kTitleColor),
+                              style: TextStyle(color: kTitleColor),
                             ),
                             secondary: Container(
                               height: 36,
@@ -736,24 +736,24 @@ class _PaymentState extends State<Payment> {
               const SizedBox(height: 20.0),
               Text(
                 'Fare Summary',
-                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
               Text(
                 'Adult x1',
-                style: kTextStyle.copyWith(color: kSubTitleColor),
+                style: TextStyle(color: kSubTitleColor),
               ),
               const SizedBox(height: 10.0),
               Row(
                 children: [
                   Text(
                     'Basic Fare',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                   const Spacer(),
                   Text(
                     '$currencySign${13000}',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                 ],
               ),
@@ -762,12 +762,12 @@ class _PaymentState extends State<Payment> {
                 children: [
                   Text(
                     'Taxes',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                   const Spacer(),
                   Text(
                     '$currencySign${20000}',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                 ],
               ),
@@ -776,12 +776,12 @@ class _PaymentState extends State<Payment> {
                 children: [
                   Text(
                     'Reschedule Charges',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                   const Spacer(),
                   Text(
                     '$currencySign${0}',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                 ],
               ),
@@ -790,12 +790,12 @@ class _PaymentState extends State<Payment> {
                 children: [
                   Text(
                     'K3',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                   const Spacer(),
                   Text(
                     '$currencySign${0}',
-                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                    style: TextStyle(color: kSubTitleColor),
                   ),
                 ],
               ),
@@ -804,12 +804,12 @@ class _PaymentState extends State<Payment> {
                 children: [
                   Text(
                     'Coupon',
-                    style: kTextStyle.copyWith(color: kPrimaryColor),
+                    style: TextStyle(color: kPrimaryColor),
                   ),
                   const Spacer(),
                   Text(
                     '$currencySign${-500}',
-                    style: kTextStyle.copyWith(color: kPrimaryColor),
+                    style: TextStyle(color: kPrimaryColor),
                   ),
                 ],
               ),
@@ -818,17 +818,17 @@ class _PaymentState extends State<Payment> {
         ),
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(color: kWhite),
+        decoration: const BoxDecoration(color: Colors.white),
         child: ListTile(
           contentPadding: const EdgeInsets.only(left: 15.0, right: 15.0),
           visualDensity: const VisualDensity(vertical: 2),
           title: Text(
             'For 1 Adult',
-            style: kTextStyle.copyWith(color: kSubTitleColor),
+            style: TextStyle(color: kSubTitleColor),
           ),
           subtitle: Text(
             ' $currencySign${45000.00}',
-            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
           ),
           trailing: SizedBox(
             width: 200,

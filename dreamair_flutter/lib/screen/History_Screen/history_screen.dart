@@ -24,12 +24,12 @@ class _HistoryState extends State<History> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(
-          color: kWhite,
+          color: Colors.white,
         ),
         title: Text(
           'History',
-          style: kTextStyle.copyWith(
-            color: kWhite,
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -46,7 +46,7 @@ class _HistoryState extends State<History> {
               // popupmenu item 2
             ],
             offset: const Offset(0, 30),
-            color: kWhite,
+            color: Colors.white,
             elevation: 1.0,
           )
         ],
@@ -54,7 +54,7 @@ class _HistoryState extends State<History> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),
@@ -78,7 +78,7 @@ class _HistoryState extends State<History> {
                         border: Border.all(
                           color: kBorderColorTextField,
                         ),
-                        color: kWhite,
+                        color: Colors.white,
                       ),
                       child: Column(
                         children: [
@@ -109,21 +109,21 @@ class _HistoryState extends State<History> {
                                       children: [
                                         Text(
                                           name[i],
-                                          style: kTextStyle.copyWith(fontWeight: FontWeight.bold, color: kWhite),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         ),
                                         const SizedBox(
                                           height: 15,
                                         ),
                                         Text(
                                           'Economy',
-                                          style: kTextStyle.copyWith(fontSize: 12, color: Colors.white),
+                                          style: TextStyle(fontSize: 12, color: Colors.white),
                                         ),
                                       ],
                                     ),
                                     Column(
                                       children: [
                                         Container(
-                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: kWhite),
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: InkWell(
@@ -197,7 +197,7 @@ class _HistoryState extends State<History> {
                                                                       child: const Text(
                                                                         'Yes',
                                                                         style: TextStyle(
-                                                                          color: kWhite,
+                                                                          color: Colors.white,
                                                                         ),
                                                                       )),
                                                                 ),
@@ -219,7 +219,7 @@ class _HistoryState extends State<History> {
                                         ),
                                         const Text(
                                           '\$3,000',
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: kWhite),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         )
                                       ],
                                     )

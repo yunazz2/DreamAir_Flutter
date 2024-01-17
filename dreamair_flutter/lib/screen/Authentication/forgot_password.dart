@@ -27,7 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       body: Container(
         height: context.height(),
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.0),
             topLeft: Radius.circular(30.0),
@@ -42,7 +42,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(height: 10.0),
                 Text(
                   lang.S.of(context).fpAppBarTitle,
-                  style: kTextStyle.copyWith(
+                  style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.0,
@@ -52,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   lang.S.of(context).fpDesc1,
                   textAlign: TextAlign.center,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                 ),
                 const SizedBox(height: 30.0),
                 TextFormField(
@@ -61,7 +61,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   textInputAction: TextInputAction.next,
                   decoration: kInputDecoration.copyWith(
                     labelText: lang.S.of(context).emailLabel,
-                    labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                    labelStyle: TextStyle(color: kTitleColor),
                     hintText: lang.S.of(context).emailHint,
                     hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                     focusColor: kTitleColor,

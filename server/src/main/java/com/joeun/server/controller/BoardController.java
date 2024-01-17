@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.joeun.server.dto.Board;
 import com.joeun.server.dto.Files;
+import com.joeun.server.dto.Page;
 import com.joeun.server.service.BoardService;
 import com.joeun.server.service.FileService;
 
@@ -37,26 +39,45 @@ public class BoardController {
     // 👩‍💻 CRUD 메소드 자동 생성 : sp-crud
     // 👩‍💻 자동 import : alt + shift + O      
     // 👩‍💻 한 줄 삭제 : ctrl + shift + K
-    @GetMapping()
-    public ResponseEntity<?> getAll() {
-        log.info("[GET] - /board - 게시글 목록");
-        try {
-            List<Board> boardList = boardService.list();
+    // @GetMapping()
+    // public ResponseEntity<?> getAll() {
+    //     log.info("[GET] - /board - 게시글 목록");
+    //     try {
+    //         List<Board> boardList = boardService.list();
 
-            if(boardList == null) {
-                log.info("조회된 게시글 없음");
-            }
-            else {
-                log.info("게시글 수 : " + boardList.size());
-            }
+    //         if(boardList == null) {
+    //             log.info("조회된 게시글 없음");
+    //         }
+    //         else {
+    //             log.info("게시글 수 : " + boardList.size());
+    //         }
 
-            return new ResponseEntity<>(boardList, HttpStatus.OK);
-        } catch (Exception e) {
-            log.error(null, e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    //         return new ResponseEntity<>(boardList, HttpStatus.OK);
+    //     } catch (Exception e) {
+    //         log.error(null, e);
+    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
     
+    // 게시글 목록 with 페이징 처리
+	@GetMapping("/list")
+	public String list(Model model, Page page) throws Exception {
+		
+		log.info("##### 페이징 처리 전 - page #####");
+		log.info(page.toString());
+		
+		// 게시글 목록 요청
+		List<Board> boardList = boardService.list(page);
+		
+		log.info("##### 페이징 처리 후 - page #####");
+		log.info(page.toString());
+		
+		// 게시글 목록 모델에 등록
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("page", page);
+		
+		return "/board/list";
+	}
     @GetMapping("/{boardNo}")
     public ResponseEntity<?> getOne(@PathVariable Integer boardNo, Files files) {
         log.info("[GET] - /boards/" + boardNo  + " - 게시글 조회");

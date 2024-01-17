@@ -1,6 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:flight_booking/screen/Seat/seat.dart';
+import 'package:flight_booking/screen/seat/seat.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -93,8 +93,8 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
             contentPadding: const EdgeInsets.only(right: 15.0),
             title: Text(
               'Trip To',
-              style: kTextStyle.copyWith(
-                color: kWhite,
+              style: TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -102,7 +102,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
               'New Delhi',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: kTextStyle.copyWith(color: kWhite),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -113,11 +113,11 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
             visualDensity: const VisualDensity(vertical: 2),
             title: Text(
               'For 1 Adult',
-              style: kTextStyle.copyWith(color: kSubTitleColor),
+              style: TextStyle(color: kSubTitleColor),
             ),
             subtitle: Text(
               ' $currencySign${45000.00}',
-              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
             ),
             trailing: SizedBox(
               width: 200,
@@ -140,7 +140,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
         body: Container(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10),
           decoration: const BoxDecoration(
-            color: kWhite,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0),
@@ -156,7 +156,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -191,11 +191,11 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         ),
                         title: Text(
                           'Depart (DAC - CCU)',
-                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
                           'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                          style: TextStyle(color: kSubTitleColor),
                         ),
                       ),
                       const Divider(
@@ -220,11 +220,11 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         ),
                         title: Text(
                           'Depart (DAC - CCU)',
-                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
                           'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                          style: TextStyle(color: kSubTitleColor),
                         ),
                       ),
                       const Divider(
@@ -234,7 +234,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                       ButtonGlobalWithoutIcon(
                           buttontext: 'View Flight & Fare Details',
                           buttonDecoration: kButtonDecoration.copyWith(
-                            color: kWhite,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(30.0),
                             border: Border.all(color: kPrimaryColor.withOpacity(0.2)),
                           ),
@@ -250,7 +250,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 //_________________________________________________________________________Baggage_policy
                 Container(
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -273,7 +273,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                           children: [
                             Text(
                               lang.S.of(context).bagPolicyTitle,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                             ),
                             const Spacer(),
                             GestureDetector(
@@ -309,7 +309,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                       children: [
                                                         Text(
                                                           'Refund & Baggage Policy',
-                                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         const Spacer(),
                                                         GestureDetector(
@@ -424,7 +424,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                               title: Text(
                                 'Cabin baggage',
                                 maxLines: 1,
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                   color: kTitleColor,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -432,7 +432,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                               subtitle: Text(
                                 '50Kg',
                                 maxLines: 1,
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                   color: kSubTitleColor,
                                 ),
                               ),
@@ -455,7 +455,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                               title: Text(
                                 'Checked baggage',
                                 maxLines: 1,
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                   color: kTitleColor,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -463,7 +463,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                               subtitle: Text(
                                 '50Kg',
                                 maxLines: 1,
-                                style: kTextStyle.copyWith(
+                                style: TextStyle(
                                   color: kSubTitleColor,
                                 ),
                               ),
@@ -480,7 +480,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 //_________________________________________________________________________cancellation_refund_policy
                 Container(
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -503,7 +503,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                           children: [
                             Text(
                               lang.S.of(context).refundPolicyTitle,
-                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                             ),
                             const Spacer(),
                             const Icon(
@@ -548,13 +548,13 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   Text(
                                     'Cancel Between (IST)',
                                     maxLines: 1,
-                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                    style: TextStyle(color: kSubTitleColor),
                                   ),
                                   const Spacer(),
                                   Text(
                                     'Cancellation Penalty:',
                                     maxLines: 1,
-                                    style: kTextStyle.copyWith(
+                                    style: TextStyle(
                                       color: kSubTitleColor,
                                     ),
                                   ),
@@ -565,7 +565,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   Text(
                                     'Now - 6 Jan | 11:40 pm',
                                     maxLines: 1,
-                                    style: kTextStyle.copyWith(
+                                    style: TextStyle(
                                       color: kTitleColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -574,7 +574,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   Text(
                                     '$currencySign${7200}',
                                     maxLines: 1,
-                                    style: kTextStyle.copyWith(
+                                    style: TextStyle(
                                       color: kTitleColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -595,7 +595,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -621,7 +621,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                           const SizedBox(width: 10.0),
                           Text(
                             'Offer & Promocode',
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
                           Container(
@@ -632,7 +632,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             ),
                             child: Text(
                               lang.S.of(context).viewAllButton,
-                              style: kTextStyle.copyWith(color: kWhite),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ],
@@ -662,7 +662,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                               child: Center(
                                 child: Text(
                                   lang.S.of(context).applyButton,
-                                  style: kTextStyle.copyWith(color: kPrimaryColor),
+                                  style: TextStyle(color: kPrimaryColor),
                                 ),
                               ),
                             ),
@@ -703,14 +703,14 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                     children: [
                                       Text(
                                         discountList[i],
-                                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                       ),
                                       const SizedBox(
                                         height: 8,
                                       ),
                                       Text(
                                         'Get NIR 278 Instant Discount',
-                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                        style: TextStyle(color: kSubTitleColor),
                                       ),
                                     ],
                                   ),
@@ -763,7 +763,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                   width: context.width(),
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -782,7 +782,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                     children: [
                       Text(
                         'Traveler Details',
-                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         contentPadding: EdgeInsets.zero,
@@ -801,16 +801,16 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         ),
                         title: Text(
                           'Adult (12 yrs+)',
-                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                          style: TextStyle(color: kSubTitleColor),
                         ),
                         trailing: RichText(
                           text: TextSpan(
                             text: '1/1 ',
-                            style: kTextStyle.copyWith(color: kTitleColor),
+                            style: TextStyle(color: kTitleColor),
                             children: [
                               TextSpan(
                                 text: 'Added',
-                                style: kTextStyle.copyWith(color: kSubTitleColor),
+                                style: TextStyle(color: kSubTitleColor),
                               ),
                             ],
                           ),
@@ -820,7 +820,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            color: kWhite,
+                            color: Colors.white,
                             boxShadow: const [BoxShadow(color: kBorderColorTextField, blurRadius: 7.0, spreadRadius: 2.0, offset: Offset(0, 2))]),
                         child: ListTile(
                           contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -831,7 +831,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                           ),
                           title: Text(
                             'Ibne Riead',
-                            style: kTextStyle.copyWith(color: kTitleColor),
+                            style: TextStyle(color: kTitleColor),
                           ),
                           trailing: const Icon(
                             IconlyBold.edit,
@@ -845,7 +845,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         buttonTextColor: kPrimaryColor,
                         buttonIcon: FeatherIcons.plus,
                         buttonDecoration: kButtonDecoration.copyWith(
-                          color: kWhite,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(8.0),
                           border: Border.all(
                             color: kPrimaryColor.withOpacity(0.5),
@@ -881,7 +881,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                 children: [
                                                   Text(
                                                     'Add Adult 1',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                   ),
                                                   const Spacer(),
                                                   GestureDetector(
@@ -901,7 +901,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                             Container(
                                               width: context.width(),
                                               decoration: const BoxDecoration(
-                                                color: kWhite,
+                                                color: Colors.white,
                                                 borderRadius: BorderRadius.only(
                                                   topLeft: Radius.circular(30.0),
                                                   topRight: Radius.circular(30.0),
@@ -921,7 +921,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                 children: [
                                                   Text(
                                                     lang.S.of(context).selectGenderTitle,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                   ),
                                                   HorizontalList(
                                                     padding: EdgeInsets.zero,
@@ -941,7 +941,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                           ),
                                                           Text(
                                                             genderList[i],
-                                                            style: kTextStyle.copyWith(
+                                                            style: TextStyle(
                                                               color: kTitleColor,
                                                               fontWeight: FontWeight.bold,
                                                             ),
@@ -957,7 +957,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                     textInputAction: TextInputAction.next,
                                                     decoration: kInputDecoration.copyWith(
                                                       labelText: lang.S.of(context).nameTitle,
-                                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                      labelStyle: TextStyle(color: kTitleColor),
                                                       hintText: lang.S.of(context).nameHint,
                                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                       focusColor: kTitleColor,
@@ -971,7 +971,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                     textInputAction: TextInputAction.next,
                                                     decoration: kInputDecoration.copyWith(
                                                       labelText: lang.S.of(context).lastNameTitle,
-                                                      labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                      labelStyle: TextStyle(color: kTitleColor),
                                                       hintText: lang.S.of(context).lastNameHint,
                                                       hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                       focusColor: kTitleColor,
@@ -1003,11 +1003,11 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                       tilePadding: EdgeInsets.zero,
                                                       title: Text(
                                                         'Frequent Traveler No',
-                                                        style: kTextStyle.copyWith(color: kPrimaryColor),
+                                                        style: TextStyle(color: kPrimaryColor),
                                                       ),
                                                       subtitle: Text(
                                                         '(Frequent flyer number is subject to airline acceptance)',
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor, fontSize: 12.0),
+                                                        style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                       ),
                                                       children: [
                                                         const SizedBox(height: 10.0),
@@ -1017,7 +1017,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                           textInputAction: TextInputAction.next,
                                                           decoration: kInputDecoration.copyWith(
                                                             labelText: 'Frequent Flyer Airline',
-                                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                            labelStyle: TextStyle(color: kTitleColor),
                                                             hintText: 'Enter frequent flyer airline',
                                                             hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                             focusColor: kTitleColor,
@@ -1031,7 +1031,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                           textInputAction: TextInputAction.next,
                                                           decoration: kInputDecoration.copyWith(
                                                             labelText: 'Frequent Flyer No',
-                                                            labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                            labelStyle: TextStyle(color: kTitleColor),
                                                             hintText: 'Enter frequent flyer no',
                                                             hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                             focusColor: kTitleColor,
@@ -1078,7 +1078,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                   width: context.width(),
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: kWhite,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                     border: Border.all(
                       color: kSecondaryColor,
@@ -1099,7 +1099,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         children: [
                           Text(
                             'Booking details will be sent to',
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
                           GestureDetector(
@@ -1134,7 +1134,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                     children: [
                                                       Text(
                                                         lang.S.of(context).contactInfoTitle,
-                                                        style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                       ),
                                                       const Spacer(),
                                                       GestureDetector(
@@ -1154,7 +1154,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                 Container(
                                                   width: context.width(),
                                                   decoration: const BoxDecoration(
-                                                    color: kWhite,
+                                                    color: Colors.white,
                                                     borderRadius: BorderRadius.only(
                                                       topLeft: Radius.circular(30.0),
                                                       topRight: Radius.circular(30.0),
@@ -1175,7 +1175,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                     children: [
                                                       Text(
                                                         'Your ticket and flights information will be sent here.',
-                                                        style: kTextStyle.copyWith(color: kTitleColor),
+                                                        style: TextStyle(color: kTitleColor),
                                                       ),
                                                       const SizedBox(height: 10.0),
                                                       TextFormField(
@@ -1184,7 +1184,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                         textInputAction: TextInputAction.next,
                                                         decoration: kInputDecoration.copyWith(
                                                           labelText: lang.S.of(context).emailHint,
-                                                          labelStyle: kTextStyle.copyWith(color: kTitleColor),
+                                                          labelStyle: TextStyle(color: kTitleColor),
                                                           hintText: lang.S.of(context).emailHint,
                                                           hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                                                           focusColor: kTitleColor,
@@ -1263,7 +1263,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         ),
                         title: Text(
                           'shaidulilalm@gmail.com)',
-                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                          style: TextStyle(color: kSubTitleColor),
                         ),
                       ),
                       ListTile(
@@ -1284,7 +1284,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         ),
                         title: Text(
                           'Add Mobile Number-',
-                          style: kTextStyle.copyWith(color: kPrimaryColor),
+                          style: TextStyle(color: kPrimaryColor),
                         ),
                       ),
                       const Divider(
@@ -1312,11 +1312,11 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                           RichText(
                             text: TextSpan(
                               text: 'I have a GST number ',
-                              style: kTextStyle.copyWith(color: kTitleColor),
+                              style: TextStyle(color: kTitleColor),
                               children: [
                                 TextSpan(
                                   text: '(Optional)',
-                                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                                  style: TextStyle(color: kSubTitleColor),
                                 ),
                               ],
                             ),

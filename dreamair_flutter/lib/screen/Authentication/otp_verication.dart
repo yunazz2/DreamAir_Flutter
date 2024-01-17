@@ -26,7 +26,7 @@ class _OtpVerificationState extends State<OtpVerification> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          color: kWhite,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30.0),
             topLeft: Radius.circular(30.0),
@@ -39,7 +39,7 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(height: 10.0),
               Text(
                 lang.S.of(context).verification,
-                style: kTextStyle.copyWith(
+                style: TextStyle(
                   color: kTitleColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0,
@@ -50,11 +50,11 @@ class _OtpVerificationState extends State<OtpVerification> {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: lang.S.of(context).otpDesc1,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).otpDesc2,
-                      style: kTextStyle.copyWith(
+                      style: TextStyle(
                         color: kTitleColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -90,18 +90,18 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(height: 20.0),
               Text(
                 '00:55',
-                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: lang.S.of(context).otpResendTitle1,
-                  style: kTextStyle.copyWith(color: kSubTitleColor),
+                  style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).otpResendTitle2,
-                      style: kTextStyle.copyWith(
+                      style: TextStyle(
                         color: kPrimaryColor,
                         fontWeight: FontWeight.bold,
                       ),

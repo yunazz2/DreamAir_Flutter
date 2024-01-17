@@ -31,17 +31,17 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
         initialIndex: 1,
         child: Scaffold(
           bottomNavigationBar: Container(
-            decoration: const BoxDecoration(color: kWhite),
+            decoration: const BoxDecoration(color: Colors.white),
             child: ListTile(
               contentPadding: const EdgeInsets.only(left: 15.0, right: 15.0),
               visualDensity: const VisualDensity(vertical: 2),
               title: Text(
                 'Total Price',
-                style: kTextStyle.copyWith(color: kSubTitleColor),
+                style: TextStyle(color: kSubTitleColor),
               ),
               subtitle: Text(
                 ' $currencySign${45000.00}',
-                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
               ),
               trailing: SizedBox(
                 height: 80,
@@ -67,7 +67,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
             padding: const EdgeInsets.only(top: 40.0),
             child: Container(
               decoration: const BoxDecoration(
-                color: kWhite,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
@@ -84,7 +84,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                         children: [
                           Text(
                             lang.S.of(context).flightDetails,
-                            style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
                           GestureDetector(
@@ -103,7 +103,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                        color: kWhite,
+                        color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(30.0),
                           topLeft: Radius.circular(30.0),
@@ -174,14 +174,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                         children: [
                                           Text(
                                             'Dhaka - New Delhi',
-                                            style: kTextStyle.copyWith(
+                                            style: TextStyle(
                                               color: kTitleColor,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           Text(
                                             '1 stop | 5 hrs 40 mins | Economy',
-                                            style: kTextStyle.copyWith(color: kSubTitleColor),
+                                            style: TextStyle(color: kSubTitleColor),
                                           ),
                                         ],
                                       ),
@@ -195,7 +195,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                       width: context.width(),
                                       padding: const EdgeInsets.all(10.0),
                                       decoration: BoxDecoration(
-                                        color: kWhite,
+                                        color: Colors.white,
                                         borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(8.0),
                                           bottomRight: Radius.circular(8.0),
@@ -223,11 +223,11 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                             ),
                                             title: Text(
                                               'IndiGo',
-                                              style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                             ),
                                             subtitle: Text(
                                               '05h 25m in flight',
-                                              style: kTextStyle.copyWith(color: kSubTitleColor),
+                                              style: TextStyle(color: kSubTitleColor),
                                             ),
                                           ),
                                           const SizedBox(height: 10.0),
@@ -266,7 +266,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         height: 15.0,
                                                         width: 15.0,
                                                         decoration: BoxDecoration(
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           shape: BoxShape.circle,
                                                           border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                         ),
@@ -281,28 +281,28 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                   children: [
                                                     Text(
                                                       '11:40 pm  -  Dhaka',
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
                                                         'Thu 6 Jan - Hazrat Shahjala International Airport',
                                                         maxLines: 2,
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ),
                                                     const SizedBox(height: 10.0),
                                                     Text(
                                                       '11:40 pm  -  Dhaka',
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
                                                         'Thu 6 Jan - Netaji Subhash Chandra Bose International Airport',
                                                         maxLines: 2,
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ),
@@ -335,11 +335,11 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                               ),
                                               title: Text(
                                                 'Overnight layover in Dubai',
-                                                style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                               ),
                                               subtitle: Text(
                                                 '07h 05m',
-                                                style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                style: TextStyle(color: kSubTitleColor),
                                               ),
                                             ),
                                           ),
@@ -357,7 +357,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         height: 15.0,
                                                         width: 15.0,
                                                         decoration: BoxDecoration(
-                                                          color: kWhite,
+                                                          color: Colors.white,
                                                           shape: BoxShape.circle,
                                                           border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                         ),
@@ -394,28 +394,28 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                   children: [
                                                     Text(
                                                       '11:40 pm  -  Dhaka',
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
                                                         'Thu 6 Jan - Hazrat Shahjala International Airport',
                                                         maxLines: 2,
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ),
                                                     const SizedBox(height: 10.0),
                                                     Text(
                                                       '11:40 pm  -  Dhaka',
-                                                      style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
                                                         'Thu 6 Jan - Netaji Subhash Chandra Bose International Airport',
                                                         maxLines: 2,
-                                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                        style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ),
@@ -453,14 +453,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                     children: [
                                       Text(
                                         'New Delhi - Dhaka',
-                                        style: kTextStyle.copyWith(
+                                        style: TextStyle(
                                           color: kTitleColor,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       Text(
                                         'Non stop | 3 hrs 40 mins | Economy ',
-                                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                                        style: TextStyle(color: kSubTitleColor),
                                       ),
                                     ],
                                   ),
@@ -474,7 +474,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                   width: context.width(),
                                   padding: const EdgeInsets.all(10.0),
                                   decoration: BoxDecoration(
-                                    color: kWhite,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(8.0),
                                       bottomRight: Radius.circular(8.0),
@@ -502,11 +502,11 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                         ),
                                         title: Text(
                                           'IndiGo',
-                                          style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                         ),
                                         subtitle: Text(
                                           '05h 25m in flight',
-                                          style: kTextStyle.copyWith(color: kSubTitleColor),
+                                          style: TextStyle(color: kSubTitleColor),
                                         ),
                                       ),
                                       Container(
@@ -522,7 +522,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                     height: 15.0,
                                                     width: 15.0,
                                                     decoration: BoxDecoration(
-                                                      color: kWhite,
+                                                      color: Colors.white,
                                                       shape: BoxShape.circle,
                                                       border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
                                                     ),
@@ -556,28 +556,28 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                               children: [
                                                 Text(
                                                   '11:40 pm  -  Dhaka',
-                                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                                 SizedBox(
                                                   width: 265,
                                                   child: Text(
                                                     'Thu 6 Jan - Hazrat Shahjala International Airport',
                                                     maxLines: 2,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                     overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                                 const SizedBox(height: 10.0),
                                                 Text(
                                                   '11:40 pm  -  Dhaka',
-                                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                                 SizedBox(
                                                   width: 265,
                                                   child: Text(
                                                     'Thu 6 Jan - Netaji Subhash Chandra Bose International Airport',
                                                     maxLines: 2,
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor),
+                                                    style: TextStyle(color: kSubTitleColor),
                                                     overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ),
@@ -600,7 +600,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                               children: [
                                 Text(
                                   lang.S.of(context).selectService,
-                                  style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 10.0),
                                 ListView.builder(
@@ -613,7 +613,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                       padding: const EdgeInsets.only(bottom: 10.0),
                                       child: Container(
                                         decoration:
-                                            BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: kWhite, border: Border.all(color: kSecondaryColor)),
+                                            BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: Colors.white, border: Border.all(color: kSecondaryColor)),
                                         child: Column(
                                           children: [
                                             ListTile(
@@ -637,7 +637,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                 children: [
                                                   Text(
                                                     'Fare Offered by airline',
-                                                    style: kTextStyle.copyWith(
+                                                    style: TextStyle(
                                                       color: kTitleColor,
                                                       fontWeight: FontWeight.bold,
                                                     ),
@@ -645,7 +645,7 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                   const Spacer(),
                                                   Text(
                                                     '$currencySign${14450}',
-                                                    style: kTextStyle.copyWith(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
+                                                    style: TextStyle(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
                                                   ),
                                                 ],
                                               ),
@@ -653,14 +653,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                 children: [
                                                   Text(
                                                     titleList[i],
-                                                    style: kTextStyle.copyWith(
+                                                    style: TextStyle(
                                                       color: kSubTitleColor,
                                                     ),
                                                   ),
                                                   const Spacer(),
                                                   Text(
                                                     '$currencySign${14450}',
-                                                    style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 16.0),
+                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 16.0),
                                                   ),
                                                 ],
                                               ),
@@ -686,14 +686,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Cabin baggage',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           '7Kg',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),
@@ -714,14 +714,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Seat Selection',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           'Available',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),
@@ -742,14 +742,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Cancellation',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           'Cancellation fee starting $currencySign${5000}',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),
@@ -782,14 +782,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Checked baggage',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           '50Kg',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),
@@ -810,14 +810,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Meal',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           'Available',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),
@@ -838,14 +838,14 @@ class _FlightDetailsState extends State<FlightDetails> with TickerProviderStateM
                                                         ),
                                                         title: Text(
                                                           'Date Change ',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kTitleColor,
                                                             fontWeight: FontWeight.bold,
                                                           ),
                                                         ),
                                                         subtitle: Text(
                                                           'Date change fee starting $currencySign${7000}',
-                                                          style: kTextStyle.copyWith(
+                                                          style: TextStyle(
                                                             color: kSubTitleColor,
                                                           ),
                                                         ),

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.joeun.server.dto.Board;
 import com.joeun.server.dto.Files;
+import com.joeun.server.dto.Page;
 import com.joeun.server.mapper.BoardMapper;
 import com.joeun.server.mapper.FileMapper;
 
@@ -28,10 +29,38 @@ public class BoardServiceImpl implements BoardService {
     private FileService fileService;
 
 
-    @Override
-    public List<Board> list() throws Exception {
-        List<Board> boardList = boardMapper.list();
+    // @Override
+    // public List<Board> list() throws Exception {
+    //     List<Board> boardList = boardMapper.list();
 
+    //     for (int i = 0; i < boardList.size(); i++) {
+    //         Files file = new Files();
+    //         file.setParentTable("board");
+    //         file.setParentNo(boardList.get(i).getBoardNo());
+
+    //         file = fileMapper.selectThumbnail(file);
+    //         if(file != null) {
+    //             boardList.get(i).setFileName(file.getFileName());
+    //             boardList.get(i).setFileType(file.getFileType());
+    //         }
+    //         boardList.get(i).setThumbnail(file);
+    //     }
+        
+    //     return boardList;
+    // }
+
+    	@Override
+	public List<Board> list(Page page) throws Exception {
+
+		// 전체 게시글 수
+		int totalCount = boardMapper.count();
+		
+		// 페이징 처리
+		page.setTotalCount(totalCount);
+		page.calc(page);
+
+		List<Board> boardList = boardMapper.list(page);
+		
         for (int i = 0; i < boardList.size(); i++) {
             Files file = new Files();
             file.setParentTable("board");
@@ -44,10 +73,16 @@ public class BoardServiceImpl implements BoardService {
             }
             boardList.get(i).setThumbnail(file);
         }
-        
-        return boardList;
-    }
 
+		return boardList;
+	}
+
+    @Override
+	public int count() throws Exception {
+		int count = boardMapper.count();
+		return count;
+	}
+    
     @Override
     public Board select(int boardNo) throws Exception {
         Board board = boardMapper.select(boardNo);
