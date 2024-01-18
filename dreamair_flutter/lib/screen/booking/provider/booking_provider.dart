@@ -2,95 +2,142 @@ import 'package:flutter/material.dart';
 
 class BookingProvider extends ChangeNotifier {
 
-  String _departure = '';
-  String _departureEng = '';
-  String _destination = '';
-  String _destinationEng = '';
-  String _roundTrip = '편도';
-  int _pasCount = 1;
-  String _departureDate = '';
-  int _productPrice = 10000;      // 0으로 변경
-  String _flightName = 'DA0001';        // '' 
-  String _departureTime = '10:00';     // ''
-  String _destinationTime = '11:00';   // ''
-  String _duration = '1';   // ''
-  int _totalPrice = 0;
+  String departure = '';
+  String departureEng = '';
+  String destination = '';
+  String destinationEng = '';
+  String roundTrip = '편도';
+  int pasCount = 1;
+  String departureDate = '';
+  int productPrice = 10000;      // 0으로 변경
+  String flightName = 'DA0001';        // '' 
+  String departureTime = '10:00';     // ''
+  String destinationTime = '11:00';   // ''
+  String duration = '1';   // ''
+  int totalPrice = 0;
 
   // 탑승객 정보
   int pinType = 0;
   List<int> pinTypes = [];
+  int passengerNo = 0;
+  List<int> passengerNos = [];
+  String passengerName = '';
+  List<String> passengerNames = [''];
+  String firstName = '';
+  List<String> firstNames = [];
+  String lastName = '';
+  List<String> lastNames = [];
+  String gender = '';
+  List<String> genders = [];
+  String birth = '';
+  List<String> births = [];
+  String phone = '';
+  List<String> phones = [];
+  String email = '';
+  List<String> emails = [];
 
-  String get getDeparture => _departure;
-  String get getDepartureEng => _departureEng;
-  String get getDestination => _destination;
-  String get getDestinationEng => _destinationEng;
-  int get getPasCount => _pasCount;
-  String get getRoundTrip => _roundTrip;
-  String get getDepartureDate => _departureDate;
-  int get getProductPrice => _productPrice;
-  String get getFlightName => _flightName;
-  String get getDepartureTime => _departureTime;
-  String get getDestinationTime => _destinationTime;
-  String get getDuration => _duration;
-  int get getTotalPrice => _totalPrice;
+  String get getDeparture => departure;
+  String get getDepartureEng => departureEng;
+  String get getDestination => destination;
+  String get getDestinationEng => destinationEng;
+  int get getPasCount => pasCount;
+  String get getRoundTrip => roundTrip;
+  String get getDepartureDate => departureDate;
+  int get getProductPrice => productPrice;
+  String get getFlightName => flightName;
+  String get getDepartureTime => departureTime;
+  String get getDestinationTime => destinationTime;
+  String get getDuration => duration;
+  int get getTotalPrice => totalPrice;
 
-  set setDeparture(String departure) {
-    _departure = departure;
+  // 탑승객 정보
+  List<int> get getPinTypes => pinTypes;
+  List<int> get getPassengerNos => passengerNos;
+  List<String> get getPassengerNames => passengerNames;
+  List<String> get getFirstNames => firstNames;
+  List<String> get getLastNames => lastNames;
+  List<String> get getGenders => genders;
+  List<String> get getBirths => births;
+  List<String> get getPhones => phones;
+  List<String> get getEmails => emails;
+
+  set setPinTypes(int parmPinType) => pinTypes.add(parmPinType);
+  set setPassengerNos(int paramPassengerNo) => passengerNos.add(paramPassengerNo);
+  set setPassengerNames(String paramPassengerName) => passengerNames.add(paramPassengerName);
+  set setFirstNames(String paramFirstName) => firstNames.add(paramFirstName);
+  set setLastNames(String paramLastName) => lastNames.add(paramLastName);
+  set setGenders(String paramGender) => genders.add(paramGender);
+  set setBirths(String paramBirth) => births.add(paramBirth);
+  set setPhones(String paramPhone) => phones.add(paramPhone);
+  set setEmails(String paramEmail) => emails.add(paramEmail);
+
+  // set setFirstNames(String paramFirstName) {
+  //   firstNames.add(paramFirstName);
+  // }
+
+  set setDeparture(String parmDeparture) {
+    departure = parmDeparture;
     notifyListeners();
   }
 
-  set setDepartureEng(String departureEng) {
-    _departureEng = departureEng; 
+  set setDepartureEng(String parmDepartureEng) {
+    departureEng = parmDepartureEng; 
     notifyListeners();
   }
 
-  set setDestination(String destination) { 
-    _destination = destination;
+  set setDestination(String parmDestination) { 
+    destination = parmDestination;
     notifyListeners();
   }
 
-  set setDestinationEng(String destinationEng) {
-    _destinationEng = destinationEng;
+  set setDestinationEng(String parmDestinationEng) {
+    destinationEng = parmDestinationEng;
     notifyListeners();
   }
 
-  set setRoundTrip(String roundTrip) { 
-    _roundTrip = roundTrip;
+  set setRoundTrip(String parmRoundTrip) { 
+    roundTrip = parmRoundTrip;
     notifyListeners();
   }
 
-  set setPasCount(int pasCount) {
-    _pasCount = pasCount;
+  set setPasCount(int parmPasCount) {
+    pasCount = parmPasCount;
     // notifyListeners();
   }
 
-  set setDeprtureDate(String departureDate) {
-    _departureDate = departureDate;
+  set setDeprtureDate(String parmDepartureDate) {
+    departureDate = parmDepartureDate;
     notifyListeners();
   }
 
-  set setProductPrice(int productPrice) {
-    _productPrice = productPrice;
+  set setProductPrice(int parmProductPrice) {
+    productPrice = parmProductPrice;
     notifyListeners();
   }
 
-  set setFlightName(String flightName) {
-    _flightName = flightName;
+  set setFlightName(String parmFlightName) {
+    flightName = parmFlightName;
     notifyListeners();
   }
 
-  set setDepartureTime(String departureTime) {
-    _departureTime = departureTime;
+  set setDepartureTime(String parmDepartureTime) {
+    departureTime = parmDepartureTime;
     notifyListeners();
   }
 
-  set setDestinationTime(String destinationTime) {
-    _destinationTime = destinationTime;
+  set setDestinationTime(String parmDestinationTime) {
+    destinationTime = parmDestinationTime;
     notifyListeners();
   }
 
-  set setTotalPrcie(int _totalPrice) {
-    _totalPrice = _totalPrice;
+  set setTotalPrcie(int parmTotalPrice) {
+    totalPrice = parmTotalPrice;
+    notifyListeners();
+  }
+
+  // 탑승객 정보
+  set setPinType(int parmPinType) {
+    pinType = parmPinType;
     notifyListeners();
   }
 }
