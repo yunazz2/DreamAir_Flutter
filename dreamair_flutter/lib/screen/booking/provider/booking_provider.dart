@@ -17,7 +17,8 @@ class BookingProvider extends ChangeNotifier {
   int _totalPrice = 0;
 
   // 탑승객 정보
-  // int pin
+  int pinType = 0;
+  List<int> pinTypes = [];
 
   String get getDeparture => _departure;
   String get getDepartureEng => _departureEng;
