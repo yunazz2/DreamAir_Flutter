@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 
 class BookingProvider extends ChangeNotifier {
 
-  String _departure = '김포';
-  String _departureEng = '(GMP)';
-  String _destination = '김포';
-  String _destinationEng = '(GMP)';
-  String _roundTrip = '왕복 가는편';
+  String _departure = '';
+  String _departureEng = '';
+  String _destination = '';
+  String _destinationEng = '';
+  String _roundTrip = '편도';
   int _pasCount = 1;
   String _departureDate = '';
+  int _productPrice = 10000;      // 0으로 변경
+  String _flightName = 'DA0001';        // '' 
+  String _departureTime = '10:00';     // ''
+  String _destinationTime = '11:00';   // ''
+  String _duration = '1';   // ''
+  int _totalPrice = 0;
+
+  // 탑승객 정보
+  // int pin
 
   String get getDeparture => _departure;
   String get getDepartureEng => _departureEng;
@@ -17,6 +26,12 @@ class BookingProvider extends ChangeNotifier {
   int get getPasCount => _pasCount;
   String get getRoundTrip => _roundTrip;
   String get getDepartureDate => _departureDate;
+  int get getProductPrice => _productPrice;
+  String get getFlightName => _flightName;
+  String get getDepartureTime => _departureTime;
+  String get getDestinationTime => _destinationTime;
+  String get getDuration => _duration;
+  int get getTotalPrice => _totalPrice;
 
   set setDeparture(String departure) {
     _departure = departure;
@@ -50,6 +65,31 @@ class BookingProvider extends ChangeNotifier {
 
   set setDeprtureDate(String departureDate) {
     _departureDate = departureDate;
+    notifyListeners();
   }
 
+  set setProductPrice(int productPrice) {
+    _productPrice = productPrice;
+    notifyListeners();
+  }
+
+  set setFlightName(String flightName) {
+    _flightName = flightName;
+    notifyListeners();
+  }
+
+  set setDepartureTime(String departureTime) {
+    _departureTime = departureTime;
+    notifyListeners();
+  }
+
+  set setDestinationTime(String destinationTime) {
+    _destinationTime = destinationTime;
+    notifyListeners();
+  }
+
+  set setTotalPrcie(int _totalPrice) {
+    _totalPrice = _totalPrice;
+    notifyListeners();
+  }
 }
