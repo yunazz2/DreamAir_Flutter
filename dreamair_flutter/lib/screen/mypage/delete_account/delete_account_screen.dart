@@ -1,4 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flight_booking/main.dart';
+import 'package:flight_booking/screen/home/home_screen.dart';
 import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,17 +29,36 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.only(left: 100.0, right: 100.0),
-        height: 90,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 50, width: double.infinity,
-              child: ElevatedButton(
+
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: Text('회원 탈퇴', style: TextStyle(color: Colors.white,),),
+        centerTitle: true,
+      ),
+
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          height: context.height(),
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 50,),
+              Text('회원 탈퇴를 진행하시겠습니까?', style: TextStyle(fontSize: 15.0),),
+              Text('탈퇴 시 회원 정보 및 마일리지 복구가 불가능합니다.', style: TextStyle(fontSize: 15.0),),
+
+              const SizedBox(height: 20.0,),
+              ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40),
@@ -68,20 +89,18 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                   width: 100,
                                   height: 40,
                                   child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          elevation: 0.0,
-                                          backgroundColor: Colors.red,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(40),
-                                          )),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0.0,
+                                      backgroundColor: Colors.red,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                      )),
                                       child: const Text(
                                         'No',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
+                                        style: TextStyle(color: Colors.white,),
                                       )),
                                 ),
                                 const SizedBox(width: 12,),
@@ -94,7 +113,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                       setState(() {
                                         // 회원 탈퇴 로직 연결
                                       });
-                                      Navigator.pop(context);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
                                     },
                                     style: ElevatedButton.styleFrom(
                                       elevation: 0.0,
@@ -113,36 +132,6 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                 },
                 child: Text('회원 탈퇴', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
               ),
-            )
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: Text('회원 탈퇴', style: TextStyle(color: Colors.white,),),
-        centerTitle: true,
-      ),
-
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Container(
-          height: context.height(),
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 25,),
-              Text('탈퇴를 진행하시겠습니까?', style: TextStyle(fontSize: 15.0),),
-              Text('탈퇴 시 회원 정보 및 마일리지 복구가 불가능합니다.', style: TextStyle(fontSize: 15.0),),
             ],
           ),
         ),

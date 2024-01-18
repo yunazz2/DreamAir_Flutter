@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         labelColor: Colors.white,
                                         indicator: BoxDecoration(
                                           borderRadius: BorderRadius.circular(30.0),
-                                          color: Color.fromARGB(255, 255, 183, 213),
+                                          color: Color.fromARGB(255, 255, 150, 180),
                                         ),
                                         onTap: (index) {
                                           if (index == 0) {

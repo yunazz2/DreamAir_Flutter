@@ -20,6 +20,9 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
   String departureDate = '2024/01/20';
   String destinationDate = '2024/01/20';
   String selectedSeatNo = 'A1';
+  String userName = '김조은';
+  String userPhoneNum = '01000000000';
+  String userEmail = 'email@email.com';
 
   @override
   Widget build(BuildContext context) {
@@ -31,57 +34,6 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
         backgroundColor: kPrimaryColor,
         title: Text('나의 탑승권 조회', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),
         iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(color: kDarkWhite),
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          height: 90,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
-            ),
-            color: Colors.white,
-          ),
-
-          // 버튼
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    elevation: 0.0,
-                    backgroundColor: kPrimaryColor,
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Download',
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, color: Colors.white),
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      FaIcon(
-                        FeatherIcons.downloadCloud,
-                        size: 25,
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
       ),
 
       // 탑승권 상세 조회 내용 시작
@@ -158,6 +110,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+
                         // 출발지
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +124,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 children: [
                                   Text('출발지', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$departure', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$departure', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -195,7 +148,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 children: [
                                   Text('도착지', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$destination', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$destination', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -219,7 +172,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 children: [
                                   Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -243,7 +196,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 children: [
                                   Text('선택 좌석', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$selectedSeatNo', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$selectedSeatNo', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -265,9 +218,9 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  Text('예매자 명', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$userName', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -289,9 +242,9 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  Text('핸드폰 번호', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$userPhoneNum', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -313,9 +266,9 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text('출발일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
+                                  Text('이메일', style: TextStyle(color: kSubTitleColor, fontSize: 15.0),),
                                   SizedBox(height: 5.0),
-                                  Text('$departureDate', style: TextStyle(color: kTitleColor, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  Text('$userEmail', style: TextStyle(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             ),
@@ -338,7 +291,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                           ),
                         )),
                   ),
-                  SizedBox(height: 500.0,)
+                  SizedBox(height: 50.0,)
                 ],
               ),
             ),
