@@ -6,7 +6,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
-import '../book proceed/book_proceed.dart';
+import '../booking/book_proceed.dart';
 import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
@@ -186,7 +186,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                 ),
                                               ),
                                               Text(
-                                                '직항 | ${booking.getDuration} | Economy',    // 좌석 등급 살리기
+                                                '직항 | ${booking.getDuration} 시간 | Economy',    // 좌석 등급 살리기
                                                 style: TextStyle(color: kSubTitleColor),
                                               ),
                                             ],
@@ -224,7 +224,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                   width: 34.0,
                                                   decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),    // 로고 자리
+                                                    image: DecorationImage(image: AssetImage('images/logo.png'), fit: BoxFit.cover),    // 로고 자리
                                                   ),
                                                 ),
                                                 title: Text(
@@ -232,7 +232,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                                 subtitle: Text(
-                                                  '${booking.getDuration} in flight',
+                                                  '${booking.getDuration} 시간 in flight',
                                                   style: TextStyle(color: kSubTitleColor),
                                                 ),
                                               ),

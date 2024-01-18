@@ -6,7 +6,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
-import '../book proceed/book_proceed.dart';
+import '../booking/book_proceed.dart';
 import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
@@ -18,7 +18,6 @@ class BackFlightDetails extends StatefulWidget {
 }
 
 class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProviderStateMixin {
-  // TabController? tabController;
 
   List<Map<String, String>> serviceList = [
     {
@@ -56,7 +55,6 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
   @override
   void initState() {
     super.initState();
-    // tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -64,9 +62,6 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
     return Consumer<BookingProvider>(
         builder: ((context, booking, child) =>   
           SafeArea(
-          // child: DefaultTabController(
-          //   length: 2,
-          //   initialIndex: 1,
             child: Scaffold(
               bottomNavigationBar: Container(
                 decoration: const BoxDecoration(color: Colors.white),
@@ -92,11 +87,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                       ),
                       onPressed: () {             
                         setState(() {
-                          if (booking.getRoundTrip == '편도') {
                             const BookProceed().launch(context);         // 예매하기 버튼
-                          } else {
-                            const BackSearchResult().launch(context);
-                          }
                         });
                       },       
                       buttonTextColor: kWhite,
@@ -162,206 +153,178 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // TabBar(
-                              //   labelStyle: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
-                              //   unselectedLabelColor: kSubTitleColor,
-                              //   indicatorColor: kPrimaryColor,
-                              //   labelColor: kPrimaryColor,
-                              //   indicatorSize: TabBarIndicatorSize.tab,
-                              //   indicator: const BoxDecoration(
-                              //     borderRadius: BorderRadius.only(
-                              //       topRight: Radius.circular(30.0),
-                              //       topLeft: Radius.circular(30.0),
-                              //     ),
-                              //     color: Color(0xFFEDF0FF),
-                              //   ),
-                              //   onTap: (index) {
-                              //     setState(() {
-                              //       selectedIndex = index;
-                              //     });
-                              //   },
-                              //   tabs: [
-                              //     Tab(
-                              //       text: '편도',
-                              //     ),
-                              //     Tab(
-                              //       text: '왕복',
-                              //     ),
-                              //   ],
-                              // ),
                               const Divider(height: 0, thickness: 1.0, color: kBorderColorTextField),
-                              //_________________________________________________________________________Onward
-                              // ListView.builder(
-                              //   itemCount: 1,
-                              //   shrinkWrap: true,
-                              //   padding: EdgeInsets.zero,
-                              //   physics: const NeverScrollableScrollPhysics(),
-                              //   itemBuilder: (_, i) {
-                              //     return Padding(
-                              //       padding: const EdgeInsets.all(10.0),
-                              //       child: Column(
-                              //         children: [
-                              //           Container(
-                              //             width: context.width(),
-                              //             padding: const EdgeInsets.all(20.0),
-                              //             decoration: BoxDecoration(
-                              //               color: kSecondaryColor,
-                              //               borderRadius: const BorderRadius.only(
-                              //                 topLeft: Radius.circular(8.0),
-                              //                 topRight: Radius.circular(8.0),
-                              //               ),
-                              //               border: Border.all(color: kSecondaryColor),
-                              //             ),
-                              //             child: Column(
-                              //               children: [
-                              //                 Text(
-                              //                   '${booking.getDeparture} - ${booking.getDestination}',
-                              //                   style: TextStyle(
-                              //                     color: kTitleColor,
-                              //                     fontWeight: FontWeight.bold,
-                              //                   ),
-                              //                 ),
-                              //                 Text(
-                              //                   '직항 | ${booking.getDuration} | Economy',    // 좌석 등급 살리기
-                              //                   style: TextStyle(color: kSubTitleColor),
-                              //                 ),
-                              //               ],
-                              //             ),
-                              //           ),
-                              //           Divider(
-                              //             height: 0,
-                              //             thickness: 1.0,
-                              //             color: kPrimaryColor.withOpacity(0.2),
-                              //           ),
-                              //           Container(
-                              //             width: context.width(),
-                              //             padding: const EdgeInsets.all(10.0),
-                              //             decoration: BoxDecoration(
-                              //               color: Colors.white,
-                              //               borderRadius: const BorderRadius.only(
-                              //                 bottomLeft: Radius.circular(8.0),
-                              //                 bottomRight: Radius.circular(8.0),
-                              //               ),
-                              //               border: Border.all(color: kSecondaryColor),
-                              //             ),
-                              //             child: Column(
-                              //               crossAxisAlignment: CrossAxisAlignment.start,
-                              //               children: [
-                              //                 ListTile(
-                              //                   onTap: () {
-                              //                     setState(() {});
-                              //                   },
-                              //                   dense: true,
-                              //                   horizontalTitleGap: 10,
-                              //                   contentPadding: EdgeInsets.zero,
-                              //                   minVerticalPadding: 0,
-                              //                   leading: Container(
-                              //                     height: 34.0,
-                              //                     width: 34.0,
-                              //                     decoration: const BoxDecoration(
-                              //                       shape: BoxShape.circle,
-                              //                       image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),    // 로고 자리
-                              //                     ),
-                              //                   ),
-                              //                   title: Text(
-                              //                     'Dream Air',
-                              //                     style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                              //                   ),
-                              //                   subtitle: Text(
-                              //                     '${booking.getDuration} in flight',
-                              //                     style: TextStyle(color: kSubTitleColor),
-                              //                   ),
-                              //                 ),
-                              //                 const SizedBox(height: 10.0),
-                              //                 Container(
-                              //                   decoration: const BoxDecoration(color: Colors.transparent),
-                              //                   child: Row(
-                              //                     children: [
-                              //                       Column(
-                              //                         crossAxisAlignment: CrossAxisAlignment.start,
-                              //                         children: [
-                              //                           Stack(
-                              //                             alignment: Alignment.topCenter,
-                              //                             children: [
-                              //                               Container(
-                              //                                 height: 100.0,
-                              //                                 width: 2,
-                              //                                 decoration: BoxDecoration(
-                              //                                   color: kPrimaryColor.withOpacity(0.5),
-                              //                                 ),
-                              //                               ),
-                              //                               const Padding(
-                              //                                 padding: EdgeInsets.only(right: 1.0, bottom: 5),
-                              //                                 child: RotatedBox(
-                              //                                   quarterTurns: 2,
-                              //                                   child: Icon(
-                              //                                     Icons.flight,
-                              //                                     color: kPrimaryColor,
-                              //                                   ),
-                              //                                 ),
-                              //                               ),
-                              //                             ],
-                              //                           ),
-                              //                           Padding(
-                              //                             padding: const EdgeInsets.only(left: 5.0),
-                              //                             child: Container(
-                              //                               height: 15.0,
-                              //                               width: 15.0,
-                              //                               decoration: BoxDecoration(
-                              //                                 color: Colors.white,
-                              //                                 shape: BoxShape.circle,
-                              //                                 border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
-                              //                               ),
-                              //                             ),
-                              //                           ),
-                              //                         ],
-                              //                       ),
-                              //                       const SizedBox(width: 25.0),
-                              //                       Column(
-                              //                         mainAxisSize: MainAxisSize.min,
-                              //                         crossAxisAlignment: CrossAxisAlignment.start,
-                              //                         children: [
-                              //                           Text(
-                              //                             '${booking.getDepartureTime} - ${booking.getDeparture}',
-                              //                             style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                              //                           ),
-                              //                           SizedBox(
-                              //                             width: 265,
-                              //                             child: Text(
-                              //                               '${booking.getDepartureDate} - ${booking.getDeparture} 공항 ${booking.getDepartureEng}',
-                              //                               maxLines: 2,
-                              //                               style: TextStyle(color: kSubTitleColor),
-                              //                               overflow: TextOverflow.ellipsis,
-                              //                             ),
-                              //                           ),
-                              //                           const SizedBox(height: 10.0),
-                              //                           Text(
-                              //                             '${booking.getDestinationTime}  -  ${booking.getDestination}',
-                              //                             style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                              //                           ),
-                              //                           SizedBox(
-                              //                             width: 265,
-                              //                             child: Text(
-                              //                               '${booking.getDepartureDate} - ${booking.getDestination} 공항 ${booking.getDestinationEng}',
-                              //                               maxLines: 2,
-                              //                               style: TextStyle(color: kSubTitleColor),
-                              //                               overflow: TextOverflow.ellipsis,
-                              //                             ),
-                              //                           ),
-                              //                         ],
-                              //                       )
-                              //                     ],
-                              //                   ),
-                              //                 ),
-                              //                 const SizedBox(height: 20.0),
-                              //               ],
-                              //             ),
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     );
-                              //   },
-                              // ),
+                              ListView.builder(
+                                itemCount: 1,
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (_, i) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: context.width(),
+                                          padding: const EdgeInsets.all(20.0),
+                                          decoration: BoxDecoration(
+                                            color: kSecondaryColor,
+                                            borderRadius: const BorderRadius.only(
+                                              topLeft: Radius.circular(8.0),
+                                              topRight: Radius.circular(8.0),
+                                            ),
+                                            border: Border.all(color: kSecondaryColor),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                '${booking.getDeparture} - ${booking.getDestination}',
+                                                style: TextStyle(
+                                                  color: kTitleColor,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(
+                                                '직항 | ${booking.getDuration}시간 | Economy',    // 좌석 등급 살리기
+                                                style: TextStyle(color: kSubTitleColor),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Divider(
+                                          height: 0,
+                                          thickness: 1.0,
+                                          color: kPrimaryColor.withOpacity(0.2),
+                                        ),
+                                        Container(
+                                          width: context.width(),
+                                          padding: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: const BorderRadius.only(
+                                              bottomLeft: Radius.circular(8.0),
+                                              bottomRight: Radius.circular(8.0),
+                                            ),
+                                            border: Border.all(color: kSecondaryColor),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              ListTile(
+                                                onTap: () {
+                                                  setState(() {});
+                                                },
+                                                dense: true,
+                                                horizontalTitleGap: 10,
+                                                contentPadding: EdgeInsets.zero,
+                                                minVerticalPadding: 0,
+                                                leading: Container(
+                                                  height: 34.0,
+                                                  width: 34.0,
+                                                  decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(image: AssetImage('images/logo.png'), fit: BoxFit.cover),    // 로고 자리
+                                                  ),
+                                                ),
+                                                title: Text(
+                                                  'Dream Air',
+                                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                ),
+                                                subtitle: Text(
+                                                  '${booking.getDuration}시간 in flight',
+                                                  style: TextStyle(color: kSubTitleColor),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 10.0),
+                                              Container(
+                                                decoration: const BoxDecoration(color: Colors.transparent),
+                                                child: Row(
+                                                  children: [
+                                                    Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Stack(
+                                                          alignment: Alignment.topCenter,
+                                                          children: [
+                                                            Container(
+                                                              height: 100.0,
+                                                              width: 2,
+                                                              decoration: BoxDecoration(
+                                                                color: kPrimaryColor.withOpacity(0.5),
+                                                              ),
+                                                            ),
+                                                            const Padding(
+                                                              padding: EdgeInsets.only(right: 1.0, bottom: 5),
+                                                              child: RotatedBox(
+                                                                quarterTurns: 2,
+                                                                child: Icon(
+                                                                  Icons.flight,
+                                                                  color: kPrimaryColor,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(left: 5.0),
+                                                          child: Container(
+                                                            height: 15.0,
+                                                            width: 15.0,
+                                                            decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              shape: BoxShape.circle,
+                                                              border: Border.all(color: kPrimaryColor.withOpacity(0.5), width: 3),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(width: 25.0),
+                                                    Column(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          '${booking.getDepartureTime} - ${booking.getDeparture}',
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 265,
+                                                          child: Text(
+                                                            '${booking.getDepartureDate.split('~')[0]} - ${booking.getDeparture} 공항 ${booking.getDepartureEng}',
+                                                            maxLines: 2,
+                                                            style: TextStyle(color: kSubTitleColor),
+                                                            overflow: TextOverflow.ellipsis,
+                                                          ),
+                                                        ),
+                                                        const SizedBox(height: 10.0),
+                                                        Text(
+                                                          '${booking.getDestinationTime}  -  ${booking.getDestination}',
+                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 265,
+                                                          child: Text(
+                                                            '${booking.getDepartureDate.split('~')[0]} - ${booking.getDestination} 공항 ${booking.getDestinationEng}',
+                                                            maxLines: 2,
+                                                            style: TextStyle(color: kSubTitleColor),
+                                                            overflow: TextOverflow.ellipsis,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              const SizedBox(height: 20.0),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
                               //_________________________________________________________________________Return
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
@@ -382,14 +345,14 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                       child: Column(
                                         children: [
                                           Text(
-                                            'New Delhi - Dhaka',
+                                            '${booking.getDestination} - ${booking.getDeparture}',
                                             style: TextStyle(
                                               color: kTitleColor,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           Text(
-                                            'Non stop | 3 hrs 40 mins | Economy ',
+                                            '직항 | ${booking.getDuration}시간 | Economy ',
                                             style: TextStyle(color: kSubTitleColor),
                                           ),
                                         ],
@@ -427,15 +390,15 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                               width: 34.0,
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                                                image: DecorationImage(image: AssetImage('images/logo.png'), fit: BoxFit.cover),
                                               ),
                                             ),
                                             title: Text(
-                                              'IndiGo',
+                                              'Dream Air',
                                               style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                             ),
                                             subtitle: Text(
-                                              '05h 25m in flight',
+                                              '${booking.getDuration}시간 in flight',
                                               style: TextStyle(color: kSubTitleColor),
                                             ),
                                           ),
@@ -485,13 +448,13 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      '11:40 pm  -  Dhaka',
+                                                      '${booking.getDepartureTime}  -  ${booking.getDestination}',
                                                       style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
-                                                        'Thu 6 Jan - Hazrat Shahjala International Airport',
+                                                        '${booking.getDepartureDate.split('~')[1]} - ${booking.getDestination} 공항 ${booking.getDestinationEng}',
                                                         maxLines: 2,
                                                         style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
@@ -499,13 +462,13 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                     ),
                                                     const SizedBox(height: 10.0),
                                                     Text(
-                                                      '11:40 pm  -  Dhaka',
+                                                      '${booking.getDestinationTime} - ${booking.getDeparture}',
                                                       style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 265,
                                                       child: Text(
-                                                        'Thu 6 Jan - Netaji Subhash Chandra Bose International Airport',
+                                                        '${booking.getDepartureDate.split('~')[1]} - ${booking.getDeparture} 공항 ${booking.getDepartureEng}',
                                                         maxLines: 2,
                                                         style: TextStyle(color: kSubTitleColor),
                                                         overflow: TextOverflow.ellipsis,
@@ -803,7 +766,6 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                 ),
               ),
             ),
-          // ),
         )
       )
     );

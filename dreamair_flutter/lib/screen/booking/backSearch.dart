@@ -17,16 +17,16 @@ class backSearch extends StatefulWidget {
 class _backSearchState extends State<backSearch> {
 
   List<String> airportItems = [
-    '제주',
     '김포',
+    '제주',
     '부산',
     '울산',
     '여수',
   ];
 
   List<String> subTitleItems = [
-    '(CJU)',
     '(GMP)',
+    '(CJU)',
     '(PUS)',
     '(USN)',
     '(RSU)',

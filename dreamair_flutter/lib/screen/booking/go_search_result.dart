@@ -101,7 +101,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                           width: 20.0,
                                           decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
-                                            image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),      // 로고 들어갈 자리
+                                            image: DecorationImage(image: AssetImage('images/logo.png'), fit: BoxFit.cover),      // 로고 들어갈 자리
                                           ),
                                         ),
                                         title: Text(
@@ -164,7 +164,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                 horizontalTitleGap: 10.0,
                                                 contentPadding: EdgeInsets.zero,
                                                 title: Text(
-                                                  'Dream Air',
+                                                  '  Dream Air',
                                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                               ),
@@ -187,7 +187,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDuration}',
+                                                        '${booking.getDuration}시간',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       const SizedBox(height: 2.0),
@@ -262,136 +262,6 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                       ),
                                     ),
                                     const SizedBox(height: 10.0),
-                                    // Material(
-                                    //   elevation: 1.0,
-                                    //   shadowColor: kDarkWhite,
-                                    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0), side: const BorderSide(color: kBorderColorTextField)),
-                                    //   child: Container(
-                                    //     padding: const EdgeInsets.all(5.0),
-                                    //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
-                                    //     child: Column(
-                                    //       children: [
-                                    //         ListTile(
-                                    //           dense: true,
-                                    //           horizontalTitleGap: 10.0,
-                                    //           contentPadding: EdgeInsets.zero,
-                                    //           title: Text(
-                                    //             'IndiGo',
-                                    //             style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                                    //           ),
-                                    //           subtitle: Row(
-                                    //             children: [
-                                    //               const Icon(
-                                    //                 Icons.swap_horiz,
-                                    //                 color: kPrimaryColor,
-                                    //               ),
-                                    //               const SizedBox(width: 5.0),
-                                    //               Text(
-                                    //                 '2h 35m Layover at new york',
-                                    //                 style: TextStyle(color: kSubTitleColor),
-                                    //               ),
-                                    //             ],
-                                    //           ),
-                                    //         ),
-                                    //         Row(
-                                    //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    //           children: [
-                                    //             Column(
-                                    //               children: [
-                                    //                 Text(
-                                    //                   '5.50',
-                                    //                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
-                                    //                 ),
-                                    //                 Text(
-                                    //                   'Dhaka',
-                                    //                   style: TextStyle(color: kSubTitleColor, fontSize: 12),
-                                    //                 ),
-                                    //               ],
-                                    //             ),
-                                    //             const SizedBox(width: 5.0),
-                                    //             Column(
-                                    //               children: [
-                                    //                 Text(
-                                    //                   '3h 40m',
-                                    //                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
-                                    //                 ),
-                                    //                 const SizedBox(height: 2.0),
-                                    //                 Row(
-                                    //                   children: [
-                                    //                     Container(
-                                    //                       height: 10.0,
-                                    //                       width: 10.0,
-                                    //                       decoration: const BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
-                                    //                     ),
-                                    //                     Stack(
-                                    //                       alignment: Alignment.center,
-                                    //                       children: [
-                                    //                         Container(
-                                    //                           height: 2.0,
-                                    //                           width: 100,
-                                    //                           decoration: const BoxDecoration(
-                                    //                             color: kPrimaryColor,
-                                    //                           ),
-                                    //                         ),
-                                    //                         Container(
-                                    //                           padding: const EdgeInsets.all(5.0),
-                                    //                           decoration: const BoxDecoration(
-                                    //                             color: kPrimaryColor,
-                                    //                             shape: BoxShape.circle,
-                                    //                           ),
-                                    //                           child: Transform.scale(
-                                    //                             scaleX: -1,
-                                    //                             child: const Icon(
-                                    //                               Icons.flight_land_outlined,
-                                    //                               size: 16,
-                                    //                               color: Colors.white,
-                                    //                             ),
-                                    //                           ),
-                                    //                         ),
-                                    //                       ],
-                                    //                     ),
-                                    //                     Container(
-                                    //                       height: 10.0,
-                                    //                       width: 10.0,
-                                    //                       decoration: BoxDecoration(
-                                    //                         color: Colors.white,
-                                    //                         shape: BoxShape.circle,
-                                    //                         border: Border.all(color: kPrimaryColor),
-                                    //                       ),
-                                    //                     ),
-                                    //                   ],
-                                    //                 ),
-                                    //                 const SizedBox(height: 2.0),
-                                    //                 Text(
-                                    //                   '1 Stop',
-                                    //                   style: TextStyle(color: kSubTitleColor, fontSize: 12),
-                                    //                 ),
-                                    //               ],
-                                    //             ),
-                                    //             const SizedBox(width: 5.0),
-                                    //             Column(
-                                    //               children: [
-                                    //                 Text(
-                                    //                   '7.30',
-                                    //                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
-                                    //                 ),
-                                    //                 Text(
-                                    //                   'New Delhi',
-                                    //                   style: TextStyle(color: kSubTitleColor, fontSize: 12),
-                                    //                 ),
-                                    //               ],
-                                    //             ),
-                                    //             const SizedBox(width: 5.0),
-                                    //             Text(
-                                    //               '2 Seats left\nat this price',
-                                    //               style: TextStyle(color: Colors.red, fontSize: 12.0),
-                                    //             ),
-                                    //           ],
-                                    //         )
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    // ),
                                     const SizedBox(height: 10.0),
                                     Container(
                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: const Color(0xFFFFF5D5)),

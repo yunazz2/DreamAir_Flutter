@@ -68,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   DateTimeRange? _selectedDateRange;
 
-  String singleDepDate = '출발 날짜';
-  String departureDateTitle = '출발 날짜';
-  String returnDateTitle = '돌아오는 날짜';
+  String singleDepDate = '';
+  String departureDateTitle = '';
+  String returnDateTitle = '';
 
   DateTime selectedDate = DateTime.now();
 
@@ -204,6 +204,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         indicator: BoxDecoration(
                                           borderRadius: BorderRadius.circular(30.0),
                                           color: kPrimaryColor,
+
                                         ),
                                         onTap: (index) {
                                           if (index == 0) {
@@ -249,11 +250,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                       child: ListTile(
                                                         onTap: ()=>const goSearch().launch(context),    // 가는편 목적지 선택
                                                         title: Text(
-                                                          '${booking.getDepartureEng}',    
+                                                          '${booking.getDepartureEng == '' ? '(DEP)' : booking.getDepartureEng}',    
                                                           style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         subtitle: Text(
-                                                          '${booking.getDeparture}',     
+                                                          '${booking.getDeparture == '' ? '출발지를 입력하세요.' : booking.getDeparture}',     
                                                           maxLines: 1,
                                                           overflow: TextOverflow.ellipsis,
                                                           style: TextStyle(color: kSubTitleColor),
@@ -282,11 +283,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                       child: ListTile(
                                                         onTap: ()=>const backSearch().launch(context),    // 오는편 목적지 선택
                                                         title: Text(
-                                                          '${booking.getDestinationEng}',
+                                                          '${booking.getDestinationEng == '' ? '(DES)' : booking.getDestinationEng}',
                                                           style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         subtitle: Text(
-                                                          '${booking.getDestination}',
+                                                          '${booking.getDestination == '' ? '도착지를 입력하세요.' : booking.getDestination}',
                                                           maxLines: 1,
                                                           overflow: TextOverflow.ellipsis,
                                                           style: TextStyle(color: kSubTitleColor),
@@ -328,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           decoration: kInputDecoration.copyWith(
                                             labelText: '날짜',
                                             labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            hintText: singleDepDate,
+                                            hintText: singleDepDate == '' ? '출발 날짜' : singleDepDate,
                                             hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                             focusColor: kTitleColor,
                                             border: const OutlineInputBorder(),
@@ -348,7 +349,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ).visible(selectedIndex == 0),
-                                        const SizedBox(height: 20.0).visible(selectedIndex == 1),
                                         // 왕복 날짜 
                                         TextFormField(
                                           readOnly: true,
@@ -359,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           decoration: kInputDecoration.copyWith(
                                             labelText: '날짜',
                                             labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            hintText: departureDateTitle,
+                                            hintText: departureDateTitle == '' ? '출발 날짜' : departureDateTitle,
                                             hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                             focusColor: kTitleColor,
                                             border: const OutlineInputBorder(),
@@ -389,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           decoration: kInputDecoration.copyWith(
                                             labelText: '날짜',
                                             labelStyle: kTextStyle.copyWith(color: kTitleColor),
-                                            hintText: returnDateTitle,
+                                            hintText: returnDateTitle == '' ? '돌아오는 날짜' : returnDateTitle,
                                             hintStyle: kTextStyle.copyWith(color: kTitleColor),
                                             focusColor: kTitleColor,
                                             border: const OutlineInputBorder(),
@@ -409,7 +409,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ).visible(selectedIndex == 1),
-                                        const SizedBox(height: 20.0),
+                                        const SizedBox(height: 20.0).visible(selectedIndex == 1),
                                         TextFormField(
                                           readOnly: true,
                                           keyboardType: TextInputType.name,
@@ -578,7 +578,24 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.circular(30.0),
                                           ),
                                           onPressed: () {
-                                            const GoSearchResult().launch(context);
+                                            if(booking.getDeparture == '' || booking.getDestination == '' || booking.getDepartureDate == '' || booking.getDepartureDate == ' ~ ' ) {
+                                              showDialog(
+                                                context: context, 
+                                                builder: (BuildContext context) {
+                                                 return AlertDialog(
+                                                    title: Text('입력 해주세요.'),
+                                                    content: Text('출발지, 도착지, 날짜는 필수입력 항목이에요.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () => Navigator.pop(context, 'OK'), 
+                                                        child: Text('확인'))
+                                                    ],
+                                                 ); 
+                                                }
+                                              );
+                                            } else {
+                                              const GoSearchResult().launch(context);       // 버튼
+                                            }
                                           },
                                           buttonTextColor: kWhite,
                                         )

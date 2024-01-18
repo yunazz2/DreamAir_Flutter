@@ -17,16 +17,16 @@ class goSearch extends StatefulWidget {
 class _goSearchState extends State<goSearch> {
 
   List<String> airportItems = [
-    '제주',
     '김포',
+    '제주',
     '부산',
     '울산',
     '여수',
   ];
 
   List<String> subTitleItems = [
-    '(CJU)',
     '(GMP)',
+    '(CJU)',
     '(PUS)',
     '(USN)',
     '(RSU)',
