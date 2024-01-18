@@ -11,7 +11,7 @@ import '../widgets/icon.dart';
 import 'forgot_password.dart';
 
 class LogIn extends StatefulWidget {
-  const LogIn({Key? key}) : super(key: key);
+  const LogIn({super.key});
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -28,7 +28,10 @@ class _LogInState extends State<LogIn> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text('로그인', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          '로그인',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -68,9 +71,12 @@ class _LogInState extends State<LogIn> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 10.0),
-                    Text(
+                    const Text(
                       '로그인을 진행합니다.',
-                      style: TextStyle(color: kTitleColor, fontSize: 18.0,),
+                      style: TextStyle(
+                        color: kTitleColor,
+                        fontSize: 18.0,
+                      ),
                     ),
 
                     // 아이디
@@ -81,12 +87,12 @@ class _LogInState extends State<LogIn> {
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    
+
                     // 비밀번호
                     const SizedBox(height: 20.0),
                     TextFormField(
@@ -97,7 +103,7 @@ class _LogInState extends State<LogIn> {
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -105,7 +111,9 @@ class _LogInState extends State<LogIn> {
                             });
                           },
                           icon: Icon(
-                            hidePassword ? Icons.visibility_off : Icons.visibility,
+                            hidePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: kSubTitleColor,
                           ),
                         ),
@@ -132,20 +140,22 @@ class _LogInState extends State<LogIn> {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(height: 50,
+      bottomNavigationBar: SizedBox(
+        height: 50,
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
             onTap: () => const SignUp().launch(context),
             child: Center(
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: '아직 계정이 없으신가요? ',
                   style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: '회원 가입',
-                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

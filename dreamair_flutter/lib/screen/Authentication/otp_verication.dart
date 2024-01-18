@@ -7,7 +7,7 @@ import '../widgets/button_global.dart';
 import '../widgets/constant.dart';
 
 class OtpVerification extends StatefulWidget {
-  const OtpVerification({Key? key}) : super(key: key);
+  const OtpVerification({super.key});
 
   @override
   State<OtpVerification> createState() => _OtpVerificationState();
@@ -39,7 +39,7 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(height: 10.0),
               Text(
                 lang.S.of(context).verification,
-                style: TextStyle(
+                style: const TextStyle(
                   color: kTitleColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0,
@@ -50,11 +50,11 @@ class _OtpVerificationState extends State<OtpVerification> {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: lang.S.of(context).otpDesc1,
-                  style: TextStyle(color: kSubTitleColor),
+                  style: const TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).otpDesc2,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: kTitleColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -78,7 +78,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                 defaultPinTheme: PinTheme(
                   height: 55,
                   width: 55,
-                  textStyle: kTextStyle.copyWith(color: kTitleColor, fontSize: 18.0, fontWeight: FontWeight.bold),
+                  textStyle: kTextStyle.copyWith(
+                      color: kTitleColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: kBorderColorTextField,
@@ -88,20 +91,21 @@ class _OtpVerificationState extends State<OtpVerification> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              Text(
+              const Text(
                 '00:55',
-                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: lang.S.of(context).otpResendTitle1,
-                  style: TextStyle(color: kSubTitleColor),
+                  style: const TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: lang.S.of(context).otpResendTitle2,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: kPrimaryColor,
                         fontWeight: FontWeight.bold,
                       ),

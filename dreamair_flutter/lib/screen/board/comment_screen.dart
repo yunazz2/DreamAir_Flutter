@@ -27,44 +27,43 @@ class CommentScreen extends StatelessWidget {
         primary: false,
         physics: const BouncingScrollPhysics(),
         child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 700),
-            child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
-          decoration: const BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
+          constraints: const BoxConstraints(minHeight: 700),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(10.0),
+            decoration: const BoxDecoration(
+              color: kWhite,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+              ),
             ),
-            
-          ),
-          child:GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: const Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 40,
-            ),
-            child: Column(
-                children: [
-                  TextField(
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      hintText: '댓글 입력',
-                      suffixIcon: Icon(
-                        Icons.send,
-                        color: Colors.blueAccent,
+            child: GestureDetector(
+              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 40,
+                ),
+                child: Column(
+                  children: [
+                    TextField(
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        hintText: '댓글 입력',
+                        suffixIcon: Icon(
+                          Icons.send,
+                          color: Colors.blueAccent,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ),
-        ),
       ),
-      );
+    );
   }
 }

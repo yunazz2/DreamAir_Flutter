@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-
 class BoardStory extends StatefulWidget {
   const BoardStory({super.key});
 
@@ -32,7 +31,6 @@ class _BoardStoryState extends State<BoardStory> {
                 Text('작성자'),
               ],
             ),
-            
           ],
         ),
         // 이미지
@@ -49,9 +47,8 @@ class _BoardStoryState extends State<BoardStory> {
           height: 10,
         ),
 
-
         // 좋아요 버튼
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
@@ -59,7 +56,10 @@ class _BoardStoryState extends State<BoardStory> {
                 children: [
                   LikeButton(
                     likeBuilder: (bool isLiked) {
-                      return isLiked ? const Icon(Icons.favorite, color: Colors.pink) : const Icon(Icons.favorite_outline, color: Colors.pink);
+                      return isLiked
+                          ? const Icon(Icons.favorite, color: Colors.pink)
+                          : const Icon(Icons.favorite_outline,
+                              color: Colors.pink);
                     },
                   ),
                   const SizedBox(
@@ -69,8 +69,7 @@ class _BoardStoryState extends State<BoardStory> {
                 ],
               ),
             ),
-            
-         
+
             const SizedBox(
               width: 20,
             ),
@@ -83,7 +82,8 @@ class _BoardStoryState extends State<BoardStory> {
                     Navigator.push(
                       context,
                       MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const CommentScreen(),
+                        builder: (BuildContext context) =>
+                            const CommentScreen(),
                       ),
                     );
                   },
@@ -109,37 +109,38 @@ class _BoardStoryState extends State<BoardStory> {
         // 더보기(수정/삭제) 기능
         Column(
           children: [
-          PopupMenuButton<int>(
-            padding: EdgeInsets.zero,
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                child: Center(
-                  child: const Text('수정').onTap(() {
-                  setState(() {});
-                  Navigator.pop(context);
-                }),
+            PopupMenuButton<int>(
+              padding: EdgeInsets.zero,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Center(
+                    child: const Text('수정').onTap(() {
+                      setState(() {});
+                      Navigator.pop(context);
+                    }),
+                  ),
                 ),
-              ),
-              PopupMenuItem(
-                child: Center(
-                  child: const Text('삭제').onTap(() {
-                  setState(() {});
-                  Navigator.pop(context);
-                }),
+                PopupMenuItem(
+                  child: Center(
+                    child: const Text('삭제').onTap(() {
+                      setState(() {});
+                      Navigator.pop(context);
+                    }),
+                  ),
                 ),
-              ),
-              // popupmenu item 2
-            ],
-            offset: const Offset(0, 30),
-            color: kWhite,
-            elevation: 1.0,
-          )
-        ],),
-        
-          //  IconButton(
-          //   iconSize: 72,
-          //   icon: const Icon(Icons.favorite),
-          //         ),
+                // popupmenu item 2
+              ],
+              offset: const Offset(0, 30),
+              color: kWhite,
+              elevation: 1.0,
+            )
+          ],
+        ),
+
+        //  IconButton(
+        //   iconSize: 72,
+        //   icon: const Icon(Icons.favorite),
+        //         ),
         // 내용
         const SizedBox(
           height: 5,

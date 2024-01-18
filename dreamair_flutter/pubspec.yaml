@@ -59,6 +59,12 @@ dependencies:
   insta_like_button: ^0.1.1
   dropdown_button2: ^2.3.9
   like_button: ^2.0.5
+  photo_manager: ^2.8.1
+  get: ^4.6.6
+  # flutter_tags: ^0.4.9+1
+  flutter_provider: ^2.1.0
+  flutter_staggered_animations: ^1.1.1
+  lottie: ^3.0.0
   
 dev_dependencies:
   flutter_test:

@@ -10,7 +10,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../ticket status/ticket_status.dart';
 
 class PaymentMethod extends StatefulWidget {
-  const PaymentMethod({Key? key}) : super(key: key);
+  const PaymentMethod({super.key});
 
   @override
   State<PaymentMethod> createState() => _PaymentMethodState();
@@ -59,7 +59,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Text(
+                const Text(
                   'Payment Succeed!',
                   style: TextStyle(
                     color: kTitleColor,
@@ -67,7 +67,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     fontSize: 21,
                   ),
                 ),
-                Text(
+                const Text(
                   'Thank you for purchase the ticket!',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: kSubTitleColor),
@@ -75,7 +75,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 const SizedBox(height: 10.0),
                 ButtonGlobalWithoutIcon(
                   buttontext: 'View Ticket ',
-                  buttonDecoration: kButtonDecoration.copyWith(color: kPrimaryColor),
+                  buttonDecoration:
+                      kButtonDecoration.copyWith(color: kPrimaryColor),
                   onPressed: () {
                     setState(() {
                       finish(context);
@@ -85,17 +86,17 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   buttonTextColor: kWhite,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
                       const Home().launch(context);
                       finish(context);
                     });
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
+                      Icon(
                         FeatherIcons.arrowLeft,
                         color: kSubTitleColor,
                       ),
@@ -141,12 +142,14 @@ class _PaymentMethodState extends State<PaymentMethod> {
             const SizedBox(height: 10.0),
             Text(
               lang.S.of(context).paymentCardTitle,
-              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: kTitleColor, fontWeight: FontWeight.bold),
             ),
             CreditCardWidget(
               // padding: AppConstants.creditCardPadding,
               backgroundImage: 'images/card1.png',
-              textStyle: kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
+              textStyle:
+                  kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
               cardNumber: cardNumber,
               expiryDate: expiryDate,
               cardHolderName: cardHolderName,
@@ -175,7 +178,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     );
                   },
                 ),
-                Text(
+                const Text(
                   'Use as the payment methord',
                   style: TextStyle(color: kTitleColor),
                 ),
@@ -184,7 +187,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
             CreditCardWidget(
               padding: 5,
               backgroundImage: 'images/card1.png',
-              textStyle: kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
+              textStyle:
+                  kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
               cardNumber: cardNumber,
               expiryDate: expiryDate,
               cardHolderName: cardHolderName,
@@ -213,7 +217,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     );
                   },
                 ),
-                Text(
+                const Text(
                   'Use as the payment method',
                   style: TextStyle(color: kTitleColor),
                 ),

@@ -7,7 +7,7 @@ import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+  const ForgotPassword({super.key});
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -42,7 +42,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(height: 10.0),
                 Text(
                   lang.S.of(context).fpAppBarTitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.0,
@@ -52,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   lang.S.of(context).fpDesc1,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: kSubTitleColor),
+                  style: const TextStyle(color: kSubTitleColor),
                 ),
                 const SizedBox(height: 30.0),
                 TextFormField(
@@ -61,7 +61,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   textInputAction: TextInputAction.next,
                   decoration: kInputDecoration.copyWith(
                     labelText: lang.S.of(context).emailLabel,
-                    labelStyle: TextStyle(color: kTitleColor),
+                    labelStyle: const TextStyle(color: kTitleColor),
                     hintText: lang.S.of(context).emailHint,
                     hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
                     focusColor: kTitleColor,

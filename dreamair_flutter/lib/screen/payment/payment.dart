@@ -10,7 +10,7 @@ import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
 class Payment extends StatefulWidget {
-  const Payment({Key? key}) : super(key: key);
+  const Payment({super.key});
 
   @override
   State<Payment> createState() => _PaymentState();
@@ -60,7 +60,7 @@ class _PaymentState extends State<Payment> {
         centerTitle: true,
         title: Text(
           lang.S.of(context).paymentTitle,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -105,25 +105,29 @@ class _PaymentState extends State<Payment> {
                       contentPadding: EdgeInsets.zero,
                       horizontalTitleGap: 0,
                       minLeadingWidth: 0,
-                      title: Row(
+                      title: const Row(
                         children: [
                           Text(
                             'Total Due:$currencySign${14500}',
-                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(
+                                color: kTitleColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.0),
                           ),
-                          const SizedBox(width: 2.0),
-                          const Icon(
+                          SizedBox(width: 2.0),
+                          Icon(
                             IconlyBold.discount,
                             color: kPrimaryColor,
                           ),
-                          const SizedBox(width: 2.0),
+                          SizedBox(width: 2.0),
                           Text(
                             'You save $currencySign${500}',
-                            style: TextStyle(color: kSubTitleColor, fontSize: 12),
+                            style:
+                                TextStyle(color: kSubTitleColor, fontSize: 12),
                           ),
                         ],
                       ),
-                      subtitle: Text(
+                      subtitle: const Text(
                         'Convenience Fee Added',
                         style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                       ),
@@ -140,26 +144,33 @@ class _PaymentState extends State<Payment> {
                               ),
                               context: context,
                               builder: (BuildContext context) {
-                                return StatefulBuilder(builder: (context, setState) {
+                                return StatefulBuilder(
+                                    builder: (context, setState) {
                                   return DraggableScrollableSheet(
                                     initialChildSize: 0.85,
                                     expand: false,
                                     maxChildSize: 1.00,
                                     minChildSize: 0.20,
-                                    builder: (BuildContext context, ScrollController controller) {
+                                    builder: (BuildContext context,
+                                        ScrollController controller) {
                                       return SingleChildScrollView(
-                                        physics: const NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         controller: controller,
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.all(10.0),
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
                                               child: Row(
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     'View Details',
-                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        color: kTitleColor,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   const Spacer(),
                                                   GestureDetector(
@@ -178,16 +189,22 @@ class _PaymentState extends State<Payment> {
                                             ),
                                             const SizedBox(height: 10.0),
                                             Container(
-                                              padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 20),
+                                              padding: const EdgeInsets.only(
+                                                  left: 10.0,
+                                                  right: 10.0,
+                                                  top: 20),
                                               decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(30.0),
-                                                  topLeft: Radius.circular(30.0),
+                                                  topRight:
+                                                      Radius.circular(30.0),
+                                                  topLeft:
+                                                      Radius.circular(30.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: kBorderColorTextField,
+                                                    color:
+                                                        kBorderColorTextField,
                                                     spreadRadius: 2.0,
                                                     blurRadius: 7.0,
                                                     offset: Offset(0, -2),
@@ -196,199 +213,275 @@ class _PaymentState extends State<Payment> {
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  ListTile(
+                                                  const ListTile(
                                                     dense: true,
-                                                    contentPadding: EdgeInsets.zero,
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
                                                     horizontalTitleGap: 0,
                                                     minLeadingWidth: 0,
                                                     title: Row(
                                                       children: [
                                                         Text(
                                                           'Total Due:$currencySign${14500}',
-                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kTitleColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 14.0),
                                                         ),
-                                                        const SizedBox(width: 2.0),
-                                                        const Icon(
+                                                        SizedBox(width: 2.0),
+                                                        Icon(
                                                           IconlyBold.discount,
                                                           color: kPrimaryColor,
                                                         ),
-                                                        const SizedBox(width: 2.0),
+                                                        SizedBox(width: 2.0),
                                                         Text(
                                                           'You save $currencySign${500}',
-                                                          style: TextStyle(color: kSubTitleColor, fontSize: 12),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kSubTitleColor,
+                                                              fontSize: 12),
                                                         ),
                                                       ],
                                                     ),
                                                     subtitle: Text(
                                                       'Convenience Fee Added',
-                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(
+                                                          color: kSubTitleColor,
+                                                          fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
                                                     height: 1.0,
                                                     thickness: 1.0,
-                                                    color: kBorderColorTextField,
+                                                    color:
+                                                        kBorderColorTextField,
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Text(
+                                                  const Text(
                                                     'Fare Summary',
-                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        color: kTitleColor,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Text(
+                                                  const Text(
                                                     'Adult x1',
-                                                    style: TextStyle(color: kSubTitleColor),
+                                                    style: TextStyle(
+                                                        color: kSubTitleColor),
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Text(
                                                         'Basic Fare',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
-                                                      const Spacer(),
+                                                      Spacer(),
                                                       Text(
                                                         '$currencySign${13000}',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Text(
                                                         'Taxes',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
-                                                      const Spacer(),
+                                                      Spacer(),
                                                       Text(
                                                         '$currencySign${20000}',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Text(
                                                         'Reschedule Charges',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
-                                                      const Spacer(),
+                                                      Spacer(),
                                                       Text(
                                                         '$currencySign${0}',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Text(
                                                         'K3',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
-                                                      const Spacer(),
+                                                      Spacer(),
                                                       Text(
                                                         '$currencySign${0}',
-                                                        style: TextStyle(color: kSubTitleColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kSubTitleColor),
                                                       ),
                                                     ],
                                                   ),
                                                   const SizedBox(height: 10.0),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Text(
                                                         'Coupon',
-                                                        style: TextStyle(color: kPrimaryColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kPrimaryColor),
                                                       ),
-                                                      const Spacer(),
+                                                      Spacer(),
                                                       Text(
                                                         '$currencySign${-500}',
-                                                        style: TextStyle(color: kPrimaryColor),
+                                                        style: TextStyle(
+                                                            color:
+                                                                kPrimaryColor),
                                                       ),
                                                     ],
                                                   ),
                                                   const Divider(
                                                     thickness: 1.0,
-                                                    color: kBorderColorTextField,
+                                                    color:
+                                                        kBorderColorTextField,
                                                   ),
-                                                  Text(
+                                                  const Text(
                                                     'Round Trip',
-                                                    style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        color: kTitleColor,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   ListTile(
                                                     dense: true,
-                                                    contentPadding: EdgeInsets.zero,
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
                                                     horizontalTitleGap: 10,
                                                     minLeadingWidth: 0,
                                                     leading: Container(
                                                       height: 34,
                                                       width: 34,
-                                                      decoration: const BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'images/indigo.png'),
+                                                            fit: BoxFit.cover),
                                                       ),
                                                     ),
-                                                    title: Row(
+                                                    title: const Row(
                                                       children: [
                                                         Text(
                                                           'Depart (DAC - CCU)',
-                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kTitleColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 14.0),
                                                         ),
                                                       ],
                                                     ),
-                                                    subtitle: Text(
+                                                    subtitle: const Text(
                                                       'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(
+                                                          color: kSubTitleColor,
+                                                          fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
                                                     thickness: 1.0,
-                                                    color: kBorderColorTextField,
+                                                    color:
+                                                        kBorderColorTextField,
                                                   ),
                                                   ListTile(
                                                     dense: true,
-                                                    contentPadding: EdgeInsets.zero,
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
                                                     horizontalTitleGap: 10,
                                                     minLeadingWidth: 0,
                                                     leading: Container(
                                                       height: 34,
                                                       width: 34,
-                                                      decoration: const BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'images/indigo.png'),
+                                                            fit: BoxFit.cover),
                                                       ),
                                                     ),
-                                                    title: Row(
+                                                    title: const Row(
                                                       children: [
                                                         Text(
                                                           'Depart (DAC - CCU)',
-                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kTitleColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 14.0),
                                                         ),
                                                       ],
                                                     ),
-                                                    subtitle: Text(
+                                                    subtitle: const Text(
                                                       'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                                                      style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
+                                                      style: TextStyle(
+                                                          color: kSubTitleColor,
+                                                          fontSize: 12.0),
                                                     ),
                                                   ),
                                                   const Divider(
                                                     thickness: 1.0,
-                                                    color: kBorderColorTextField,
+                                                    color:
+                                                        kBorderColorTextField,
                                                   ),
-                                                  Text(
+                                                  const Text(
                                                     'Shaidul Islam (Male)',
-                                                    style: TextStyle(color: kSubTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        color: kSubTitleColor,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   const SizedBox(
                                                     height: 10.0,
                                                   ),
-                                                  Text(
+                                                  const Text(
                                                     'shaidulislma@gmail.com',
-                                                    style: TextStyle(color: kSubTitleColor, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        color: kSubTitleColor,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   const SizedBox(
                                                     height: 10.0,
@@ -408,7 +501,7 @@ class _PaymentState extends State<Payment> {
                         },
                         child: Text(
                           lang.S.of(context).viewDetails,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: kPrimaryColor,
                             fontSize: 14.0,
                           ),
@@ -430,31 +523,39 @@ class _PaymentState extends State<Payment> {
                         width: 34,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                          image: DecorationImage(
+                              image: AssetImage('images/indigo.png'),
+                              fit: BoxFit.cover),
                         ),
                       ),
-                      title: Row(
+                      title: const Row(
                         children: [
                           Text(
                             'Dhaka',
-                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(
+                                color: kTitleColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.0),
                           ),
-                          const SizedBox(width: 2.0),
-                          const RotatedBox(
+                          SizedBox(width: 2.0),
+                          RotatedBox(
                             quarterTurns: 1,
                             child: Icon(
                               IconlyLight.swap,
                               color: kPrimaryColor,
                             ),
                           ),
-                          const SizedBox(width: 2.0),
+                          SizedBox(width: 2.0),
                           Text(
                             'New Delhi ',
-                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 14.0),
+                            style: TextStyle(
+                                color: kTitleColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.0),
                           ),
                         ],
                       ),
-                      subtitle: Text(
+                      subtitle: const Text(
                         'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
                         style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                       ),
@@ -465,16 +566,19 @@ class _PaymentState extends State<Payment> {
                       color: kBorderColorTextField,
                     ),
                     const SizedBox(height: 10.0),
-                    Text(
+                    const Text(
                       'Shaidul Islam (Male)',
-                      style: TextStyle(color: kTitleColor, fontSize: 12.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: kTitleColor,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 20.0),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     showModalBottomSheet(
                       isScrollControlled: true,
@@ -492,7 +596,8 @@ class _PaymentState extends State<Payment> {
                             expand: false,
                             maxChildSize: 1.00,
                             minChildSize: 0.20,
-                            builder: (BuildContext context, ScrollController controller) {
+                            builder: (BuildContext context,
+                                ScrollController controller) {
                               return SingleChildScrollView(
                                 physics: const NeverScrollableScrollPhysics(),
                                 controller: controller,
@@ -503,9 +608,11 @@ class _PaymentState extends State<Payment> {
                                       padding: const EdgeInsets.all(10.0),
                                       child: Row(
                                         children: [
-                                          Text(
+                                          const Text(
                                             'View Details',
-                                            style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                            style: TextStyle(
+                                                color: kTitleColor,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                           const Spacer(),
                                           GestureDetector(
@@ -541,14 +648,19 @@ class _PaymentState extends State<Payment> {
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                                            padding: const EdgeInsets.only(
+                                                left: 10.0, right: 10.0),
                                             child: CreditCardWidget(
                                               // padding: AppConstants.creditCardPadding,
-                                              backgroundImage: 'images/card1.png',
-                                              textStyle: kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
+                                              backgroundImage:
+                                                  'images/card1.png',
+                                              textStyle: kTextStyle.copyWith(
+                                                  fontSize: 10.0,
+                                                  color: Colors.white),
                                               cardNumber: cardNumber,
                                               expiryDate: expiryDate,
                                               cardHolderName: cardHolderName,
@@ -557,17 +669,22 @@ class _PaymentState extends State<Payment> {
                                               obscureCardNumber: true,
                                               obscureCardCvv: true,
                                               isHolderNameVisible: true,
-                                              cardBgColor: Colors.deepOrangeAccent,
+                                              cardBgColor:
+                                                  Colors.deepOrangeAccent,
                                               isSwipeGestureEnabled: true,
-                                              onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
+                                              onCreditCardWidgetChange:
+                                                  (CreditCardBrand
+                                                      creditCardBrand) {},
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                                            padding: const EdgeInsets.only(
+                                                left: 10.0, right: 10.0),
                                             child: CreditCardForm(
                                               formKey: formKey,
                                               // Required
-                                              onCreditCardModelChange: onCreditCardModelChange,
+                                              onCreditCardModelChange:
+                                                  onCreditCardModelChange,
                                               // Required
                                               obscureCvv: true,
                                               obscureNumber: true,
@@ -580,23 +697,29 @@ class _PaymentState extends State<Payment> {
                                               expiryDate: expiryDate,
                                               // themeColor: Colors.blue,
                                               // textColor: kTitleColor,
-                                              inputConfiguration: const InputConfiguration(
-                                                cardNumberDecoration: InputDecoration(
+                                              inputConfiguration:
+                                                  const InputConfiguration(
+                                                cardNumberDecoration:
+                                                    InputDecoration(
                                                   border: OutlineInputBorder(),
                                                   labelText: 'Number',
-                                                  hintText: 'XXXX XXXX XXXX XXXX',
+                                                  hintText:
+                                                      'XXXX XXXX XXXX XXXX',
                                                 ),
-                                                expiryDateDecoration: InputDecoration(
+                                                expiryDateDecoration:
+                                                    InputDecoration(
                                                   border: OutlineInputBorder(),
                                                   labelText: 'Expired Date',
                                                   hintText: 'XX/XX',
                                                 ),
-                                                cvvCodeDecoration: InputDecoration(
+                                                cvvCodeDecoration:
+                                                    InputDecoration(
                                                   border: OutlineInputBorder(),
                                                   labelText: 'CVV',
                                                   hintText: 'XXX',
                                                 ),
-                                                cardHolderDecoration: InputDecoration(
+                                                cardHolderDecoration:
+                                                    InputDecoration(
                                                   border: OutlineInputBorder(),
                                                   labelText: 'Card Holder',
                                                 ),
@@ -605,18 +728,22 @@ class _PaymentState extends State<Payment> {
                                           ),
                                           const SizedBox(height: 20.0),
                                           Padding(
-                                            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
                                             child: ButtonGlobalWithoutIcon(
-                                              buttontext: lang.S
-                                                  .of(context)
-                                                  .DoneButton,
-                                              buttonDecoration: kButtonDecoration.copyWith(
+                                              buttontext:
+                                                  lang.S.of(context).DoneButton,
+                                              buttonDecoration:
+                                                  kButtonDecoration.copyWith(
                                                 color: kPrimaryColor,
-                                                borderRadius: BorderRadius.circular(30.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
                                               ),
                                               onPressed: () {
                                                 setState(() {
-                                                 Navigator.pop(context);
+                                                  Navigator.pop(context);
                                                 });
                                               },
                                               buttonTextColor: kWhite,
@@ -639,7 +766,8 @@ class _PaymentState extends State<Payment> {
                   children: [
                     Text(
                       lang.S.of(context).paymentMethod,
-                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          color: kTitleColor, fontWeight: FontWeight.bold),
                     ),
                     const Spacer(),
                     const Icon(
@@ -648,7 +776,7 @@ class _PaymentState extends State<Payment> {
                       color: kSubTitleColor,
                     ),
                     const SizedBox(width: 2.0),
-                    Text(
+                    const Text(
                       'New card',
                       style: TextStyle(color: kSubTitleColor),
                     ),
@@ -657,7 +785,8 @@ class _PaymentState extends State<Payment> {
               ),
               const SizedBox(height: 10.0),
               Container(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8.0),
@@ -703,10 +832,11 @@ class _PaymentState extends State<Payment> {
                             ),
                           ),
                           child: CheckboxListTile(
-                            contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            contentPadding:
+                                const EdgeInsets.only(left: 10.0, right: 10.0),
                             title: Text(
                               paymentMethod[index],
-                              style: TextStyle(color: kTitleColor),
+                              style: const TextStyle(color: kTitleColor),
                             ),
                             secondary: Container(
                               height: 36,
@@ -734,23 +864,24 @@ class _PaymentState extends State<Payment> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              Text(
+              const Text(
                 'Fare Summary',
-                style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10.0),
-              Text(
+              const Text(
                 'Adult x1',
                 style: TextStyle(color: kSubTitleColor),
               ),
               const SizedBox(height: 10.0),
-              Row(
+              const Row(
                 children: [
                   Text(
                     'Basic Fare',
                     style: TextStyle(color: kSubTitleColor),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   Text(
                     '$currencySign${13000}',
                     style: TextStyle(color: kSubTitleColor),
@@ -758,13 +889,13 @@ class _PaymentState extends State<Payment> {
                 ],
               ),
               const SizedBox(height: 10.0),
-              Row(
+              const Row(
                 children: [
                   Text(
                     'Taxes',
                     style: TextStyle(color: kSubTitleColor),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   Text(
                     '$currencySign${20000}',
                     style: TextStyle(color: kSubTitleColor),
@@ -772,13 +903,13 @@ class _PaymentState extends State<Payment> {
                 ],
               ),
               const SizedBox(height: 10.0),
-              Row(
+              const Row(
                 children: [
                   Text(
                     'Reschedule Charges',
                     style: TextStyle(color: kSubTitleColor),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   Text(
                     '$currencySign${0}',
                     style: TextStyle(color: kSubTitleColor),
@@ -786,13 +917,13 @@ class _PaymentState extends State<Payment> {
                 ],
               ),
               const SizedBox(height: 10.0),
-              Row(
+              const Row(
                 children: [
                   Text(
                     'K3',
                     style: TextStyle(color: kSubTitleColor),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   Text(
                     '$currencySign${0}',
                     style: TextStyle(color: kSubTitleColor),
@@ -800,13 +931,13 @@ class _PaymentState extends State<Payment> {
                 ],
               ),
               const SizedBox(height: 10.0),
-              Row(
+              const Row(
                 children: [
                   Text(
                     'Coupon',
                     style: TextStyle(color: kPrimaryColor),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   Text(
                     '$currencySign${-500}',
                     style: TextStyle(color: kPrimaryColor),
@@ -822,11 +953,11 @@ class _PaymentState extends State<Payment> {
         child: ListTile(
           contentPadding: const EdgeInsets.only(left: 15.0, right: 15.0),
           visualDensity: const VisualDensity(vertical: 2),
-          title: Text(
+          title: const Text(
             'For 1 Adult',
             style: TextStyle(color: kSubTitleColor),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             ' $currencySign${45000.00}',
             style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
           ),
@@ -840,8 +971,9 @@ class _PaymentState extends State<Payment> {
               ),
               onPressed: () {
                 setState(() {
-                  selectedMethod == 'Visa Card' ?
-                  const PaymentMethod().launch(context) : null;
+                  selectedMethod == 'Visa Card'
+                      ? const PaymentMethod().launch(context)
+                      : null;
                 });
               },
               buttonTextColor: kWhite,
