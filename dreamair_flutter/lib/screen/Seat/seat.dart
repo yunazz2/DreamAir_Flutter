@@ -91,6 +91,8 @@ class _SeatState extends State<Seat> {
             child: Column(
               children: [
                 const SizedBox(height: 20.0,),
+                Text('좌석 선택을 진행합니다.', style: TextStyle(color: kTitleColor, fontSize: 18.0,),),
+                const SizedBox(height: 20.0,),
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(

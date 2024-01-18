@@ -11,6 +11,8 @@ class CheckInScreen extends StatefulWidget {
 
 class _CheckInScreenState extends State<CheckInScreen> {
 
+  bool isCheckInButtonEnabled = true; // 체크인 버튼 활성화
+
   List<Widget> resultRows = [];
   String ticketNumber = '';                                               // 탑승권 번호를 저장할 변수
   TextEditingController ticketNumberController = TextEditingController(); // 탑승권 번호를 넘겨줄 컨트롤러
@@ -59,14 +61,42 @@ class _CheckInScreenState extends State<CheckInScreen> {
         return Column(
           children: [
             ElevatedButton(
-              onPressed: () {
+              onPressed: isCheckInButtonEnabled ? () {
                 // '체크인' 버튼이 눌렸을 때 처리 로직 추가
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 1.0,),
-              child: Text('체크인', style: TextStyle(color: Colors.black),),
+
+                // 팝업 창
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('체크인 완료', style: TextStyle(fontSize: 20.0),),
+                      content: Text('체크인이 완료되었습니다.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            // 팝업 창 닫기
+                            Navigator.of(context).pop();
+
+                            // 체크인 버튼 비활성화
+                            setState(() {
+                              isCheckInButtonEnabled = false;
+                            });
+                          },
+                          child: Text('확인'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
+              : null,
+              // 체크인 버튼
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 1.0),
+              child: Text('체크인', style: TextStyle(color: Colors.black)),
             ),
           ],
         );
+
       }
 
       return Column(

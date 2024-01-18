@@ -1,5 +1,6 @@
 import 'package:flight_booking/screen/History_Screen/history_screen.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
+import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/mypage_screen.dart';
 import 'package:flight_booking/screen/schedule/schedule_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(), // 항공권 예약
     MyBooking(), // 예약 조회
-    History(), // 체크인 -> 변경해야함
+    CheckInScreen(), // 체크인
     ScheduleScreen(), //  출도착 조회
     BoardScreen(), // 게시판
     Mypage(),  // 마이페이지
