@@ -46,6 +46,7 @@ class _MypageState extends State<Mypage> {
               const SizedBox(
                 height: 20,
               ),
+              
               // 메뉴 목록
               // 회원 정보 수정
               Card(
@@ -54,6 +55,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: ListTile(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));
@@ -78,6 +80,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ListTile(
@@ -109,6 +112,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: ListTile(
                   contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   onTap: () {
@@ -136,6 +140,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: ListTile(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBooking()));
@@ -160,6 +165,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: ListTile(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const DeleteAccountScreen()));
@@ -184,6 +190,7 @@ class _MypageState extends State<Mypage> {
                   borderRadius: BorderRadius.circular(8),
                   side: const BorderSide(color: kBorderColorTextField, width: 0.5),
                 ),
+                color: Colors.white,
                 child: ListTile(
                   onTap: (){
                     const WelcomeScreen().launch(context,isNewTask: true);
@@ -201,7 +208,8 @@ class _MypageState extends State<Mypage> {
                   title: const Text('로그아웃'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
-              )
+              ),
+              SizedBox(height: 200.0,),
             ],
           ),
         ),

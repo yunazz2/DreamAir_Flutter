@@ -26,6 +26,7 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: kPrimaryColor,
       bottomNavigationBar: Container(
@@ -110,6 +111,10 @@ class _EditProfileState extends State<EditProfile> {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
+                      const SizedBox(height: 10.0),
+                      Text('회원 정보 수정을 진행합니다.', style: TextStyle(color: kTitleColor, fontSize: 18.0,),),
+                      const SizedBox(height: 10.0),
+
                       // 이름
                       const SizedBox(height: 20,),
                       AppTextField(

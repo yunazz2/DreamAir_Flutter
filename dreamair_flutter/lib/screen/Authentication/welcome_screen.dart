@@ -76,30 +76,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
                       ),
                       const SizedBox(height: 20.0),
-                      Text('Dream Air와 함께 하세요!',
-                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
-                      ),
-                      const SizedBox(height: 5.0),
                       Text('항공권 예매',
                         style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
-                      const SizedBox(height: 20.0),
+                      const SizedBox(height: 10.0),
+                      Text('Dream Air와 함께 하세요!',
+                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
+                      ),
+                      const SizedBox(height: 30.0),
                       Text('Dream Air와 함께 즐거운 여행을 떠나보세요!',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: kSubTitleColor),
                       ),
-                      const SizedBox(height: 50.0),
-                      ButtonGlobalWithoutIcon(
-                        buttontext: '회원 가입',
-                        buttonDecoration: kButtonDecoration.copyWith(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        onPressed: () {
-                          const SignUp().launch(context);
-                        },
-                        buttonTextColor: kWhite,
-                      ),
+                      const SizedBox(height: 30.0),
                       ButtonGlobalWithoutIcon(
                         buttontext: '로그인',
                         buttonDecoration: kButtonDecoration.copyWith(
@@ -111,6 +100,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           const LogIn().launch(context);
                         },
                         buttonTextColor: kPrimaryColor,
+                      ),
+                      ButtonGlobalWithoutIcon(
+                        buttontext: '회원 가입',
+                        buttonDecoration: kButtonDecoration.copyWith(
+                          color: kPrimaryColor,
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        onPressed: () {
+                          const SignUp().launch(context);
+                        },
+                        buttonTextColor: kWhite,
                       ),
                     ],
                   ),
