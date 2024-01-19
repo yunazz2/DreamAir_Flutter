@@ -121,12 +121,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 40.0),
                     TextFormField(
                       controller: userIdController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
                       onChanged: (value) {
                         userIdController.text = value;
                       },
+                      keyboardType: TextInputType.text,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -139,12 +139,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: userPwController,
-                      cursorColor: kTitleColor,
-                      keyboardType: TextInputType.text,
-                      obscureText: hidePassword,
                       onChanged: (value) {
                         userPwController.text = value;
                       },
+                      cursorColor: kTitleColor,
+                      keyboardType: TextInputType.text,
+                      obscureText: hidePassword,
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
@@ -193,12 +193,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: nameController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
                       onChanged: ((value) {
                         nameController.text = value;
                       }),
+                      keyboardType: TextInputType.text,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '이름',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -211,12 +211,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: phoneController,
-                      keyboardType: TextInputType.phone,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
                       onChanged: (value) {
                         phoneController.text = value;
                       },
+                      keyboardType: TextInputType.phone,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '핸드폰 번호',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -229,12 +229,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
                       onChanged: (value) {
                         emailController.text = value;
                       },
+                      keyboardType: TextInputType.emailAddress,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '이메일',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -247,12 +247,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: addressController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.done,
                       onChanged: (value) {
                         addressController.text = value;
                       },
+                      keyboardType: TextInputType.text,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.done,
                       decoration: kInputDecoration.copyWith(
                         labelText: '주소',
                         labelStyle: TextStyle(color: kTitleColor),

@@ -109,12 +109,12 @@ class _LogInState extends State<LogIn> {
                     const SizedBox(height: 40.0),
                     TextFormField(
                       controller: userIdController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: kTitleColor,
-                      textInputAction: TextInputAction.next,
                       onChanged: ((value) {
                         userIdController.text = value;
                       }),
+                      keyboardType: TextInputType.text,
+                      cursorColor: kTitleColor,
+                      textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -127,13 +127,13 @@ class _LogInState extends State<LogIn> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: userPwController,
+                      onChanged: (value) {
+                        userPwController.text = value;
+                      },
                       cursorColor: kTitleColor,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: hidePassword,
                       textInputAction: TextInputAction.done,
-                      onChanged: (value) {
-                        userPwController.text = value;
-                      },
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',

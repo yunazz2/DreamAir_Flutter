@@ -1,4 +1,7 @@
-class UserProvider {
+import 'package:flutter/material.dart';
+
+class UserProvider extends ChangeNotifier {
+
   late String userId;
   late String userPw;
   late String userPwCheck;
@@ -7,16 +10,26 @@ class UserProvider {
   late String email;
   late String address;
 
-  bool _loginStatus = false;
+  static bool _loginStatus = false;
 
-  // 로그인 상태 가져오기
-  bool getLoginStatus() => _loginStatus;
-
-  bool get isLogin => _loginStatus;
+  // 전역 변수
+  static bool get isLogin => _loginStatus;
+  static bool getLoginStatus() => _loginStatus; // 로그인 상태 가져오기
 
   // 로그인 상태 업데이트
   void updateLoginStatus(bool status) {
-    print('_loginStatus 확인쓰~ : $status');
+    print('로그인 상태 확인 : $status');
     _loginStatus = status;
+
+    notifyListeners();
   }
+
+  // 로그아웃 처리
+  void logout() {
+    _loginStatus = false;
+    print('로그아웃 되었습니다.');
+
+    notifyListeners();
+  }
+
 }
