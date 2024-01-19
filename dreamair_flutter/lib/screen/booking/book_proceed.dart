@@ -20,6 +20,7 @@ class BookProceed extends StatefulWidget {
 }
 
 class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin {
+
   TabController? tabController;
   TabController? tabsController;
 
@@ -32,6 +33,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
   TextEditingController _passwordController = TextEditingController();
 
   String password = '';
+  
 
   @override
   void initState() {
@@ -711,7 +713,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   itemBuilder: (_, i) {
                                     return ButtonGlobalWithIcon(
-                                              buttontext: '탑승객 정보 입력',   // 삼항식으로 이름 출력하기
+                                              buttontext: '탑승객 정보 입력',   // 들어가느 버튼을 누르면 false 나오면 true 
                                               buttonTextColor: kPrimaryColor,
                                               buttonIcon: FeatherIcons.plus,
                                               buttonDecoration: kButtonDecoration.copyWith(

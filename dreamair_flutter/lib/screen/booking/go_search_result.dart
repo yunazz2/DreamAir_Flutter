@@ -20,28 +20,49 @@ class GoSearchResult extends StatefulWidget {
 
 class _GoSearchResultState extends State<GoSearchResult> {
 
-  late BookingProvider bookingProvider;
+  // late BookingProvider bookingProvider;
   
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
 
-    bookingProvider = Provider.of<BookingProvider>(context, listen: false);
+  //   bookingProvider = Provider.of<BookingProvider>(context, listen: false);
+  //   getBookingList();
+  // }
 
-    getBookingList();
-  }
+  // Future<void> getBookingList() async {
+  //   String roundTrip = bookingProvider.getRoundTrip;
+  //   String departure = bookingProvider.getDeparture;
+  //   String destination = bookingProvider.getDestination;
+  //   String departureDate = bookingProvider.getDepartureDate;
+  //   int pasCount = bookingProvider.getPasCount;
+  //   var url = 'http://10.0.2.2:9090/booking/goList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
 
-  Future<void> getBookingList() async {
+  //   // try {
+  //   //   var response = await http.get(Uri.parse(url),
+  //   //     // headers: {
+  //   //     //   'Content-Type' : 'application/json'
+  //   //     // },
+  //   //     // queryPar
+  //   //     // queryPara: jsonEncode({
+  //   //     //   'roundTrip' : '',
+  //   //     //   'departure' : '',
+  //   //     //   ''
+  //   //     // }),
+  //   //   );
+      
+  //   // } catch (e) {
+      
+  //   // }
 
-    var url = 'http://10.0.2.2:9090/booking/goList' ;
+  //   var response = await http.get(Uri.parse(url));
 
-    var response = await http.get(Uri.parse(url));
-    print('response.body');
-    print(response.body);
+  //   print('response.body');
+  //   print(response.body);
 
-    var utf8Decoded = utf8.decode(response.bodyBytes);
+  //   var utf8Decoded = utf8.decode(response.bodyBytes);
 
-  }
+  // }
 
   @override
   Widget build(BuildContext context) {
