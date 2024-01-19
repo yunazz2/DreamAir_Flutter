@@ -1,17 +1,17 @@
+import 'dart:convert';
+
 import 'package:flight_booking/screen/Authentication/sign_up_screen.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
 
 import '../home/home.dart';
 import '../widgets/button_global.dart';
-import '../widgets/icon.dart';
-import 'forgot_password.dart';
 
 class LogIn extends StatefulWidget {
-  const LogIn({Key? key}) : super(key: key);
+  const LogIn({super.key});
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -19,6 +19,41 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   bool hidePassword = true;
+  
+  TextEditingController userIdController = TextEditingController();
+  TextEditingController userPwController = TextEditingController();
+
+  // 로그인 요청
+  Future<void> login(
+    String userId,
+    String userPw,
+  ) async {
+
+    final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/josn',
+        },
+        body: jsonEncode({
+          'userId': userId,
+          'userPw': userPw,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        print('로그인 성공');
+        UserProvider().updateLoginStatus(true);
+        const Home().launch(context);
+      } else {
+        print('로그인 실패: ${response.statusCode}, ${response.body}');
+      }
+    } catch (e) {
+      print('오류 발생: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +63,10 @@ class _LogInState extends State<LogIn> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text('로그인', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          '로그인',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -43,11 +81,11 @@ class _LogInState extends State<LogIn> {
               Center(
                 child: Container(
                   height: 70,
-                  width: 78,
+                  width: 120,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/logo2.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/white_logo_name.png'),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -68,28 +106,33 @@ class _LogInState extends State<LogIn> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 10.0),
-                    Text(
-                      '로그인을 진행합니다.',
-                      style: TextStyle(color: kTitleColor, fontSize: 18.0,),
-                    ),
+                    Text('로그인을 진행합니다.', style: TextStyle(color: kTitleColor, fontSize: 18.0,),),
 
                     // 아이디
                     const SizedBox(height: 40.0),
                     TextFormField(
+                      controller: userIdController,
+                      onChanged: ((value) {
+                        userIdController.text = value;
+                      }),
                       keyboardType: TextInputType.text,
                       cursorColor: kTitleColor,
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    
+
                     // 비밀번호
                     const SizedBox(height: 20.0),
                     TextFormField(
+                      controller: userPwController,
+                      onChanged: (value) {
+                        userPwController.text = value;
+                      },
                       cursorColor: kTitleColor,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: hidePassword,
@@ -97,7 +140,7 @@ class _LogInState extends State<LogIn> {
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -105,7 +148,9 @@ class _LogInState extends State<LogIn> {
                             });
                           },
                           icon: Icon(
-                            hidePassword ? Icons.visibility_off : Icons.visibility,
+                            hidePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: kSubTitleColor,
                           ),
                         ),
@@ -121,7 +166,7 @@ class _LogInState extends State<LogIn> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       onPressed: () {
-                        const Home().launch(context);
+                        login(userIdController.text, userPwController.text);
                       },
                       buttonTextColor: kWhite,
                     ),
@@ -132,20 +177,22 @@ class _LogInState extends State<LogIn> {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(height: 50,
+      bottomNavigationBar: SizedBox(
+        height: 50,
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
             onTap: () => const SignUp().launch(context),
             child: Center(
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: '아직 계정이 없으신가요? ',
                   style: TextStyle(color: kSubTitleColor),
                   children: [
                     TextSpan(
                       text: '회원 가입',
-                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

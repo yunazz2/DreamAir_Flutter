@@ -3,13 +3,12 @@ import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../home/home.dart';
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -34,7 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       onTap: () {
                         const Home().launch(context);
                       },
-                      child: Text('건너뛰기', style: TextStyle(color: Colors.white),
+                      child: const Text('건너뛰기', style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),

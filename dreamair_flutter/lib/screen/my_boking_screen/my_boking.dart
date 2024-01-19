@@ -1,5 +1,4 @@
 // 예약 조회 페이지
-import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -14,12 +13,10 @@ class MyBooking extends StatefulWidget {
 }
 
 class _MyBookingState extends State<MyBooking> {
-
-  int _bookedTicketCount = 5; // 예매한 탑승권 수
+  final int _bookedTicketCount = 5; // 예매한 탑승권 수
 
   @override
   Widget build(BuildContext context) {
-
     int ticketNo = 1;
     String departure = '김포';
     String destination = '제주';
@@ -28,16 +25,20 @@ class _MyBookingState extends State<MyBooking> {
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
-
       appBar: AppBar(
         titleSpacing: 0,
         elevation: 0,
         backgroundColor: kPrimaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
-        title: Text('나의 탑승권 조회', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),
+        title: const Text(
+          '나의 탑승권 조회',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
@@ -50,7 +51,6 @@ class _MyBookingState extends State<MyBooking> {
               topLeft: Radius.circular(30),
             ),
           ),
-
           child: Column(
             children: [
               ListView.builder(
@@ -68,13 +68,16 @@ class _MyBookingState extends State<MyBooking> {
                           border: Border.all(
                             color: kBorderColorTextField,
                           )),
-                          
+
                       // 예매한 탑승권 목록
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('탑승권 번호 : $ticketNo'),
-                          const Divider(thickness: 1.0, color: kBorderColorTextField,),
+                          const Divider(
+                            thickness: 1.0,
+                            color: kBorderColorTextField,
+                          ),
                           ListTile(
                             onTap: () {
                               Navigator.push(
@@ -87,7 +90,7 @@ class _MyBookingState extends State<MyBooking> {
                             horizontalTitleGap: 5.0,
                             contentPadding: EdgeInsets.zero,
                             minLeadingWidth: 0,
-                            leading: Container(
+                            leading: const SizedBox(
                               height: 35.0,
                               width: 35.0,
                               child: Icon(Icons.flight),
@@ -95,17 +98,24 @@ class _MyBookingState extends State<MyBooking> {
                             // 출발지 도착지
                             title: Row(
                               children: [
-                                Text('$departure', style: TextStyle(color: kTitleColor),),
+                                Text(
+                                  departure,
+                                  style: const TextStyle(color: kTitleColor),
+                                ),
                                 const SizedBox(width: 2.0),
-                                
+
                                 // 출발지 도착지 사이 화살표 디자인
-                                const SizedBox(width: 10.0,),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
                                 Row(
                                   children: [
                                     Container(
                                       height: 10.0,
                                       width: 10.0,
-                                      decoration: const BoxDecoration(color: kPrimaryColor, shape: BoxShape.circle),
+                                      decoration: const BoxDecoration(
+                                          color: kPrimaryColor,
+                                          shape: BoxShape.circle),
                                     ),
                                     Stack(
                                       alignment: Alignment.center,
@@ -137,14 +147,20 @@ class _MyBookingState extends State<MyBooking> {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         shape: BoxShape.circle,
-                                        border: Border.all(color: kPrimaryColor),
+                                        border:
+                                            Border.all(color: kPrimaryColor),
                                       ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(width: 10.0,),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
 
-                                Text('$destination', style: TextStyle(color: kTitleColor),),
+                                Text(
+                                  destination,
+                                  style: const TextStyle(color: kTitleColor),
+                                ),
                               ],
                             ),
                             // subtitle: Text(
@@ -152,10 +168,16 @@ class _MyBookingState extends State<MyBooking> {
                             //   style: TextStyle(fontSize: 12, color: kSubTitleColor),
                             // ),
                           ),
-                          const SizedBox(height: 3.0,),
-                          const Divider(thickness: 1.0, color: kBorderColorTextField,),
+                          const SizedBox(
+                            height: 3.0,
+                          ),
+                          const Divider(
+                            thickness: 1.0,
+                            color: kBorderColorTextField,
+                          ),
                           const Row(
-                            mainAxisAlignment: MainAxisAlignment.start, // 각 요소 사이의 간격을 균등하게 조절
+                            mainAxisAlignment:
+                                MainAxisAlignment.start, // 각 요소 사이의 간격을 균등하게 조절
                             children: [
                               Image(
                                 width: 20.0,
@@ -164,7 +186,9 @@ class _MyBookingState extends State<MyBooking> {
                                 fit: BoxFit.cover,
                               ),
                               SizedBox(width: 10.0), // 요소간 간격 추가
-                              Text('Dream Air', style: TextStyle(fontSize: 12, color: kTitleColor)),
+                              Text('Dream Air',
+                                  style: TextStyle(
+                                      fontSize: 12, color: kTitleColor)),
                             ],
                           ),
                         ],

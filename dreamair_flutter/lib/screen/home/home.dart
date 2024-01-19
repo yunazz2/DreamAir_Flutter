@@ -1,4 +1,3 @@
-import 'package:flight_booking/screen/History_Screen/history_screen.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
 import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/mypage_screen.dart';
@@ -26,7 +25,7 @@ class _HomeState extends State<Home> {
     CheckInScreen(), // 체크인
     ScheduleScreen(), //  출도착 조회
     BoardScreen(), // 게시판
-    Mypage(),  // 마이페이지
+    Mypage(), // 마이페이지
   ];
 
   @override

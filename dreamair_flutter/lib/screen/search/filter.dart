@@ -7,7 +7,7 @@ import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
 class Filter extends StatefulWidget {
-  const Filter({Key? key}) : super(key: key);
+  const Filter({super.key});
 
   @override
   State<Filter> createState() => _FilterState();
@@ -152,9 +152,10 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Stops',
-                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8.0),
                       HorizontalList(
@@ -179,7 +180,7 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                               ),
                               Text(
                                 titleList[i],
-                                style: TextStyle(color: kSubTitleColor),
+                                style: const TextStyle(color: kSubTitleColor),
                               ),
                             ],
                           );
@@ -207,7 +208,8 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TabBar(
-                        labelStyle: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                        labelStyle: kTextStyle.copyWith(
+                            color: kPrimaryColor, fontWeight: FontWeight.bold),
                         unselectedLabelColor: kSubTitleColor,
                         indicatorColor: kPrimaryColor,
                         labelColor: kPrimaryColor,
@@ -257,13 +259,15 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                       const SizedBox(
                         height: 15.0,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10.0),
                         child: Column(
                           children: [
                             Text(
                               'Departure from Dhaka',
-                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: kTitleColor,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -284,16 +288,28 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                 onTap: () {
                                   setState(() {
                                     selectedDepartureTime = departureTime[i];
-                                    i == 0 ? Navigator.push(context, MaterialPageRoute(builder: (context) => const Filter())) : null;
+                                    i == 0
+                                        ? Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Filter()))
+                                        : null;
                                   });
                                 },
                                 child: Container(
                                   width: 79,
                                   padding: const EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
-                                    color: selectedDepartureTime == departureTime[i] ? kPrimaryColor : kWhite,
+                                    color: selectedDepartureTime ==
+                                            departureTime[i]
+                                        ? kPrimaryColor
+                                        : kWhite,
                                     border: Border.all(
-                                      color: selectedDepartureTime == departureTime[i] ? kPrimaryColor : kBorderColorTextField,
+                                      color: selectedDepartureTime ==
+                                              departureTime[i]
+                                          ? kPrimaryColor
+                                          : kBorderColorTextField,
                                     ),
                                     borderRadius: i == 0
                                         ? const BorderRadius.only(
@@ -303,7 +319,8 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                         : i == 3
                                             ? const BorderRadius.only(
                                                 topRight: Radius.circular(4.0),
-                                                bottomRight: Radius.circular(4.0),
+                                                bottomRight:
+                                                    Radius.circular(4.0),
                                               )
                                             : BorderRadius.circular(0.0),
                                   ),
@@ -311,15 +328,26 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                     children: [
                                       Icon(
                                         iconList[i],
-                                        color: selectedDepartureTime == departureTime[i] ? kWhite : kSubTitleColor,
+                                        color: selectedDepartureTime ==
+                                                departureTime[i]
+                                            ? kWhite
+                                            : kSubTitleColor,
                                       ),
                                       Divider(
                                         thickness: 1.0,
-                                        color: selectedDepartureTime == departureTime[i] ? kWhite : kBorderColorTextField,
+                                        color: selectedDepartureTime ==
+                                                departureTime[i]
+                                            ? kWhite
+                                            : kBorderColorTextField,
                                       ),
                                       Text(
                                         departureTime[i],
-                                        style: TextStyle(color: selectedDepartureTime == departureTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
+                                        style: TextStyle(
+                                            color: selectedDepartureTime ==
+                                                    departureTime[i]
+                                                ? kWhite
+                                                : kSubTitleColor,
+                                            fontSize: 10.0),
                                       ),
                                     ],
                                   ),
@@ -332,13 +360,15 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                       const SizedBox(
                         height: 10.0,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10.0),
                         child: Column(
                           children: [
                             Text(
                               'Arrive in New Delhi',
-                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: kTitleColor,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -359,16 +389,27 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                 onTap: () {
                                   setState(() {
                                     selectedArrivalTime = arrivalTime[i];
-                                    i == 0 ? Navigator.push(context, MaterialPageRoute(builder: (context) => const Filter())) : null;
+                                    i == 0
+                                        ? Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Filter()))
+                                        : null;
                                   });
                                 },
                                 child: Container(
                                   width: 79,
                                   padding: const EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
-                                    color: selectedArrivalTime == arrivalTime[i] ? kPrimaryColor : kWhite,
+                                    color: selectedArrivalTime == arrivalTime[i]
+                                        ? kPrimaryColor
+                                        : kWhite,
                                     border: Border.all(
-                                      color: selectedArrivalTime == arrivalTime[i] ? kPrimaryColor : kBorderColorTextField,
+                                      color:
+                                          selectedArrivalTime == arrivalTime[i]
+                                              ? kPrimaryColor
+                                              : kBorderColorTextField,
                                     ),
                                     borderRadius: i == 0
                                         ? const BorderRadius.only(
@@ -378,7 +419,8 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                         : i == 3
                                             ? const BorderRadius.only(
                                                 topRight: Radius.circular(4.0),
-                                                bottomRight: Radius.circular(4.0),
+                                                bottomRight:
+                                                    Radius.circular(4.0),
                                               )
                                             : BorderRadius.circular(0.0),
                                   ),
@@ -386,15 +428,26 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                     children: [
                                       Icon(
                                         iconList[i],
-                                        color: selectedArrivalTime == arrivalTime[i] ? kWhite : kSubTitleColor,
+                                        color: selectedArrivalTime ==
+                                                arrivalTime[i]
+                                            ? kWhite
+                                            : kSubTitleColor,
                                       ),
                                       Divider(
                                         thickness: 1.0,
-                                        color: selectedArrivalTime == arrivalTime[i] ? kWhite : kBorderColorTextField,
+                                        color: selectedArrivalTime ==
+                                                arrivalTime[i]
+                                            ? kWhite
+                                            : kBorderColorTextField,
                                       ),
                                       Text(
                                         arrivalTime[i],
-                                        style: TextStyle(color: selectedArrivalTime == arrivalTime[i] ? kWhite : kSubTitleColor, fontSize: 10.0),
+                                        style: TextStyle(
+                                            color: selectedArrivalTime ==
+                                                    arrivalTime[i]
+                                                ? kWhite
+                                                : kSubTitleColor,
+                                            fontSize: 10.0),
                                       ),
                                     ],
                                   ),
@@ -426,13 +479,14 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Price',
-                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       Center(
                         child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             text: 'Up to USD ',
                             style: TextStyle(color: kSubTitleColor),
                             children: [
@@ -452,7 +506,9 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                         onChanged: (double newVal) {
                           setState(
                             () {
-                              newVal > 0.00 && newVal < 1499999.00 ? price = newVal : price = 10.00;
+                              newVal > 0.00 && newVal < 1499999.00
+                                  ? price = newVal
+                                  : price = 10.00;
                             },
                           );
                         },
@@ -461,10 +517,10 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                         children: [
                           Text(
                             'USD $currencySign${price.toString()}',
-                            style: TextStyle(color: kSubTitleColor),
+                            style: const TextStyle(color: kSubTitleColor),
                           ),
                           const Spacer(),
-                          Text(
+                          const Text(
                             'USD \$1500000.00',
                             style: TextStyle(color: kSubTitleColor),
                           ),
@@ -492,9 +548,10 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Airlines',
-                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       ListTileTheme(
                         minLeadingWidth: 10,
@@ -502,20 +559,28 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                           onTap: () {
                             setState(() {
                               for (var element in flightNameList) {
-                                selectedFlightNameList.contains(element) ? selectedFlightNameList.remove(element) : selectedFlightNameList.add(element);
+                                selectedFlightNameList.contains(element)
+                                    ? selectedFlightNameList.remove(element)
+                                    : selectedFlightNameList.add(element);
                               }
                             });
                           },
                           dense: true,
                           horizontalTitleGap: 10,
                           contentPadding: EdgeInsets.zero,
-                          title: Text(
+                          title: const Text(
                             'Select All',
                             style: TextStyle(color: kSubTitleColor),
                           ),
                           leading: Icon(
-                            selectedFlightNameList.length == flightNameList.length ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
-                            color: selectedFlightNameList.length == flightNameList.length ? kPrimaryColor : kSubTitleColor,
+                            selectedFlightNameList.length ==
+                                    flightNameList.length
+                                ? Icons.check_box_rounded
+                                : Icons.check_box_outline_blank_rounded,
+                            color: selectedFlightNameList.length ==
+                                    flightNameList.length
+                                ? kPrimaryColor
+                                : kSubTitleColor,
                           ),
                         ),
                       ),
@@ -523,9 +588,10 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                         dense: true,
                         horizontalTitleGap: 10,
                         contentPadding: EdgeInsets.zero,
-                        title: Text(
+                        title: const Text(
                           'Show Alliances',
-                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kTitleColor, fontWeight: FontWeight.bold),
                         ),
                         trailing: Switch(
                           activeColor: kPrimaryColor,
@@ -559,8 +625,10 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                       selectedFlightNameList.contains(
                                         flightNameList[i],
                                       )
-                                          ? selectedFlightNameList.remove(flightNameList[i])
-                                          : selectedFlightNameList.add(flightNameList[i]);
+                                          ? selectedFlightNameList
+                                              .remove(flightNameList[i])
+                                          : selectedFlightNameList
+                                              .add(flightNameList[i]);
                                     });
                                   },
                                   dense: true,
@@ -571,7 +639,8 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                         flightNameList[i],
                                       )
                                           ? Icons.check_box_rounded
-                                          : Icons.check_box_outline_blank_rounded,
+                                          : Icons
+                                              .check_box_outline_blank_rounded,
                                       color: selectedFlightNameList.contains(
                                         flightNameList[i],
                                       )
@@ -586,13 +655,18 @@ class _FilterState extends State<Filter> with TickerProviderStateMixin {
                                         width: 20.0,
                                         decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
-                                          image: DecorationImage(image: AssetImage('images/indigo.png'), fit: BoxFit.cover),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'images/indigo.png'),
+                                              fit: BoxFit.cover),
                                         ),
                                       ),
                                       const SizedBox(width: 10.0),
                                       Text(
                                         flightNameList[i],
-                                        style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                            color: kTitleColor,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
