@@ -35,7 +35,7 @@ class _SignUpState extends State<SignUp> {
     String address,
     ) async {
 
-      final url = 'http://10.0.2.2:9090/'; // 서버의 주소로 대체
+      final url = 'http://10.0.2.2:9090/user';
 
       try {
         final response = await http.post(
@@ -53,7 +53,7 @@ class _SignUpState extends State<SignUp> {
           }),
         );
 
-        if (response.statusCode == 201) {
+        if (response.statusCode == 200) {
           print('회원 가입 성공');
           const Home().launch(context);
         } else {

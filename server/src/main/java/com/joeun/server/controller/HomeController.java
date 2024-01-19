@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,16 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joeun.server.dto.Board;
+import com.joeun.server.dto.CustomUser;
 import com.joeun.server.dto.Users;
 import com.joeun.server.service.BoardService;
 import com.joeun.server.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Slf4j
+@Controller
 @RestController
 @RequestMapping("/")
 public class HomeController {
@@ -63,24 +64,38 @@ public class HomeController {
     }
 
     // 회원 가입
-    @PostMapping()
-    public ResponseEntity<?> create(@RequestBody Users user) {
-        log.info("[POST] - /join - 회원 등록");
-        log.info("객체 확인 : " + user);
-        try {
-            int result = userService.insert(user);
-            if(result > 0) {
-                return new ResponseEntity<>("회원 가입 완료", HttpStatus.CREATED);    // 201
-            }
-            else {
-                return new ResponseEntity<>("회원 가입 실패", HttpStatus.OK);
-            }
-        } catch (Exception e) {
-            log.error(null, e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    @PostMapping("user")
+    public ResponseEntity<?> join(@RequestBody Users user) throws Exception {
+
+        log.info("[POST] - /users");
+
+        int result = userService.insert(user);
+
+        if( result > 0 ) {
+            log.info("회원가입 성공! - SUCCESS");
+            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
         }
+        else {
+            log.info("회원가입 실패! - FAIL");
+            return new ResponseEntity<>("FAIL", HttpStatus.BAD_REQUEST);
+        } 
     }
 
-    // 로그인
-    
+    // 사용자 정보 조회
+    @GetMapping("/info")
+    public ResponseEntity<?> userInfo(@AuthenticationPrincipal CustomUser customUser) {
+        
+        log.info("::::: customUser :::::");
+        log.info("customUser : "+ customUser);
+
+        Users user = customUser.getUser();
+        log.info("user : " + user);
+
+        // 인증된 사용자 정보 
+        if( user != null )
+            return new ResponseEntity<>(user, HttpStatus.OK);
+
+        // 인증 되지 않음
+        return new ResponseEntity<>("UNAUTHORIZED", HttpStatus.UNAUTHORIZED);
+    }
 }

@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flight_booking/screen/Authentication/sign_up_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:http/http.dart' as http;
 
 import '../home/home.dart';
 import '../widgets/button_global.dart';
@@ -19,6 +22,39 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   bool hidePassword = true;
+  
+  TextEditingController userIdController = TextEditingController();
+  TextEditingController userPwController = TextEditingController();
+
+  Future<void> login(
+    String userId,
+    String userPw,
+  ) async {
+
+    final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/josn',
+        },
+        body: jsonEncode({
+          'userId': userId,
+          'userPw': userPw,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        print('로그인 성공');
+        const Home().launch(context);
+      } else {
+        print('로그인 실패: ${response.statusCode}, ${response.body}');
+      }
+    } catch (e) {
+      print('오류 발생: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +109,13 @@ class _LogInState extends State<LogIn> {
                     // 아이디
                     const SizedBox(height: 40.0),
                     TextFormField(
+                      controller: userIdController,
                       keyboardType: TextInputType.text,
                       cursorColor: kTitleColor,
                       textInputAction: TextInputAction.next,
+                      onChanged: ((value) {
+                        userIdController.text = value;
+                      }),
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
                         labelStyle: TextStyle(color: kTitleColor),
@@ -87,10 +127,14 @@ class _LogInState extends State<LogIn> {
                     // 비밀번호
                     const SizedBox(height: 20.0),
                     TextFormField(
+                      controller: userPwController,
                       cursorColor: kTitleColor,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: hidePassword,
                       textInputAction: TextInputAction.done,
+                      onChanged: (value) {
+                        userPwController.text = value;
+                      },
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
@@ -118,7 +162,7 @@ class _LogInState extends State<LogIn> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       onPressed: () {
-                        const Home().launch(context);
+                        login(userIdController.text, userPwController.text);
                       },
                       buttonTextColor: kWhite,
                     ),
