@@ -17,7 +17,7 @@ class OverflowText extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (BuildContext context) => const BoardDetail(),
+                    builder: (BuildContext context) => BoardDetail(),
                   ),
                 );
               },

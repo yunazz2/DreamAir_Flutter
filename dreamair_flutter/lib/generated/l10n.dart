@@ -550,11 +550,21 @@ class S {
     );
   }
 
-    /// `BoardUpdate`
+  /// `BoardUpdate`
   String get BoardUpdateTitle {
     return Intl.message(
       '글 수정',
       name: 'BoardUpdateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BoardDetail`
+  String get BoardDetailTitle {
+    return Intl.message(
+      '상세보기',
+      name: 'BoardDetailTitle',
       desc: '',
       args: [],
     );

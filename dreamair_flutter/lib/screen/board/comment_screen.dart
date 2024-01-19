@@ -1,14 +1,11 @@
 import 'package:flight_booking/generated/l10n.dart' as lang;
+import 'package:flight_booking/screen/board/comment_input.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class CommentScreen extends StatelessWidget {
-  final String sheetTitle;
-
-  const CommentScreen({
-    super.key,
-    required this.sheetTitle,
-  });
+  const CommentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,106 +29,49 @@ class CommentScreen extends StatelessWidget {
         primary: false,
         physics: const BouncingScrollPhysics(),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 700),
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(10.0),
-            decoration: const BoxDecoration(
-              color: kWhite,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
-              ),
+            constraints: const BoxConstraints(minHeight: 700),
+            child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(10.0),
+          decoration: const BoxDecoration(
+            color: kWhite,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
             ),
-            child: GestureDetector(
-              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  bottom: 12,
-                ),
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              sheetTitle,
-                              style: const TextStyle(
-                                fontFamily: 'AppBarKorean',
-                                fontSize: 17,
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  iconSize: 20,
-                                  icon: const Icon(Icons.tune),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  iconSize: 20,
-                                  icon: const Icon(Icons.close),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemBuilder: (context, index) => const CommentList(),
-                            itemCount: 50,
-                          ),
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.black),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                           const Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: '댓글 입력',
-                                  filled: true,
-                                  suffixIcon: Icon(Icons.upload),
-                                ),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            
+          ),
+          child:GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: const Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 40,
             ),
+ 
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CommentList(),
+                  // TextField(
+                  //   autofocus: true,
+                  //   decoration: InputDecoration(
+                  //     hintText: '댓글 입력',
+                  //     suffixIcon: Icon(
+                  //       Icons.send,
+                  //       color: Colors.blueAccent,
+                  //     ),
+                  //   ),
+                  // ),
+                  CommentInput(),   // 댓글 입력 창
+                ],
+              ),
+            ),               
           ),
         ),
+        ),
       ),
-    );
+      );
   }
 }
 
@@ -149,12 +89,14 @@ class CommentList extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {},
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
+                style: const ButtonStyle(
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
                   ),
                   visualDensity: VisualDensity.comfortable,
-                  padding: EdgeInsets.zero,
+                  padding: MaterialStatePropertyAll(EdgeInsets.zero),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,13 +105,17 @@ class CommentList extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 35,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 1),
-                          ),
+                        // replier profile
+                        // Container(
+                        //   width: 35,
+                        //   height: 35,
+                        //   decoration: BoxDecoration(
+                        //     shape: BoxShape.circle,
+                        //     border: Border.all(width: 1),
+                        //   ),
+                        // ),
+                        const CircleAvatar(
+                            backgroundImage: AssetImage('images/logo2.png'),
                         ),
                         const SizedBox(
                           width: 15,
@@ -178,15 +124,16 @@ class CommentList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              '',
+                              'ID 자리입니다.',
                               style: TextStyle(
                                 fontSize: 10,
                               ),
                             ),
-                            const Text('댓들이 여기에 있습니다.'),
+                            const Text('댓글이 여기에 있습니다.'),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // Like
                                 IconButton(
                                   onPressed: () {},
                                   iconSize: 17,
@@ -194,8 +141,12 @@ class CommentList extends StatelessWidget {
                                   icon: const Icon(
                                     Icons.thumb_up_outlined,
                                   ),
-                                  // 아래의 selectedIcon은 없는 것처럼 처리
+                                  selectedIcon: const Icon(
+                                    Icons.thumb_up,
+                                  ),
                                 ),
+
+                                // Unlike
                                 IconButton(
                                   onPressed: () {},
                                   iconSize: 17,
@@ -203,18 +154,12 @@ class CommentList extends StatelessWidget {
                                   icon: const Icon(
                                     Icons.thumb_down_outlined,
                                   ),
-                                  // 아래의 selectedIcon은 없는 것처럼 처리
+                                  selectedIcon: const Icon(
+                                    Icons.thumb_down,
+                                  ),
                                 ),
                                 const SizedBox(
                                   width: 10,
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  iconSize: 17,
-                                  visualDensity: VisualDensity.compact,
-                                  icon: const Icon(
-                                    Icons.comment_outlined,
-                                  ),
                                 ),
                               ],
                             ),
@@ -222,12 +167,45 @@ class CommentList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.campaign_outlined,
-                      ),
-                    ),
+
+                    Column(
+                      children: [
+                        PopupMenuButton<int>(
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              child: Center(
+                                child: const Text('댓글 수정').onTap(() {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (BuildContext context) => const CommentUpdateScreen(),
+                                  //   ),
+                                  // );
+                                }),
+                              ),
+                            ),
+                            const PopupMenuDivider(),
+                            PopupMenuItem(
+                              child: Center(
+                                child: const Text('댓글 삭제').onTap(() {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) => const CommentScreen(),
+                                    ),
+                                  );
+                                }),
+                              ),
+                            ),
+                            // popupmenu item 2
+                          ],
+                          offset: const Offset(0, 30),
+                          color: kWhite,
+                          elevation: 1.0,
+                        )
+                      ],
+              ),
                   ],
                 ),
               ),
@@ -241,9 +219,7 @@ class CommentList extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {},
-              style: TextButton.styleFrom(
-                visualDensity: VisualDensity.compact,
-              ),
+              style: const ButtonStyle(visualDensity: VisualDensity.compact),
               child: Row(
                 children: [
                   Text(

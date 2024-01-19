@@ -1,3 +1,5 @@
+import 'package:flight_booking/screen/board/board_screen.dart';
+import 'package:flight_booking/screen/board/board_update_screen.dart';
 import 'package:flight_booking/screen/board/comment_screen.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flight_booking/screen/widgets/overflow_text.dart';
@@ -54,15 +56,22 @@ class _PostItemState extends State<PostItem> {
                         child: Center(
                           child: const Text('수정').onTap(() {
                             setState(() {});
-                            Navigator.pop(context);
+                            Navigator.push(context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => const BoardUpdateScreen(),
+                            ),);
                           }),
                         ),
                       ),
+                      const PopupMenuDivider(), // Divider 추가
                       PopupMenuItem(
                         child: Center(
                           child: const Text('삭제').onTap(() {
                             setState(() {});
-                            Navigator.pop(context);
+                            Navigator.push(context,             
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => const BoardScreen(),
+                            ),);
                           }),
                         ),
                       ),
@@ -110,7 +119,8 @@ class _PostItemState extends State<PostItem> {
                       context,
                       MaterialPageRoute<void>(
                         builder: (BuildContext context) =>
-                            const CommentScreen( sheetTitle: '댓글',),
+                            // const CommentScreen( sheetTitle: '댓글',),
+                            const CommentScreen(),
                       ),
                     );
                   },

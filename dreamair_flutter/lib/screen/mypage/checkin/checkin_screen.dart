@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 import '../../widgets/constant.dart';
 
 class CheckInScreen extends StatefulWidget {

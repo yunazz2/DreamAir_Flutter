@@ -1,8 +1,10 @@
 import 'package:flight_booking/generated/l10n.dart' as lang;
+import 'package:flight_booking/screen/board/board_screen.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 
 class BoardUpdateScreen extends StatefulWidget {
   const BoardUpdateScreen({super.key});
@@ -45,9 +47,7 @@ class _BoardUpdateScreenState extends State<BoardUpdateScreen> {
                 topLeft: Radius.circular(30),
               ),
             ),
-            child: const Column(children: [
-              InputForm(),
-            ]),
+            child: UpdateForm(),
           ),
         ),
       ),
@@ -55,106 +55,116 @@ class _BoardUpdateScreenState extends State<BoardUpdateScreen> {
   }
 }
 
-// input form
-class InputForm extends StatelessWidget {
-  const InputForm({super.key});
+// Update form
+class UpdateForm extends StatelessWidget {
+  const UpdateForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: Column(children: [
-            Row(
-              children: [
-                Text('제목'),
-                SizedBox(width: 10.0),
-                Expanded(
-                  child: TextField(
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '제목을 입력해주세요.',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Text('작성자'),
-                SizedBox(width: 10.0),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '작성자를 입력해주세요.',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Text('내용'),
-                SizedBox(width: 10.0),
-                Expanded(
-                  child: TextField(
-                    // 사이즈를 min 고정 시키고 싶어
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(20.0),
-                      border: OutlineInputBorder(),
-                      hintText: '내용을 입력해주세요.',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Text('이미지 업로드'),
-              ],
-            ),
-          ]),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 13,
         ),
+        child: 
+        Column(
+          children: [
+           const TextField(
+              decoration: InputDecoration(
+                labelText: "제목",
+                border: OutlineInputBorder(),
+              ),
+            ),
+           const SizedBox(height: 15,),
+           const TextField(
+              decoration: InputDecoration(
+                labelText: "작성자",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            const TextField(
+              maxLength: 200,
+              maxLines: 7,
+              decoration: InputDecoration(
+                suffixIcon: Icon(Icons.clear),
+                labelText: "내용을 입력해 주세요. (최대 200자)",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 18,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(
+                  alignment: const Alignment(1.8, -1.8),
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(
+                        padding: MaterialStatePropertyAll(
+                          EdgeInsets.all(16),
+                        ),
+                      ),
+                      child: const Column(
+                        children: [
+                          Icon(Icons.photo_outlined),
+                          Text('첨부하기'),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.add_circle_rounded,
+                      color: Colors.amber[900],
+                      size: 38,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 17.0,),
+            // 수정 버튼
+            ButtonGlobalWithoutIcon(
+              buttontext: lang.S.of(context).updatebutton,
+              buttonDecoration: kButtonDecoration.copyWith(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              onPressed: () {
+                // 수정 요청
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const BoardScreen(),
+                  ),
+                );
+              },
+              buttonTextColor: kWhite,
+            ),
 
-        // 수정 버튼
-        const SizedBox(height: 10.0),
-        ButtonGlobalWithoutIcon(
-          buttontext: lang.S.of(context).updatebutton,
-          buttonDecoration: kButtonDecoration.copyWith(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          onPressed: () {
-            // setState(() {
-            // const SearchResult().launch(context);
-            // });
-          },
-          buttonTextColor: kWhite,
+            // 삭제 버튼
+            const SizedBox(height: 2.0),
+            ButtonGlobalWithoutIcon(
+              buttontext: lang.S.of(context).deletebutton,
+              buttonDecoration: kButtonDecoration.copyWith(
+                color: redColor,
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              onPressed: () {
+                // 삭제 요청
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const BoardScreen(),
+                  ),
+                );
+              },
+              buttonTextColor: kWhite,
+            )
+          ],
         ),
-
-        // 삭제 버튼
-        const SizedBox(height: 10.0),
-        ButtonGlobalWithoutIcon(
-          buttontext: lang.S.of(context).deletebutton,
-          buttonDecoration: kButtonDecoration.copyWith(
-            color: redColor,
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          onPressed: () {
-            // setState(() {
-            // const SearchResult().launch(context);
-            // });
-          },
-          buttonTextColor: kWhite,
-        )
-      ],
+      ),
     );
   }
 }
