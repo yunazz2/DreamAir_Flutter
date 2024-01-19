@@ -1,5 +1,4 @@
 // 항공권 예약 페이지
-import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/booking/backSearch.dart';
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
@@ -148,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   image: AssetImage('images/bg.png'),
                                   fit: BoxFit.cover),
                             ),
-                            Padding(
+                           child: const Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ],
                               ),
                             ),
+                          ),
                           ],
                         )
                       ],

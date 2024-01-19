@@ -83,7 +83,7 @@ class _BoardStoryState extends State<BoardStory> {
                       context,
                       MaterialPageRoute<void>(
                         builder: (BuildContext context) =>
-                            const CommentScreen(),
+                            const CommentScreen( sheetTitle: '댓글',),
                       ),
                     );
                   },
