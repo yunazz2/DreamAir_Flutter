@@ -150,6 +150,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           onPressed: () {
+                            password = _passwordController.text;
                             setState(() {
                               const Seat().launch(context);         // 버튼
                             });
@@ -912,22 +913,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                           ),
                                                                         ),
                                                                         const SizedBox(height: 20.0),
-                                                                        TextFormField(
-                                                                          controller: _passwordController,
-                                                                          obscureText: true,
-                                                                          keyboardType: TextInputType.emailAddress,
-                                                                          cursorColor: kTitleColor,
-                                                                          textInputAction: TextInputAction.next,
-                                                                          decoration: kInputDecoration.copyWith(
-                                                                            labelText: '비밀번호',
-                                                                            labelStyle: TextStyle(color: kTitleColor),
-                                                                            hintText: '비회원 예매 비밀번호를 입력하세요.',
-                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                            focusColor: kTitleColor,
-                                                                            border: const OutlineInputBorder(),
-                                                                          ),
-                                                                        ),
-                                                                        const SizedBox(height: 20.0),
                                                                         DropdownButton<int>(
                                                                           isExpanded: true,
                                                                           value: selectedValue,
@@ -981,7 +966,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                             booking.setBirths = _birthController.text;
                                                                             booking.setPhones = _phoneController.text;
                                                                             booking.setEmails = _emailController.text;
-                                                                            password = _passwordController.text;
                                                                             booking.setGenders = selectedGender;
                                                                             booking.setPinTypes = selectedValue;
                                                                             
@@ -1008,7 +992,28 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                               },
                                             );
                                   } ,
-                                )
+                                ),
+                                Text(
+                                  '비회원 비밀번호',
+                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 10.0),
+                                TextFormField(
+                                  controller: _passwordController,
+                                  obscureText: true,
+                                  keyboardType: TextInputType.emailAddress,
+                                  cursorColor: kTitleColor,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: kInputDecoration.copyWith(
+                                    labelText: '비밀번호',
+                                    labelStyle: TextStyle(color: kTitleColor),
+                                    hintText: '비회원 예매 비밀번호를 입력하세요.',
+                                    hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                    focusColor: kTitleColor,
+                                    border: const OutlineInputBorder(),
+                                  ),
+                                ),
+                                const SizedBox(height: 20.0),
                               ],
                             ),
                           ),

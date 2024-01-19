@@ -20,25 +20,28 @@ class GoSearchResult extends StatefulWidget {
 
 class _GoSearchResultState extends State<GoSearchResult> {
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getBookingList();
+  late BookingProvider bookingProvider;
+  
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-  // }
+    bookingProvider = Provider.of<BookingProvider>(context, listen: false);
 
-  // Future<void> getBookingList() async {
+    getBookingList();
+  }
 
-  //   var url = 'http://10.0.2.2:9090/booking/goList';
+  Future<void> getBookingList() async {
 
-  //   var response = await http.get(Uri.parse(url));
-  //   print('response.body');
-  //   print(response.body);
+    var url = 'http://10.0.2.2:9090/booking/goList' ;
 
-  //   var utf8Decoded = utf8.decode(response.bodyBytes);
+    var response = await http.get(Uri.parse(url));
+    print('response.body');
+    print(response.body);
 
+    var utf8Decoded = utf8.decode(response.bodyBytes);
 
-  // }
+  }
 
   @override
   Widget build(BuildContext context) {
