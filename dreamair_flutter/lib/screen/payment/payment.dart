@@ -14,7 +14,7 @@ import '../widgets/constant.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 
 class Payment extends StatefulWidget {
-  const Payment({Key? key}) : super(key: key);
+  const Payment({super.key});
 
   @override
   State<Payment> createState() => _PaymentState();

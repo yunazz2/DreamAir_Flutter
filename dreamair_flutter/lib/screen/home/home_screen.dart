@@ -1,5 +1,4 @@
 // 항공권 예약 페이지
-import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/booking/backSearch.dart';
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
@@ -15,7 +14,7 @@ import '../booking/go_search_result.dart';
 import '../widgets/button_global.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -78,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      locale: Locale('ko'),
+      locale: const Locale('ko'),
       initialDate: selectedDate,
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
@@ -88,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         selectedDate = picked;
         singleDepDate = selectedDate.toString().substring(0, 10);
         var parts = singleDepDate.split("-");
-        singleDepDate = parts[0] + "/" + parts[1] + "/" + parts[2];
+        singleDepDate = "${parts[0]}/${parts[1]}/${parts[2]}";
       });
     }
   }
@@ -97,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void _showDepartureDate() async {
     final DateTimeRange? result = await showDateRangePicker(
       context: context,
-      locale: Locale('ko'),
+      locale: const Locale('ko'),
       firstDate: selectedDate,
       lastDate: DateTime(2030, 12, 31),
       currentDate: DateTime.now(),
@@ -107,14 +106,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       setState(() {
         _selectedDateRange = result;
 
-        departureDateTitle = _selectedDateRange.toString().substring(0, 10);    // 가는편 날짜
+        departureDateTitle =
+            _selectedDateRange.toString().substring(0, 10); // 가는편 날짜
         var parts = departureDateTitle.split("-");
-        departureDateTitle = parts[0] + "/" + parts[1] + "/" + parts[2];
+        departureDateTitle = "${parts[0]}/${parts[1]}/${parts[2]}";
 
-        returnDateTitle = _selectedDateRange.toString().substring(26, 36);    // 돌아오는편 날짜
+        returnDateTitle =
+            _selectedDateRange.toString().substring(26, 36); // 돌아오는편 날짜
         parts = returnDateTitle.split("-");
-        returnDateTitle = parts[0] + "/" + parts[1] + "/" + parts[2];
-
+        returnDateTitle = "${parts[0]}/${parts[1]}/${parts[2]}";
       });
     }
   }
@@ -126,28 +126,28 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         initialIndex: 0,
         length: 2,
         child: Scaffold(
-          backgroundColor: kDarkWhite,
-          body: Consumer<BookingProvider>(
-                builder: (context, booking, child) =>  
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.topLeft,
-                          children: [
-                            Container(
-                              height: 260,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(30.0),
-                                  bottomLeft: Radius.circular(30.0),
-                                ),
-                                image: DecorationImage(image: AssetImage('images/bg.png'), fit: BoxFit.cover),
+            backgroundColor: kDarkWhite,
+            body: Consumer<BookingProvider>(
+              builder: (context, booking, child) => Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Column(
+                    children: [
+                      Stack(
+                        alignment: Alignment.topLeft,
+                        children: [
+                          Container(
+                            height: 260,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(30.0),
+                                bottomLeft: Radius.circular(30.0),
                               ),
+                              image: DecorationImage(
+                                  image: AssetImage('images/bg.png'),
+                                  fit: BoxFit.cover),
                             ),
-                            Padding(
+                           child: const Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ],
                               ),
                             ),
+                          ),
                           ],
                         )
                       ],

@@ -9,7 +9,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../widgets/button_global.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -74,7 +74,10 @@ class _SignUpState extends State<SignUp> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text('회원가입', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          '회원가입',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
 
       body: Container(
@@ -129,7 +132,7 @@ class _SignUpState extends State<SignUp> {
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -148,7 +151,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -156,14 +159,16 @@ class _SignUpState extends State<SignUp> {
                             });
                           },
                           icon: Icon(
-                            hidePassword ? Icons.visibility_off : Icons.visibility,
+                            hidePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: kSubTitleColor,
                           ),
                         ),
                       ),
                       textInputAction: TextInputAction.next,
                     ),
-                    
+
                     // 비밀번호 확인
                     const SizedBox(height: 20.0),
                     TextFormField(
@@ -173,7 +178,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호 확인',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -181,7 +186,9 @@ class _SignUpState extends State<SignUp> {
                             });
                           },
                           icon: Icon(
-                            hidePasswordCheck ? Icons.visibility_off : Icons.visibility,
+                            hidePasswordCheck
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: kSubTitleColor,
                           ),
                         ),
@@ -201,12 +208,12 @@ class _SignUpState extends State<SignUp> {
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '이름',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    
+
                     // 핸드폰 번호
                     const SizedBox(height: 20.0),
                     TextFormField(
@@ -219,12 +226,12 @@ class _SignUpState extends State<SignUp> {
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '핸드폰 번호',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    
+
                     // 이메일
                     const SizedBox(height: 20.0),
                     TextFormField(
@@ -237,7 +244,7 @@ class _SignUpState extends State<SignUp> {
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
                         labelText: '이메일',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -255,7 +262,7 @@ class _SignUpState extends State<SignUp> {
                       textInputAction: TextInputAction.done,
                       decoration: kInputDecoration.copyWith(
                         labelText: '주소',
-                        labelStyle: TextStyle(color: kTitleColor),
+                        labelStyle: const TextStyle(color: kTitleColor),
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -287,14 +294,15 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(height: 50,
+      bottomNavigationBar: SizedBox(
+        height: 50,
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
           child: GestureDetector(
             onTap: () => const LogIn().launch(context),
             child: Center(
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: '이미 계정이 있으신가요? ',
                   style: TextStyle(color: kSubTitleColor),
                   children: [

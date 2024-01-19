@@ -61,6 +61,15 @@ dependencies:
   insta_like_button: ^0.1.1
   dropdown_button2: ^2.3.9
   like_button: ^2.0.5
+  photo_manager: ^2.8.1
+  get: ^4.6.6
+  # flutter_tags: ^0.4.9+1
+  flutter_provider: ^2.1.0
+  flutter_staggered_animations: ^1.1.1
+  lottie: ^3.0.0
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  uuid: ^4.3.3
   
 dev_dependencies:
   flutter_test:
@@ -89,6 +98,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - images/
+     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
