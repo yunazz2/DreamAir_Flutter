@@ -66,6 +66,7 @@ public class HomeController {
     @PostMapping()
     public ResponseEntity<?> create(@RequestBody Users user) {
         log.info("[POST] - /join - 회원 등록");
+        log.info("객체 확인 : " + user);
         try {
             int result = userService.insert(user);
             if(result > 0) {

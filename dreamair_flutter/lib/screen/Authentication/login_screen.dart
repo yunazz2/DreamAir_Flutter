@@ -43,11 +43,11 @@ class _LogInState extends State<LogIn> {
               Center(
                 child: Container(
                   height: 70,
-                  width: 78,
+                  width: 120,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/logo2.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/white_logo_name.png'),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -68,10 +68,7 @@ class _LogInState extends State<LogIn> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 10.0),
-                    Text(
-                      '로그인을 진행합니다.',
-                      style: TextStyle(color: kTitleColor, fontSize: 18.0,),
-                    ),
+                    Text('로그인을 진행합니다.', style: TextStyle(color: kTitleColor, fontSize: 18.0,),),
 
                     // 아이디
                     const SizedBox(height: 40.0),
