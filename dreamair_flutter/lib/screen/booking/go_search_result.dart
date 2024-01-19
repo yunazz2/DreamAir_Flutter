@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flight_booking/screen/booking/back_search_result.dart';
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/booking/go_flight_details.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class GoSearchResult extends StatefulWidget {
   const GoSearchResult({Key? key}) : super(key: key);
@@ -16,6 +19,26 @@ class GoSearchResult extends StatefulWidget {
 }
 
 class _GoSearchResultState extends State<GoSearchResult> {
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getBookingList();
+
+  // }
+
+  // Future<void> getBookingList() async {
+
+  //   var url = 'http://10.0.2.2:9090/booking/goList';
+
+  //   var response = await http.get(Uri.parse(url));
+  //   print('response.body');
+  //   print(response.body);
+
+  //   var utf8Decoded = utf8.decode(response.bodyBytes);
+
+
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -148,10 +171,12 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                       ),
                                       child: GestureDetector(
                                         onTap: () {
+                                          // 선택한 항공권 데이터를 provider에 넣기
+                                          booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
                                           if (booking.getRoundTrip == '편도') {
                                             const GoFlightDetails().launch(context);       // 버튼
                                           } else {
-                                            const BackSearchResult().launch(context);
+                                            const BackSearchResult().launch(context);      // 버튼
                                           }
                                         }, 
                                         child: Container(

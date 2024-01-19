@@ -23,6 +23,16 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
   TabController? tabController;
   TabController? tabsController;
 
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _birthController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  String password = '';
+
   @override
   void initState() {
     super.initState();
@@ -46,41 +56,43 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
 
   List<String> genderList = ['남자', '여자',];
 
-  String selectedGender = 'Mr.';
+  String selectedGender = '남자';
 
   bool isChecked = true;
 
-  List<String> chairType = [
-    '주민등록증',
-    '여권',
-    '운전면허증',
-  ];
+  int selectedValue = 1;
 
-  String selectedType = '주민등록증';
+  // List<String> chairType = [
+  //   '주민등록증',
+  //   '여권',
+  //   '운전면허증',
+  // ];
 
-  DropdownButton<String> getChairType() {
-    List<DropdownMenuItem<String>> dropDownItems = [];
-    for (String des in chairType) {
-      var item = DropdownMenuItem(
-        value: des,
-        child: Text(des),
-      );
-      dropDownItems.add(item);
-    }
-    return DropdownButton(
-      icon: const Icon(
-        FeatherIcons.chevronDown,
-        color: kSubTitleColor,
-      ),
-      items: dropDownItems,
-      value: selectedType,
-      onChanged: (value) {
-        setState(() {
-          selectedType = value!;
-        });
-      },
-    );
-  }
+  // String selectedType = '주민등록증';
+
+  // DropdownButton<String> getChairType() {
+  //   List<DropdownMenuItem<String>> dropDownItems = [];
+  //   for (String des in chairType) {
+  //     var item = DropdownMenuItem(
+  //       value: des,
+  //       child: Text(des),
+  //     );
+  //     dropDownItems.add(item);
+  //   }
+  //   return DropdownButton(
+  //     icon: const Icon(
+  //       FeatherIcons.chevronDown,
+  //       color: kSubTitleColor,
+  //     ),
+  //     items: dropDownItems,
+  //     value: selectedType,
+  //     onChanged: (value) {
+  //       setState(() {
+  //         selectedType = value!;
+  //       });
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +138,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                         style: TextStyle(color: kSubTitleColor),
                       ),
                       subtitle: Text(
-                        ' ${booking.getProductPrice} 원',
+                        ' ${booking.getTotalPrice} 원',
                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                       ),
                       trailing: SizedBox(
@@ -621,6 +633,23 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                       ? kPrimaryColor
                                                       : kSubTitleColor),
                                               onTap: () {
+
+
+                                                if (discountList[i] == 'WELCOME 쿠폰') {
+                                                  booking.setTotalPrcie = booking.getDiscountPrice;
+                                                  booking.setDiscount = 0.8;
+                                                  booking.setTotalPrcie = (booking.getTotalPrice * booking.getDiscount).toInt();
+                                                } else if (discountList[i] == '국내선 특가 쿠폰') {
+                                                  booking.setTotalPrcie = booking.getDiscountPrice;
+                                                  booking.setDiscount = 0.9;
+                                                  booking.setTotalPrcie = (booking.getTotalPrice * booking.getDiscount).toInt();
+                                                } else if (discountList[i] == '평일 노선 쿠폰') {
+                                                  booking.setTotalPrcie = booking.getDiscountPrice;
+                                                  booking.setDiscount = 0.9;
+                                                  booking.setTotalPrcie = (booking.getTotalPrice * booking.getDiscount).toInt();
+                                                }
+
+
                                                 setState(
                                                   () {
                                                     if (selectedDiscountList.contains(discountList[i])) {
@@ -628,15 +657,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                     } else {
                                                       selectedDiscountList = [discountList[i]];
                                                     }
-                                                    // selectedDiscountList.contains(
-                                                    //   discountList[i],
-                                                    // )
-                                                    //     ? selectedDiscountList.remove(
-                                                    //         discountList[i],
-                                                    //       )
-                                                    //     : selectedDiscountList.add(
-                                                    //         discountList[i],
-                                                    //       );
                                                   },
                                                 );
                                               },
@@ -682,596 +702,317 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   '탑승객 정보',
                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                 ),
-                                ListTile(
-                                  contentPadding: EdgeInsets.zero,
-                                  horizontalTitleGap: 0,
-                                  leading: Container(
-                                    padding: const EdgeInsets.all(5.0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: kPrimaryColor.withOpacity(0.2),
-                                    ),
-                                    child: const Icon(
-                                      IconlyBold.profile,
-                                      color: kPrimaryColor,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  title: Text(
-                                    'Adult (12 yrs+)',
-                                    style: TextStyle(color: kSubTitleColor),
-                                  ),
-                                  trailing: RichText(
-                                    text: TextSpan(
-                                      text: '1/1 ',
-                                      style: TextStyle(color: kTitleColor),
-                                      children: [
-                                        TextSpan(
-                                          text: 'Added',
-                                          style: TextStyle(color: kSubTitleColor),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
                                 const SizedBox(height: 10.0),
-                                ButtonGlobalWithIcon(
-                                  buttontext: '인원 추가',
-                                  buttonTextColor: kPrimaryColor,
-                                  buttonIcon: FeatherIcons.plus,
-                                  buttonDecoration: kButtonDecoration.copyWith(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: kPrimaryColor.withOpacity(0.5),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(30.0),
-                                            topLeft: Radius.circular(30.0),
-                                          ),
-                                        ),
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return StatefulBuilder(builder: (context, setState) {
-                                            return DraggableScrollableSheet(
-                                              initialChildSize: 1.00,
-                                              expand: true,
-                                              maxChildSize: 1.00,
-                                              minChildSize: 0.70,
-                                              builder: (BuildContext context, ScrollController controller) {
-                                                return SingleChildScrollView(
-                                                  physics: const BouncingScrollPhysics(),
-                                                  controller: controller,
-                                                  child: Column(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.all(20.0),
-                                                        child: Row(
-                                                          children: [
-                                                            Text(
-                                                              '탑승객 정보 입력',
-                                                              style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                            ),
-                                                            const Spacer(),
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                setState(() {
-                                                                  finish(context);
-                                                                });
-                                                              },
-                                                              child: const Icon(
-                                                                FeatherIcons.x,
-                                                                color: kSubTitleColor,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                ListView.builder(
+                                  itemCount: booking.pasCount,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  padding: const EdgeInsets.only(bottom: 15.0),
+                                  itemBuilder: (_, i) {
+                                    return ButtonGlobalWithIcon(
+                                              buttontext: '탑승객 정보 입력',   // 삼항식으로 이름 출력하기
+                                              buttonTextColor: kPrimaryColor,
+                                              buttonIcon: FeatherIcons.plus,
+                                              buttonDecoration: kButtonDecoration.copyWith(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.circular(8.0),
+                                                border: Border.all(
+                                                  color: kPrimaryColor.withOpacity(0.5),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    shape: const RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.only(
+                                                        topRight: Radius.circular(30.0),
+                                                        topLeft: Radius.circular(30.0),
                                                       ),
-                                                      Container(
-                                                        width: context.width(),
-                                                        decoration: const BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius: BorderRadius.only(
-                                                            topLeft: Radius.circular(30.0),
-                                                            topRight: Radius.circular(30.0),
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: kDarkWhite,
-                                                              blurRadius: 7.0,
-                                                              spreadRadius: 2.0,
-                                                              offset: Offset(0, -2),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        padding: const EdgeInsets.all(20.0),
-                                                        child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          children: [
-                                                            Text(
-                                                              '성별',
-                                                              style: TextStyle(color: kSubTitleColor),
-                                                            ),
-                                                            HorizontalList(
-                                                              padding: EdgeInsets.zero,
-                                                              physics: const NeverScrollableScrollPhysics(),
-                                                              itemCount: genderList.length,
-                                                              itemBuilder: (_, i) {
-                                                                return Row(
-                                                                  children: [
-                                                                    Radio(
-                                                                      value: genderList[i],
-                                                                      groupValue: selectedGender,
-                                                                      onChanged: (value) {
-                                                                        setState(() {
-                                                                          selectedGender = value.toString();      // 성별 입력
-                                                                        });
-                                                                      },
+                                                    ),
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                      return StatefulBuilder(builder: (context, setState) {
+                                                        return DraggableScrollableSheet(
+                                                          initialChildSize: 1.00,
+                                                          expand: true,
+                                                          maxChildSize: 1.00,
+                                                          minChildSize: 0.70,
+                                                          builder: (BuildContext context, ScrollController controller) {
+                                                            return SingleChildScrollView(
+                                                              physics: const BouncingScrollPhysics(),
+                                                              controller: controller,
+                                                              child: Column(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsets.all(20.0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Text(
+                                                                          '탑승객 정보 입력',
+                                                                          style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                                                        ),
+                                                                        const Spacer(),
+                                                                        GestureDetector(
+                                                                          onTap: () {
+                                                                            setState(() {
+                                                                              finish(context);
+                                                                            });
+                                                                          },
+                                                                          child: const Icon(
+                                                                            FeatherIcons.x,
+                                                                            color: kSubTitleColor,
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                    Text(
-                                                                      genderList[i],
-                                                                      style: TextStyle(
-                                                                        color: kTitleColor,
-                                                                        fontWeight: FontWeight.bold,
+                                                                  ),
+                                                                  Container(
+                                                                    width: context.width(),
+                                                                    decoration: const BoxDecoration(
+                                                                      color: Colors.white,
+                                                                      borderRadius: BorderRadius.only(
+                                                                        topLeft: Radius.circular(30.0),
+                                                                        topRight: Radius.circular(30.0),
                                                                       ),
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          color: kDarkWhite,
+                                                                          blurRadius: 7.0,
+                                                                          spreadRadius: 2.0,
+                                                                          offset: Offset(0, -2),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ),
-                                                            const SizedBox(height: 10.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '이름',      // 이름
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '이름을 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
+                                                                    padding: const EdgeInsets.all(20.0),
+                                                                    child: Column(
+                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                      children: [
+                                                                        Text(
+                                                                          '성별',
+                                                                          style: TextStyle(color: kSubTitleColor),
+                                                                        ),
+                                                                        HorizontalList(
+                                                                          padding: EdgeInsets.zero,
+                                                                          physics: const NeverScrollableScrollPhysics(),
+                                                                          itemCount: genderList.length,
+                                                                          itemBuilder: (_, i) {
+                                                                            return Row(
+                                                                              children: [
+                                                                                Radio(
+                                                                                  value: genderList[i],
+                                                                                  groupValue: selectedGender,
+                                                                                  onChanged: (value) {
+                                                                                    setState(() {
+                                                                                      selectedGender = value.toString();      // 성별 입력
+                                                                                    });
+                                                                                  },
+                                                                                ),
+                                                                                Text(
+                                                                                  genderList[i],
+                                                                                  style: TextStyle(
+                                                                                    color: kTitleColor,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                        const SizedBox(height: 10.0),
+                                                                        TextFormField(
+                                                                          autovalidateMode: AutovalidateMode.disabled,
+                                                                          controller: _nameController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '이름',      // 이름
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '이름을 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          autovalidateMode: AutovalidateMode.disabled,
+                                                                          controller: _firstNameController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '이름(영문)',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '영문 이름을 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          controller: _lastNameController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '성(영문)',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '영문 성을 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          controller: _birthController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '생년월일',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '생년월일을 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          controller: _phoneController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '핸드폰 번호',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: "'-'없이 핸드폰 번호를 입력하세요.",
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          controller: _emailController,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '이메일',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '이메일을 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        TextFormField(
+                                                                          controller: _passwordController,
+                                                                          obscureText: true,
+                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          cursorColor: kTitleColor,
+                                                                          textInputAction: TextInputAction.next,
+                                                                          decoration: kInputDecoration.copyWith(
+                                                                            labelText: '비밀번호',
+                                                                            labelStyle: TextStyle(color: kTitleColor),
+                                                                            hintText: '비회원 예매 비밀번호를 입력하세요.',
+                                                                            hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                                                            focusColor: kTitleColor,
+                                                                            border: const OutlineInputBorder(),
+                                                                          ),
+                                                                        ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        DropdownButton<int>(
+                                                                          isExpanded: true,
+                                                                          value: selectedValue,
+                                                                          items: [
+                                                                            DropdownMenuItem<int>(
+                                                                              value: 1,
+                                                                              child: Text('주민등록증'),
+                                                                            ),
+                                                                            DropdownMenuItem<int>(
+                                                                              value: 2,
+                                                                              child: Text('여권'),
+                                                                            ),
+                                                                            DropdownMenuItem<int>(
+                                                                              value: 3,
+                                                                              child: Text('운전면허증'),
+                                                                            ),
+                                                                          ],
+                                                                          onChanged: (value) {
+                                                                            setState(() {
+                                                                              selectedValue = value!;
+                                                                            });
+                                                                          },
+                                                                        ),
+
+                                                                        // FormField(
+                                                                        //   builder: (FormFieldState<dynamic> field) {
+                                                                        //     return InputDecorator(
+                                                                        //       decoration: const InputDecoration(
+                                                                        //           enabledBorder: OutlineInputBorder(
+                                                                        //             borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                                                        //             borderSide: BorderSide(color: kBorderColorTextField, width: 2),
+                                                                        //           ),
+                                                                        //           contentPadding: EdgeInsets.all(7.0),
+                                                                        //           floatingLabelBehavior: FloatingLabelBehavior.always,
+                                                                        //           labelText: '신분증 종류'),
+                                                                        //       child: DropdownButtonHideUnderline(child: getChairType()),
+                                                                        //     );
+                                                                        //   },
+                                                                        // ),
+                                                                        const SizedBox(height: 20.0),
+                                                                        ButtonGlobalWithoutIcon(
+                                                                          buttontext: '입력 완료',
+                                                                          buttonDecoration: kButtonDecoration.copyWith(
+                                                                            color: kPrimaryColor,
+                                                                            borderRadius: BorderRadius.circular(30.0),
+                                                                          ),
+                                                                          onPressed: () {
+                                                                            booking.setPassengerNames = _nameController.text;
+                                                                            booking.setFirstNames = _firstNameController.text;
+                                                                            booking.setLastNames = _lastNameController.text;
+                                                                            booking.setBirths = _birthController.text;
+                                                                            booking.setPhones = _phoneController.text;
+                                                                            booking.setEmails = _emailController.text;
+                                                                            password = _passwordController.text;
+                                                                            booking.setGenders = selectedGender;
+                                                                            booking.setPinTypes = selectedValue;
+                                                                            
+                                                                            print(booking.getPinTypes[0]);
+
+                                                                            setState(() {
+                                                                              finish(context);
+                                                                            });
+                                                                          },
+                                                                          buttonTextColor: kWhite,
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
                                                               ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '이름(영문)',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '영문 이름을 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '성(영문)',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '영문 성을 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '생년월일',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '생년월일을 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '핸드폰 번호',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: "'-'없이 핸드폰 번호를 입력하세요.",
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '이메일',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '이메일을 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            TextFormField(
-                                                              obscureText: true,
-                                                              keyboardType: TextInputType.emailAddress,
-                                                              cursorColor: kTitleColor,
-                                                              textInputAction: TextInputAction.next,
-                                                              decoration: kInputDecoration.copyWith(
-                                                                labelText: '비밀번호',
-                                                                labelStyle: TextStyle(color: kTitleColor),
-                                                                hintText: '비회원 예매 비밀번호를 입력하세요.',
-                                                                hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                focusColor: kTitleColor,
-                                                                border: const OutlineInputBorder(),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            FormField(
-                                                              builder: (FormFieldState<dynamic> field) {
-                                                                return InputDecorator(
-                                                                  decoration: const InputDecoration(
-                                                                      enabledBorder: OutlineInputBorder(
-                                                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                                                        borderSide: BorderSide(color: kBorderColorTextField, width: 2),
-                                                                      ),
-                                                                      contentPadding: EdgeInsets.all(7.0),
-                                                                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                                      labelText: '신분증 종류'),
-                                                                  child: DropdownButtonHideUnderline(child: getChairType()),
-                                                                );
-                                                              },
-                                                            ),
-                                                            const SizedBox(height: 20.0),
-                                                            // Theme(
-                                                            //   data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                                                            //   child: ExpansionTile(
-                                                            //     initiallyExpanded: true,
-                                                            //     childrenPadding: EdgeInsets.zero,
-                                                            //     tilePadding: EdgeInsets.zero,
-                                                            //     title: Text(
-                                                            //       'Frequent Traveler No',
-                                                            //       style: TextStyle(color: kPrimaryColor),
-                                                            //     ),
-                                                            //     subtitle: Text(
-                                                            //       '(Frequent flyer number is subject to airline acceptance)',
-                                                            //       style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
-                                                            //     ),
-                                                            //     children: [
-                                                            //       const SizedBox(height: 10.0),
-                                                            //       TextFormField(
-                                                            //         keyboardType: TextInputType.emailAddress,
-                                                            //         cursorColor: kTitleColor,
-                                                            //         textInputAction: TextInputAction.next,
-                                                            //         decoration: kInputDecoration.copyWith(
-                                                            //           labelText: 'Frequent Flyer Airline',
-                                                            //           labelStyle: TextStyle(color: kTitleColor),
-                                                            //           hintText: 'Enter frequent flyer airline',
-                                                            //           hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                            //           focusColor: kTitleColor,
-                                                            //           border: const OutlineInputBorder(),
-                                                            //         ),
-                                                            //       ),
-                                                            //       const SizedBox(height: 20.0),
-                                                            //       TextFormField(
-                                                            //         keyboardType: TextInputType.emailAddress,
-                                                            //         cursorColor: kTitleColor,
-                                                            //         textInputAction: TextInputAction.next,
-                                                            //         decoration: kInputDecoration.copyWith(
-                                                            //           labelText: 'Frequent Flyer No',
-                                                            //           labelStyle: TextStyle(color: kTitleColor),
-                                                            //           hintText: 'Enter frequent flyer no',
-                                                            //           hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                            //           focusColor: kTitleColor,
-                                                            //           border: const OutlineInputBorder(),
-                                                            //         ),
-                                                            //       ),
-                                                            //     ],
-                                                            //   ),
-                                                            // ),
-                                                            const SizedBox(height: 20.0),
-                                                            ButtonGlobalWithoutIcon(
-                                                              buttontext: 'Okay, Got It',
-                                                              buttonDecoration: kButtonDecoration.copyWith(
-                                                                color: kPrimaryColor,
-                                                                borderRadius: BorderRadius.circular(30.0),
-                                                              ),
-                                                              onPressed: () {
-                                                                setState(() {
-                                                                  finish(context);
-                                                                });
-                                                              },
-                                                              buttonTextColor: kWhite,
-                                                            )
-                                                          ],
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                );
+                                                            );
+                                                          },
+                                                        );
+                                                      });
+                                                    },
+                                                  );
+                                                });
                                               },
                                             );
-                                          });
-                                        },
-                                      );
-                                    });
-                                  },
+                                  } ,
                                 )
                               ],
                             ),
                           ),
                           const SizedBox(height: 10.0),
-                          //_________________________________________________________________________Booking details send part
-                          Container(
-                            width: context.width(),
-                            padding: const EdgeInsets.all(10.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10.0),
-                              border: Border.all(
-                                color: kSecondaryColor,
-                              ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: kDarkWhite,
-                                  spreadRadius: 2.0,
-                                  blurRadius: 7.0,
-                                  offset: Offset(0, 2),
-                                )
-                              ],
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Booking details will be sent to',
-                                      style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                                    ),
-                                    const Spacer(),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(30.0),
-                                                topLeft: Radius.circular(30.0),
-                                              ),
-                                            ),
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return StatefulBuilder(builder: (context, setState) {
-                                                return DraggableScrollableSheet(
-                                                  initialChildSize: 0.55,
-                                                  expand: false,
-                                                  maxChildSize: 1.00,
-                                                  minChildSize: 0.55,
-                                                  builder: (BuildContext context, ScrollController controller) {
-                                                    return SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      controller: controller,
-                                                      child: Column(
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsets.all(20.0),
-                                                            child: Row(
-                                                              children: [
-                                                                Text(
-                                                                  lang.S.of(context).contactInfoTitle,
-                                                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                                                                ),
-                                                                const Spacer(),
-                                                                GestureDetector(
-                                                                  onTap: () {
-                                                                    setState(() {
-                                                                      finish(context);
-                                                                    });
-                                                                  },
-                                                                  child: const Icon(
-                                                                    FeatherIcons.x,
-                                                                    color: kSubTitleColor,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            width: context.width(),
-                                                            decoration: const BoxDecoration(
-                                                              color: Colors.white,
-                                                              borderRadius: BorderRadius.only(
-                                                                topLeft: Radius.circular(30.0),
-                                                                topRight: Radius.circular(30.0),
-                                                              ),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  color: kDarkWhite,
-                                                                  blurRadius: 7.0,
-                                                                  spreadRadius: 2.0,
-                                                                  offset: Offset(0, -2),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            padding: const EdgeInsets.all(20.0),
-                                                            child: Column(
-                                                              mainAxisSize: MainAxisSize.min,
-                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                              children: [
-                                                                Text(
-                                                                  'Your ticket and flights information will be sent here.',
-                                                                  style: TextStyle(color: kTitleColor),
-                                                                ),
-                                                                const SizedBox(height: 10.0),
-                                                                TextFormField(
-                                                                  keyboardType: TextInputType.emailAddress,
-                                                                  cursorColor: kTitleColor,
-                                                                  textInputAction: TextInputAction.next,
-                                                                  decoration: kInputDecoration.copyWith(
-                                                                    labelText: lang.S.of(context).emailHint,
-                                                                    labelStyle: TextStyle(color: kTitleColor),
-                                                                    hintText: lang.S.of(context).emailHint,
-                                                                    hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    focusColor: kTitleColor,
-                                                                    border: const OutlineInputBorder(),
-                                                                  ),
-                                                                ),
-                                                                const SizedBox(height: 20.0),
-                                                                TextFormField(
-                                                                  keyboardType: TextInputType.phone,
-                                                                  cursorColor: kTitleColor,
-                                                                  textInputAction: TextInputAction.next,
-                                                                  decoration: kInputDecoration.copyWith(
-                                                                    hintText: lang.S.of(context).phoneHint,
-                                                                    hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                                                    focusColor: kTitleColor,
-                                                                    border: const OutlineInputBorder(),
-                                                                    prefixIcon: CountryCodePicker(
-                                                                      padding: EdgeInsets.zero,
-                                                                      onChanged: print,
-                                                                      initialSelection: 'BD',
-                                                                      showFlag: true,
-                                                                      showDropDownButton: true,
-                                                                      alignLeft: false,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                const SizedBox(height: 20.0),
-                                                                ButtonGlobalWithoutIcon(
-                                                                  buttontext: lang.S.of(context).confirm,
-                                                                  buttonDecoration: kButtonDecoration.copyWith(
-                                                                    color: kPrimaryColor,
-                                                                    borderRadius: BorderRadius.circular(30.0),
-                                                                  ),
-                                                                  onPressed: () {
-                                                                    setState(() {
-                                                                      finish(context);
-                                                                    });
-                                                                  },
-                                                                  buttonTextColor: kWhite,
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              });
-                                            },
-                                          );
-                                        });
-                                      },
-                                      child: const Icon(
-                                        FeatherIcons.chevronRight,
-                                        color: kPrimaryColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                ListTile(
-                                  visualDensity: const VisualDensity(vertical: -3),
-                                  contentPadding: EdgeInsets.zero,
-                                  horizontalTitleGap: 0,
-                                  leading: Container(
-                                    padding: const EdgeInsets.all(5.0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: kPrimaryColor.withOpacity(0.2),
-                                    ),
-                                    child: const Icon(
-                                      Icons.email,
-                                      color: kPrimaryColor,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  title: Text(
-                                    'shaidulilalm@gmail.com)',
-                                    style: TextStyle(color: kSubTitleColor),
-                                  ),
-                                ),
-                                ListTile(
-                                  visualDensity: const VisualDensity(vertical: -3),
-                                  contentPadding: EdgeInsets.zero,
-                                  horizontalTitleGap: 0,
-                                  leading: Container(
-                                    padding: const EdgeInsets.all(5.0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: kPrimaryColor.withOpacity(0.2),
-                                    ),
-                                    child: const Icon(
-                                      Icons.phone,
-                                      color: kPrimaryColor,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  title: Text(
-                                    'Add Mobile Number-',
-                                    style: TextStyle(color: kPrimaryColor),
-                                  ),
-                                ),
-                                const Divider(
-                                  thickness: 1.0,
-                                  color: kBorderColorTextField,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Checkbox(
-                                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                      activeColor: kPrimaryColor,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(2.0),
-                                      ),
-                                      value: isChecked,
-                                      onChanged: (val) {
-                                        setState(
-                                          () {
-                                            isChecked = val!;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                        text: 'I have a GST number ',
-                                        style: TextStyle(color: kTitleColor),
-                                        children: [
-                                          TextSpan(
-                                            text: '(Optional)',
-                                            style: TextStyle(color: kSubTitleColor),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
