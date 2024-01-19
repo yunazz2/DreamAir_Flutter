@@ -82,9 +82,7 @@ class _OnBoardState extends State<OnBoard> {
                     padding: const EdgeInsets.all(15.0),
                     child: GestureDetector(
                       onTap: () => const WelcomeScreen().launch(context),
-                      child: Text(
-                        lang.S.of(context).skipButton,
-                        style: TextStyle(color: kSubTitleColor),
+                      child: Text('건너뛰기', style: TextStyle(color: kSubTitleColor),
                       ),
                     ),
                   ),

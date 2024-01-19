@@ -7,7 +7,7 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../ticket status/ticket_status.dart';
+import '../../ticket detail/ticket_detail_screen.dart';
 
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
@@ -80,7 +80,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   onPressed: () {
                     setState(() {
                       finish(context);
-                      const TicketStatus().launch(context);
+                      const TicketDetailScreen().launch(context);
                     });
                   },
                   buttonTextColor: kWhite,

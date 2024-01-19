@@ -35,10 +35,6 @@ class MyApp extends StatelessWidget {
           title: 'Flight Booking',
           theme: ThemeData(fontFamily: 'Display'),
           home: const SplashScreen(),
-          // ChangeNotifierProvider(
-          //   create: (context) => BookingProvider(),
-          //   child : const SplashScreen(),
-          // )
         ),
       ),
     );

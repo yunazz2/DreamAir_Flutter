@@ -3,7 +3,6 @@ import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
 
 import '../home/home.dart';
 import 'login_screen.dart';
@@ -76,15 +75,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: kBorderColorTextField),
                       ),
                       const SizedBox(height: 20.0),
-                      const Text('항공권 예매',
+                      Text('항공권 예매',
                         style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 10.0),
-                      const Text('Dream Air와 함께 하세요!',
+                      Text('Dream Air와 함께 하세요!',
                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
                       const SizedBox(height: 30.0),
-                      const Text('Dream Air와 함께 즐거운 여행을 떠나보세요!',
+                      Text('Dream Air와 함께 즐거운 여행을 떠나보세요!',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: kSubTitleColor),
                       ),

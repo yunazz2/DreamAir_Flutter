@@ -235,8 +235,7 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     TextSpan(
                       text: '로그인',
-                      style: TextStyle(
-                          color: kPrimaryColor, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

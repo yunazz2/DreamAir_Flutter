@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Colors.black,
         body: Center(
           child: Container(
             height: 200,
