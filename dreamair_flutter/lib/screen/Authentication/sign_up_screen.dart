@@ -26,6 +26,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
+  // 회원 가입 요청
   Future<void> signUp(
     String userId,
     String userPw,

@@ -1,28 +1,19 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flight_booking/screen/mypage/mypage_screen.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'dart:io';
+
 import '../../widgets/constant.dart';
-import '../delete_account/delete_account_screen.dart';
 
 // 회원 정보 수정 페이지
 class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  const EditProfile({Key? key});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
-  final ImagePicker _picker = ImagePicker();
-  XFile? image;
-
-  Future<void> getImage() async {
-    image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +26,8 @@ class _EditProfileState extends State<EditProfile> {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
+
+        // 수정 완료 버튼
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -50,6 +43,11 @@ class _EditProfileState extends State<EditProfile> {
                   backgroundColor: kPrimaryColor,
                 ),
                 onPressed: () {
+                  // 여기에 _loginStatus 확인 로그 추가
+                  UserProvider userProvider = UserProvider();
+                  print('_loginStatus: ${userProvider.getLoginStatus()}');
+
+                  // 페이지 이동
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -57,10 +55,7 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   );
                 },
-                child: Text(
-                  '수정 완료',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: Text('수정 완료',style: TextStyle(color: Colors.white),),
               ),
             )
           ],
@@ -73,6 +68,7 @@ class _EditProfileState extends State<EditProfile> {
         title: Text('회원 정보 수정', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
+      
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(

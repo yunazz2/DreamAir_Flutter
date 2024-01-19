@@ -1,17 +1,14 @@
 import 'dart:convert';
 
 import 'package:flight_booking/screen/Authentication/sign_up_screen.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:nb_utils/nb_utils.dart';
 
 import '../home/home.dart';
 import '../widgets/button_global.dart';
-import '../widgets/icon.dart';
-import 'forgot_password.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -26,6 +23,7 @@ class _LogInState extends State<LogIn> {
   TextEditingController userIdController = TextEditingController();
   TextEditingController userPwController = TextEditingController();
 
+  // 로그인 요청
   Future<void> login(
     String userId,
     String userPw,
@@ -47,6 +45,7 @@ class _LogInState extends State<LogIn> {
 
       if (response.statusCode == 200) {
         print('로그인 성공');
+        UserProvider().updateLoginStatus(true);
         const Home().launch(context);
       } else {
         print('로그인 실패: ${response.statusCode}, ${response.body}');
