@@ -147,7 +147,11 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                         side: const BorderSide(color: kBorderColorTextField),
                                       ),
                                       child: GestureDetector(
-                                        onTap: () => const BackFlightDetails().launch(context),       // 버튼
+                                        onTap: () {
+                                          // 선택한 항공권 데이터를 provider에 넣기
+                                          booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount * 2;
+                                          const BackFlightDetails().launch(context);       // 버튼
+                                        },
                                         child: Container(
                                           padding: const EdgeInsets.all(5.0),
                                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),

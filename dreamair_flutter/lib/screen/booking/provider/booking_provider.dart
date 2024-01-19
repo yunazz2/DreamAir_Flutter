@@ -15,6 +15,8 @@ class BookingProvider extends ChangeNotifier {
   String destinationTime = '11:00';   // ''
   String duration = '1';   // ''
   int totalPrice = 0;
+  double discount = 1.0;
+  int discountPrice = 0;
 
   // 탑승객 정보
   int pinType = 0;
@@ -49,6 +51,8 @@ class BookingProvider extends ChangeNotifier {
   String get getDestinationTime => destinationTime;
   String get getDuration => duration;
   int get getTotalPrice => totalPrice;
+  double get getDiscount => discount;
+  int get getDiscountPrice => discountPrice;
 
   // 탑승객 정보
   List<int> get getPinTypes => pinTypes;
@@ -140,4 +144,7 @@ class BookingProvider extends ChangeNotifier {
     pinType = parmPinType;
     notifyListeners();
   }
+
+  set setDiscount(double paramDiscount) => discount = paramDiscount;
+  set setDiscountPrice(int paramDiscountPrice) => discountPrice = paramDiscountPrice;
 }

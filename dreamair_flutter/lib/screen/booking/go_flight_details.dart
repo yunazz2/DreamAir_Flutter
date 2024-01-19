@@ -28,7 +28,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
       'meal': '기내식 제공',
       'date': '10% 할인',
       'price': '15,000원',
-      'salePrice': '10,000원' 
+      'salePrice': '10,000원',
     },
     {
       'cabinBaggage': '10gk',
@@ -73,7 +73,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                     style: TextStyle(color: kSubTitleColor),
                   ),
                   subtitle: Text(
-                    ' ${booking.getProductPrice}원',      // 나중에 패키지 가격이랑 합치기
+                    ' ${booking.getTotalPrice} 원', 
                     style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                   ),
                   trailing: SizedBox(
@@ -362,6 +362,20 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                     value: titleList[i],
                                                     groupValue: gValue,
                                                     onChanged: (value) {
+
+                                                      if (value.toString() == 'Saver 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (10000 * booking.getPasCount);
+                                                      } else if (value.toString() == 'Flexi 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (15000 * booking.getPasCount);
+                                                      } else if (value.toString() == 'Super 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (20000 * booking.getPasCount); 
+                                                      }
+                                                      
+                                                      booking.setDiscountPrice = booking.getTotalPrice;
+
                                                       setState(() {
                                                         gValue = value.toString();
                                                       });
