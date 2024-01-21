@@ -1,4 +1,5 @@
 // 예약 조회 페이지
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,13 @@ class MyBooking extends StatefulWidget {
 }
 
 class _MyBookingState extends State<MyBooking> {
+  @override
+  void initState() {
+    super.initState();
+    print('로그인 여부 확인');
+    print(UserProvider.isLogin);
+  } 
+
   final int _bookedTicketCount = 5; // 예매한 탑승권 수
 
   @override
@@ -71,6 +79,9 @@ class _MyBookingState extends State<MyBooking> {
 
                       // 예매한 탑승권 목록
                       child: Column(
+                        if(UserProvider.isLogin) {
+
+                        } else {}
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('탑승권 번호 : $ticketNo'),
@@ -163,10 +174,6 @@ class _MyBookingState extends State<MyBooking> {
                                 ),
                               ],
                             ),
-                            // subtitle: Text(
-                            //   'Thu, 6 Jan |  11:40pm - 05:25pm | 5h 25m | 1 Stop',
-                            //   style: TextStyle(fontSize: 12, color: kSubTitleColor),
-                            // ),
                           ),
                           const SizedBox(
                             height: 3.0,

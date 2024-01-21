@@ -27,8 +27,8 @@ class _MypageState extends State<Mypage> {
   @override
   void initState() {
     super.initState();
-    print('로그인 여부 확인');
-    print(UserProvider.isLogin);
+    // print('로그인 여부 확인');
+    // print(UserProvider.isLogin);
   } 
 
   // 회원 정보 요청
