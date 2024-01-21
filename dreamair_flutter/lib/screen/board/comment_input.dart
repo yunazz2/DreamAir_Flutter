@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class CommentInput extends StatefulWidget {
 
+class CommentInput extends StatefulWidget {
   const CommentInput({super.key});
 
   @override
@@ -11,33 +11,33 @@ class _CommentInputState extends State<CommentInput> {
   @override
   Widget build(BuildContext context) {
     return Row(
-  children: [
-    const CircleAvatar(
-      backgroundImage: AssetImage('images/logo2.png'),
-    ),
-    const SizedBox(width: 10),
-    Expanded(
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10), // 조절 가능한 여백
-          width: double.infinity,
-          height: 50,
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: '댓글 입력',
-              filled: true,
-              suffixIcon: TextButton(
-                onPressed: postComment, // 게시 버튼 누르면 DB 등록
-                child: Text('게시'),
+      children: [
+        const CircleAvatar(
+          backgroundImage: AssetImage('images/logo2.png'),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10), // 조절 가능한 여백
+              width: double.infinity,
+              height: 50,
+              child: const TextField(
+                decoration: InputDecoration(
+                  hintText: '댓글 입력',
+                  filled: true,
+                  suffixIcon: TextButton(
+                    onPressed: postComment, // 게시 버튼 누르면 DB 등록
+                    child: Text('게시'),
+                  ),
+                ),
               ),
             ),
           ),
         ),
-      ),
-    ),
-  ],
-);
-      }
+      ],
+    );
+  }
 }
 
 // postComment 메소드 정의
