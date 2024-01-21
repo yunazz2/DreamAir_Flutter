@@ -106,7 +106,6 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 체크인
               if(UserProvider.isLogin)
@@ -139,7 +138,6 @@ class _MypageState extends State<Mypage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 마일리지 조회
               if(UserProvider.isLogin)
@@ -168,7 +166,6 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 나의 탑승권 조회
               Card(
@@ -193,7 +190,6 @@ class _MypageState extends State<Mypage> {
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
-              const SizedBox(height: 10.0),
               
               // 회원 탈퇴
               if(UserProvider.isLogin)
@@ -219,7 +215,6 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10.0),
 
               // 로그아웃
               if(UserProvider.isLogin)
@@ -249,7 +244,6 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10.0,),
               
               // 로그인 바로가기
               if(!UserProvider.isLogin)
