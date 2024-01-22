@@ -114,7 +114,7 @@ public class BoardController {
    @PostMapping()
     // public ResponseEntity<?> create(@RequestBody Board board) {   // Content-Type : application/json
     public ResponseEntity<?> create(Board board) {                   // Content-Type : multipart/form-data
-        log.info("[POST] - /boards - 게시글 등록");
+        log.info("[POST] - /board - 게시글 등록");
 
         log.info("board : " + board.toString());
         List<MultipartFile> files = board.getFiles();

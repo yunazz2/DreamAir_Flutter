@@ -130,67 +130,73 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                               color: kBorderColorTextField,
                             ),
                             const SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 40.0,
-                                  width: 40.0,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: AssetImage('images/logo3.png'),
-                                      fit: BoxFit.cover,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 40.0,
+                                    width: 40.0,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage('images/logo3.png'),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(width: 40),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '${schedule.departure}',
-                                      style: kTextStyle.copyWith(
-                                          color: kTitleColor, fontSize: 18),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                      width: 50,
-                                    ),
-                                    const Icon(
-                                      Icons.swap_horiz,
-                                      color: kLightNeutralColor,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                      width: 60,
-                                    ),
-                                    Text(
-                                      '${schedule.destination}',
-                                      style: kTextStyle.copyWith(
-                                          color: kTitleColor, fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(width: 10),
-                              ],
+                                  const SizedBox(width: 40),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '${schedule.departure}',
+                                        style: kTextStyle.copyWith(
+                                            color: kTitleColor, fontSize: 18),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                        width: 50,
+                                      ),
+                                      const Icon(
+                                        Icons.swap_horiz,
+                                        color: kLightNeutralColor,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                        width: 60,
+                                      ),
+                                      Text(
+                                        '${schedule.destination}',
+                                        style: kTextStyle.copyWith(
+                                            color: kTitleColor, fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  '${schedule.departureDate} ${schedule.departureTime}',
-                                  style: kTextStyle.copyWith(
-                                      color: kTitleColor, fontSize: 14),
-                                ),
-                                Text(
-                                  '${schedule.destinationDate} ${schedule.destinationTime}',
-                                  style: kTextStyle.copyWith(
-                                      color: kTitleColor, fontSize: 14),
-                                ),
-                              ],
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    '${schedule.departureDate}  ${schedule.departureTime}',
+                                    style: kTextStyle.copyWith(
+                                        color: kTitleColor, fontSize: 14),
+                                  ),
+                                  const SizedBox(width: 2.0,),
+                                  Text(
+                                    '${schedule.destinationDate}  ${schedule.destinationTime}',
+                                    style: kTextStyle.copyWith(
+                                        color: kTitleColor, fontSize: 14),
+                                  ),
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 3.0),
+                            const SizedBox(height: 3.0,),
                           ],
                         ),
                       ),
