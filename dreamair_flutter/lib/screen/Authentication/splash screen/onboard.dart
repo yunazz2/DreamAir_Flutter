@@ -136,20 +136,20 @@ class _OnBoardState extends State<OnBoard> {
                           const SizedBox(height: 25.0),
                           Text(
                             currentIndexPage == 0
-                                ? lang.S.of(context).onBoardTitle1
+                                ? '안녕하세요. DreamAir 입니다.'
                                 : currentIndexPage == 1
-                                    ? lang.S.of(context).onBoardTitle2
-                                    : lang.S.of(context).onBoardTitle3,
+                                    ? '편안한 여행, 최상의 서비스로 보답합니다.'
+                                    : '여행의 시작, 새로운 경험을 함께하세요.',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 18.0),
                           ),
                           const SizedBox(height: 20.0),
                           Text(
                             currentIndexPage == 0
-                                ? lang.S.of(context).onBoardSubTitle1
+                                ? '간편한 항공권 검색으로 더 빠르고 쉽게 여행을 계획하세요.'
                                 : currentIndexPage == 1
-                                    ? lang.S.of(context).onBoardSubTitle2
-                                    : lang.S.of(context).onBoardSubTitle3,
+                                    ? '간편한 항공권 검색으로 더 빠르고 쉽게 여행을 계획하세요.'
+                                    : '간편한 항공권 검색으로 더 빠르고 쉽게 여행을 계획하세요.',
                             style: TextStyle(
                               color: kSubTitleColor,
                             ),

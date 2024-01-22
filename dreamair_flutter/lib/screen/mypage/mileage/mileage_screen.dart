@@ -1,4 +1,6 @@
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/constant.dart';
 
@@ -10,6 +12,12 @@ class MileageScreen extends StatefulWidget {
 }
 
 class _MileageScreenState extends State<MileageScreen> {
+  
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<UserProvider>(context, listen: false).getUserInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +42,12 @@ class _MileageScreenState extends State<MileageScreen> {
         child: Column(
           children: [
             const SizedBox(height: 50,),
-            Text('보유 마일리지 : ', style: TextStyle(fontSize: 20.0),)
+            Consumer<UserProvider>(
+              builder: (context, userProvider, child) {
+                final mileage = userProvider.currentUser.mileage.ceil();
+                return Text('보유 마일리지 : $mileage', style: TextStyle(fontSize: 20.0),);
+              },
+            )
           ],
         ),
       ),

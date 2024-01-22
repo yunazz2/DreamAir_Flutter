@@ -1,8 +1,10 @@
-// 예약 조회 페이지
+import 'dart:convert';
+
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:http/http.dart' as http;
 
 import '../ticket detail/ticket_detail_screen.dart';
 
@@ -18,14 +20,38 @@ class _MyBookingState extends State<MyBooking> {
   @override
   void initState() {
     super.initState();
-    print('로그인 여부 확인');
-    print(UserProvider.isLogin);
-  } 
-
-  final int _bookedTicketCount = 5; // 예매한 탑승권 수
+    getBookingList();
+  }
+  
+  int _bookedTicketCount = 0;
 
   TextEditingController phoneController = TextEditingController();
   TextEditingController orderPasswordController = TextEditingController();
+
+  // 예매 내역 조회
+  Future getBookingList() async {
+    print('예매 내역 조회 시작');
+
+    String userId = UserProvider.userId;
+
+    final url = 'http://10.0.2.2:9090/user/bookingList/$userId';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      if(response.statusCode == 200) {
+        print('예매 내역 조회 응답 성공');
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var result = json.decode(utf8Decoded);
+
+        _bookedTicketCount = result.length;
+
+        print(result);
+        setState(() {}); // 화면 갱신을 위해 setState 호출
+      }
+    } catch (e) {
+      print('오류 발생: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flight_booking/screen/my_boking_screen/my_boking.dart';
 import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/delete_account/delete_account_screen.dart';
 import 'package:flight_booking/screen/mypage/mileage/mileage_screen.dart';
-import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
+import 'package:flight_booking/screen/mypage/update_profile/update_profile.dart';
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -28,6 +28,7 @@ class _MypageState extends State<Mypage> {
   void initState() {
     super.initState();
     print('마이 페이지 로그인 여부 확인 : ${UserProvider.isLogin} & ${UserProvider.userId}');
+    UserProvider().getUserInfo();
   } 
 
   @override
@@ -70,7 +71,7 @@ class _MypageState extends State<Mypage> {
                   color: Colors.white,
                   child: ListTile(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdateProfile()));
                     },
                     contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                     leading: Container(

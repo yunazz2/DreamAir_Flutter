@@ -1,4 +1,5 @@
 import 'package:flight_booking/screen/Authentication/sign_up_screen.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -88,18 +90,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         style: TextStyle(color: kSubTitleColor),
                       ),
                       const SizedBox(height: 30.0),
-                      ButtonGlobalWithoutIcon(
-                        buttontext: '로그인',
-                        buttonDecoration: kButtonDecoration.copyWith(
-                          color: Colors.white,
-                          border: Border.all(color: kPrimaryColor),
-                          borderRadius: BorderRadius.circular(30.0),
+
+                      // 로그인 버튼
+                        ButtonGlobalWithoutIcon(
+                          buttontext: '로그인',
+                          buttonDecoration: kButtonDecoration.copyWith(
+                            color: Colors.white,
+                            border: Border.all(color: kPrimaryColor),
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          onPressed: () {
+                            const LogIn().launch(context);
+                          },
+                          buttonTextColor: kPrimaryColor,
                         ),
-                        onPressed: () {
-                          const LogIn().launch(context);
-                        },
-                        buttonTextColor: kPrimaryColor,
-                      ),
+
+                      // 회원 가입 버튼
                       ButtonGlobalWithoutIcon(
                         buttontext: '회원 가입',
                         buttonDecoration: kButtonDecoration.copyWith(

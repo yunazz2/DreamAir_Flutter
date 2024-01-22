@@ -9,14 +9,14 @@ import 'package:http/http.dart' as http;
 import '../../widgets/constant.dart';
 
 // 회원 정보 수정 페이지
-class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key});
+class UpdateProfile extends StatefulWidget {
+  const UpdateProfile({Key? key});
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<UpdateProfile> createState() => _UpdateProfileState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _UpdateProfileState extends State<UpdateProfile> {
 
   @override
   void initState() {
@@ -26,17 +26,16 @@ class _EditProfileState extends State<EditProfile> {
 
   // 회원 정보 요청
   Future getUserInfo() async {
-    print('회원 정보 요청 시작');
+    print('회원 정보 수정 페이지 회원 정보 요청 시작');
 
     String userId = UserProvider.userId;
-    print(userId);
     
     final url = 'http://10.0.2.2:9090/user/$userId';
 
     try {
       final response = await http.get(Uri.parse(url));
       if(response.statusCode == 200) {
-        print('응답 성공');
+        print('회원 정보 수정 페이지 회원 정보 요청 응답 성공');
         var utf8Decoded = utf8.decode(response.bodyBytes);
         var result = json.decode(utf8Decoded);
 
