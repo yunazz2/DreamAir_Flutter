@@ -92,6 +92,7 @@ public class UserController {
     @PutMapping()
     public ResponseEntity<?> update(@RequestBody Users user) {
         log.info("[PUT] - /user - 회원 정보 수정");
+
         try {
             int result = userService.update(user);
             if(result > 0) {

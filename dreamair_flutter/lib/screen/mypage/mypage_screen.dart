@@ -27,30 +27,8 @@ class _MypageState extends State<Mypage> {
   @override
   void initState() {
     super.initState();
-    // print('로그인 여부 확인');
-    // print(UserProvider.isLogin);
+    print('마이 페이지 로그인 여부 확인 : ${UserProvider.isLogin} & ${UserProvider.userId}');
   } 
-
-  // 회원 정보 요청
-  Future getUserInfo() async {
-
-    // 임시로 아이디 하드 코딩
-    String userId = 'user';
-    final url = 'http://10.0.2.2:9090/user/$userId';
-
-    try {
-      final response = await http.get(Uri.parse(url));
-      if(response.statusCode == 200) {
-        print('응답 성공');
-        var utf8Decoded = utf8.decode(response.bodyBytes);
-        var result = json.decode(utf8Decoded);
-
-        print(result);
-      }
-    } catch (e) {
-      print('오류 발생: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +70,6 @@ class _MypageState extends State<Mypage> {
                   color: Colors.white,
                   child: ListTile(
                     onTap: () {
-                      getUserInfo();
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));
                     },
                     contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),

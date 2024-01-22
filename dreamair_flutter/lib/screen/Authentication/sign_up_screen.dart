@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flight_booking/screen/Authentication/login_screen.dart';
@@ -26,15 +27,15 @@ class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
-  // 회원 가입 요청
-  Future<void> signUp(
-    String userId,
-    String userPw,
-    String name,
-    String phone,
-    String email,
-    String address,
+  // 회원 가입
+  Future<void> signUp(String userId,
+                      String userPw,
+                      String name,
+                      String phone,
+                      String email,
+                      String address,
     ) async {
+      print('회원 가입 요청 시작');
 
       final url = 'http://10.0.2.2:9090/user';
 
@@ -56,6 +57,8 @@ class _SignUpState extends State<SignUp> {
 
         if (response.statusCode == 200) {
           print('회원 가입 성공');
+          UserProvider().updateLoginStatus(true); // 로그인 상태 업데이트
+          UserProvider().updateLoginId(userId);   // 로그인 아이디 업데이트
           const Home().launch(context);
         } else {
           print('회원 가입 실패: ${response.statusCode}, ${response.body}');
@@ -106,7 +109,7 @@ class _SignUpState extends State<SignUp> {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 width: context.width(),
-                height: context.height(),
+                height: context.height() + 10.0,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -133,6 +136,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '아이디를 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -152,6 +156,7 @@ class _SignUpState extends State<SignUp> {
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '비밀번호를 입력하세요.',
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -179,6 +184,7 @@ class _SignUpState extends State<SignUp> {
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호 확인',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '비밀번호 확인을 입력하세요.',
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -209,6 +215,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '이름',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '이름을 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -227,6 +234,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '핸드폰 번호',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '핸드폰 번호를 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -245,6 +253,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '이메일',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '이메일을 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -263,6 +272,7 @@ class _SignUpState extends State<SignUp> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '주소',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '주소를 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),

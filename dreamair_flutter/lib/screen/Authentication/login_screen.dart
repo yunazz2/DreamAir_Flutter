@@ -28,6 +28,7 @@ class _LogInState extends State<LogIn> {
     String userId,
     String userPw,
   ) async {
+    print('로그인 요청 시작');
 
     final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
 
@@ -45,8 +46,9 @@ class _LogInState extends State<LogIn> {
 
       if (response.statusCode == 200) {
         print('로그인 성공');
-        UserProvider().updateLoginStatus(true);
-        const Home().launch(context);
+        UserProvider().updateLoginStatus(true); // 로그인 상태 업데이트
+        UserProvider().updateLoginId(userId);   // 로그인 아이디 업데이트
+        const Home().launch(context);           // Home 화면으로 이동
       } else {
         print('로그인 실패: ${response.statusCode}, ${response.body}');
       }
@@ -121,6 +123,7 @@ class _LogInState extends State<LogIn> {
                       decoration: kInputDecoration.copyWith(
                         labelText: '아이디',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '아이디를 입력하세요.',
                         focusColor: kTitleColor,
                         border: const OutlineInputBorder(),
                       ),
@@ -141,6 +144,7 @@ class _LogInState extends State<LogIn> {
                         border: const OutlineInputBorder(),
                         labelText: '비밀번호',
                         labelStyle: const TextStyle(color: kTitleColor),
+                        hintText: '비밀번호를 입력하세요.',
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {

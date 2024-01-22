@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flight_booking/screen/mypage/mypage_screen.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
@@ -17,6 +18,45 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
+  @override
+  void initState() {
+    super.initState();
+    getUserInfo();
+  }
+
+  // 회원 정보 요청
+  Future getUserInfo() async {
+    print('회원 정보 요청 시작');
+
+    String userId = UserProvider.userId;
+    print(userId);
+    
+    final url = 'http://10.0.2.2:9090/user/$userId';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      if(response.statusCode == 200) {
+        print('응답 성공');
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var result = json.decode(utf8Decoded);
+
+        print(result);
+        String name = result['name'];
+        String phone = result['phone'];
+        String email = result['email'];
+        String address = result['address'];
+
+        // result에서 빼낸 값을 컨트롤러에 설정
+        nameController.text = name;
+        phoneController.text = phone;
+        emailController.text = email;
+        addressController.text = address;
+      }
+    } catch (e) {
+      print('오류 발생: $e');
+    }
+  }
+
   TextEditingController nameController = TextEditingController();
   TextEditingController userPwController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -31,9 +71,10 @@ class _EditProfileState extends State<EditProfile> {
     String email,
     String address,
   ) async {
+    String userId = UserProvider.userId;
 
-    // 임시로 아이디 하드 코딩
-    String userId = 'user';
+    print('회원 정보 수정 요청 시작');
+
     final url = 'http://10.0.2.2:9090/user';
 
     try {
@@ -43,6 +84,7 @@ class _EditProfileState extends State<EditProfile> {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
+          'userId': userId,
           'name': name,
           'userPw': userPw,
           'phone': phone,
@@ -64,7 +106,6 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: kPrimaryColor,
       bottomNavigationBar: Container(
@@ -89,9 +130,11 @@ class _EditProfileState extends State<EditProfile> {
                   elevation: 0.0,
                   backgroundColor: kPrimaryColor,
                 ),
-                onPressed: () {
-                  update(
-                    nameController.text, userPwController.text, phoneController.text, emailController.text, addressController.text);
+                onPressed: () async {
+                  await update(
+                    nameController.text, userPwController.text, phoneController.text, emailController.text, addressController.text
+                  );
+
                   // 페이지 이동
                   Navigator.push(
                     context,
@@ -144,7 +187,7 @@ class _EditProfileState extends State<EditProfile> {
                       offset: Offset(0, -2),
                       blurRadius: 7.0,
                       spreadRadius: 2.0,
-                    ), //BoxShadow//BoxShadow
+                    ),
                   ],
                   color: Colors.white,
                 ),
@@ -181,6 +224,7 @@ class _EditProfileState extends State<EditProfile> {
                         textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
                           labelText: '비밀번호',
+                          hintText: '비밀번호를 입력하세요.'
                         ),
                       ),
 
@@ -191,6 +235,7 @@ class _EditProfileState extends State<EditProfile> {
                         textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
                           labelText: '비밀번호 확인',
+                          hintText: '비밀번호 확인을 입력하세요.'
                         ),
                       ),
                       
@@ -205,6 +250,7 @@ class _EditProfileState extends State<EditProfile> {
                         textFieldType: TextFieldType.PHONE,
                         decoration: kInputDecoration.copyWith(
                           labelText: '핸드폰 번호',
+                          hintText: '핸드폰 번호를 입력하세요.'
                         ),
                       ),
 
@@ -219,6 +265,7 @@ class _EditProfileState extends State<EditProfile> {
                         textFieldType: TextFieldType.EMAIL,
                         decoration: kInputDecoration.copyWith(
                           labelText: '이메일',
+                          hintText: '이메일을 입력하세요.'
                         ),
                       ),
 
@@ -233,6 +280,7 @@ class _EditProfileState extends State<EditProfile> {
                         textFieldType: TextFieldType.ADDRESS,
                         decoration: kInputDecoration.copyWith(
                           labelText: '주소',
+                          hintText: '주소를 입력하세요.'
                         ),
                       ),
                     ],
