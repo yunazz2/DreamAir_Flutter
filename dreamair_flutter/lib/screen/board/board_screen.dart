@@ -1,6 +1,4 @@
-// 게시판(여행 커뮤니티) 페이지
 import 'dart:convert';
-
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/board/board.dart';
 import 'package:flight_booking/screen/board/board_upload_screen.dart';
@@ -18,58 +16,79 @@ class BoardScreen extends StatefulWidget {
 }
 
 class _BoardScreenState extends State<BoardScreen> {
+  int _page = 1;
+  final List<Board> _boardList = [];
+  bool _loading = false;
 
-  List<Board> _boardList = [];
+  final ScrollController _controller = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    getBoardList().then((result) {
-      setState(() {
-        _boardList = result;
-      });
+
+    // 처음 데이터 로드
+    _loadData();
+
+    // 스크롤 이벤트 감지
+    _controller.addListener(() {
+      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        // 스크롤이 끝에 도달하면 다음 페이지 로드
+        _loadData();
+      }
     });
   }
 
-  Future<List<Board>> getBoardList() async {
-    // 서버로 요청
-    var url = 'http://10.0.2.2:9090/board';
-
-    // http.get( url, header )
-    var response = await http.get(Uri.parse(url));
-    // response : [ {"title" : '제목', "wrtier" : '작성자', "content" : '내용'}, ...]
-    print('response.body :');
-    print(response.body);
-
-     
-    print('boardList :');
-    // UTF-8 디코딩
-    var utf8Decoded = utf8.decode( response.bodyBytes );
-    // JSON 디코딩
-    var boardList = jsonDecode( utf8Decoded );
-    List<Board> result = [];
-
-    // print(boardList[0]['title']);
-
-    for (var i = 0; i < boardList.length; i++) {
-      result.add( Board(
-                        // boardNo: boardList[i]['boardNo'],
-                        // title: boardList[i]['title'],
-                        // writer: boardList[i]['writer'],
-                        // content: boardList[i]['content'],
-                        // regDate: boardList[i]['regDate'],
-                        // updDate: boardList[i]['updDate'],
-                        // views: boardList[i]['views'],
-                        // like: boardList[i]['like'],
-
-      ));
+  Future<void> _loadData() async {
+    if (_loading) {
+      return;
     }
 
-    print( result );
-    return result;
+    setState(() {
+      _loading = true;
+    });
+
+    try {
+      // 데이터를 가져오는 비동기 작업
+      var url = 'http://10.0.2.2:9090/board/list?page=$_page';
+      var response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var boardList = jsonDecode(utf8Decoded);
+
+        List<Board> result = [];
+
+        for (var i = 0; i < boardList['list'].length; i++) {
+          result.add(Board(
+            boardNo: boardList['list'][i]['boardNo'],
+            title: boardList['list'][i]['title'],
+            writer: boardList['list'][i]['writer'],
+            content: boardList['list'][i]['content'],
+            regDate: boardList['list'][i]['regDate'],
+            updDate: boardList['list'][i]['updDate'],
+            views: boardList['list'][i]['views'],
+            like: boardList['list'][i]['like'],
+          ));
+        }
+
+        setState(() {
+          _boardList.addAll(result);
+          _page++;
+
+          _loading = false;
+        });
+      } else {
+        print('Error loading data: Status code ${response.statusCode}');
+        print('Response body: ${response.body}');
+      }
+    } catch (e) {
+      print('Error loading data: $e');
+      setState(() {
+        _loading = false;
+      });
+    }
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,28 +100,28 @@ class _BoardScreenState extends State<BoardScreen> {
         iconTheme: const IconThemeData(color: kWhite),
         centerTitle: true,
         title: Text(
-          lang.S.of(context).boardTitle, //커뮤니티
+          lang.S.of(context).boardTitle,
           style: kTextStyle.copyWith(
             color: kWhite,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-       body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
-          decoration: const BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
+            width: double.infinity,
+            padding: const EdgeInsets.all(10.0),
+            decoration: const BoxDecoration(
+              color: kWhite,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              for (int index = 0; index < 4; index++)
-                Container(
+            child: ListView.builder(
+              itemCount: _boardList.length,
+              itemBuilder: (context, index) {
+                return Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -111,41 +130,19 @@ class _BoardScreenState extends State<BoardScreen> {
                       color: kBorderColorTextField,
                     ),
                   ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: _boardList.length,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    itemBuilder: (BuildContext context, int index) {
-                      Map post = posts[index];
-                      return PostItem(
-                        // boardNo: _boardList[index].boardNo,
-                        // writer: _boardList[index].writer,
-                        // title: _boardList[index].title,
-                        // content: _boardList[index].content,
-                        // regDate: _boardList[index].regDate,
-                        // updDate: _boardList[index].updDate,
-                        // views: _boardList[index].views,
-                        // like: _boardList[index].like,
-
-                        img: post['img'],
-                        time: post['time'],
-                      );
-                    },
+                  child: PostItem(
+                    board: _boardList[index],
+                    img: posts[index]['img'],
+                    time: posts[index]['time'],
                   ),
-                ),
-            ],
-          ),
-        ),
+                );
+              },
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'upload',
         backgroundColor: Colors.amber[300],
         foregroundColor: Theme.of(context).primaryColor,
-        splashColor: Colors.blue,
-        hoverColor: Colors.green,
-        elevation: 10,
-        highlightElevation: 20,
         onPressed: () {
           Navigator.push(
             context,

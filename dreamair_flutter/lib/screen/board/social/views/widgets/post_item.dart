@@ -1,3 +1,4 @@
+import 'package:flight_booking/screen/board/board.dart';
 import 'package:flight_booking/screen/board/board_screen.dart';
 import 'package:flight_booking/screen/board/board_update_screen.dart';
 import 'package:flight_booking/screen/board/comment_screen.dart';
@@ -8,38 +9,38 @@ import 'package:like_button/like_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class PostItem extends StatefulWidget {
+  final Board board;
   final String time;
   final String img;
-
 
   const PostItem({
     super.key,
     required this.time,
     required this.img,
+    required this.board,
   });
 
   @override
-  _PostItemState createState() => _PostItemState();
+  State<PostItem> createState() => _PostItemState();
 }
 
 class _PostItemState extends State<PostItem> {
-
   // 댓글 창을 띄우는 함수
- void _showCommentSheet(BuildContext context) {
-  double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
+  void _showCommentSheet(BuildContext context) {
+    double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
 
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    builder: (context) {
-      return Container(
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        return Container(
           padding: EdgeInsets.only(bottom: bottomPadding),
+          // child: const CommentScreen(boardNo: widget.board.boardNo),
           child: const CommentScreen(),
         );
-    },
-  );
-}
-
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +51,12 @@ class _PostItemState extends State<PostItem> {
           ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(
-                widget.img,
+                widget.img, // 이미지
               ),
             ),
             contentPadding: const EdgeInsets.all(0),
             title: Text(
-              'Board.writer',
+              widget.board.writer, // 작성자
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -105,7 +106,7 @@ class _PostItemState extends State<PostItem> {
             ),
           ),
           Image.asset(
-            widget.img,
+            widget.img, // 이미지
             height: 230,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
@@ -156,8 +157,9 @@ class _PostItemState extends State<PostItem> {
                   fontSize: 11,
                 ),
               ),
-            ],),
-            // 내용
+            ],
+          ),
+          // 내용
           Row(
             children: [
               Expanded(
@@ -165,15 +167,22 @@ class _PostItemState extends State<PostItem> {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: const Column(
                     children: [
-                      OverflowText(text: '공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. '),
+                      Row(
+                        children: [
+                          Text('boardNo'),
+                          OverflowText(text: 'text'),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-            const SizedBox(height: 20,),
-            const Divider(thickness: 0.5),
+          const SizedBox(
+            height: 20,
+          ),
+          const Divider(thickness: 0.5),
         ]),
         onTap: () {},
       ),

@@ -76,12 +76,6 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardList;
 	}
-
-    @Override
-	public int count() throws Exception {
-		int count = boardMapper.count();
-		return count;
-	}
     
     @Override
     public Board select(int boardNo) throws Exception {
@@ -133,8 +127,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public int Views(int count, int boardNo) throws Exception {
-        int result = boardMapper.views(count, boardNo);
+    public int updateViews(int count, int boardNo) throws Exception {
+        int result = boardMapper.updateViews(count, boardNo);
+        return result;
+    }
+
+    @Override
+    public int updateLikes(int count, int boardNo) throws Exception {
+        int result = boardMapper.updateLikes(count, boardNo);
         return result;
     }
 
@@ -174,6 +174,19 @@ public class BoardServiceImpl implements BoardService {
         }
 
         return boardMainList;
+    }
+
+    
+	@Override
+	public int count() throws Exception {
+		int count = boardMapper.count();
+		return count;
+	}
+
+    @Override
+    public int searchViews(int boardNo) throws Exception {
+        int result = boardMapper.searchViews(boardNo);
+        return result;
     }
 
 }

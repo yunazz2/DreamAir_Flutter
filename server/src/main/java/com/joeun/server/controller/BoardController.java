@@ -61,8 +61,9 @@ public class BoardController {
     
     // 게시글 목록 with 페이징 처리
 	@GetMapping("/list")
-	public String list(Model model, Page page) throws Exception {
-		
+	public ResponseEntity<?> list(Model model, Page page) throws Exception {
+        log.info("[GET] - /board/list" + page  + " - 게시글 목록");
+    try {
 		log.info("##### 페이징 처리 전 - page #####");
 		log.info(page.toString());
 		
@@ -76,8 +77,13 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("page", page);
 		
-		return "/board/list";
+      return new ResponseEntity<>(boardList, HttpStatus.OK);  
+         } catch (Exception e) {
+                log.error(null, e);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
 	}
+
     @GetMapping("/{boardNo}")
     public ResponseEntity<?> getOne(@PathVariable Integer boardNo, Files files) {
         log.info("[GET] - /boards/" + boardNo  + " - 게시글 조회");
