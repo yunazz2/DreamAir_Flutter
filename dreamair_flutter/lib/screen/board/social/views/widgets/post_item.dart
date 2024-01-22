@@ -145,21 +145,20 @@ class _PostItemState extends State<PostItem> {
               ),
             ],),
             // 내용
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 50,
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: const Column(
-                      children: [
-                        OverflowText(),
-                      ],
-                    ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: const Column(
+                    children: [
+                      OverflowText(text: '공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. '),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
             const SizedBox(height: 20,),
             const Divider(thickness: 0.5),
         ]),

@@ -1,7 +1,11 @@
 // 출도착 페이지
+import 'dart:convert';
+
 import 'package:flight_booking/generated/l10n.dart' as lang;
+import 'package:flight_booking/screen/schedule/schedule.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
@@ -13,69 +17,54 @@ class ScheduleScreen extends StatefulWidget {
 class _ScheduleScreenState extends State<ScheduleScreen> {
 
   // 출도착 조회 아이템
-  List<String> scheduleItem = [];
+  List<Schedule> _scheduleList = [];
 
+  @override
+  void initState() {
+    super.initState();
 
-  // final ScrollController _controller = ScrollController();
+    getScheduleList().then((result) {
+      setState(() {
+        _scheduleList = result;
+      });
+    });
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  Future<List<Schedule>> getScheduleList() async {
+    // 서버로 요청
+    var url = 'http://10.0.2.2:9090/user/productFlightList';
+    // http.get(url, header)
+    // http.get(Uri.parse(url))
+    var response = await http.get(Uri.parse(url));
+    // response : [ { "title" : '제목' }, { "writer" : '작성자' }, { "content" : '내용' }, ... ]
 
-  //   // 처음 데이터
-  //   fetch();
-    
-  //   // 다음 페이지 (스크롤)
-  //   _controller.addListener(() { 
-  //     // 스크롤 맨 밑
-  //     // _controller.position.maxScrollExtent : 스크롤 위치의 최댓값
-  //     // _controller.position.offset          : 현재 스크롤 위치
-  //     print('현재 스크롤 : ${_controller.offset}');
-      
-  //     if(_controller.position.maxScrollExtent < _controller.offset + 50) {
-  //       // 데이터 요청 (다음 페이지)
-  //       fetch();
-  //     }
-      // });
-    // }
+    print('response.body : ');
+    print(response.body);
 
-  //   Future fetch() async {
-  //   print('fetch...');
-  //   // http 
-  //   // 1. URL 인코딩
-  //   // 2. GET 방식 요청
-  //   // final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+    print('scheduleList : ');
+    // UTF-8 디코딩
+    var utf8Decoded = utf8.decode(response.bodyBytes);
 
-  //   final url = Uri.parse('http://10.0.2.2:9090/user/productFlightList');
-    
-  //   final response = await http.get(url);
+    var scheduleList = jsonDecode(utf8Decoded);
+    List<Schedule> result = [];
 
-  //   if( response.statusCode == 200 ) {
-  //     setState(() {
-  //       // items.addAll(['New']);
-  //         scheduleItem.clear();
-  //       // JSON 문자열 ➡ List<>
-  //       var utf8Decoded = utf8.decode( response.bodyBytes );
-  //       var result = json.decode(utf8Decoded);
-  //       final List list = result['list'];
+    for (var i = 0; i < scheduleList.length; i++) {
+      result.add(Schedule(
+          flightNo: scheduleList[i]['flightNo'],
+          flightName: scheduleList[i]['flightName'],
+          routeNo: scheduleList[i]['routeNo'],
+          departure: scheduleList[i]['departure'],
+          departureDate: scheduleList[i]['departureDate'],
+          departureTime: scheduleList[i]['departureTime'],
+          destination: scheduleList[i]['destination'],
+          destinationDate: scheduleList[i]['destinationDate'],
+          destinationTime: scheduleList[i]['destinationTime'],
+          ));
+    }
 
-  //       scheduleItem.addAll( list.map<String>((item) {
-
-  //       final flightNo = int.parse(item['flightNo'].toString());
-  //       final flightName = item['flightName'] as String;
-  //       final routeNo = int.parse(item['routeNo'].toString());
-  //       final departure = item['departure'] as String;
-  //       final departureDate = item['departureDate'] as String;
-  //       final departureTime = item['departureTime'] as String;
-  //       final destination = item['destination'] as String;
-  //       final destinationDate = item['destinationDate'] as String;
-  //       final destinationTime = item['destinationTime'] as String;
-  //         return 'Item $flightNo - $flightName - $routeNo - $departure - $departureDate - $departureTime - $destination - $destinationDate - $destinationTime';
-  //       }));
-  //     });
-  //   }
-
-  // }
+    print(result);
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,97 +102,94 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           ),
           child: Column(
             children: [
-              ListView.builder(
-                // controller: _controller,
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                // itemCount: scheduleItem.length, 
-                itemCount: 5,
-                itemBuilder: (_, i) {
-                  // final item = scheduleItem[i];
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: kBorderColorTextField,
-                          )),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "항공편명", // 항공편명
-                            style: TextStyle(fontSize: 12),
-                          ),
-                          const Divider(
-                            thickness: 1.0,
-                            color: kBorderColorTextField,
-                          ),
-                          ListTile(
-                              horizontalTitleGap: 5.0,
-                              contentPadding: EdgeInsets.zero,
-                              minLeadingWidth: 0,
-                              leading: Container(
-                                height: 40.0,
-                                width: 40.0,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'images/logo3.png'), // 항공편 이미지
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
-                              title: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '출발지',
-                                    style:
-                                        kTextStyle.copyWith(color: kTitleColor),
-                                  ),
-                                  const SizedBox(width: 30),
-                                  const Icon(
-                                    Icons.swap_horiz,
-                                    color: kLightNeutralColor,
-                                  ),
-                                  const SizedBox(width: 30),
-                                  Text(
-                                    '도착지',
-                                    style:
-                                        kTextStyle.copyWith(color: kTitleColor),
-                                  )
-                                ],
-                              ),
-                              // 일자/시간
-                              subtitle: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '출발일자/시간',
-                                    style: kTextStyle.copyWith(
-                                        color: kTitleColor, fontSize: 14),
-                                  ),
-                                  const SizedBox(width: 80),
-                                  Text(
-                                    '도착일자/시간',
-                                    style: kTextStyle.copyWith(
-                                        color: kTitleColor, fontSize: 14),
-                                  )
-                                ],
-                              )),
-                          const SizedBox(
-                            height: 3.0,
-                          ),
-                        ],
-                      ),
+ListView.builder(
+  padding: EdgeInsets.zero,
+  shrinkWrap: true,
+  physics: NeverScrollableScrollPhysics(),
+  itemCount: _scheduleList.length,
+  itemBuilder: (context, index) {
+    Schedule schedule = _scheduleList[index];
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: kBorderColorTextField,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              schedule.flightName ?? '항공편명',
+              style: const TextStyle(fontSize: 16),
+            ),
+            const Divider(
+              thickness: 1.0,
+              color: kBorderColorTextField,
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Container(
+                  height: 40.0,
+                  width: 40.0,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('images/logo3.png'),
+                      fit: BoxFit.cover,
                     ),
-                  );
-                },
-              )
+                  ),
+                ),
+                const SizedBox(width: 40),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${schedule.departure}',
+                      style: kTextStyle.copyWith(color: kTitleColor, fontSize: 18), 
+                    ),
+                    const SizedBox(height: 5, width: 50,),
+                    const Icon(
+                      Icons.swap_horiz,
+                      color: kLightNeutralColor,
+                    ),
+                    const SizedBox(height: 5, width: 60,),
+                    Text(
+                      '${schedule.destination}',
+                      style: kTextStyle.copyWith(color: kTitleColor, fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  '${schedule.departureDate} ${schedule.departureTime}',
+                  style: kTextStyle.copyWith(color: kTitleColor, fontSize: 14),
+                ),
+                Text(
+                  '${schedule.destinationDate} ${schedule.destinationTime}',
+                  style: kTextStyle.copyWith(color: kTitleColor, fontSize: 14),
+                ),
+              ],
+            ),
+            const SizedBox(height: 3.0),
+          ],
+        ),
+      ),
+    );
+  },
+)
+
             ],
           ),
         ),
