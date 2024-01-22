@@ -8,15 +8,12 @@ import 'package:like_button/like_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class PostItem extends StatefulWidget {
-  final String dp;
-  final String name;
   final String time;
   final String img;
 
+
   const PostItem({
     super.key,
-    required this.dp,
-    required this.name,
     required this.time,
     required this.img,
   });
@@ -26,6 +23,24 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
+
+  // 댓글 창을 띄우는 함수
+ void _showCommentSheet(BuildContext context) {
+  double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
+
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return Container(
+          padding: EdgeInsets.only(bottom: bottomPadding),
+          child: const CommentScreen(),
+        );
+    },
+  );
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,12 +50,12 @@ class _PostItemState extends State<PostItem> {
           ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(
-                widget.dp,
+                widget.img,
               ),
             ),
             contentPadding: const EdgeInsets.all(0),
             title: Text(
-              widget.name,
+              'Board.writer',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -116,16 +131,10 @@ class _PostItemState extends State<PostItem> {
               ),
             ),
             const SizedBox(width: 10),
+            //// 댓글 기능 부분
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) =>
-                        // const CommentScreen( sheetTitle: '댓글',),
-                        const CommentScreen(),
-                  ),
-                );
+                _showCommentSheet(context);
               },
               child: Icon(
                 Icons.comment_outlined,

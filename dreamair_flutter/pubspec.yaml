@@ -67,11 +67,19 @@ dependencies:
   flutter_provider: ^2.1.0
   flutter_staggered_animations: ^1.1.1
   lottie: ^3.0.0
-  cloud_firestore: ^4.14.0
-  firebase_storage: ^11.6.0
+  # cloud_firestore: ^4.14.0
+  # firebase_storage: ^11.6.0
   uuid: ^4.3.3
   dio: ^5.4.0
-  
+  flutter_keyboard_visibility: ^6.0.0
+    # 파일 선택 라이브리러
+  file_picker: ^6.1.1
+  # http 라이브러리
+  # http: ^0.13.3
+
+  # 권한 제어 라이브러리
+  permission_handler: ^11.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
