@@ -176,7 +176,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 5),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
                               child: Row(
@@ -196,7 +196,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 3.0,),
+                            const SizedBox(height: 10.0,),
                           ],
                         ),
                       ),
