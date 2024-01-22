@@ -25,32 +25,25 @@ class CommentScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        primary: false,
-        physics: const BouncingScrollPhysics(),
-        child: ConstrainedBox(
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: SingleChildScrollView(
+          primary: false,
+          physics: const BouncingScrollPhysics(),
+          child: ConstrainedBox(
             constraints: const BoxConstraints(minHeight: 700),
             child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
-          decoration: const BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
-            ),
-            
-          ),
-          child:GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: const Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 40,
-            ),
- 
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                color: kWhite,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
+              ),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CommentList(),
                   // TextField(
@@ -63,15 +56,14 @@ class CommentScreen extends StatelessWidget {
                   //     ),
                   //   ),
                   // ),
-                  CommentInput(),   // 댓글 입력 창
+                  CommentInput(), // 댓글 입력 창
                 ],
               ),
-            ),               
+            ),
           ),
         ),
-        ),
       ),
-      );
+    );
   }
 }
 
@@ -115,7 +107,7 @@ class CommentList extends StatelessWidget {
                         //   ),
                         // ),
                         const CircleAvatar(
-                            backgroundImage: AssetImage('images/logo2.png'),
+                          backgroundImage: AssetImage('images/logo2.png'),
                         ),
                         const SizedBox(
                           width: 15,
@@ -167,7 +159,6 @@ class CommentList extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     Column(
                       children: [
                         PopupMenuButton<int>(
@@ -192,7 +183,8 @@ class CommentList extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (BuildContext context) => const CommentScreen(),
+                                      builder: (BuildContext context) =>
+                                          const CommentScreen(),
                                     ),
                                   );
                                 }),
@@ -205,7 +197,7 @@ class CommentList extends StatelessWidget {
                           elevation: 1.0,
                         )
                       ],
-              ),
+                    ),
                   ],
                 ),
               ),

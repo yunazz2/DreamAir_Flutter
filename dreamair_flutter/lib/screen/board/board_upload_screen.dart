@@ -3,7 +3,7 @@ import 'package:flight_booking/screen/board/board_screen.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
-
+import 'package:nb_utils/nb_utils.dart';
 
 class BoardUploadScreen extends StatefulWidget {
   const BoardUploadScreen({super.key});
@@ -15,38 +15,47 @@ class BoardUploadScreen extends StatefulWidget {
 class _BoardUploadScreenState extends State<BoardUploadScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      appBar: AppBar(
-        titleSpacing: 0,
-        elevation: 0,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
         backgroundColor: kPrimaryColor,
-        iconTheme: const IconThemeData(color: kWhite),
-        centerTitle: true,
-        title: Text(
-          lang.S.of(context).BoardUploadTitle,
-          style: kTextStyle.copyWith(
-            color: kWhite,
-            fontWeight: FontWeight.bold,
+        appBar: AppBar(
+          titleSpacing: 0,
+          elevation: 0,
+          backgroundColor: kPrimaryColor,
+          iconTheme: const IconThemeData(color: kWhite),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close),
+            ),
+          ],
+          title: Text(
+            lang.S.of(context).BoardUploadTitle,
+            style: kTextStyle.copyWith(
+              color: kWhite,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        primary: false,
-        physics: const BouncingScrollPhysics(),
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 700),
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(10.0),
-            decoration: const BoxDecoration(
-              color: kWhite,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
+        body: SingleChildScrollView(
+          primary: false,
+          physics: const BouncingScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 700),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(10.0),
+              decoration: const BoxDecoration(
+                color: kWhite,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
               ),
+              child: const InputForm(),
             ),
-            child: InputForm(),
           ),
         ),
       ),
@@ -66,23 +75,26 @@ class InputForm extends StatelessWidget {
           horizontal: 10,
           vertical: 13,
         ),
-        child: 
-        Column(
+        child: Column(
           children: [
-           const TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: "제목",
                 border: OutlineInputBorder(),
               ),
             ),
-           const SizedBox(height: 15,),
-           const TextField(
+            const SizedBox(
+              height: 15,
+            ),
+            const TextField(
               decoration: InputDecoration(
                 labelText: "작성자",
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const TextField(
               maxLength: 200,
               maxLines: 9,
@@ -92,7 +104,9 @@ class InputForm extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -122,7 +136,9 @@ class InputForm extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             // 등록 버튼
             const SizedBox(height: 10.0),
             ButtonGlobalWithoutIcon(

@@ -73,7 +73,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                     style: TextStyle(color: kSubTitleColor),
                   ),
                   subtitle: Text(
-                    ' ${booking.getProductPrice}원',      // 나중에 패키지 가격이랑 합치기
+                    ' ${booking.getTotalPrice} 원',     
                     style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                   ),
                   trailing: SizedBox(
@@ -521,6 +521,20 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                     value: titleList[i],
                                                     groupValue: gValue,
                                                     onChanged: (value) {
+
+                                                      if (value.toString() == 'Saver 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount * 2;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (10000 * booking.getPasCount * 2);
+                                                      } else if (value.toString() == 'Flexi 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount * 2;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (15000 * booking.getPasCount * 2);
+                                                      } else if (value.toString() == 'Super 패키지') {
+                                                        booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount * 2;
+                                                        booking.setTotalPrcie = booking.getTotalPrice + (20000 * booking.getPasCount * 2); 
+                                                      }
+
+                                                      booking.setDiscountPrice = booking.getTotalPrice;
+
                                                       setState(() {
                                                         gValue = value.toString();
                                                       });
