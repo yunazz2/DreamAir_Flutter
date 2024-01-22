@@ -10,6 +10,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class GoSearchResult extends StatefulWidget {
   const GoSearchResult({Key? key}) : super(key: key);
@@ -19,50 +20,66 @@ class GoSearchResult extends StatefulWidget {
 }
 
 class _GoSearchResultState extends State<GoSearchResult> {
+    var bookingList = [];
+    late BookingProvider bookingProvider;
+    String roundTrip = '';
+    String departure = '';
+    String destination = '';
+    String departureDate = '';
+    int pasCount = 0;
 
-  // late BookingProvider bookingProvider;
-  
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
+  @override
+  void initState() {
+    super.initState();
 
-  //   bookingProvider = Provider.of<BookingProvider>(context, listen: false);
-  //   getBookingList();
-  // }
+    bookingProvider = Provider.of<BookingProvider>(context, listen: false);
 
-  // Future<void> getBookingList() async {
-  //   String roundTrip = bookingProvider.getRoundTrip;
-  //   String departure = bookingProvider.getDeparture;
-  //   String destination = bookingProvider.getDestination;
-  //   String departureDate = bookingProvider.getDepartureDate;
-  //   int pasCount = bookingProvider.getPasCount;
-  //   var url = 'http://10.0.2.2:9090/booking/goList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
+    roundTrip = bookingProvider.getRoundTrip;
+    departure = bookingProvider.getDeparture;
+    destination = bookingProvider.getDestination;
+    departureDate = bookingProvider.getDepartureDate;
+    pasCount = bookingProvider.getPasCount;
 
-  //   // try {
-  //   //   var response = await http.get(Uri.parse(url),
-  //   //     // headers: {
-  //   //     //   'Content-Type' : 'application/json'
-  //   //     // },
-  //   //     // queryPar
-  //   //     // queryPara: jsonEncode({
-  //   //     //   'roundTrip' : '',
-  //   //     //   'departure' : '',
-  //   //     //   ''
-  //   //     // }),
-  //   //   );
-      
-  //   // } catch (e) {
-      
-  //   // }
+    getBookingList();
+  }
 
-  //   var response = await http.get(Uri.parse(url));
+  Future<void> getBookingList() async {
+    var url = 'http://10.0.2.2:9090/booking/goList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
+    var response = await http.get(Uri.parse(url));
 
-  //   print('response.body');
-  //   print(response.body);
+    print('response.body');
+    print(response.body);
 
-  //   var utf8Decoded = utf8.decode(response.bodyBytes);
+    var utf8Decoded = utf8.decode(response.bodyBytes);
 
-  // }
+    setState(() {
+      bookingList = jsonDecode(utf8Decoded);
+    });
+
+
+    // List<BookingProvider> result = [];
+    // for (var i = 0; i < bookingList.length; i++) {
+    //   bookingProvider.setDuration = bookingList[i]['duration'];
+    //   // result[i].setDuration = bookingList[i]['duration'];
+    //   // result[i].setDeparture = bookingList[i]['departure'];
+    //   // result[i].setDestination = bookingList[i]['destination'];
+    //   // result[i].setDepartureDate = bookingList[i]['departureDate'];
+    //   // result[i].setProductPrice = bookingList[i]['productPrice'];
+    //   // result[i].setFlightName = bookingList[i]['flightName'];
+    //   // result[i].setProductNoDep = bookingList[i]['productNoDep'];
+    //   // result[i].setProductNoDes = bookingList[i]['productNoDes'];
+    //   // result[i].setRouteNoDep = bookingList[i]['routeNoDep'];
+    //   // result[i].setRouteNoDes = bookingList[i]['routeNoDes'];
+    // }
+
+    // print('result');
+    // print(result);
+
+    print('bookingProvider');
+    print(bookingList);
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +135,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                         ),
                       ),
                       ListView.builder(
-                          itemCount: 10,
+                          itemCount: bookingList.length,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.only(bottom: 15.0),
@@ -162,7 +179,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Text(
-                                                  '${booking.getProductPrice * 2} 원',   
+                                                  '${bookingList[i]['productPrice'] * 2} 원',   
                                                   style: kTextStyle.copyWith(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
                                                 ),
                                                 const SizedBox(width: 5.0),
@@ -173,7 +190,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                               ],
                                             ),
                                             Text(
-                                              '${booking.getProductPrice} 원',   // 최종가격
+                                              '${bookingList[i]['productPrice']} 원',   // 최종가격
                                               style: kTextStyle.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
                                             ),
                                           ],
@@ -196,6 +213,17 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                       child: GestureDetector(
                                         onTap: () {
                                           // 선택한 항공권 데이터를 provider에 넣기
+                                          // if (booking.getRoundTrip == '편도') {
+                                            
+                                            // const GoFlightDetails().launch(context);       // 버튼
+                                          // } else if (booking.getRoundTrip == '왕복 가는편') {
+
+                                            // const BackSearchResult().launch(context);      // 버튼
+                                          // } else if (booking.getRoundTrip == '왕복') {
+
+                                          // }
+                                          booking.setProductNoDep = bookingList[i]['productNo'];
+                                          booking.setRouteNoDep = bookingList[i]['routeNo'];
                                           booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
                                           if (booking.getRoundTrip == '편도') {
                                             const GoFlightDetails().launch(context);       // 버튼
@@ -213,7 +241,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                 horizontalTitleGap: 10.0,
                                                 contentPadding: EdgeInsets.zero,
                                                 title: Text(
-                                                  '  Dream Air',
+                                                  " ${bookingList[i]['flightName']}",
                                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                               ),
@@ -223,11 +251,11 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDepartureTime}',
+                                                        '${bookingList[i]['departureTime']}',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       Text(
-                                                        '${booking.getDeparture}',
+                                                        '${bookingList[i]['departure']}',
                                                         style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                                       ),
                                                     ],
@@ -236,7 +264,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDuration}시간',
+                                                        '${bookingList[i]['duration']}시간',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       const SizedBox(height: 2.0),
@@ -293,11 +321,11 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDestinationTime}',
+                                                        '${bookingList[i]['destinationTime']}',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       Text(
-                                                        '${booking.getDestination}',
+                                                        '${bookingList[i]['destination']}',
                                                         style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                                       ),
                                                     ],

@@ -34,13 +34,23 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
 
   String password = '';
   
+  late List<bool> states;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
     tabsController = TabController(length: 3, vsync: this);
+
+    BookingProvider bookingProvider = Provider.of(context, listen: false);
+
+    setState(() {
+      states = List.generate(bookingProvider.getPasCount, (index) => false);
+    });
+    
   }
+
+  
 
   List<String> discountList = [
     'WELCOME 쿠폰',
@@ -713,9 +723,9 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   itemBuilder: (_, i) {
                                     return ButtonGlobalWithIcon(
-                                              buttontext: '탑승객 정보 입력',   // 들어가느 버튼을 누르면 false 나오면 true 
+                                              buttontext: states[i] ? '탑승객 정보 입력완료' : '탑승객 정보 입력',   
                                               buttonTextColor: kPrimaryColor,
-                                              buttonIcon: FeatherIcons.plus,
+                                              buttonIcon: states[i] ? null : FeatherIcons.plus,
                                               buttonDecoration: kButtonDecoration.copyWith(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(8.0),
@@ -974,6 +984,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                             print(booking.getPinTypes[0]);
 
                                                                             setState(() {
+                                                                              states[i] = !states[i];
                                                                               finish(context);
                                                                             });
                                                                           },

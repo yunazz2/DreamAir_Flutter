@@ -9,7 +9,7 @@ class BookingProvider extends ChangeNotifier {
   String roundTrip = '편도';
   int pasCount = 1;
   String departureDate = '';
-  int productPrice = 10000;      // 0으로 변경
+  int productPrice = 0;      
   String flightName = 'DA0001';        // '' 
   String departureTime = '10:00';     // ''
   String destinationTime = '11:00';   // ''
@@ -17,6 +17,12 @@ class BookingProvider extends ChangeNotifier {
   int totalPrice = 0;
   double discount = 1.0;
   int discountPrice = 0;
+  int productNoDep = 0;
+  int productNoDes = 0;
+  int routeNoDep = 0;
+  int routeNoDes = 0;
+
+
 
   // 탑승객 정보
   int pinType = 0;
@@ -42,7 +48,7 @@ class BookingProvider extends ChangeNotifier {
   String get getDepartureEng => departureEng;
   String get getDestination => destination;
   String get getDestinationEng => destinationEng;
-  int get getPasCount => pasCount;
+  int get getPasCount => this.pasCount;
   String get getRoundTrip => roundTrip;
   String get getDepartureDate => departureDate;
   int get getProductPrice => productPrice;
@@ -53,6 +59,10 @@ class BookingProvider extends ChangeNotifier {
   int get getTotalPrice => totalPrice;
   double get getDiscount => discount;
   int get getDiscountPrice => discountPrice;
+  int get getProductNoDep => productNoDep;
+  int get getProductNoDes => productNoDes;
+  int get getRouteNoDep => routeNoDep;
+  int get getRouteNoDes => routeNoDes;
 
   // 탑승객 정보
   List<int> get getPinTypes => pinTypes;
@@ -109,7 +119,7 @@ class BookingProvider extends ChangeNotifier {
     // notifyListeners();
   }
 
-  set setDeprtureDate(String parmDepartureDate) {
+  set setDepartureDate(String parmDepartureDate) {
     departureDate = parmDepartureDate;
     notifyListeners();
   }
@@ -134,6 +144,10 @@ class BookingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  set setDuration(String paramDuration) {
+    duration = paramDuration;
+  }
+
   set setTotalPrcie(int parmTotalPrice) {
     totalPrice = parmTotalPrice;
     notifyListeners();
@@ -147,4 +161,8 @@ class BookingProvider extends ChangeNotifier {
 
   set setDiscount(double paramDiscount) => discount = paramDiscount;
   set setDiscountPrice(int paramDiscountPrice) => discountPrice = paramDiscountPrice;
+  set setProductNoDep(int paramProductNoDep) => productNoDep = paramProductNoDep;
+  set setProductNoDes(int paramProductNoDes) => productNoDes = paramProductNoDes;
+  set setRouteNoDep(int paramRouteNoDep) => routeNoDep = paramRouteNoDep;
+  set setRouteNoDes(int paramRouteNoDes) => routeNoDes = paramRouteNoDes;
 }

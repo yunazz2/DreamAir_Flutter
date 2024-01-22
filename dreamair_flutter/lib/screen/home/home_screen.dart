@@ -338,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             suffixIcon: GestureDetector(
                                               onTap: () {
                                                 setState(() {
-                                                  booking.setDeprtureDate = singleDepDate;
+                                                  booking.setDepartureDate = singleDepDate;
                                                   print(booking.getDepartureDate);
                                                   _selectDate(context);  
                                                 });
@@ -369,7 +369,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               onTap: () {
                                                 setState(() {
                                                   _showDepartureDate();
-                                                  booking.setDeprtureDate = departureDateTitle + ' ~ ' + returnDateTitle;
+                                                  booking.setDepartureDate = departureDateTitle + ' ~ ' + returnDateTitle;
                                                   print(booking.getDepartureDate);
                                                 });
                                               },
@@ -399,7 +399,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               onTap: () {
                                                 setState(() {
                                                   _showDepartureDate();
-                                                  booking.setDeprtureDate = departureDateTitle + ' ~ ' + returnDateTitle;
+                                                  booking.setDepartureDate = departureDateTitle + ' ~ ' + returnDateTitle;
                                                   print(booking.getDepartureDate);
                                                 });
                                               },
