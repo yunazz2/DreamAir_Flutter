@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 import '../widgets/constant.dart';
 import '../widgets/data_widgets.dart';
@@ -21,6 +24,8 @@ class BookProceed extends StatefulWidget {
 
 class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin {
 
+  late BookingProvider bookingProvider;
+
   TabController? tabController;
   TabController? tabsController;
 
@@ -32,7 +37,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  String password = '';
+  // String password = '';
   
   late List<bool> states;
 
@@ -42,12 +47,60 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
     tabController = TabController(length: 2, vsync: this);
     tabsController = TabController(length: 3, vsync: this);
 
-    BookingProvider bookingProvider = Provider.of(context, listen: false);
+    bookingProvider = Provider.of(context, listen: false);
 
     setState(() {
       states = List.generate(bookingProvider.getPasCount, (index) => false);
     });
+  }
+
+  Future<void> insertBooking() async {
+
+    print('insertBooking');
+    print(bookingProvider.getProductNoDep);
+    print(bookingProvider.getProductNoDes);
+    print(bookingProvider.getRouteNoDep);
+    print(bookingProvider.getRouteNoDes);
     
+
+    final url = 'http://10.0.2.2:9090/booking/info';
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'userPw': _passwordController.text,
+          'roundTrip': bookingProvider.getRoundTrip,
+          'pasCount': bookingProvider.getPasCount,
+          'productNoDep': bookingProvider.getProductNoDep,
+          'productNoDes': bookingProvider.getProductNoDes,
+          'routeNoDep': bookingProvider.getRouteNoDep,
+          'routeNoDes': bookingProvider.getRouteNoDes,
+          'passengerNames': bookingProvider.getPassengerNames,
+          'firstNames': bookingProvider.getFirstNames,
+          'lastNames': bookingProvider.getLastNames,
+          'births': bookingProvider.getBirths,
+          'phones': bookingProvider.getPhones,
+          'emails': bookingProvider.getEmails,
+          'genders': bookingProvider.getGenders,
+          'pinTypes': bookingProvider.getPinTypes,
+        })
+      );
+
+      if (response.statusCode == 201){
+        print('탑승객 정보입력 완료');
+        const Seat().launch(context);
+      } else {
+        print('탑승객 정보 입력 실패: ${response.statusCode}, ${response.body}');
+      }
+
+    } catch (e) {
+      print('오류 발생 : $e');
+    }
+
   }
 
   
@@ -73,38 +126,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
   bool isChecked = true;
 
   int selectedValue = 1;
-
-  // List<String> chairType = [
-  //   '주민등록증',
-  //   '여권',
-  //   '운전면허증',
-  // ];
-
-  // String selectedType = '주민등록증';
-
-  // DropdownButton<String> getChairType() {
-  //   List<DropdownMenuItem<String>> dropDownItems = [];
-  //   for (String des in chairType) {
-  //     var item = DropdownMenuItem(
-  //       value: des,
-  //       child: Text(des),
-  //     );
-  //     dropDownItems.add(item);
-  //   }
-  //   return DropdownButton(
-  //     icon: const Icon(
-  //       FeatherIcons.chevronDown,
-  //       color: kSubTitleColor,
-  //     ),
-  //     items: dropDownItems,
-  //     value: selectedType,
-  //     onChanged: (value) {
-  //       setState(() {
-  //         selectedType = value!;
-  //       });
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -162,10 +183,8 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           onPressed: () {
-                            password = _passwordController.text;
-                            setState(() {
-                              const Seat().launch(context);         // 버튼
-                            });
+                            // 서버로 데이터 보내는 함수 호출?
+                            insertBooking();
                           },
                           buttonTextColor: kWhite,
                         ),
@@ -229,7 +248,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                     style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: Text(
-                                    '${booking.getDepartureDate.split('~')[0]} | ${booking.getDepartureTime} - ${booking.getDestinationTime} | ${booking.getDuration} 시간 | 직항',
+                                    '${booking.getDepartureDate.split('~')[0]} | ${booking.getGoDepartureTime} - ${booking.getGoDestinationTime} | ${booking.getDuration} 시간 | 직항',
                                     style: TextStyle(color: kSubTitleColor),
                                   ),
                                 ),
@@ -258,7 +277,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                     style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: Text(
-                                    '${booking.getRoundTrip == '편도' ? booking.getDepartureDate : booking.getDepartureDate.split('~')[1]} | ${booking.getDepartureTime} - ${booking.getDestinationTime} | ${booking.getDuration} 시간 | 직항',
+                                    '${booking.getRoundTrip == '편도' ? booking.getDepartureDate : booking.getDepartureDate.split('~')[1]} | ${booking.getGoDepartureTime} - ${booking.getGoDestinationTime} | ${booking.getDuration} 시간 | 직항',
                                     style: TextStyle(color: kSubTitleColor),
                                   ),
                                 ).visible(booking.getRoundTrip != '편도'),
@@ -647,7 +666,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                       : kSubTitleColor),
                                               onTap: () {
 
-
+                                                // 체크박스 해제하면 가격 원래대로 돌리는 기능 보완하기
                                                 if (discountList[i] == 'WELCOME 쿠폰') {
                                                   booking.setTotalPrcie = booking.getDiscountPrice;
                                                   booking.setDiscount = 0.8;
@@ -723,6 +742,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   itemBuilder: (_, i) {
                                     return ButtonGlobalWithIcon(
+                                              // 렌더링 문제 해결하기
                                               buttontext: states[i] ? '탑승객 정보 입력완료' : '탑승객 정보 입력',   
                                               buttonTextColor: kPrimaryColor,
                                               buttonIcon: states[i] ? null : FeatherIcons.plus,
@@ -980,8 +1000,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                             booking.setEmails = _emailController.text;
                                                                             booking.setGenders = selectedGender;
                                                                             booking.setPinTypes = selectedValue;
-                                                                            
-                                                                            print(booking.getPinTypes[0]);
 
                                                                             setState(() {
                                                                               states[i] = !states[i];

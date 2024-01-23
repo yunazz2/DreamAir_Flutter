@@ -286,7 +286,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         Text(
-                                                          '${booking.getDepartureTime} - ${booking.getDeparture}',
+                                                          '${booking.getGoDepartureTime} - ${booking.getDeparture}',
                                                           style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         SizedBox(
@@ -300,7 +300,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                         ),
                                                         const SizedBox(height: 10.0),
                                                         Text(
-                                                          '${booking.getDestinationTime}  -  ${booking.getDestination}',
+                                                          '${booking.getGoDestinationTime}  -  ${booking.getDestination}',
                                                           style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         SizedBox(

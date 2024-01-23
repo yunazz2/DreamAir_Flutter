@@ -11,8 +11,10 @@ class BookingProvider extends ChangeNotifier {
   String departureDate = '';
   int productPrice = 0;      
   String flightName = 'DA0001';        // '' 
-  String departureTime = '10:00';     // ''
-  String destinationTime = '11:00';   // ''
+  String goDepartureTime = '10:00';     // ''
+  String goDestinationTime = '11:00';   // ''
+  String backDepartureTime = '10:00';     // ''
+  String backDestinationTime = '11:00';   // ''
   String duration = '1';   // ''
   int totalPrice = 0;
   double discount = 1.0;
@@ -30,7 +32,7 @@ class BookingProvider extends ChangeNotifier {
   int passengerNo = 0;
   List<int> passengerNos = [];
   String passengerName = '';
-  List<String> passengerNames = [''];
+  List<String> passengerNames = [];
   String firstName = '';
   List<String> firstNames = [];
   String lastName = '';
@@ -53,8 +55,10 @@ class BookingProvider extends ChangeNotifier {
   String get getDepartureDate => departureDate;
   int get getProductPrice => productPrice;
   String get getFlightName => flightName;
-  String get getDepartureTime => departureTime;
-  String get getDestinationTime => destinationTime;
+  String get getGoDepartureTime => goDepartureTime;
+  String get getGoDestinationTime => goDestinationTime;
+  String get getBackDepartureTime => backDepartureTime;
+  String get getBackDestinationTime => backDestinationTime;
   String get getDuration => duration;
   int get getTotalPrice => totalPrice;
   double get getDiscount => discount;
@@ -134,13 +138,23 @@ class BookingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  set setDepartureTime(String parmDepartureTime) {
-    departureTime = parmDepartureTime;
+  set setGoDepartureTime(String parmDepartureTime) {
+    goDepartureTime = parmDepartureTime;
     notifyListeners();
   }
 
-  set setDestinationTime(String parmDestinationTime) {
-    destinationTime = parmDestinationTime;
+  set setGoDestinationTime(String parmDestinationTime) {
+    goDestinationTime = parmDestinationTime;
+    notifyListeners();
+  }
+  
+  set setBackDepartureTime(String parmDepartureTime) {
+    backDepartureTime = parmDepartureTime;
+    notifyListeners();
+  }
+
+  set setBackDestinationTime(String parmDestinationTime) {
+    backDestinationTime = parmDestinationTime;
     notifyListeners();
   }
 

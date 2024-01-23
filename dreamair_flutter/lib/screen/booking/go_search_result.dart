@@ -20,13 +20,15 @@ class GoSearchResult extends StatefulWidget {
 }
 
 class _GoSearchResultState extends State<GoSearchResult> {
-    var bookingList = [];
-    late BookingProvider bookingProvider;
-    String roundTrip = '';
-    String departure = '';
-    String destination = '';
-    String departureDate = '';
-    int pasCount = 0;
+  var bookingList = [];
+  late BookingProvider bookingProvider;
+
+  // 매개변수
+  String roundTrip = '';
+  String departure = '';
+  String destination = '';
+  String departureDate = '';
+  int pasCount = 0;
 
   @override
   void initState() {
@@ -51,34 +53,27 @@ class _GoSearchResultState extends State<GoSearchResult> {
     print(response.body);
 
     var utf8Decoded = utf8.decode(response.bodyBytes);
-
     setState(() {
       bookingList = jsonDecode(utf8Decoded);
     });
-
-
-    // List<BookingProvider> result = [];
-    // for (var i = 0; i < bookingList.length; i++) {
-    //   bookingProvider.setDuration = bookingList[i]['duration'];
-    //   // result[i].setDuration = bookingList[i]['duration'];
-    //   // result[i].setDeparture = bookingList[i]['departure'];
-    //   // result[i].setDestination = bookingList[i]['destination'];
-    //   // result[i].setDepartureDate = bookingList[i]['departureDate'];
-    //   // result[i].setProductPrice = bookingList[i]['productPrice'];
-    //   // result[i].setFlightName = bookingList[i]['flightName'];
-    //   // result[i].setProductNoDep = bookingList[i]['productNoDep'];
-    //   // result[i].setProductNoDes = bookingList[i]['productNoDes'];
-    //   // result[i].setRouteNoDep = bookingList[i]['routeNoDep'];
-    //   // result[i].setRouteNoDes = bookingList[i]['routeNoDes'];
-    // }
-
-    // print('result');
-    // print(result);
-
     print('bookingProvider');
     print(bookingList);
 
 
+    // List<BookingProvider> result = [];
+    // for (var i = 0; i < bookingList.length; i++) {
+    //   // bookingProvider.setDuration = bookingList[i]['duration'];
+    //   // result[i].setDuration = bookingList[i]['duration'];
+    //   result[i].setDeparture = bookingList[i]['departure'];
+    //   result[i].setDestination = bookingList[i]['destination'];
+    //   result[i].setDepartureDate = bookingList[i]['departureDate'];
+    //   result[i].setProductPrice = bookingList[i]['productPrice'];
+    //   result[i].setFlightName = bookingList[i]['flightName'];
+    //   result[i].setProductNoDep = bookingList[i]['productNoDep'];
+    //   result[i].setProductNoDes = bookingList[i]['productNoDes'];
+    //   result[i].setRouteNoDep = bookingList[i]['routeNoDep'];
+    //   result[i].setRouteNoDes = bookingList[i]['routeNoDes'];
+    // }
   }
 
   @override
@@ -213,21 +208,27 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                       child: GestureDetector(
                                         onTap: () {
                                           // 선택한 항공권 데이터를 provider에 넣기
-                                          // if (booking.getRoundTrip == '편도') {
-                                            
-                                            // const GoFlightDetails().launch(context);       // 버튼
-                                          // } else if (booking.getRoundTrip == '왕복 가는편') {
-
-                                            // const BackSearchResult().launch(context);      // 버튼
-                                          // } else if (booking.getRoundTrip == '왕복') {
-
-                                          // }
+                                          booking.setTotalPrcie = bookingList[i]['productPrice'] * booking.getPasCount;
+                                          booking.setProductPrice = bookingList[i]['productPrice'];
                                           booking.setProductNoDep = bookingList[i]['productNo'];
                                           booking.setRouteNoDep = bookingList[i]['routeNo'];
-                                          booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
+                                          booking.setGoDepartureTime = bookingList[i]['departureTime'];
+                                          booking.setGoDestinationTime = bookingList[i]['destinationTime'];
+                                          
+                                          print('상품금액');
+                                          print(bookingList[0]['productPrice']);
+                                          print(bookingList[0]['pasCount']);
+                                          print(booking.getTotalPrice);
+
                                           if (booking.getRoundTrip == '편도') {
                                             const GoFlightDetails().launch(context);       // 버튼
-                                          } else {
+                                          } else if (booking.getRoundTrip == '왕복 가는편') {
+                                            // booking.setProductNoDep = bookingList[i]['productNo'];
+                                            // booking.setRouteNoDep = bookingList[i]['routeNo'];
+                                            // booking.setGoDepartureTime = bookingList[i]['departureTime'];
+                                            // booking.setGoDestinationTime = bookingList[i]['destinationTime'];
+                                            booking.setRoundTrip = '왕복';
+
                                             const BackSearchResult().launch(context);      // 버튼
                                           }
                                         }, 
@@ -241,7 +242,7 @@ class _GoSearchResultState extends State<GoSearchResult> {
                                                 horizontalTitleGap: 10.0,
                                                 contentPadding: EdgeInsets.zero,
                                                 title: Text(
-                                                  " ${bookingList[i]['flightName']}",
+                                                  "  ${bookingList[i]['flightName']}",
                                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                               ),

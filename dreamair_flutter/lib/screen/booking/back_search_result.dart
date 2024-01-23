@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flight_booking/screen/booking/back_flight_details.dart';
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/booking/go_flight_details.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class BackSearchResult extends StatefulWidget {
   const BackSearchResult({Key? key}) : super(key: key);
@@ -16,6 +19,47 @@ class BackSearchResult extends StatefulWidget {
 }
 
 class _BackSearchResultState extends State<BackSearchResult> {
+
+  var bookingList = [];
+  late BookingProvider bookingProvider;
+
+  // 매개변수
+  String roundTrip = '';
+  String departure = '';
+  String destination = '';
+  String departureDate = '';
+  int pasCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    bookingProvider = Provider.of<BookingProvider>(context, listen: false);
+
+    roundTrip = bookingProvider.getRoundTrip;
+    departure = bookingProvider.getDestination;
+    destination = bookingProvider.getDeparture;
+    departureDate = bookingProvider.getDepartureDate;
+    pasCount = bookingProvider.getPasCount;
+
+    getBookingList();
+  }
+
+  Future<void> getBookingList() async {
+    var url = 'http://10.0.2.2:9090/booking/comeList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
+    var response = await http.get(Uri.parse(url));
+
+    print('response.body');
+    print(response.body);
+
+    var utf8Decoded = utf8.decode(response.bodyBytes);
+    setState(() {
+      bookingList = jsonDecode(utf8Decoded);
+    });
+
+    print('bookingProvider');
+    print(bookingList);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +115,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
                         ),
                       ),
                       ListView.builder(
-                          itemCount: 10,
+                          itemCount: bookingList.length,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.only(bottom: 15.0),
@@ -115,7 +159,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Text(
-                                                  '${booking.getProductPrice * 2} 원',   
+                                                  '${bookingList[i]['productPrice'] * 2} 원',   
                                                   style: kTextStyle.copyWith(color: kSubTitleColor, decoration: TextDecoration.lineThrough, fontSize: 12.0),
                                                 ),
                                                 const SizedBox(width: 5.0),
@@ -126,7 +170,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                               ],
                                             ),
                                             Text(
-                                              '${booking.getProductPrice} 원',   // 최종가격
+                                              '${bookingList[i]['productPrice']} 원',   // 최종가격
                                               style: kTextStyle.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
                                             ),
                                           ],
@@ -149,7 +193,14 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                       child: GestureDetector(
                                         onTap: () {
                                           // 선택한 항공권 데이터를 provider에 넣기
-                                          booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount * 2;
+                                          booking.setProductNoDes = bookingList[i]['productNo'];
+                                          booking.setRouteNoDes = bookingList[i]['routeNo'];
+                                          booking.setBackDepartureTime = bookingList[i]['departureTime'];
+                                          booking.setBackDestinationTime = bookingList[i]['destinationTime'];
+                                          booking.setTotalPrcie = bookingList[i]['productPrice'] * booking.getPasCount * 2;
+                                          booking.setProductPrice = bookingList[i]['productPrice'];
+                                          print(booking.getTotalPrice);
+
                                           const BackFlightDetails().launch(context);       // 버튼
                                         },
                                         child: Container(
@@ -162,7 +213,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                                 horizontalTitleGap: 10.0,
                                                 contentPadding: EdgeInsets.zero,
                                                 title: Text(
-                                                  '  Dream Air',
+                                                  '  ${bookingList[i]['flightName']}',
                                                   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                 ),
                                               ),
@@ -172,11 +223,11 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDepartureTime}',
+                                                        '${bookingList[i]['departureTime']}',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       Text(
-                                                        '${booking.getDestination}',
+                                                        '${bookingList[i]['departure']}',
                                                         style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                                       ),
                                                     ],
@@ -185,7 +236,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDuration}시간',
+                                                        '${bookingList[i]['duration']}시간',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       const SizedBox(height: 2.0),
@@ -242,11 +293,11 @@ class _BackSearchResultState extends State<BackSearchResult> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        '${booking.getDestinationTime}',
+                                                        '${bookingList[i]['destinationTime']}',
                                                         style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold, fontSize: 12),
                                                       ),
                                                       Text(
-                                                        '${booking.getDeparture}',
+                                                        '${bookingList[i]['destination']}',
                                                         style: TextStyle(color: kSubTitleColor, fontSize: 12),
                                                       ),
                                                     ],
