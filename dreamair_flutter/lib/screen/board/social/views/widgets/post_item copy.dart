@@ -25,8 +25,7 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
-
-// 댓글 창을 띄우는 함수
+  // 댓글 창을 띄우는 함수
   void _showCommentSheet(BuildContext context) {
     double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
 
@@ -42,18 +41,19 @@ class _PostItemState extends State<PostItem> {
       },
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    Board board = widget.board;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(children: <Widget>[
+    String _text = '';
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: InkWell(
+        child: Column(children: <Widget>[
           ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(
-                widget.img, // 프로필 이미지
+                widget.img, // 이미지
               ),
             ),
             contentPadding: const EdgeInsets.all(0),
@@ -138,8 +138,7 @@ class _PostItemState extends State<PostItem> {
             GestureDetector(
               onTap: () {
                 _showCommentSheet(context);
-          },
-
+              },
               child: Icon(
                 Icons.comment_outlined,
                 color: Colors.amber[700],
@@ -162,19 +161,18 @@ class _PostItemState extends State<PostItem> {
               ),
             ],
           ),
-          const SizedBox(height: 10,),
           // 내용
           Row(
             children: [
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Column(
+                  child: const Column(
                     children: [
                       Row(
                         children: [
-                          // Text('내용 부분boardNo'),
-                          OverflowText(text: '${board.content}',),
+                          Text('boardNo'),
+                          OverflowText(text: 'widget.board.content 자리....ㅜㅜ'),
                         ],
                       ),
                     ],
@@ -183,9 +181,13 @@ class _PostItemState extends State<PostItem> {
               ),
             ],
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
+          const Divider(thickness: 0.5),
         ]),
-      ]);
+        onTap: () {},
+      ),
+    );
   }
-  
 }

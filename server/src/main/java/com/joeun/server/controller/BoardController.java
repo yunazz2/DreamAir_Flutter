@@ -62,7 +62,7 @@ public class BoardController {
     // 게시글 목록 with 페이징 처리
 	@GetMapping("/list")
 	public ResponseEntity<?> list(Model model, Page page) throws Exception {
-        log.info("[GET] - /board/list" + page  + " - 게시글 목록");
+        log.info("[GET] - /board/list " + page  + " - 게시글 목록");
     try {
 		log.info("##### 페이징 처리 전 - page #####");
 		log.info(page.toString());

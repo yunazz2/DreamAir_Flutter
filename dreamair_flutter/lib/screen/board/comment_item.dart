@@ -23,30 +23,34 @@ class _CommentItemState extends State<CommentItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+  return Card(
+    child: Column(
       children: [
         ListTile(
-          leading: const CircleAvatar(
-            backgroundImage: AssetImage('images/logo2.png'),
+          // 프로필 이미지
+          leading : const Column(
+            children: [
+              CircleAvatar(
+                radius: 25,
+                backgroundImage: 
+                  AssetImage('images/logo2.png'),
+              ),
+            ],
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'ID 자리입니다.',
-                style: TextStyle(
-                  fontSize: 10,
-                ),
-              ),
-              const Text('댓글이 여기에 있습니다.'),
-            ],
-          ),
-          trailing: Row(
-            children: [
+            Text('ID 자리', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),),
+            const SizedBox(height: 5,),
+            Text('댓글이 여기에 있어요 댓글이 여기에 있어요 댓글이 여기에 있어요', style: TextStyle(fontSize: 12,),),
+            const SizedBox(width: 0, height: 2,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
               // Like button
               IconButton(
                 onPressed: () {},
-                iconSize: 17,
+                iconSize: 13,
                 visualDensity: VisualDensity.compact,
                 icon: const Icon(
                   Icons.thumb_up_outlined,
@@ -58,7 +62,7 @@ class _CommentItemState extends State<CommentItem> {
               // Unlike button
               IconButton(
                 onPressed: () {},
-                iconSize: 17,
+                iconSize: 13,
                 visualDensity: VisualDensity.compact,
                 icon: const Icon(
                   Icons.thumb_down_outlined,
@@ -67,76 +71,37 @@ class _CommentItemState extends State<CommentItem> {
                   Icons.thumb_down,
                 ),
               ),
-              const SizedBox(width: 10),
-              // PopupMenuButton for additional actions
-              PopupMenuButton<int>(
-                padding: EdgeInsets.zero,
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    child: Center(
-                      child: const Text('댓글 수정').onTap(() {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) => const CommentUpdateScreen(),
-                        //   ),
-                        // );
-                      }),
-                    ),
-                  ),
-                  const PopupMenuDivider(),
-                  PopupMenuItem(
-                    child: Center(
-                      child: const Text('댓글 삭제').onTap(() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => const CommentScreen(),
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  // Add more popup menu items as needed
-                ],
-                offset: const Offset(0, 30),
-                color: kWhite,
-                elevation: 1.0,
-              ),
-            ],
-          ),
-        ),
-        Row(
-          children: [
-            // Reply button
-            const SizedBox(width: 40),
-            TextButton(
-              onPressed: () {},
-              style: const ButtonStyle(visualDensity: VisualDensity.compact),
-              child: Row(
-                children: [
-                  Text(
-                    '답글',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(width: 7),
-                  Text(
-                    '254개',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
+              ],
             ),
-          ],
-        ),
-        const SizedBox(height: 5),
-      ],
-    );
+          ]),
+          // 더보기(수정/삭제) 기능
+        trailing: Column(
+          children: [
+            PopupMenuButton<int>(
+              padding: EdgeInsets.zero,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Center(
+                    child: const Text('삭제').onTap(() {
+                      setState(() {});
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const CommentScreen(), // boardNo 보내야함
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
+              offset: const Offset(0, 30),
+              color: kWhite,
+              elevation: 1.0,
+            ),
+          ]),
+      ),
+      ],),
+  );
   }
 }

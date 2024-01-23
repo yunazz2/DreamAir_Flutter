@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/board/board.dart';
 import 'package:flight_booking/screen/board/board_upload_screen.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BoardScreen extends StatefulWidget {
-  const BoardScreen({super.key});
+  const BoardScreen({Key? key}) : super(key: key);
 
   @override
   State<BoardScreen> createState() => _BoardScreenState();
@@ -58,16 +59,16 @@ class _BoardScreenState extends State<BoardScreen> {
 
         List<Board> result = [];
 
-        for (var i = 0; i < boardList['list'].length; i++) {
+        for (var i = 0; i < boardList.length; i++) {
           result.add(Board(
-            boardNo: boardList['list'][i]['boardNo'],
-            title: boardList['list'][i]['title'],
-            writer: boardList['list'][i]['writer'],
-            content: boardList['list'][i]['content'],
-            regDate: boardList['list'][i]['regDate'],
-            updDate: boardList['list'][i]['updDate'],
-            views: boardList['list'][i]['views'],
-            like: boardList['list'][i]['like'],
+            boardNo: boardList[i]['boardNo'],
+            title: boardList[i]['title'],
+            writer: boardList[i]['writer'],
+            content: boardList[i]['content'],
+            regDate: boardList[i]['regDate'],
+            updDate: boardList[i]['updDate'],
+            views: boardList[i]['views'],
+            like: boardList[i]['like'],
           ));
         }
 
@@ -107,37 +108,49 @@ class _BoardScreenState extends State<BoardScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(10.0),
-            decoration: const BoxDecoration(
-              color: kWhite,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(10.0),
+              decoration: const BoxDecoration(
+                color: kWhite,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
+              ),
+              child: Column(
+                children: [
+                  ListView.builder(
+                    controller: _controller,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: _boardList.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: kBorderColorTextField,
+                          ),
+                        ),
+                        child : PostItem(
+                                  board: _boardList[index],
+                                  img: posts[index]['img'],
+                                  time: posts[index]['time'],
+                                ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
-            child: ListView.builder(
-              itemCount: _boardList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: kBorderColorTextField,
-                    ),
-                  ),
-                  child: PostItem(
-                    board: _boardList[index],
-                    img: posts[index]['img'],
-                    time: posts[index]['time'],
-                  ),
-                );
-              },
-            )),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'upload',

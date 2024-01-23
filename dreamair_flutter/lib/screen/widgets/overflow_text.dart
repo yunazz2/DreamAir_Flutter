@@ -18,9 +18,7 @@ class _OverflowTextState extends State<OverflowText> {
         ? widget.text
         : (widget.text.length > 30 ? "${widget.text.substring(0, 30)}..." : widget.text);
 
-    return Row(
-      children: [
-        Expanded(
+    return Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
@@ -49,8 +47,6 @@ class _OverflowTextState extends State<OverflowText> {
               ],
             ),
           ),
-        ),
-      ],
-    );
+        );
   }
 }
