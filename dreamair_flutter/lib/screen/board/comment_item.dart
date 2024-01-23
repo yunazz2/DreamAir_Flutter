@@ -1,9 +1,11 @@
-import 'package:flight_booking/screen/board/comment_screen.dart';
+import 'package:flight_booking/screen/board/comment.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
 
 class CommentItem extends StatefulWidget {
+  final Comment comment;
   final String name;
   final String time;
   final String img;
@@ -12,7 +14,8 @@ class CommentItem extends StatefulWidget {
     super.key,
     required this.name,
     required this.time,
-    required this.img,
+    required this.img, 
+    required this.comment,
   });
 
 @override
@@ -20,6 +23,31 @@ class CommentItem extends StatefulWidget {
 }
 
 class _CommentItemState extends State<CommentItem> {
+
+  // 댓글 삭제
+  Future<void> deleteItem(String commentNo) async {
+  final url = 'http://10.0.2.2:9090/comment/$commentNo';
+  final response = await http.delete(Uri.parse(url));
+
+  if (response.statusCode == 200 || response.statusCode == 201 ) {
+    // 삭제 성공
+    ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('댓글이 삭제되었습니다.'),
+      ),
+    );
+    print('Item deleted successfully');
+  } else {
+    // 삭제 실패
+    ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('댓글 삭제에 실패했습니다.'),
+      ),
+    );
+    print('Failed to delete item. Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +68,9 @@ class _CommentItemState extends State<CommentItem> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Text('ID 자리', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),),
+            Text(widget.comment.writer, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),),
             const SizedBox(height: 5,),
-            Text('댓글이 여기에 있어요 댓글이 여기에 있어요 댓글이 여기에 있어요', style: TextStyle(fontSize: 12,),),
+            Text(widget.comment.content, style: TextStyle(fontSize: 12,),),
             const SizedBox(width: 0, height: 2,),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -80,20 +108,15 @@ class _CommentItemState extends State<CommentItem> {
             PopupMenuButton<int>(
               padding: EdgeInsets.zero,
               itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Center(
-                    child: const Text('삭제').onTap(() {
-                      setState(() {});
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const CommentScreen(), // boardNo 보내야함
-                        ),
-                      );
-                    }),
+                 PopupMenuItem(
+                    child: Center(
+                      child: const Text('삭제').onTap(() async {
+                        await deleteItem(widget.comment.commentNo.toString());
+                        setState(() {});
+                        Navigator.pop(context);
+                      }),
+                    ),
                   ),
-                ),
               ],
               offset: const Offset(0, 30),
               color: kWhite,

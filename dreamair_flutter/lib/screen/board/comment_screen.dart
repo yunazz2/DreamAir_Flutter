@@ -1,15 +1,60 @@
+import 'dart:convert';
+
+import 'package:flight_booking/screen/board/comment.dart';
 import 'package:flight_booking/screen/board/comment_item.dart';
 import 'package:flight_booking/screen/board/social/util/data.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class CommentScreen extends StatefulWidget {
-  const CommentScreen({Key? key}) : super(key: key);
+  final int boardNo;
+  const CommentScreen({Key? key, required this.boardNo, required Null Function() onCommentPosted}) : super(key: key);
 
   @override
   State<CommentScreen> createState() => _CommentScreenState();
 }
 
 class _CommentScreenState extends State<CommentScreen> {
+  final List<Comment> _commentList = [];
+  final ScrollController _controller = ScrollController();
+
+  Future<void> getCommentList(int boardNo) async {
+    try{
+      var url = 'http://10.0.2.2:9090/comment/$boardNo';
+      var response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var commentList = jsonDecode(utf8Decoded);
+
+        List<Comment> result = [];
+
+        for (var i = 0; i < commentList.length; i++) {
+          result.add(Comment(
+            commentNo: commentList[i]['commentNo'],
+            boardNo: commentList[i]['boardNo'],
+            parentTable: commentList[i]['parentTable'],
+            parentNo: commentList[i]['parentNo'],
+            writer: commentList[i]['writer'],
+            content: commentList[i]['content'],
+            regDate: commentList[i]['regDate'],
+            updDate: commentList[i]['updDate'],
+          ));
+        }
+
+        setState(() {
+          _commentList.addAll(result);
+        });
+
+      } else {
+        print('Error loading data: Status code ${response.statusCode}');
+        print('Response body: ${response.body}');
+      }
+    }catch(e){
+      print('Error loading data: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,10 +85,11 @@ class _CommentScreenState extends State<CommentScreen> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: comments.length,
+                itemCount: _commentList.length,
                 itemBuilder: (BuildContext context, int index) {
                   Map<String, dynamic> comment = comments[index];
                   return CommentItem(
+                    comment: _commentList[index],
                     img: comment['img'],
                     name: comment['name'],
                     time: comment['time'],

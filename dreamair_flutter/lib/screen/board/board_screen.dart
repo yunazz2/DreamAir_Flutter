@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:flight_booking/screen/board/board.dart';
+import 'package:flight_booking/screen/board/board.dart'; // 추가: Board 모델 추가
 import 'package:flight_booking/screen/board/board_upload_screen.dart';
 import 'package:flight_booking/screen/board/social/util/data.dart';
 import 'package:flight_booking/screen/board/social/views/widgets/post_item.dart';
@@ -138,11 +138,11 @@ class _BoardScreenState extends State<BoardScreen> {
                             color: kBorderColorTextField,
                           ),
                         ),
-                        child : PostItem(
-                                  board: _boardList[index],
-                                  img: posts[index]['img'],
-                                  time: posts[index]['time'],
-                                ),
+                        child: PostItem(
+                          board: _boardList[index],
+                          img: posts[index]['img'],
+                          time: posts[index]['time'],
+                        ),
                       );
                     },
                   ),
