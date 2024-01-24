@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flight_booking/generated/l10n.dart' as lang;
 import 'package:flight_booking/screen/board/board.dart'; // 추가: Board 모델 추가
 import 'package:flight_booking/screen/board/board_upload_screen.dart';
+import 'package:flight_booking/screen/board/file.dart';
 import 'package:flight_booking/screen/board/social/util/data.dart';
 import 'package:flight_booking/screen/board/social/views/widgets/post_item.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
@@ -19,6 +20,7 @@ class BoardScreen extends StatefulWidget {
 class _BoardScreenState extends State<BoardScreen> {
   int _page = 1;
   final List<Board> _boardList = [];
+  final List<Files> _fileList = [];
   bool _loading = false;
 
   final ScrollController _controller = ScrollController();
@@ -70,6 +72,8 @@ class _BoardScreenState extends State<BoardScreen> {
             views: boardList[i]['views'],
             like: boardList[i]['like'],
           ));
+          //boardNo를 매개변수로 넣어줘야함
+          getImage(result[i].boardNo);
         }
 
         setState(() {
@@ -89,6 +93,50 @@ class _BoardScreenState extends State<BoardScreen> {
       });
     }
   }
+
+//이미지 가져오기
+Future<void> getImage(int boardNo) async {
+  try {
+    // 데이터를 가져오는 비동기 작업
+    var url = 'http://10.0.2.2:9090/board/$boardNo';
+    var response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var fileList = jsonDecode(utf8Decoded);
+
+      List<Files> result = [];
+
+        for (var i = 0; i < fileList.length; i++) {
+          result.add(Files(
+            boardNo: fileList[i]['boardNo'],
+            fileNo: fileList[i]['fileNo'],
+            parentTable: 'board',
+            parentNo: fileList[i]['parentNo'],
+            fileName: fileList[i]['fileName'],
+            originName: fileList[i]['originName'],
+            filePath: fileList[i]['filePath'],
+            fileSize: fileList[i]['fileSize'],
+            regDate: fileList[i]['regDate'],
+            updDate: fileList[i]['updDate'],
+            fileCode: fileList[i]['fileCode'],
+            fileType: fileList[i]['fileType'],
+          ));
+        }
+
+          setState(() {
+            _fileList.addAll(result);
+          });
+
+    } else {
+      print('Error loading image: Status code ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }
+  } catch (e) {
+    print('Error loading image: $e');
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,9 +187,10 @@ class _BoardScreenState extends State<BoardScreen> {
                           ),
                         ),
                         child: PostItem(
-                          board: _boardList[index],
-                          img: posts[index]['img'],
-                          time: posts[index]['time'],
+                            board: _boardList[index],
+                            fileList: _fileList,
+                            img: posts[index]['img'],
+                            time: posts[index]['time'],
                         ),
                       );
                     },

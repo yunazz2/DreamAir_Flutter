@@ -1,6 +1,7 @@
 import 'package:flight_booking/screen/board/board.dart';
 import 'package:flight_booking/screen/board/board_update_screen.dart';
 import 'package:flight_booking/screen/board/comment_screen.dart';
+import 'package:flight_booking/screen/board/file.dart';
 import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flight_booking/screen/widgets/overflow_text.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,14 @@ class PostItem extends StatefulWidget {
   final Board board;
   final String time;
   final String img;
+  final List<Files> fileList;
 
   const PostItem({
     super.key,
     required this.time,
     required this.img,
     required this.board,
+    required this.fileList,
   });
 
   @override
@@ -158,12 +161,24 @@ class _PostItemState extends State<PostItem> {
                 ],
               ),
             ),
-            Image.asset(
-              widget.img, // 이미지
-              height: 230,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-            ),
+            if (widget.fileList.isNotEmpty)
+              Column(
+                children: widget.fileList.map((file) {
+                  return Image.network(
+                    file.filePath, // 또는 이미지 URL을 보관하는 적절한 필드 사용
+                    height: 100, // 원하는 높이로 설정
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  );
+                }).toList(),
+              ),
+            // Image.asset(
+
+            //     widget.board.filePath, // 이미지
+            //   height: 230,
+            //   width: MediaQuery.of(context).size.width,
+            //   fit: BoxFit.cover,
+            // ),
             const SizedBox(height: 10),
 
             // 좋아요/댓글
