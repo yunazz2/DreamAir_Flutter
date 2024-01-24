@@ -104,3 +104,11 @@ List friends = List.generate(
           "status": "Anything could be here",
           "isAccept": random.nextBool(),
         });
+
+List comments = List.generate(
+    13,
+    (index) => {
+          "name": names[random.nextInt(10)],
+          "time": "${random.nextInt(50)} min ago",
+          "img": "assets/images/cm${random.nextInt(10)}.jpeg"
+        });
