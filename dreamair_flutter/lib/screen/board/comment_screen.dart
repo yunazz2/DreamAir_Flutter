@@ -19,7 +19,7 @@ class CommentScreen extends StatefulWidget {
 
 class _CommentScreenState extends State<CommentScreen> {
   final List<Comment> _commentList = [];
-
+  final TextEditingController _commentContent = TextEditingController();
   final ScrollController _controller = ScrollController();
 
   @override
@@ -91,6 +91,12 @@ class _CommentScreenState extends State<CommentScreen> {
         ),
         child: Column(
           children: [
+            Container(        
+                  width: 130,
+                  height: 7,
+                  color: Color.fromARGB(255, 224, 224, 224),
+                  ),
+            const SizedBox(height: 10,),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -117,7 +123,7 @@ class _CommentScreenState extends State<CommentScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            CommentInput(boardNo: widget.boardNo, content: '',), // 댓글 입력 창
+            CommentInput(boardNo: widget.boardNo, content: _commentContent.text,), // 댓글 입력 창
           ],
         ),
       ),

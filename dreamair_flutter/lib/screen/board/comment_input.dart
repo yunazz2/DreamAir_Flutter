@@ -79,35 +79,38 @@ class _CommentInputState extends State<CommentInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const CircleAvatar(
-          backgroundImage: AssetImage('images/logo2.png'), // 프로필 이미지
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10), // 조절 가능한 여백
-              width: double.infinity,
-              height: 50,
-              child: TextField(
-                controller: _commentController,
-                decoration: InputDecoration(
-                  hintText: '댓글 입력',
-                  filled: true,
-                  suffixIcon: TextButton(
-                    onPressed: () {
-                      _postComment(widget.boardNo, widget.content);
-                    },
-                    child: Text('게시'),
-                  ),
-                ),
+    double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
+
+return Row(
+  children: [
+    CircleAvatar(
+      backgroundImage: AssetImage('images/logo2.png'), // 프로필 이미지
+    ),
+
+    const SizedBox(width: 10),
+    Expanded(
+      child: Center(
+        child: Container(
+          padding: EdgeInsets.only(bottom: bottomPadding), // 조절 가능한 여백
+          width: double.infinity,
+          child: TextField(
+            controller: _commentController,
+            decoration: InputDecoration(
+              hintText: '댓글 입력',
+              filled: true,
+              suffixIcon: TextButton(
+                onPressed: () {
+                  _postComment(widget.boardNo, widget.content);
+                },
+                child: const Text('게시'),
               ),
             ),
           ),
         ),
-      ],
-    );
+      ),
+    ),
+  ],
+);
+
   }
 }

@@ -49,20 +49,24 @@ class _PostItemState extends State<PostItem> {
   // 댓글 창을 띄우는 함수
   void _showCommentSheet(BuildContext context) {
     double bottomPadding = MediaQuery.of(context).viewInsets.bottom ?? 0.0;
-
+  
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return Container(
+        return Padding(
           padding: EdgeInsets.only(bottom: bottomPadding),
-          child: CommentScreen(
-            boardNo: widget.board.boardNo,
-            onCommentPosted: () {
-              // 댓글이 작성되었을 때의 콜백
-              // 여기에서 댓글을 가져와 데이터를 갱신
-              fetchComments(widget.board.boardNo.toString());
-            },
+          child: Container(
+            height: bottomPadding+500,
+            width: double.infinity,
+            child: CommentScreen(
+              boardNo: widget.board.boardNo,
+              onCommentPosted: () {
+                // 댓글이 작성되었을 때의 콜백
+                // 여기에서 댓글을 가져와 데이터를 갱신
+                fetchComments(widget.board.boardNo.toString());
+              },
+            ),
           ),
         );
       },
@@ -141,7 +145,7 @@ class _PostItemState extends State<PostItem> {
                           child: const Text('삭제').onTap(() async {
                             await deleteItem(widget.board.boardNo.toString());
                             setState(() {});
-                            Navigator.pop(context); // 현재 화면을 닫고 이전 화면으로 돌아가기
+                            Navigator.pop( context); // 현재 화면을 닫고 이전 화면으로 돌아가기
                           }),
                         ),
                       ),
