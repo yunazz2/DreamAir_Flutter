@@ -72,7 +72,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     String email,
     String address,
   ) async {
-    String userId = userProvider.userId;
+    String userId = UserProvider().userId;
 
     print('회원 정보 수정 요청 시작');
 

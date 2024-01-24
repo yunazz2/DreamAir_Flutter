@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import '../widgets/constant.dart';
 
@@ -20,7 +21,8 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
   @override
   void initState() {
     super.initState();
-    getTicketDetail();
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    getTicketDetail(userProvider);
   }
 
   String departure = '';
@@ -32,11 +34,11 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
   String userPhoneNum = '';
   String userEmail = '';
 
-  Future getTicketDetail() async {
+  Future getTicketDetail(UserProvider userProvider) async {
     print('티켓 상세 조회 시작');
 
     int ticketNo = widget.ticketNo;
-    String userId = UserProvider.userId;
+    String userId = userProvider.userId;
 
     final url = 'http://10.0.2.2:9090/user/booking/ticketInfo/$ticketNo?userId=$userId';
 
