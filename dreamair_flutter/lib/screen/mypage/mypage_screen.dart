@@ -27,7 +27,7 @@ class _MypageState extends State<Mypage> {
     super.initState();
     UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
     print('마이 페이지 로그인 여부 확인 : ${userProvider.isLogin} & ${userProvider.userId}');
-    UserProvider().getUserInfo();
+    userProvider.getUserInfo();
   } 
 
   @override
@@ -206,7 +206,7 @@ class _MypageState extends State<Mypage> {
                   color: Colors.white,
                   child: ListTile(
                     onTap: (){
-                      UserProvider().logout();
+                      userProvider.logout();
                       const WelcomeScreen().launch(context,isNewTask: true);
                     },
                     contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),

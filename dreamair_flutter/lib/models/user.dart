@@ -1,5 +1,3 @@
-
-
 class User {
   late int userNo;
   late String userId;
@@ -33,7 +31,7 @@ class User {
       phone: json['phone'] ?? '',
       email: json['email'] ?? '',
       address: json['address'] ?? '',
-      mileage: json['mileage'],
+      mileage: json['mileage'] ?? 0.0,
     );
   }
 }

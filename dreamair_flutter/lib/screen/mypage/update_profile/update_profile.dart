@@ -31,6 +31,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
     print('회원 정보 수정 페이지 회원 정보 요청 시작');
 
     String userId = userProvider.userId;
+
+    print(userId);
     
     final url = 'http://10.0.2.2:9090/user/$userId';
 
@@ -72,7 +74,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
     String email,
     String address,
   ) async {
-    String userId = UserProvider().userId;
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    String userId = userProvider.userId;
 
     print('회원 정보 수정 요청 시작');
 

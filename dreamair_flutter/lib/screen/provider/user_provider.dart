@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flight_booking/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -43,7 +42,7 @@ class UserProvider extends ChangeNotifier {
   /// 
   /// 2. jwt 토큰을 SecureStorage 에 저장
   Future<void> login(String username, String password) async {
-    const url = 'http://10.0.2.2:8080/login';           // TODO: 로그인 경로 수정
+    const url = 'http://10.0.2.2:9090/login';
     final requestUrl = Uri.parse('$url?username=$username&password=$password');
     try {
       // 로그인 요청
@@ -66,6 +65,12 @@ class UserProvider extends ChangeNotifier {
           await storage.write(key: 'jwtToken', value: jwtToken);
           _loginStatus = true;
 
+          // 로그인이 성공하면 userId를 업데이트
+          updateLoginId(username); // username이 userId로 사용되는 것으로 보입니다.
+
+          // 유저 정보를 요청하고 업데이트
+          await getUserInfo();
+
         } else {
           // Authorization 헤더가 없는 경우 처리
           print('Authorization 헤더가 없습니다.');
@@ -85,12 +90,10 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();   
   }
 
-
-  
   // 로그인 한 사용자 아이디
   void updateLoginId(String userId) {
-    print('로그인 된 아이디 : $userId');
     _userId = userId;
+    print('로그인 된 아이디 : $_userId');
 
     notifyListeners();
   }
@@ -104,13 +107,34 @@ class UserProvider extends ChangeNotifier {
   }
 
   // 로그아웃 처리
-  void logout() {
-    _loginStatus = false;
-    _userId = '';
-    print('로그아웃 되었습니다.');
+  Future<void> logout() async {
+    print('로그아웃 요청 시작');
 
+    try {
+      // jwt 토큰 삭제
+      await storage.delete(key: 'jwtToken');
+
+      // 사용자 정보 초기화
+      _user = User(userNo: 0, userId: '', userPw: '', userPwCheck: '', name: '', phone: '', email: '', address: '', mileage: 0.0);
+      
+      // 로그인 상태 초기화
+      _loginStatus = false;
+      _userId = '';
+      
+    } catch (error) {
+      print('로그아웃 실패');
+    }
     notifyListeners();
   }
+  
+  // 로그아웃 처리(바꾸기 전 코드)
+  // void logout() {
+  //   _loginStatus = false;
+  //   _userId = '';
+  //   print('로그아웃 되었습니다.');
+
+  //   notifyListeners();
+  // }
 
   // 회원 정보 요청
   Future getUserInfo() async {
@@ -142,7 +166,6 @@ class UserProvider extends ChangeNotifier {
         // 프로바이더에 user 정보 등록
         // class ⬅ json
         _user = User.fromJson(result);
-        print(_user);
 
       } else {
         // HTTP 요청이 실패했을 때의 처리

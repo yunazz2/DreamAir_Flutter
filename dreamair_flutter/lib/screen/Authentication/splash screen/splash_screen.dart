@@ -1,4 +1,3 @@
-import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 
 import 'onboard.dart';

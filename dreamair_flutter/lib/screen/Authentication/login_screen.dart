@@ -60,6 +60,8 @@ class _LogInState extends State<LogIn> {
   // }
 
   void _login(UserProvider userProvider) async {
+    print('로그인 요청 시작');
+
     // 여기에 실제 로그인 로직을 구현
     String username = userIdController.text;
     String password = userPwController.text;
@@ -70,10 +72,14 @@ class _LogInState extends State<LogIn> {
     await userProvider.login(username, password);
     if( userProvider.isLogin ) {
       print('로그인 여부 : ${userProvider.isLogin}');
+
       await userProvider.getUserInfo();
       print('유저정보 저장 완료...');
       print( userProvider.currentUser );
-      const Home().launch(context);           // Home 화면으로 이동
+      
+      userProvider.updateLoginStatus(true);   // 로그인 상태 업데이트
+      userProvider.updateLoginId(username);   // 로그인 아이디 업데이트
+      const Home().launch(context);             // Home 화면으로 이동
     }
     
   }

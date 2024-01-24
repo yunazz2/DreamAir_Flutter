@@ -1,5 +1,5 @@
 import 'package:flight_booking/main.dart';
-import 'package:flight_booking/screen/Authentication/welcome_screen.dart';
+import 'package:flight_booking/screen/home/home.dart';
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -30,16 +30,15 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
       if(response.statusCode == 200) {
         print('회원 탈퇴 요청 응답 성공');
 
-        UserProvider().logout();
+        userProvider.logout();
         
-        WelcomeScreen().launch(context, isNewTask: true);
+        Home().launch(context, isNewTask: true);
       }
     } catch (e) {
       print('오류 발생:$e');
     }
 
   }
-
 
 
   @override

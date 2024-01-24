@@ -65,7 +65,6 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
     } catch (e) {
       print('오류 발생: $e');
     }
-
   }
 
   @override
