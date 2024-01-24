@@ -285,7 +285,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         Text(
-                                                          '${booking.getDepartureTime} - ${booking.getDeparture}',
+                                                          '${booking.getGoDepartureTime} - ${booking.getDeparture}',
                                                           style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         SizedBox(
@@ -299,7 +299,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                         ),
                                                         const SizedBox(height: 10.0),
                                                         Text(
-                                                          '${booking.getDestinationTime}  -  ${booking.getDestination}',
+                                                          '${booking.getGoDestinationTime}  -  ${booking.getDestination}',
                                                           style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                         ),
                                                         SizedBox(
@@ -448,7 +448,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      '${booking.getDepartureTime}  -  ${booking.getDestination}',
+                                                      '${booking.getBackDepartureTime}  -  ${booking.getDestination}',
                                                       style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(
@@ -462,7 +462,7 @@ class _BackFlightDetailsState extends State<BackFlightDetails> with TickerProvid
                                                     ),
                                                     const SizedBox(height: 10.0),
                                                     Text(
-                                                      '${booking.getDestinationTime} - ${booking.getDeparture}',
+                                                      '${booking.getBackDestinationTime} - ${booking.getDeparture}',
                                                       style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                                     ),
                                                     SizedBox(

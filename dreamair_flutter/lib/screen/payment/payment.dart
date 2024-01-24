@@ -423,7 +423,7 @@ class _PaymentState extends State<Payment> {
                                                           ],
                                                         ),
                                                         subtitle: Text(
-                                                          '${booking.getDepartureDate} |  ${booking.getDepartureTime} - ${booking.getDestinationTime} | ${booking.getDuration} 시간 | 직항',
+                                                          '${booking.getDepartureDate} |  ${booking.getGoDepartureTime} - ${booking.getGoDestinationTime} | ${booking.getDuration} 시간 | 직항',
                                                           style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                         ),
                                                       ),
@@ -453,7 +453,7 @@ class _PaymentState extends State<Payment> {
                                                           ],
                                                         ),
                                                         subtitle: Text(
-                                                          '${booking.getDepartureDate} |  ${booking.getDepartureTime} - ${booking.getDestinationTime} | ${booking.getDuration} 시간 | 직항',
+                                                          '${booking.getDepartureDate} |  ${booking.getBackDepartureTime} - ${booking.getBackDestinationTime} | ${booking.getDuration} 시간 | 직항',
                                                           style: TextStyle(color: kSubTitleColor, fontSize: 12.0),
                                                         ),
                                                       ).visible(booking.getRoundTrip != '편도'),

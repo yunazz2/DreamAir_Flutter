@@ -338,8 +338,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             suffixIcon: GestureDetector(
                                               onTap: () {
                                                 setState(() {
-                                                  booking.setDeprtureDate = singleDepDate;
-                                                  print(booking.getDepartureDate);
                                                   _selectDate(context);  
                                                 });
                                               },
@@ -369,8 +367,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               onTap: () {
                                                 setState(() {
                                                   _showDepartureDate();
-                                                  booking.setDeprtureDate = departureDateTitle + ' ~ ' + returnDateTitle;
-                                                  print(booking.getDepartureDate);
                                                 });
                                               },
                                               child: const Icon(
@@ -399,7 +395,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               onTap: () {
                                                 setState(() {
                                                   _showDepartureDate();
-                                                  booking.setDeprtureDate = departureDateTitle + ' ~ ' + returnDateTitle;
+                                                  booking.setDepartureDate = departureDateTitle + ' ~ ' + returnDateTitle;
                                                   print(booking.getDepartureDate);
                                                 });
                                               },
@@ -579,6 +575,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.circular(30.0),
                                           ),
                                           onPressed: () {
+
+                                            if (booking.getRoundTrip == '편도') {
+                                              booking.setDepartureDate = singleDepDate;
+                                            } else if (booking.getRoundTrip == '왕복 가는편') {
+                                              booking.setDepartureDate = departureDateTitle + ' ~ ' + returnDateTitle;
+                                            }
+                                            print(booking.getDepartureDate);
+
                                             if(booking.getDeparture == '' || booking.getDestination == '' || booking.getDepartureDate == '' || booking.getDepartureDate == ' ~ ' ) {
                                               showDialog(
                                                 context: context, 
