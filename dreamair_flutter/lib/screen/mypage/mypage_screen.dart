@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flight_booking/screen/Authentication/login_screen.dart';
 import 'package:flight_booking/screen/my_boking_screen/my_boking.dart';
 import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
@@ -9,7 +7,6 @@ import 'package:flight_booking/screen/mypage/update_profile/update_profile.dart'
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:http/http.dart' as http;
 
 import '../Authentication/welcome_screen.dart';
 import '../widgets/constant.dart';

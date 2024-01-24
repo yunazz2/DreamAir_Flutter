@@ -206,10 +206,15 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 20.0),
                     TextFormField(
                       controller: nameController,
-                      onChanged: ((value) {
-                        nameController.text = value;
-                      }),
-                      keyboardType: TextInputType.text,
+                      onChanged: (value) {
+                        nameController.value = nameController.value.copyWith(
+                          text: value,
+                          selection: TextSelection.fromPosition(
+                            TextPosition(offset: value.length),
+                          ),
+                        );
+                      },
+                      keyboardType: TextInputType.name,
                       cursorColor: kTitleColor,
                       textInputAction: TextInputAction.next,
                       decoration: kInputDecoration.copyWith(
@@ -220,6 +225,7 @@ class _SignUpState extends State<SignUp> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
+
 
                     // 핸드폰 번호
                     const SizedBox(height: 20.0),
@@ -264,7 +270,12 @@ class _SignUpState extends State<SignUp> {
                     TextFormField(
                       controller: addressController,
                       onChanged: (value) {
-                        addressController.text = value;
+                        addressController.value = addressController.value.copyWith(
+                          text: value,
+                          selection: TextSelection.fromPosition(
+                            TextPosition(offset: value.length),
+                          ),
+                        );
                       },
                       keyboardType: TextInputType.text,
                       cursorColor: kTitleColor,
