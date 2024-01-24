@@ -23,7 +23,7 @@ class BookingProvider extends ChangeNotifier {
   int productNoDes = 0;
   int routeNoDep = 0;
   int routeNoDes = 0;
-
+  String input = '탑승객 정보 입력';
 
 
   // 탑승객 정보
@@ -67,6 +67,7 @@ class BookingProvider extends ChangeNotifier {
   int get getProductNoDes => productNoDes;
   int get getRouteNoDep => routeNoDep;
   int get getRouteNoDes => routeNoDes;
+  String get getInput => input;
 
   // 탑승객 정보
   List<int> get getPinTypes => pinTypes;
@@ -88,10 +89,6 @@ class BookingProvider extends ChangeNotifier {
   set setBirths(String paramBirth) => births.add(paramBirth);
   set setPhones(String paramPhone) => phones.add(paramPhone);
   set setEmails(String paramEmail) => emails.add(paramEmail);
-
-  // set setFirstNames(String paramFirstName) {
-  //   firstNames.add(paramFirstName);
-  // }
 
   set setDeparture(String parmDeparture) {
     departure = parmDeparture;
@@ -170,6 +167,11 @@ class BookingProvider extends ChangeNotifier {
   // 탑승객 정보
   set setPinType(int parmPinType) {
     pinType = parmPinType;
+    notifyListeners();
+  }
+
+  set setInput(String paramInput) {
+    input = paramInput;
     notifyListeners();
   }
 

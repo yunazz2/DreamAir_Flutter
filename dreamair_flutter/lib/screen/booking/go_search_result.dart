@@ -49,9 +49,6 @@ class _GoSearchResultState extends State<GoSearchResult> {
     var url = 'http://10.0.2.2:9090/booking/goList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
     var response = await http.get(Uri.parse(url));
 
-    print('response.body');
-    print(response.body);
-
     var utf8Decoded = utf8.decode(response.bodyBytes);
     setState(() {
       bookingList = jsonDecode(utf8Decoded);
@@ -59,21 +56,6 @@ class _GoSearchResultState extends State<GoSearchResult> {
     print('bookingProvider');
     print(bookingList);
 
-
-    // List<BookingProvider> result = [];
-    // for (var i = 0; i < bookingList.length; i++) {
-    //   // bookingProvider.setDuration = bookingList[i]['duration'];
-    //   // result[i].setDuration = bookingList[i]['duration'];
-    //   result[i].setDeparture = bookingList[i]['departure'];
-    //   result[i].setDestination = bookingList[i]['destination'];
-    //   result[i].setDepartureDate = bookingList[i]['departureDate'];
-    //   result[i].setProductPrice = bookingList[i]['productPrice'];
-    //   result[i].setFlightName = bookingList[i]['flightName'];
-    //   result[i].setProductNoDep = bookingList[i]['productNoDep'];
-    //   result[i].setProductNoDes = bookingList[i]['productNoDes'];
-    //   result[i].setRouteNoDep = bookingList[i]['routeNoDep'];
-    //   result[i].setRouteNoDes = bookingList[i]['routeNoDes'];
-    // }
   }
 
   @override

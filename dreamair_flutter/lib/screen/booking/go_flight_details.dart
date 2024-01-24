@@ -87,6 +87,7 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                       ),
                       onPressed: () {             
                         setState(() {
+                            booking.setDiscountPrice = booking.getTotalPrice;
                             const BookProceed().launch(context);         // 예매하기 버튼
                         });
                       },       
@@ -373,7 +374,6 @@ class _GoFlightDetailsState extends State<GoFlightDetails> with TickerProviderSt
                                                         booking.setTotalPrcie = booking.getProductPrice * booking.getPasCount;
                                                         booking.setTotalPrcie = booking.getTotalPrice + (20000 * booking.getPasCount); 
                                                       }
-                                                      
                                                       booking.setDiscountPrice = booking.getTotalPrice;
 
                                                       setState(() {

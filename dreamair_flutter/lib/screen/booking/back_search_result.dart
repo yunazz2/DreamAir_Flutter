@@ -49,9 +49,6 @@ class _BackSearchResultState extends State<BackSearchResult> {
     var url = 'http://10.0.2.2:9090/booking/comeList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
     var response = await http.get(Uri.parse(url));
 
-    print('response.body');
-    print(response.body);
-
     var utf8Decoded = utf8.decode(response.bodyBytes);
     setState(() {
       bookingList = jsonDecode(utf8Decoded);

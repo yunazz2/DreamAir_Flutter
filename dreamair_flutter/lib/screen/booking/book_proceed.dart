@@ -37,9 +37,8 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  // String password = '';
-  
   late List<bool> states;
+  String input = '탑승객 정보 입력';
 
   @override
   void initState() {
@@ -102,8 +101,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
     }
 
   }
-
-  
 
   List<String> discountList = [
     'WELCOME 쿠폰',
@@ -183,8 +180,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           onPressed: () {
-                            // 서버로 데이터 보내는 함수 호출?
-                            insertBooking();
+                            insertBooking();      // 다음으로 버튼
                           },
                           buttonTextColor: kWhite,
                         ),
@@ -428,27 +424,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                     ],
                                   ),
                                 ),
-                                // TabBar(
-                                //   labelStyle: kTextStyle.copyWith(color: Colors.white),
-                                //   unselectedLabelColor: kSubTitleColor,
-                                //   indicatorColor: kPrimaryColor,
-                                //   labelColor: kPrimaryColor,
-                                //   indicator: const UnderlineTabIndicator(borderSide: BorderSide(color: kPrimaryColor)),
-                                //   indicatorSize: TabBarIndicatorSize.tab,
-                                //   onTap: (index) {
-                                //     setState(() {
-                                //       selectedIndex = index;
-                                //     });
-                                //   },
-                                //   tabs: const [
-                                //     Tab(
-                                //       text: 'DAC-CCU',
-                                //     ),
-                                //     Tab(
-                                //       text: 'CCU-DAC',
-                                //     ),
-                                //   ],
-                                // ),
                                 const SizedBox(height: 20.0),
                                 Row(
                                   children: [
@@ -544,30 +519,18 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
+                                const Row(
                                   children: [
-                                    const Icon(
+                                    Icon(
                                       IconlyBold.discount,
                                       color: kPrimaryColor,
                                     ),
-                                    const SizedBox(width: 10.0),
+                                    SizedBox(width: 10.0),
                                     Text(
                                       '할인 쿠폰',
                                       style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
                                     ),
-                                    const Spacer(),
-                                    
-                                    // Container(
-                                    //   padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
-                                    //   decoration: BoxDecoration(
-                                    //     color: kPrimaryColor,
-                                    //     borderRadius: BorderRadius.circular(4.0),
-                                    //   ),
-                                    //   child: Text(
-                                    //     '쿠폰 보기',
-                                    //     style: TextStyle(color: Colors.white),
-                                    //   ),
-                                    // ),
+                                    Spacer(),
                                   ],
                                 ),
                                 const Divider(
@@ -575,50 +538,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                           color: kBorderColorTextField,
                                         ),
                                 const SizedBox(height: 20.0),
-                                // TextFormField(
-                                //   showCursor: false,
-                                //   keyboardType: TextInputType.name,
-                                //   cursorColor: kTitleColor,
-                                //   decoration: kInputDecoration.copyWith(
-                                //     contentPadding: const EdgeInsets.only(left: 10.0),
-                                //     hintText: lang.S.of(context).promoCodeTitle,
-                                //     hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                //     focusColor: kTitleColor,
-                                //     border: const OutlineInputBorder(),
-                                //     suffixIcon: SizedBox(
-                                //       width: 80,
-                                //       child: Container(
-                                //         decoration: BoxDecoration(
-                                //           border: Border.all(color: kLightNeutralColor),
-                                //           color: kLightNeutralColor.withOpacity(0.3),
-                                //           borderRadius: const BorderRadius.only(
-                                //             bottomRight: Radius.circular(30.0),
-                                //             topRight: Radius.circular(30.0),
-                                //           ),
-                                //         ),
-                                //         child: Center(
-                                //           child: Text(
-                                //             lang.S.of(context).applyButton,
-                                //             style: TextStyle(color: kPrimaryColor),
-                                //           ),
-                                //         ),
-                                //       ),
-                                //     ),
-                                //     enabledBorder: const OutlineInputBorder(
-                                //       borderRadius: BorderRadius.all(
-                                //         Radius.circular(30.0),
-                                //       ),
-                                //       borderSide: BorderSide(color: kLightNeutralColor, width: 1),
-                                //     ),
-                                //     focusedBorder: const OutlineInputBorder(
-                                //       borderRadius: BorderRadius.all(
-                                //         Radius.circular(30.0),
-                                //       ),
-                                //       borderSide: BorderSide(color: kLightNeutralColor, width: 1),
-                                //     ),
-                                //   ),
-                                // ),
-                                // const SizedBox(height: 20.0),
                                 ListView.builder(
                                   itemCount: discountList.length,
                                   shrinkWrap: true,
@@ -685,6 +604,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                 setState(
                                                   () {
                                                     if (selectedDiscountList.contains(discountList[i])) {
+                                                      booking.setTotalPrcie = booking.getDiscountPrice;
                                                       selectedDiscountList.remove(discountList[i]);
                                                     } else {
                                                       selectedDiscountList = [discountList[i]];
@@ -742,8 +662,8 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   itemBuilder: (_, i) {
                                     return ButtonGlobalWithIcon(
-                                              // 렌더링 문제 해결하기
-                                              buttontext: states[i] ? '탑승객 정보 입력완료' : '탑승객 정보 입력',   
+                                              buttontext: states[i] ? '탑승객 정보 입력' : '탑승객 정보 입력완료',    
+                                              // buttontext: booking.getInput,    
                                               buttonTextColor: kPrimaryColor,
                                               buttonIcon: states[i] ? null : FeatherIcons.plus,
                                               buttonDecoration: kButtonDecoration.copyWith(
@@ -968,22 +888,6 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                             });
                                                                           },
                                                                         ),
-
-                                                                        // FormField(
-                                                                        //   builder: (FormFieldState<dynamic> field) {
-                                                                        //     return InputDecorator(
-                                                                        //       decoration: const InputDecoration(
-                                                                        //           enabledBorder: OutlineInputBorder(
-                                                                        //             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                                                        //             borderSide: BorderSide(color: kBorderColorTextField, width: 2),
-                                                                        //           ),
-                                                                        //           contentPadding: EdgeInsets.all(7.0),
-                                                                        //           floatingLabelBehavior: FloatingLabelBehavior.always,
-                                                                        //           labelText: '신분증 종류'),
-                                                                        //       child: DropdownButtonHideUnderline(child: getChairType()),
-                                                                        //     );
-                                                                        //   },
-                                                                        // ),
                                                                         const SizedBox(height: 20.0),
                                                                         ButtonGlobalWithoutIcon(
                                                                           buttontext: '입력 완료',
@@ -1001,8 +905,16 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                             booking.setGenders = selectedGender;
                                                                             booking.setPinTypes = selectedValue;
 
+                                                                            _nameController.text = '';
+                                                                            _firstNameController.text = '';
+                                                                            _lastNameController.text = '';
+                                                                            _birthController.text = '';
+                                                                            _phoneController.text = '';
+                                                                            _emailController.text = '';
+
                                                                             setState(() {
                                                                               states[i] = !states[i];
+                                                                              // booking.setInput= states[i] ? '탑승객 정보 입력완료' : '탑승객 정보 입력';
                                                                               finish(context);
                                                                             });
                                                                           },
