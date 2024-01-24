@@ -1,7 +1,7 @@
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/home/home.dart';
 import 'package:flight_booking/screen/payment/payment%20method/payment_method.dart';
-import 'package:flight_booking/screen/ticket%20detail/ticket_detail_screen.dart';
+import 'package:flight_booking/screen/ticket_detail/ticket_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -86,7 +86,9 @@ class _PaymentState extends State<Payment> {
                   onPressed: () {
                     setState(() {
                       finish(context);
-                      const TicketDetailScreen().launch(context);
+                      // 티켓 번호 넘겨주어야 함 - 우선 하드 코딩
+                      int ticketNo = 1;
+                      TicketDetailScreen(ticketNo: ticketNo,).launch(context);
                     });
                   },
                   buttonTextColor: kWhite,

@@ -1,28 +1,70 @@
+import 'dart:convert';
+
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 
 import '../widgets/constant.dart';
 
 // 티켓 상세 조회 페이지
 class TicketDetailScreen extends StatefulWidget {
-  const TicketDetailScreen({Key? key}) : super(key: key);
+  final int ticketNo;
+
+  TicketDetailScreen({Key? key, required this.ticketNo}) : super(key: key);
 
   @override
   State<TicketDetailScreen> createState() => _TicketDetailScreenState();
 }
 
 class _TicketDetailScreenState extends State<TicketDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getTicketDetail();
+  }
 
-  int ticketNo = 1;
-  String departure = '김포';
-  String destination = '제주';
-  String departureDate = '2024/01/20';
-  String destinationDate = '2024/01/20';
-  String selectedSeatNo = 'A1';
-  String userName = '김조은';
-  String userPhoneNum = '01000000000';
-  String userEmail = 'email@email.com';
+  String departure = '';
+  String destination = '';
+  String departureDate = '';
+  String destinationDate = '';
+  String selectedSeatNo = '';
+  String userName = '';
+  String userPhoneNum = '';
+  String userEmail = '';
+
+  Future getTicketDetail() async {
+    print('티켓 상세 조회 시작');
+
+    int ticketNo = widget.ticketNo;
+    String userId = UserProvider.userId;
+
+    final url = 'http://10.0.2.2:9090/user/booking/ticketInfo/$ticketNo?userId=$userId';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      if(response.statusCode == 200) {
+        print('티켓 상세 내역 조회 응답 성공');
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var result = json.decode(utf8Decoded);
+
+        print(result);
+
+        departure = result['viewTicketDetail'][0]['departure'];
+        destination = result['viewTicketDetail'][0]['destination'];
+        departureDate = result['viewTicketDetail'][0]['departureDate'];
+        selectedSeatNo = result['viewTicketDetail'][0]['seatNo'];
+
+        userName = result['userInfo']['name'];
+        userPhoneNum = result['userInfo']['phone'];
+        userEmail = result['userInfo']['email'];
+
+        setState(() {});
+      }
+    } catch (e) {
+      print('오류 발생: $e');
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +142,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
 
                   // 탑승권 상세 내용
                   const SizedBox(height: 15.0),
-                  Text('탑승권 번호 : $ticketNo', style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),),
+                  // Text('탑승권 번호 : $ticketNo', style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),),
                   const SizedBox(height: 10.0),
                   
                   Container(

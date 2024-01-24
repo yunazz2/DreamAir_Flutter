@@ -223,7 +223,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
                           labelText: '비밀번호',
-                          hintText: '비밀번호를 입력하세요.'
+                          hintText: '변경 할 비밀번호를 입력하세요.'
                         ),
                       ),
 
@@ -234,7 +234,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         textFieldType: TextFieldType.PASSWORD,
                         decoration: kInputDecoration.copyWith(
                           labelText: '비밀번호 확인',
-                          hintText: '비밀번호 확인을 입력하세요.'
+                          hintText: '변경 할 비밀번호 확인을 입력하세요.'
                         ),
                       ),
                       

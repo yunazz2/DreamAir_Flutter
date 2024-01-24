@@ -7,7 +7,7 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../ticket detail/ticket_detail_screen.dart';
+import '../../ticket_detail/ticket_detail_screen.dart';
 
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
@@ -80,7 +80,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   onPressed: () {
                     setState(() {
                       finish(context);
-                      const TicketDetailScreen().launch(context);
+                      // 티켓 번호 넘겨주어야 함 - 우선 하드 코딩
+                      int ticketNo = 1;
+                      TicketDetailScreen(ticketNo: ticketNo,).launch(context);
                     });
                   },
                   buttonTextColor: kWhite,

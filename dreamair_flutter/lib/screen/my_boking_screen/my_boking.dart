@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
 
-import '../ticket detail/ticket_detail_screen.dart';
+import '../ticket_detail/ticket_detail_screen.dart';
 
 // 나의 탑승권 조회 페이지
 class MyBooking extends StatefulWidget {
@@ -24,6 +24,7 @@ class _MyBookingState extends State<MyBooking> {
   }
   
   int _bookedTicketCount = 0;
+  List<Map<String, dynamic>> _bookingList = [];
 
   TextEditingController phoneController = TextEditingController();
   TextEditingController orderPasswordController = TextEditingController();
@@ -42,10 +43,11 @@ class _MyBookingState extends State<MyBooking> {
         print('예매 내역 조회 응답 성공');
         var utf8Decoded = utf8.decode(response.bodyBytes);
         var result = json.decode(utf8Decoded);
-
+        
+        _bookingList = List<Map<String, dynamic>>.from(result);
         _bookedTicketCount = result.length;
 
-        print(result);
+        print(_bookingList);
         setState(() {}); // 화면 갱신을 위해 setState 호출
       }
     } catch (e) {
@@ -55,11 +57,6 @@ class _MyBookingState extends State<MyBooking> {
 
   @override
   Widget build(BuildContext context) {
-    int ticketNo = 1;
-    String departure = '김포';
-    String destination = '제주';
-    String departureDate = '2024/01/20';
-    String destinationDate = '2024/01/20';
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
@@ -98,6 +95,11 @@ class _MyBookingState extends State<MyBooking> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: _bookedTicketCount,
                   itemBuilder: (_, i) {
+                    var ticketInfo = _bookingList[i];
+                    var ticketNo = ticketInfo['ticketNo'];
+                    var departure = ticketInfo['departure'];
+                    var destination = ticketInfo['destination'];
+
                     return Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Container(
@@ -121,7 +123,7 @@ class _MyBookingState extends State<MyBooking> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const TicketDetailScreen(),
+                                    builder: (context) => TicketDetailScreen(ticketNo: ticketNo),
                                   ),
                                 );
                               },
@@ -230,40 +232,44 @@ class _MyBookingState extends State<MyBooking> {
                   },
                 )
               else
-                const SizedBox(height: 30),
-                const Text(
-                  '비회원 탑승권 조회 시',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                const Text(
-                  '핸드폰 번호와 예매 비밀번호를 입력해주세요.',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                SizedBox(height: 30.0,),
-                Container(
-                  child: Column(
-                    children: [
-                      // 핸드폰 번호
-                      AppTextField(
-                        cursorColor: kTitleColor,
-                        textFieldType: TextFieldType.NUMBER,
-                        decoration: kInputDecoration.copyWith(
-                          labelText: '핸드폰 번호',
-                        ),
-                      ),
+                Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    const Text(
+                      '비회원 탑승권 조회 시',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                    const Text(
+                      '핸드폰 번호와 예매 비밀번호를 입력해주세요.',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                    SizedBox(height: 30.0,),
+                    Container(
+                      child: Column(
+                        children: [
+                          // 핸드폰 번호 입력 필드
+                          AppTextField(
+                            cursorColor: kTitleColor,
+                            textFieldType: TextFieldType.NUMBER,
+                            decoration: kInputDecoration.copyWith(
+                              labelText: '핸드폰 번호',
+                            ),
+                          ),
 
-                      SizedBox(height: 10.0,),
+                          SizedBox(height: 10.0,),
 
-                      // 예매 비밀번호
-                      AppTextField(
-                        cursorColor: kTitleColor,
-                        textFieldType: TextFieldType.OTHER,
-                        decoration: kInputDecoration.copyWith(
-                          labelText: '예매 비밀번호',
-                        ),
+                          // 예매 비밀번호 입력 필드
+                          AppTextField(
+                            cursorColor: kTitleColor,
+                            textFieldType: TextFieldType.OTHER,
+                            decoration: kInputDecoration.copyWith(
+                              labelText: '예매 비밀번호',
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
             ],
           ),
