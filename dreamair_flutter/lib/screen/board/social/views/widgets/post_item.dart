@@ -25,6 +25,7 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
+  
   // 댓글 가져오기
   Future<void> fetchComments(String boardNo) async {
     try {
@@ -32,8 +33,6 @@ class _PostItemState extends State<PostItem> {
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // 댓글을 가져왔을 때의 처리
-        // TODO: 가져온 댓글 데이터를 활용하여 화면 갱신 등을 수행
         print(response.body);
         // widget.fetchData(); // 댓글을 가져온 후 데이터 갱신
       } else {
@@ -142,8 +141,7 @@ class _PostItemState extends State<PostItem> {
                           child: const Text('삭제').onTap(() async {
                             await deleteItem(widget.board.boardNo.toString());
                             setState(() {});
-                            Navigator.pop(
-                                context); // 현재 화면을 닫고 이전 화면으로 돌아가기
+                            Navigator.pop(context); // 현재 화면을 닫고 이전 화면으로 돌아가기
                           }),
                         ),
                       ),

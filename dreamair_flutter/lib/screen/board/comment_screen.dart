@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flight_booking/screen/board/comment.dart';
+import 'package:flight_booking/screen/board/comment_input.dart';
 import 'package:flight_booking/screen/board/comment_item.dart';
 import 'package:flight_booking/screen/board/social/util/data.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,29 @@ class CommentScreen extends StatefulWidget {
 
   @override
   State<CommentScreen> createState() => _CommentScreenState();
+
+  deleteItem(String string) {}
 }
 
 class _CommentScreenState extends State<CommentScreen> {
   final List<Comment> _commentList = [];
+
   final ScrollController _controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // 처음 데이터 로드
+    getCommentList(widget.boardNo);
+
+    // 스크롤 이벤트 감지
+    _controller.addListener(() {
+      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        getCommentList(widget.boardNo);
+      }
+    });
+  }
 
   Future<void> getCommentList(int boardNo) async {
     try{
@@ -91,14 +110,14 @@ class _CommentScreenState extends State<CommentScreen> {
                   return CommentItem(
                     comment: _commentList[index],
                     img: comment['img'],
-                    name: comment['name'],
+                    // name: comment['name'],
                     time: comment['time'],
                   );
                 },
               ),
             ),
             const SizedBox(height: 20),
-            // CommentInput(), // 댓글 입력 창
+            CommentInput(boardNo: widget.boardNo, content: '',), // 댓글 입력 창
           ],
         ),
       ),

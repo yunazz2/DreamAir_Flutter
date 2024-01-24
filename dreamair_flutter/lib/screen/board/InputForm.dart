@@ -92,12 +92,21 @@ class _InputFormState extends State<InputForm> {
       // 응답 확인
       if (response.statusCode == 200 || response.statusCode == 201) {
         print('File uploaded successfully');
-
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('게시물이 등록되었습니다.'),
+          ),
+        );
         // 파일 업로드가 성공하면 페이지 이동
       await _navigateToBoardScreen(context);
 
       } else {
         print('File upload failed with status: ${response.statusCode}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('게시물 등록에 실패했습니다.'),
+          ),
+        );
       }
     } catch (error) {
       print('Error uploading file: $error');

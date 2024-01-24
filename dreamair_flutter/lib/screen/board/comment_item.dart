@@ -6,13 +6,13 @@ import 'package:nb_utils/nb_utils.dart';
 
 class CommentItem extends StatefulWidget {
   final Comment comment;
-  final String name;
+  // final String name;
   final String time;
   final String img;
 
   const CommentItem({
     super.key,
-    required this.name,
+    // required this.name,
     required this.time,
     required this.img, 
     required this.comment,
@@ -24,29 +24,38 @@ class CommentItem extends StatefulWidget {
 
 class _CommentItemState extends State<CommentItem> {
 
+  final ScrollController _controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+
+  }
+
   // 댓글 삭제
   Future<void> deleteItem(String commentNo) async {
   final url = 'http://10.0.2.2:9090/comment/$commentNo';
   final response = await http.delete(Uri.parse(url));
 
-  if (response.statusCode == 200 || response.statusCode == 201 ) {
-    // 삭제 성공
-    ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('댓글이 삭제되었습니다.'),
-      ),
-    );
-    print('Item deleted successfully');
-  } else {
-    // 삭제 실패
-    ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('댓글 삭제에 실패했습니다.'),
-      ),
-    );
-    print('Failed to delete item. Status code: ${response.statusCode}');
-    print('Response body: ${response.body}');
-  }
+    if (response.statusCode == 200 || response.statusCode == 201 ) {
+      // 삭제 성공
+      ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('댓글이 삭제되었습니다.'),
+        ),
+      );
+      print('Item deleted successfully');
+    } else {
+      // 삭제 실패
+      ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('댓글 삭제에 실패했습니다.'),
+        ),
+      );
+      print('Failed to delete item. Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }
 }
 
   @override
@@ -112,7 +121,7 @@ class _CommentItemState extends State<CommentItem> {
                     child: Center(
                       child: const Text('삭제').onTap(() async {
                         await deleteItem(widget.comment.commentNo.toString());
-                        setState(() {});
+                        setState(() { });
                         Navigator.pop(context);
                       }),
                     ),
