@@ -4,6 +4,7 @@ import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/constant.dart';
 
@@ -17,10 +18,10 @@ class DeleteAccountScreen extends StatefulWidget {
 
 class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
 
-  Future deleteAccout() async {
+  Future deleteAccout(UserProvider userProvider) async {
     print('회원 탈퇴 요청 시작');
 
-    String userId = UserProvider.userId;
+    String userId = userProvider.userId;
 
     final url = 'http://10.0.2.2:9090/user/$userId';
 
@@ -43,6 +44,8 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: kPrimaryColor,
 
@@ -127,7 +130,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       setState(() {
-                                        deleteAccout();
+                                        deleteAccout(userProvider);
                                       });
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
                                     },

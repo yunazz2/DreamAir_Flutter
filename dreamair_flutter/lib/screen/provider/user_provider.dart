@@ -1,31 +1,10 @@
 import 'dart:convert';
 
+import 'package:flight_booking/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-class User {
-  late int userNo;
-  late String userId;
-  late String userPw;
-  late String userPwCheck;
-  late String name;
-  late String phone;
-  late String email;
-  late String address;
-  late double mileage;
-
-  User({
-    required this.userNo,
-    required this.userId,
-    required this.userPw,
-    required this.userPwCheck,
-    required this.name,
-    required this.phone,
-    required this.email,
-    required this.address,
-    required this.mileage,
-  });
-}
 
 class UserProvider extends ChangeNotifier {
 
@@ -42,16 +21,69 @@ class UserProvider extends ChangeNotifier {
   );
 
   // 로그인 상태
-  static bool _loginStatus = false; // 클래스의 모든 인스턴스가 공유 가능
+  bool _loginStatus = false; // 클래스의 모든 인스턴스가 공유 가능
   // 로그인 상태 가져오기
-  static bool get isLogin => _loginStatus;
+  bool get isLogin => _loginStatus;
 
   // 로그인 아이디
-  static String _userId = '';
-  static String get userId => _userId;
+  String _userId = '';
+  String get userId => _userId;
 
   // 현재 사용자 정보를 담은 객체
   User get currentUser => _user;
+
+  // 🔒 안전한 저장소
+  final storage = const FlutterSecureStorage();
+
+
+  /// 🔐 로그인 요청
+  /// 1. 요청 및 응답
+  /// ➡ username, password 
+  /// ⬅ jwt token
+  /// 
+  /// 2. jwt 토큰을 SecureStorage 에 저장
+  Future<void> login(String username, String password) async {
+    const url = 'http://10.0.2.2:8080/login';           // TODO: 로그인 경로 수정
+    final requestUrl = Uri.parse('$url?username=$username&password=$password');
+    try {
+      // 로그인 요청
+      final response = await http.get(requestUrl);
+
+      if (response.statusCode == 200) {
+        print('로그인 성공...');
+
+        // HTTP 요청이 성공했을 때
+        final authorizationHeader = response.headers['authorization'];
+
+        if (authorizationHeader != null) {
+          // Authorization 헤더에서 "Bearer "를 제거하고 JWT 토큰 값을 추출
+          final jwtToken = authorizationHeader.replaceFirst('Bearer ', '');
+
+          // 여기서 jwtToken을 사용하면 됩니다.
+          print('JWT Token: $jwtToken');
+
+          // jwt 저장
+          await storage.write(key: 'jwtToken', value: jwtToken);
+          _loginStatus = true;
+
+        } else {
+          // Authorization 헤더가 없는 경우 처리
+          print('Authorization 헤더가 없습니다.');
+        }
+      } else if( response.statusCode == 403 ) {
+        print('아이디 또는 비밀번호가 일치하지 않습니다...');
+
+      } else {
+        print('네트워크 오류 또는 알 수 없는 오류로 로그인에 실패하였습니다...');
+
+      }
+
+    } catch (error) {
+      print("로그인 실패 $error");
+    }
+    // 공유된 상태를 가진 위젯 다시 빌드
+    notifyListeners();   
+  }
 
 
   
@@ -83,38 +115,45 @@ class UserProvider extends ChangeNotifier {
   // 회원 정보 요청
   Future getUserInfo() async {
     print('UserProvider 회원 정보 요청 시작');
-
     print(userId);
 
+
     final url = 'http://10.0.2.2:9090/user/$userId';
-
     try {
-      final response = await http.get(Uri.parse(url));
-      if(response.statusCode == 200) {
-        print('UserProvider 회원 정보 요청 응답 성공');
-        
-        var utf8Decoded = utf8.decode(response.bodyBytes);
+      // 저장된 jwt 가져오기
+      String? token = await storage.read(key: 'jwtToken');
+      print('사용자 정보 요청 전: jwt - $token');
+
+      final response = await http.get(
+                                    Uri.parse(url),
+                                    headers: {
+                                        'Authorization': 'Bearer $token',
+                                        'Content-Type': 'application/json',
+                                      },
+                              );
+
+      if (response.statusCode == 200) {
+        // 성공적으로 데이터를 받아왔을 때의 처리
+        var utf8Decoded = utf8.decode( response.bodyBytes );
         var result = json.decode(utf8Decoded);
+        final userInfo = result;
+        print('User Info: $userInfo');
 
-        print(result);
+        // 프로바이더에 user 정보 등록
+        // class ⬅ json
+        _user = User.fromJson(result);
+        print(_user);
 
-        _user = User(
-          userNo: result['userNo'] ?? 0,
-          userId: result['userId'] ?? '',
-          userPw: result['userPw'] ?? '',
-          userPwCheck: result['userPwCheck'] ?? '',
-          name: result['name'] ?? '',
-          phone: result['phone'] ?? '',
-          email: result['email'] ?? '',
-          address: result['address'] ?? '',
-          mileage: result['mileage'],
-        );
-
-        notifyListeners();
-      }
-    } catch (e) {
-      print('오류 발생: $e');
+      } else {
+        // HTTP 요청이 실패했을 때의 처리
+        print('HTTP 요청 실패: ${response.statusCode}');
+        
+        print('사용자 정보 요청 성공');
+      } 
+    }catch (error) {
+      print('사용자 정보 요청 실패 $error');
     }
+   
   }
 
 }

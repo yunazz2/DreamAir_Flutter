@@ -5,22 +5,25 @@ import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import '../ticket_detail/ticket_detail_screen.dart';
 
 // 나의 탑승권 조회 페이지
 class MyBooking extends StatefulWidget {
-  const MyBooking({super.key});
+const MyBooking({super.key});
 
   @override
   State<MyBooking> createState() => _MyBookingState();
 }
 
 class _MyBookingState extends State<MyBooking> {
+  
   @override
   void initState() {
     super.initState();
-    getBookingListByUser();
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    getBookingListByUser(userProvider);
   }
   
   int _bookedTicketCount = 0;
@@ -30,10 +33,10 @@ class _MyBookingState extends State<MyBooking> {
   TextEditingController orderPasswordController = TextEditingController();
 
   // 회원 예매 내역 조회
-  Future getBookingListByUser() async {
+  Future getBookingListByUser(UserProvider userProvider) async {
     print('회원 예매 내역 조회 시작');
 
-    String userId = UserProvider.userId;
+    String userId = userProvider.userId;
 
     final url = 'http://10.0.2.2:9090/user/bookingList/$userId';
 
@@ -67,6 +70,7 @@ class _MyBookingState extends State<MyBooking> {
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
 
     return Scaffold(
       backgroundColor: kPrimaryColor,
@@ -99,7 +103,7 @@ class _MyBookingState extends State<MyBooking> {
           child: Column(
             children: [
               // 회원일 때
-              if (UserProvider.isLogin)
+              if (userProvider.isLogin)
                 _bookedTicketCount > 0
                   ? ListView.builder(
                     padding: EdgeInsets.zero,

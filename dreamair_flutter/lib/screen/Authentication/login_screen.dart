@@ -6,6 +6,7 @@ import 'package:flight_booking/screen/widgets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
+import 'package:provider/provider.dart';
 
 import '../home/home.dart';
 import '../widgets/button_global.dart';
@@ -23,42 +24,64 @@ class _LogInState extends State<LogIn> {
   TextEditingController userIdController = TextEditingController();
   TextEditingController userPwController = TextEditingController();
 
-  // 로그인 요청
-  Future<void> login(
-    String userId,
-    String userPw,
-  ) async {
-    print('로그인 요청 시작');
+  // // 로그인 요청
+  // Future<void> login(
+  //   String userId,
+  //   String userPw,
+  // ) async {
+  //   print('로그인 요청 시작');
 
-    final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
+  //   final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
 
-    try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: {
-          'Content-Type': 'application/josn',
-        },
-        body: jsonEncode({
-          'userId': userId,
-          'userPw': userPw,
-        }),
-      );
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse(url),
+  //       headers: {
+  //         'Content-Type': 'application/josn',
+  //       },
+  //       body: jsonEncode({
+  //         'userId': userId,
+  //         'userPw': userPw,
+  //       }),
+  //     );
 
-      if (response.statusCode == 200) {
-        print('로그인 성공');
-        UserProvider().updateLoginStatus(true); // 로그인 상태 업데이트
-        UserProvider().updateLoginId(userId);   // 로그인 아이디 업데이트
-        const Home().launch(context);           // Home 화면으로 이동
-      } else {
-        print('로그인 실패: ${response.statusCode}, ${response.body}');
-      }
-    } catch (e) {
-      print('오류 발생: $e');
+  //     if (response.statusCode == 200) {
+  //       print('로그인 성공');
+  //       UserProvider().updateLoginStatus(true); // 로그인 상태 업데이트
+  //       UserProvider().updateLoginId(userId);   // 로그인 아이디 업데이트
+  //       const Home().launch(context);           // Home 화면으로 이동
+
+  //     } else {
+  //       print('로그인 실패: ${response.statusCode}, ${response.body}');
+  //     }
+  //   } catch (e) {
+  //     print('오류 발생: $e');
+  //   }
+  // }
+
+  void _login(UserProvider userProvider) async {
+    // 여기에 실제 로그인 로직을 구현
+    String username = userIdController.text;
+    String password = userPwController.text;
+
+    print('Username: $username');
+    print('Password: $password');
+
+    await userProvider.login(username, password);
+    if( userProvider.isLogin ) {
+      print('로그인 여부 : ${userProvider.isLogin}');
+      await userProvider.getUserInfo();
+      print('유저정보 저장 완료...');
+      print( userProvider.currentUser );
+      const Home().launch(context);           // Home 화면으로 이동
     }
+    
   }
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
@@ -170,7 +193,8 @@ class _LogInState extends State<LogIn> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       onPressed: () {
-                        login(userIdController.text, userPwController.text);
+                        // login(userIdController.text, userPwController.text);
+                        _login(userProvider);
                       },
                       buttonTextColor: kWhite,
                     ),

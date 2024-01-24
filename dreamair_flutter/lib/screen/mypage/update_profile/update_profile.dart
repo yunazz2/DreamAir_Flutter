@@ -5,6 +5,7 @@ import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import '../../widgets/constant.dart';
 
@@ -21,14 +22,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   void initState() {
     super.initState();
-    getUserInfo();
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    getUserInfo(userProvider);
   }
 
   // 회원 정보 요청
-  Future getUserInfo() async {
+  Future getUserInfo(UserProvider userProvider) async {
     print('회원 정보 수정 페이지 회원 정보 요청 시작');
 
-    String userId = UserProvider.userId;
+    String userId = userProvider.userId;
     
     final url = 'http://10.0.2.2:9090/user/$userId';
 
@@ -70,7 +72,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     String email,
     String address,
   ) async {
-    String userId = UserProvider.userId;
+    String userId = userProvider.userId;
 
     print('회원 정보 수정 요청 시작');
 

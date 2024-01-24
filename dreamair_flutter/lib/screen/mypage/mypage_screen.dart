@@ -7,6 +7,7 @@ import 'package:flight_booking/screen/mypage/update_profile/update_profile.dart'
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:provider/provider.dart';
 
 import '../Authentication/welcome_screen.dart';
 import '../widgets/constant.dart';
@@ -24,12 +25,15 @@ class _MypageState extends State<Mypage> {
   @override
   void initState() {
     super.initState();
-    print('마이 페이지 로그인 여부 확인 : ${UserProvider.isLogin} & ${UserProvider.userId}');
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    print('마이 페이지 로그인 여부 확인 : ${userProvider.isLogin} & ${userProvider.userId}');
     UserProvider().getUserInfo();
   } 
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
@@ -58,7 +62,7 @@ class _MypageState extends State<Mypage> {
               
               // 메뉴 목록
               // 회원 정보 수정
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -83,7 +87,7 @@ class _MypageState extends State<Mypage> {
                 ),
 
               // 체크인
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -115,7 +119,7 @@ class _MypageState extends State<Mypage> {
                 ),
 
               // 마일리지 조회
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -167,7 +171,7 @@ class _MypageState extends State<Mypage> {
               ),
               
               // 회원 탈퇴
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -192,7 +196,7 @@ class _MypageState extends State<Mypage> {
                 ),
 
               // 로그아웃
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -221,7 +225,7 @@ class _MypageState extends State<Mypage> {
                 ),
               
               // 로그인 바로가기
-              if(!UserProvider.isLogin)
+              if(!userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
