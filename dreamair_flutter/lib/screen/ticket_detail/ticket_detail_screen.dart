@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:flight_booking/screen/home/home.dart';
+import 'package:flight_booking/screen/home/home_screen.dart';
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/constant.dart';
@@ -334,7 +337,19 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
                           ),
                         )),
                   ),
-                  SizedBox(height: 50.0,)
+                  SizedBox(height: 30.0,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 1.0),
+                        onPressed: () {
+                          const Home().launch(context, isNewTask: true);
+                        },
+                        child: Text('메인으로', style: TextStyle(color: Colors.black))),
+                    ],
+                  ),
+                  SizedBox(height: 30.0,),
                 ],
               ),
             ),

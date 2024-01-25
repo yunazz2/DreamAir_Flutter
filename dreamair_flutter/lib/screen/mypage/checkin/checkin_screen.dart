@@ -150,8 +150,9 @@ class _CheckInScreenState extends State<CheckInScreen> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('체크인 완료', style: TextStyle(fontSize: 20.0),),
-                      content: Text('체크인이 완료되었습니다.'),
+                      backgroundColor: Colors.white,
+                      title: Text('체크인 완료', style: TextStyle(color: Colors.black, fontSize: 20.0),),
+                      content: Text('체크인이 완료되었습니다.', style: TextStyle(color: Colors.black),),
                       actions: [
                         TextButton(
                           onPressed: () {

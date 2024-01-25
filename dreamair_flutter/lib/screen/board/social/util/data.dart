@@ -58,7 +58,7 @@ List posts = List.generate(
           "name": names[random.nextInt(10)],
           "dp": "assets/images/cm${random.nextInt(10)}.jpeg",
           "time": "${random.nextInt(50)} min ago",
-          "img": "assets/images/cm${random.nextInt(10)}.jpeg"
+          "img": "assets/images/slide${random.nextInt(10)}.jpeg"
         });
 
 List chats = List.generate(
