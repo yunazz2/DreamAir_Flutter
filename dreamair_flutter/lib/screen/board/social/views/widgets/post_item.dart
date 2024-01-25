@@ -13,14 +13,15 @@ class PostItem extends StatefulWidget {
   final Board board;
   final String time;
   final String img;
-  final List<Files> fileList;
+  final Files file;
+  // final List<Files> fileList;
 
   const PostItem({
     super.key,
     required this.time,
     required this.img,
     required this.board,
-    required this.fileList,
+    required this.file,
   });
 
   @override
@@ -103,6 +104,8 @@ class _PostItemState extends State<PostItem> {
 
   @override
   Widget build(BuildContext context) {
+
+    print('#### fileNo : ${widget.file.fileNo}');
     Board board = widget.board;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,25 +163,23 @@ class _PostItemState extends State<PostItem> {
                   )
                 ],
               ),
-            ),
-            if (widget.fileList.isNotEmpty)
-              Column(
-                children: widget.fileList.map((file) {
-                  return Image.network(
-                    file.filePath, // 또는 이미지 URL을 보관하는 적절한 필드 사용
-                    height: 100, // 원하는 높이로 설정
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  );
-                }).toList(),
-              ),
-            // Image.asset(
 
-            //     widget.board.filePath, // 이미지
-            //   height: 230,
-            //   width: MediaQuery.of(context).size.width,
-            //   fit: BoxFit.cover,
-            // ),
+            ),
+            // 이미지 불러오는 자리
+              // if (widget.file.fileNo != null)
+                // Image.network(
+                //   'http://10.0.2.2:9090/file/img/${widget.file.fileNo}', // Image URL
+                //   width: 100,
+                //   height: 100,
+                //   fit: BoxFit.cover,
+                // ),
+            Image.asset(
+              // widget.file.filePath.toString(), // 이미지
+              widget.img,
+              height: 230,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
+            ),
             const SizedBox(height: 10),
 
             // 좋아요/댓글

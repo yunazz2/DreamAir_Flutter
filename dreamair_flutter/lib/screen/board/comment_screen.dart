@@ -123,7 +123,9 @@ class _CommentScreenState extends State<CommentScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            CommentInput(boardNo: widget.boardNo, content: _commentContent.text,), // 댓글 입력 창
+            SingleChildScrollView(
+              child: CommentInput(boardNo: widget.boardNo, content: _commentContent.text,),
+            ), // 댓글 입력 창
           ],
         ),
       ),

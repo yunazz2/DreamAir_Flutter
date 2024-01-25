@@ -42,7 +42,7 @@ class _CommentInputState extends State<CommentInput> {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         // 업로드 성공
-        ScaffoldMessenger.of(context).showSnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('댓글이 등록되었습니다.'),
           ),
@@ -71,6 +71,7 @@ class _CommentInputState extends State<CommentInput> {
   //         onCommentPosted: () {
   //           // 댓글이 성공적으로 등록되면 이 메소드가 호출됨
   //           // 원하는 작업을 수행할 수 있음
+
   //         },
   //       ),
   //     ),
@@ -83,16 +84,12 @@ class _CommentInputState extends State<CommentInput> {
 
 return Row(
   children: [
-    CircleAvatar(
-      backgroundImage: AssetImage('images/logo2.png'), // 프로필 이미지
-    ),
-
     const SizedBox(width: 10),
     Expanded(
       child: Center(
         child: Container(
           padding: EdgeInsets.only(bottom: bottomPadding), // 조절 가능한 여백
-          width: double.infinity,
+          width: double.infinity,     
           child: TextField(
             controller: _commentController,
             decoration: InputDecoration(
@@ -103,12 +100,13 @@ return Row(
                   _postComment(widget.boardNo, widget.content);
                 },
                 child: const Text('게시'),
+          ),
               ),
             ),
           ),
         ),
       ),
-    ),
+
   ],
 );
 
