@@ -8,13 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <!-- 게시글 목록 -->
     <select id="list" resultType="Board">
-        <!-- SELECT *
-        FROM board
-        ORDER BY reg_date DESC -->
         SELECT *
+        FROM board
+        ORDER BY reg_date DESC
+        <!-- SELECT *
 		FROM board
 		ORDER BY reg_date DESC
-		LIMIT #{index}, #{rowsPerPage}
+		LIMIT #{index}, #{rowsPerPage} -->
     </select>
 
     <!-- 최신 목록 -->

@@ -10,7 +10,8 @@ import com.joeun.server.dto.Page;
 public interface BoardService {
 
     // 게시글 목록
-    public List<Board> list(Page page) throws Exception;
+    // public List<Board> list(Page page) throws Exception;
+    public List<Board> list() throws Exception;
 
     // 게시글 이미지 목록
     public List<Board> mainList() throws Exception;

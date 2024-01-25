@@ -38,7 +38,7 @@ class _MyBookingState extends State<MyBooking> {
 
     String userId = userProvider.userId;
 
-    final url = 'http://54.180.125.242/user/bookingList/$userId';
+    final url = 'http://10.0.2.2:9090/user/bookingList/$userId';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -65,7 +65,7 @@ class _MyBookingState extends State<MyBooking> {
     String phone = phoneController.text;
     String orderPassword = orderPasswordController.text;
 
-    // final url = 'http://54.180.125.242/user/'
+    // final url = 'http://10.0.2.2:9090/user/'
   }
 
   @override

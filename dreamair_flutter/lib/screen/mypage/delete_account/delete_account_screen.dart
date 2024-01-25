@@ -23,7 +23,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
 
     String userId = userProvider.userId;
 
-    final url = 'http://54.180.125.242/user/$userId';
+    final url = 'http://10.0.2.2:9090/user/$userId';
 
     try {
       final response = await http.delete(Uri.parse(url));

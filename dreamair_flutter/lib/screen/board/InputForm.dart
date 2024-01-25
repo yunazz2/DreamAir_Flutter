@@ -73,7 +73,7 @@ class _InputFormState extends State<InputForm> {
       return;
     }
 
-    var uri = Uri.parse('http://54.180.125.242/board'); // 업로드할 서버의 URL
+    var uri = Uri.parse('http://10.0.2.2:9090/board'); // 업로드할 서버의 URL
     var request = http.MultipartRequest('POST', uri);
 
     // 파일을 추가
