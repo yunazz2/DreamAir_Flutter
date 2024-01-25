@@ -31,7 +31,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
 
   Future<List<Schedule>> getScheduleList() async {
     // 서버로 요청
-    var url = 'http://10.0.2.2:9090/user/productFlightList';
+    var url = 'http://54.180.125.242/user/productFlightList';
     // http.get(url, header)
     // http.get(Uri.parse(url))
     var response = await http.get(Uri.parse(url));

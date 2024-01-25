@@ -67,7 +67,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 const SizedBox(height: 20.0),
                 Text(
-                  'Payment Succeed!',
+                  '결제가 완료되었습니다!',
                   style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
@@ -147,7 +147,7 @@ class _PaymentState extends State<Payment> {
             iconTheme: const IconThemeData(color: Colors.white),
             centerTitle: true,
             title: Text(
-              '결제 확인',
+              '결제',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -896,7 +896,7 @@ class _PaymentState extends State<Payment> {
               trailing: SizedBox(
                 width: 200,
                 child: ButtonGlobalWithoutIcon(
-                  buttontext: lang.S.of(context).continueButton,
+                  buttontext: '다음으로',
                   buttonDecoration: kButtonDecoration.copyWith(
                     color: kPrimaryColor,
                     borderRadius: BorderRadius.circular(30.0),

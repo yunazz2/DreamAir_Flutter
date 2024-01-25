@@ -13,6 +13,7 @@ class PostItem extends StatefulWidget {
   final Board board;
   final String time;
   final String img;
+  final String dp;
   final Files file;
   // final List<Files> fileList;
 
@@ -21,7 +22,7 @@ class PostItem extends StatefulWidget {
     required this.time,
     required this.img,
     required this.board,
-    required this.file,
+    required this.file, required this.dp,
   });
 
   @override
@@ -33,7 +34,7 @@ class _PostItemState extends State<PostItem> {
   // 댓글 가져오기
   Future<void> fetchComments(String boardNo) async {
     try {
-      final url = 'http://10.0.2.2:9090/comment/$boardNo'; // 적절한 엔드포인트로 수정
+      final url = 'http://54.180.125.242/comment/$boardNo'; // 적절한 엔드포인트로 수정
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -79,7 +80,7 @@ class _PostItemState extends State<PostItem> {
 
   // 게시판 삭제
   Future<void> deleteItem(String boardNo) async {
-    final url = 'http://10.0.2.2:9090/board/$boardNo';
+    final url = 'http://54.180.125.242/board/$boardNo';
     final response = await http.delete(Uri.parse(url));
 
     if (response.statusCode == 200 || response.statusCode == 201) {
@@ -115,7 +116,7 @@ class _PostItemState extends State<PostItem> {
             ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage(
-                  widget.img, // 프로필 이미지
+                  widget.dp, // 프로필 이미지
                 ),
               ),
               contentPadding: const EdgeInsets.all(0),
@@ -168,7 +169,7 @@ class _PostItemState extends State<PostItem> {
             // 이미지 불러오는 자리
               // if (widget.file.fileNo != null)
                 // Image.network(
-                //   'http://10.0.2.2:9090/file/img/${widget.file.fileNo}', // Image URL
+                //   'http://54.180.125.242/file/img/${widget.file.fileNo}', // Image URL
                 //   width: 100,
                 //   height: 100,
                 //   fit: BoxFit.cover,

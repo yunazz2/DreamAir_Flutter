@@ -35,7 +35,7 @@ class _CommentItemState extends State<CommentItem> {
 
   // 댓글 삭제
   Future<void> deleteItem(String commentNo) async {
-  final url = 'http://10.0.2.2:9090/comment/$commentNo';
+  final url = 'http://54.180.125.242/comment/$commentNo';
   final response = await http.delete(Uri.parse(url));
 
     if (response.statusCode == 200 || response.statusCode == 201 ) {

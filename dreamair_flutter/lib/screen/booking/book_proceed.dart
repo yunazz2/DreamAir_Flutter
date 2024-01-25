@@ -62,7 +62,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
     print(bookingProvider.getRouteNoDes);
     
 
-    final url = 'http://10.0.2.2:9090/booking/info';
+    final url = 'http://54.180.125.242/booking/info';
 
     try {
       final response = await http.post(
@@ -662,7 +662,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   itemBuilder: (_, i) {
                                     return ButtonGlobalWithIcon(
-                                              buttontext: states[i] ? '탑승객 정보 입력' : '탑승객 정보 입력완료',    
+                                              buttontext: states[i] ? '탑승객 정보 입력' : '탑승객 정보 입력',    
                                               // buttontext: booking.getInput,    
                                               buttonTextColor: kPrimaryColor,
                                               buttonIcon: states[i] ? null : FeatherIcons.plus,
@@ -822,7 +822,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                         const SizedBox(height: 20.0),
                                                                         TextFormField(
                                                                           controller: _birthController,
-                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          keyboardType: TextInputType.number,
                                                                           cursorColor: kTitleColor,
                                                                           textInputAction: TextInputAction.next,
                                                                           decoration: kInputDecoration.copyWith(
@@ -837,7 +837,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                                                         const SizedBox(height: 20.0),
                                                                         TextFormField(
                                                                           controller: _phoneController,
-                                                                          keyboardType: TextInputType.emailAddress,
+                                                                          keyboardType: TextInputType.number,
                                                                           cursorColor: kTitleColor,
                                                                           textInputAction: TextInputAction.next,
                                                                           decoration: kInputDecoration.copyWith(
@@ -936,26 +936,26 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
                                             );
                                   } ,
                                 ),
-                                Text(
-                                  '비회원 비밀번호',
-                                  style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 10.0),
-                                TextFormField(
-                                  controller: _passwordController,
-                                  obscureText: true,
-                                  keyboardType: TextInputType.emailAddress,
-                                  cursorColor: kTitleColor,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: kInputDecoration.copyWith(
-                                    labelText: '비밀번호',
-                                    labelStyle: TextStyle(color: kTitleColor),
-                                    hintText: '비회원 예매 비밀번호를 입력하세요.',
-                                    hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
-                                    focusColor: kTitleColor,
-                                    border: const OutlineInputBorder(),
-                                  ),
-                                ),
+                                // Text(
+                                //   '비회원 비밀번호',
+                                //   style: TextStyle(color: kTitleColor, fontWeight: FontWeight.bold),
+                                // ),
+                                // const SizedBox(height: 10.0),
+                                // TextFormField(
+                                //   controller: _passwordController,
+                                //   obscureText: true,
+                                //   keyboardType: TextInputType.emailAddress,
+                                //   cursorColor: kTitleColor,
+                                //   textInputAction: TextInputAction.next,
+                                //   decoration: kInputDecoration.copyWith(
+                                //     labelText: '비밀번호',
+                                //     labelStyle: TextStyle(color: kTitleColor),
+                                //     hintText: '비회원 예매 비밀번호를 입력하세요.',
+                                //     hintStyle: kTextStyle.copyWith(color: kSubTitleColor),
+                                //     focusColor: kTitleColor,
+                                //     border: const OutlineInputBorder(),
+                                //   ),
+                                // ),
                                 const SizedBox(height: 20.0),
                               ],
                             ),

@@ -40,7 +40,7 @@ class _goSearchState extends State<goSearch> {
         elevation: 0,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text('목적지'),
+        title: Text('목적지', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: const Icon(

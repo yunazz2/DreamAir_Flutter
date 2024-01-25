@@ -43,7 +43,7 @@ class _TicketDetailScreenState extends State<TicketDetailScreen> {
     int ticketNo = widget.ticketNo;
     String userId = userProvider.userId;
 
-    final url = 'http://10.0.2.2:9090/user/booking/ticketInfo/$ticketNo?userId=$userId';
+    final url = 'http://54.180.125.242/user/booking/ticketInfo/$ticketNo?userId=$userId';
 
     try {
       final response = await http.get(Uri.parse(url));
