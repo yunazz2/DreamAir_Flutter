@@ -29,7 +29,7 @@ class _LogInState extends State<LogIn> {
     String userPw,
   ) async {
 
-    final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
+    final url = 'http://54.180.125.242/login?username=$userId&password=$userPw';
 
     try {
       final response = await http.post(

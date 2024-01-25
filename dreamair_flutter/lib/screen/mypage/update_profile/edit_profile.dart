@@ -34,7 +34,7 @@ class _EditProfileState extends State<EditProfile> {
 
     // 임시로 아이디 하드 코딩
     String userId = 'user';
-    final url = 'http://10.0.2.2:9090/user';
+    final url = 'http://54.180.125.242/user';
 
     try {
       final response = await http.put(

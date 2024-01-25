@@ -33,7 +33,10 @@ dependencies:
     sdk: flutter
     
   # http 통신
-  http: ^1.1.2
+  # http: ^1.1.2
+
+  # bootpay 결제 API 연동
+  # bootpay: ^4.8.3
 
   flutter_localizations:
       sdk: flutter
@@ -69,7 +72,7 @@ dependencies:
   lottie: ^3.0.0
   cloud_firestore: ^4.14.0
   firebase_storage: ^11.6.0
-  uuid: ^4.3.3
+  # uuid: ^4.3.3
   
 dev_dependencies:
   flutter_test:

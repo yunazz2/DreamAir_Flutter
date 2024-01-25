@@ -46,7 +46,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   //   // 2. GET 방식 요청
   //   // final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
 
-  //   final url = Uri.parse('http://10.0.2.2:9090/user/productFlightList');
+  //   final url = Uri.parse('http://54.180.125.242/user/productFlightList');
     
   //   final response = await http.get(url);
 
