@@ -39,45 +39,45 @@ public class BoardController {
     // 👩‍💻 CRUD 메소드 자동 생성 : sp-crud
     // 👩‍💻 자동 import : alt + shift + O      
     // 👩‍💻 한 줄 삭제 : ctrl + shift + K
-    // @GetMapping()
-    // public ResponseEntity<?> getAll() {
-    //     log.info("[GET] - /board - 게시글 목록");
-    //     try {
-    //         List<Board> boardList = boardService.list();
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        log.info("[GET] - /board - 게시글 목록");
+        try {
+            List<Board> boardList = boardService.list();
 
-    //         if(boardList == null) {
-    //             log.info("조회된 게시글 없음");
-    //         }
-    //         else {
-    //             log.info("게시글 수 : " + boardList.size());
-    //         }
+            if(boardList == null) {
+                log.info("조회된 게시글 없음");
+            }
+            else {
+                log.info("게시글 수 : " + boardList.size());
+            }
 
-    //         return new ResponseEntity<>(boardList, HttpStatus.OK);
-    //     } catch (Exception e) {
-    //         log.error(null, e);
-    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-    // }
+            return new ResponseEntity<>(boardList, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error(null, e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     
     // 게시글 목록 with 페이징 처리
-	@GetMapping("/list")
-	public String list(Model model, Page page) throws Exception {
+	// @GetMapping("/list")
+	// public String list(Model model, Page page) throws Exception {
 		
-		log.info("##### 페이징 처리 전 - page #####");
-		log.info(page.toString());
+	// 	log.info("##### 페이징 처리 전 - page #####");
+	// 	log.info(page.toString());
 		
-		// 게시글 목록 요청
-		List<Board> boardList = boardService.list(page);
+	// 	// 게시글 목록 요청
+	// 	List<Board> boardList = boardService.list(page);
 		
-		log.info("##### 페이징 처리 후 - page #####");
-		log.info(page.toString());
+	// 	log.info("##### 페이징 처리 후 - page #####");
+	// 	log.info(page.toString());
 		
-		// 게시글 목록 모델에 등록
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("page", page);
+	// 	// 게시글 목록 모델에 등록
+	// 	model.addAttribute("boardList", boardList);
+	// 	model.addAttribute("page", page);
 		
-		return "/board/list";
-	}
+	// 	return "/board/list";
+	// }
     @GetMapping("/{boardNo}")
     public ResponseEntity<?> getOne(@PathVariable Integer boardNo, Files files) {
         log.info("[GET] - /boards/" + boardNo  + " - 게시글 조회");

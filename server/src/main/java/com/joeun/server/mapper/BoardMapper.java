@@ -11,7 +11,8 @@ import com.joeun.server.dto.Page;
 public interface BoardMapper {
 
     // 게시글 목록
-    public List<Board> list(Page page) throws Exception;
+    // public List<Board> list(Page page) throws Exception;
+    public List<Board> list() throws Exception;
 
     // 메인 이미지 목록
     public List<Board> mainList() throws Exception;
