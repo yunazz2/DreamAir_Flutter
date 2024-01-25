@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BoardScreen extends StatefulWidget {
-  const BoardScreen({Key? key}) : super(key: key);
+  const BoardScreen({super.key});
 
   @override
   State<BoardScreen> createState() => _BoardScreenState();
@@ -58,7 +58,6 @@ class _BoardScreenState extends State<BoardScreen> {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var utf8Decoded = utf8.decode(response.bodyBytes);
         var boardList = jsonDecode(utf8Decoded);
-
         List<Board> result = [];
 
         for (var i = 0; i < boardList.length; i++) {
@@ -72,11 +71,11 @@ class _BoardScreenState extends State<BoardScreen> {
             views: boardList[i]['views'],
             like: boardList[i]['like'],
           ));
-          //boardNo를 매개변수로 넣어줘야함
-          getImage(result[i].boardNo);
+        // Call getImage for each board
+        await getImage(boardList[i]['boardNo']);
         }
-
         setState(() {
+
           _boardList.addAll(result);
           _page++;
 
@@ -94,40 +93,53 @@ class _BoardScreenState extends State<BoardScreen> {
     }
   }
 
-//이미지 가져오기
+// 이미지 가져오기
 Future<void> getImage(int boardNo) async {
   try {
-    // 데이터를 가져오는 비동기 작업
     var url = 'http://10.0.2.2:9090/board/$boardNo';
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-        var utf8Decoded = utf8.decode(response.bodyBytes);
-        var fileList = jsonDecode(utf8Decoded);
+      var utf8Decoded = utf8.decode(response.bodyBytes);
+      var responseData = jsonDecode(utf8Decoded);
+      
+      if (responseData.containsKey('board')) {
+        // var boardData = responseData['board'];
 
-      List<Files> result = [];
+        // 여기서 boardData를 사용하여 필요한 게시글 정보를 가져올 수 있음
 
-        for (var i = 0; i < fileList.length; i++) {
-          result.add(Files(
-            boardNo: fileList[i]['boardNo'],
-            fileNo: fileList[i]['fileNo'],
-            parentTable: 'board',
-            parentNo: fileList[i]['parentNo'],
-            fileName: fileList[i]['fileName'],
-            originName: fileList[i]['originName'],
-            filePath: fileList[i]['filePath'],
-            fileSize: fileList[i]['fileSize'],
-            regDate: fileList[i]['regDate'],
-            updDate: fileList[i]['updDate'],
-            fileCode: fileList[i]['fileCode'],
-            fileType: fileList[i]['fileType'],
-          ));
+        if (responseData.containsKey('fileList')) {
+          var fileListData = responseData['fileList'];
+
+          if (fileListData is List) {
+            List<Files> result = [];
+
+            for (var i = 0; i < fileListData.length; i++) {
+
+                result.add(Files(
+                  boardNo: boardNo,
+                  fileNo: fileListData[i]['fileNo'],
+                  parentTable: 'board',
+                  parentNo: boardNo,
+                  fileName: fileListData[i]['fileName'],
+                  originName: fileListData[i]['originName'],
+                  filePath: fileListData[i]['filePath'],
+                  fileSize: fileListData[i]['fileSize'],
+                  regDate: fileListData[i]['regDate'],
+                  updDate: fileListData[i]['updDate'],
+                  fileCode: fileListData[i]['fileCode'],
+                  fileType: fileListData[i]['fileType'],
+                ));
+                print('#### result : ${result}');
+
+            }
+
+            setState(() {
+              _fileList.addAll(result);
+            });
+          }
         }
-
-          setState(() {
-            _fileList.addAll(result);
-          });
-
+      }
     } else {
       print('Error loading image: Status code ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -136,6 +148,8 @@ Future<void> getImage(int boardNo) async {
     print('Error loading image: $e');
   }
 }
+
+
 
 
   @override
@@ -188,7 +202,7 @@ Future<void> getImage(int boardNo) async {
                         ),
                         child: PostItem(
                             board: _boardList[index],
-                            fileList: _fileList,
+                            file: _fileList[index],
                             img: posts[index]['img'],
                             time: posts[index]['time'],
                         ),

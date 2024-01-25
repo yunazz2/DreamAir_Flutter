@@ -1,18 +1,18 @@
-import 'dart:ffi';
+
 
 class Files {
-    final int fileNo;
-    final String parentTable;
-    final int parentNo;
-    final String fileName;
-    final String originName;
-    final String filePath;
-    final Long fileSize;
-    final String regDate;
-    final String updDate;
-    final int fileCode;
-    final int boardNo;
-    final String fileType;
+    final int? fileNo;
+    final String? parentTable;
+    final int? parentNo;
+    final String? fileName;
+    final String? originName;
+    final String? filePath;
+    final int? fileSize;
+    final String? regDate;
+    final String? updDate;
+    final int? fileCode;
+    final int? boardNo;
+    final String? fileType;
 
   Files({
     required this.boardNo, 
