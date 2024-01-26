@@ -34,7 +34,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
     print(userId);
     
-    final url = 'http://13.209.3.162/user/$userId';
+    final url = 'http://10.0.2.2:9090/user/$userId';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -79,7 +79,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
     print('회원 정보 수정 요청 시작');
 
-    final url = 'http://13.209.3.162/user';
+    final url = 'http://10.0.2.2:9090/user';
 
     try {
       final response = await http.put(

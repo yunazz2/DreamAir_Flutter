@@ -46,7 +46,7 @@ class _BackSearchResultState extends State<BackSearchResult> {
   }
 
   Future<void> getBookingList() async {
-    var url = 'http://13.209.3.162/booking/comeList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
+    var url = 'http://10.0.2.2:9090/booking/comeList?roundTrip=$roundTrip&departure=$departure&destination=$destination&departureDate=$departureDate&pasCount=$pasCount' ;
     var response = await http.get(Uri.parse(url));
 
     var utf8Decoded = utf8.decode(response.bodyBytes);

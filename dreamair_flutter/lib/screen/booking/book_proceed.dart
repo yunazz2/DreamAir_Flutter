@@ -62,7 +62,7 @@ class _BookProceedState extends State<BookProceed> with TickerProviderStateMixin
     print(bookingProvider.getRouteNoDes);
     
 
-    final url = 'http://13.209.3.162/booking/info';
+    final url = 'http://10.0.2.2:9090/booking/info';
 
     try {
       final response = await http.post(
