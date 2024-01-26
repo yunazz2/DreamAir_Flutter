@@ -1,251 +1,134 @@
-import 'package:flight_booking/generated/l10n.dart' as lang;
-import 'package:flight_booking/screen/board/comment_input.dart';
-import 'package:flight_booking/screen/widgets/constant.dart';
-import 'package:flutter/material.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'dart:convert';
 
-class CommentScreen extends StatelessWidget {
-  const CommentScreen({super.key});
+import 'package:flight_booking/screen/board/comment.dart';
+import 'package:flight_booking/screen/board/comment_input.dart';
+import 'package:flight_booking/screen/board/comment_item.dart';
+import 'package:flight_booking/screen/board/social/util/data.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class CommentScreen extends StatefulWidget {
+  final int boardNo;
+  const CommentScreen({Key? key, required this.boardNo, required Null Function() onCommentPosted}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      appBar: AppBar(
-        titleSpacing: 0,
-        elevation: 0,
-        backgroundColor: kPrimaryColor,
-        iconTheme: const IconThemeData(color: kWhite),
-        centerTitle: true,
-        title: Text(
-          lang.S.of(context).CommentTitle,
-          style: kTextStyle.copyWith(
-            color: kWhite,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        primary: false,
-        physics: const BouncingScrollPhysics(),
-        child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 700),
-            child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
-          decoration: const BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
-            ),
-            
-          ),
-          child:GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: const Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 40,
-            ),
- 
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CommentList(),
-                  // TextField(
-                  //   autofocus: true,
-                  //   decoration: InputDecoration(
-                  //     hintText: '댓글 입력',
-                  //     suffixIcon: Icon(
-                  //       Icons.send,
-                  //       color: Colors.blueAccent,
-                  //     ),
-                  //   ),
-                  // ),
-                  CommentInput(),   // 댓글 입력 창
-                ],
-              ),
-            ),               
-          ),
-        ),
-        ),
-      ),
-      );
-  }
+  State<CommentScreen> createState() => _CommentScreenState();
+
+  deleteItem(String string) {}
 }
 
-class CommentList extends StatelessWidget {
-  const CommentList({super.key});
+class _CommentScreenState extends State<CommentScreen> {
+  final List<Comment> _commentList = [];
+  final TextEditingController _commentContent = TextEditingController();
+  final ScrollController _controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // 처음 데이터 로드
+    getCommentList(widget.boardNo);
+
+    // 스크롤 이벤트 감지
+    _controller.addListener(() {
+      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        getCommentList(widget.boardNo);
+      }
+    });
+  }
+
+  Future<void> getCommentList(int boardNo) async {
+    try{
+      var url = 'http://10.0.2.2:9090/comment/$boardNo';
+      var response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var utf8Decoded = utf8.decode(response.bodyBytes);
+        var commentList = jsonDecode(utf8Decoded);
+
+        List<Comment> result = [];
+
+        for (var i = 0; i < commentList.length; i++) {
+          result.add(Comment(
+            commentNo: commentList[i]['commentNo'],
+            boardNo: commentList[i]['boardNo'],
+            parentTable: commentList[i]['parentTable'],
+            parentNo: commentList[i]['parentNo'],
+            writer: commentList[i]['writer'],
+            content: commentList[i]['content'],
+            regDate: commentList[i]['regDate'],
+            updDate: commentList[i]['updDate'],
+          ));
+        }
+
+        setState(() {
+          _commentList.addAll(result);
+        });
+
+      } else {
+        print('Error loading data: Status code ${response.statusCode}');
+        print('Response body: ${response.body}');
+      }
+    }catch(e){
+      print('Error loading data: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Container(
+        width: double.infinity,
+        height: 350,
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 244, 248, 250), // 댓글창 색상
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
+        ),
+        child: Column(
           children: [
+            Container(        
+                  width: 130,
+                  height: 7,
+                  color: Color.fromARGB(255, 224, 224, 224),
+                  ),
+            const SizedBox(height: 10,),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Icon(Icons.star_border_purple500),
+              SizedBox(width: 10,),
+              Text('댓글', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,),),
+              SizedBox(width: 10,),
+              Icon(Icons.star_border_purple500),
+            ],),
+            const SizedBox(height: 10,),
             Expanded(
-              child: TextButton(
-                onPressed: () {},
-                style: const ButtonStyle(
-                  shape: MaterialStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  visualDensity: VisualDensity.comfortable,
-                  padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // replier profile
-                        // Container(
-                        //   width: 35,
-                        //   height: 35,
-                        //   decoration: BoxDecoration(
-                        //     shape: BoxShape.circle,
-                        //     border: Border.all(width: 1),
-                        //   ),
-                        // ),
-                        const CircleAvatar(
-                            backgroundImage: AssetImage('images/logo2.png'),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'ID 자리입니다.',
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                            const Text('댓글이 여기에 있습니다.'),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Like
-                                IconButton(
-                                  onPressed: () {},
-                                  iconSize: 17,
-                                  visualDensity: VisualDensity.compact,
-                                  icon: const Icon(
-                                    Icons.thumb_up_outlined,
-                                  ),
-                                  selectedIcon: const Icon(
-                                    Icons.thumb_up,
-                                  ),
-                                ),
-
-                                // Unlike
-                                IconButton(
-                                  onPressed: () {},
-                                  iconSize: 17,
-                                  visualDensity: VisualDensity.compact,
-                                  icon: const Icon(
-                                    Icons.thumb_down_outlined,
-                                  ),
-                                  selectedIcon: const Icon(
-                                    Icons.thumb_down,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    Column(
-                      children: [
-                        PopupMenuButton<int>(
-                          padding: EdgeInsets.zero,
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              child: Center(
-                                child: const Text('댓글 수정').onTap(() {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (BuildContext context) => const CommentUpdateScreen(),
-                                  //   ),
-                                  // );
-                                }),
-                              ),
-                            ),
-                            const PopupMenuDivider(),
-                            PopupMenuItem(
-                              child: Center(
-                                child: const Text('댓글 삭제').onTap(() {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) => const CommentScreen(),
-                                    ),
-                                  );
-                                }),
-                              ),
-                            ),
-                            // popupmenu item 2
-                          ],
-                          offset: const Offset(0, 30),
-                          color: kWhite,
-                          elevation: 1.0,
-                        )
-                      ],
-              ),
-                  ],
-                ),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _commentList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Map<String, dynamic> comment = comments[index];
+                  return CommentItem(
+                    comment: _commentList[index],
+                    img: comment['img'],
+                    // name: comment['name'],
+                    time: comment['time'],
+                  );
+                },
               ),
             ),
+            const SizedBox(height: 20),
+            SingleChildScrollView(
+              child: CommentInput(boardNo: widget.boardNo, content: _commentContent.text,),
+            ), // 댓글 입력 창
           ],
         ),
-        Row(
-          children: [
-            const SizedBox(
-              width: 40,
-            ),
-            TextButton(
-              onPressed: () {},
-              style: const ButtonStyle(visualDensity: VisualDensity.compact),
-              child: Row(
-                children: [
-                  Text(
-                    '답글',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Text(
-                    '254개',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 5),
-      ],
+      ),
     );
   }
 }

@@ -1,11 +1,11 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flight_booking/main.dart';
-import 'package:flight_booking/screen/home/home_screen.dart';
-import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
+import 'package:flight_booking/screen/home/home.dart';
+import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
-import 'dart:io';
+import 'package:provider/provider.dart';
+
 import '../../widgets/constant.dart';
 
 // 회원 탈퇴 페이지
@@ -17,16 +17,34 @@ class DeleteAccountScreen extends StatefulWidget {
 }
 
 class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
-  final ImagePicker _picker = ImagePicker();
-  XFile? image;
 
-  Future<void> getImage() async {
-    image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {});
+  Future deleteAccout(UserProvider userProvider) async {
+    print('회원 탈퇴 요청 시작');
+
+    String userId = userProvider.userId;
+
+    final url = 'http://10.0.2.2:9090/user/$userId';
+
+    try {
+      final response = await http.delete(Uri.parse(url));
+      if(response.statusCode == 200) {
+        print('회원 탈퇴 요청 응답 성공');
+
+        userProvider.logout();
+        
+        Home().launch(context, isNewTask: true);
+      }
+    } catch (e) {
+      print('오류 발생:$e');
+    }
+
   }
+
 
   @override
   Widget build(BuildContext context) {
+
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: kPrimaryColor,
 
@@ -111,7 +129,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       setState(() {
-                                        // 회원 탈퇴 로직 연결
+                                        deleteAccout(userProvider);
                                       });
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
                                     },

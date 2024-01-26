@@ -3,6 +3,7 @@ package com.joeun.server.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.joeun.server.dto.Board;
 import com.joeun.server.dto.Page;
@@ -32,9 +33,15 @@ public interface BoardMapper {
     // 게시글 번호(기본키) 최댓값
     public int maxPk() throws Exception;
     
-    // 게시글 조회수
-    public int views(int count, int boardNo) throws Exception;
-    
+    // 조회수 조회
+    public int searchViews(@Param("boardNo") int boardNo) throws Exception;
+
+    // 조회수 업데이트
+    public int updateViews(int count, int boardNo) throws Exception;
+
+    // 좋아요 업데이트
+    public int updateLikes(@Param("count") int count, @Param("boardNo") int boardNo) throws Exception;
+
     // 게시글 개수
 	public int count() throws Exception;
 }

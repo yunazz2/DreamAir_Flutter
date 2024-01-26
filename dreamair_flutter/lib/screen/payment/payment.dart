@@ -1,7 +1,7 @@
 import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/home/home.dart';
 import 'package:flight_booking/screen/payment/payment%20method/payment_method.dart';
-import 'package:flight_booking/screen/ticket%20detail/ticket_detail_screen.dart';
+import 'package:flight_booking/screen/ticket_detail/ticket_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -67,7 +67,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 const SizedBox(height: 20.0),
                 Text(
-                  'Payment Succeed!',
+                  '결제가 완료되었습니다!',
                   style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
@@ -86,7 +86,9 @@ class _PaymentState extends State<Payment> {
                   onPressed: () {
                     setState(() {
                       finish(context);
-                      const TicketDetailScreen().launch(context);
+                      // 티켓 번호 넘겨주어야 함 - 우선 하드 코딩
+                      int ticketNo = 1;
+                      TicketDetailScreen(ticketNo: ticketNo,).launch(context);
                     });
                   },
                   buttonTextColor: kWhite,
@@ -145,7 +147,7 @@ class _PaymentState extends State<Payment> {
             iconTheme: const IconThemeData(color: Colors.white),
             centerTitle: true,
             title: Text(
-              '결제 확인',
+              '결제',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -894,7 +896,7 @@ class _PaymentState extends State<Payment> {
               trailing: SizedBox(
                 width: 200,
                 child: ButtonGlobalWithoutIcon(
-                  buttontext: lang.S.of(context).continueButton,
+                  buttontext: '다음으로',
                   buttonDecoration: kButtonDecoration.copyWith(
                     color: kPrimaryColor,
                     borderRadius: BorderRadius.circular(30.0),

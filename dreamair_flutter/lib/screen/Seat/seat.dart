@@ -1,12 +1,14 @@
-// 이 페이지에서 payment로 연결해주기
+import 'package:flight_booking/screen/booking/provider/booking_provider.dart';
 import 'package:flight_booking/screen/payment/payment.dart';
 import 'package:flight_booking/screen/seat/seat_sample_info.dart';
 import 'package:flight_booking/screen/widgets/button_global.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/constant.dart';
 
+// 가는 편 좌석 선택 페이지
 class Seat extends StatefulWidget {
   const Seat({Key? key}) : super(key: key);
 
@@ -24,14 +26,18 @@ class _SeatState extends State<Seat> {
   @override
   void initState() {
     super.initState();
+    BookingProvider bookingProvider = Provider.of<BookingProvider>(context, listen: false);
+    print(bookingProvider.departure);
+    print(bookingProvider.roundTrip);
   }
 
-  List<String>selectedSeat=[];
-
-
+  List<String>selectedSeat=[];  // 선택된 좌석
+  
+    
 
   @override
   Widget build(BuildContext context) {
+    
     return DefaultTabController(
       initialIndex: 1,
       length: 2,

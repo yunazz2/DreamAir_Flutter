@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:flight_booking/screen/Authentication/login_screen.dart';
 import 'package:flight_booking/screen/my_boking_screen/my_boking.dart';
 import 'package:flight_booking/screen/mypage/checkin/checkin_screen.dart';
 import 'package:flight_booking/screen/mypage/delete_account/delete_account_screen.dart';
 import 'package:flight_booking/screen/mypage/mileage/mileage_screen.dart';
-import 'package:flight_booking/screen/mypage/update_profile/edit_profile.dart';
+import 'package:flight_booking/screen/mypage/update_profile/update_profile.dart';
 import 'package:flight_booking/screen/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import '../Authentication/welcome_screen.dart';
 import '../widgets/constant.dart';
@@ -27,33 +25,15 @@ class _MypageState extends State<Mypage> {
   @override
   void initState() {
     super.initState();
-    print('로그인 여부 확인');
-    print(UserProvider.isLogin);
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+    print('마이 페이지 로그인 여부 확인 : ${userProvider.isLogin} & ${userProvider.userId}');
+    userProvider.getUserInfo();
   } 
-
-  // 회원 정보 요청
-  Future getUserInfo() async {
-
-    // 임시로 아이디 하드 코딩
-    String userId = 'user';
-    final url = 'http://54.180.125.242/user/$userId';
-
-    try {
-      final response = await http.get(Uri.parse(url));
-      if(response.statusCode == 200) {
-        print('응답 성공');
-        var utf8Decoded = utf8.decode(response.bodyBytes);
-        var result = json.decode(utf8Decoded);
-
-        print(result);
-      }
-    } catch (e) {
-      print('오류 발생: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
@@ -82,7 +62,7 @@ class _MypageState extends State<Mypage> {
               
               // 메뉴 목록
               // 회원 정보 수정
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -92,8 +72,7 @@ class _MypageState extends State<Mypage> {
                   color: Colors.white,
                   child: ListTile(
                     onTap: () {
-                      getUserInfo();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdateProfile()));
                     },
                     contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
                     leading: Container(
@@ -106,10 +85,9 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 체크인
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -139,10 +117,9 @@ class _MypageState extends State<Mypage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 마일리지 조회
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -168,7 +145,6 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10),
 
               // 나의 탑승권 조회
               Card(
@@ -193,10 +169,9 @@ class _MypageState extends State<Mypage> {
                   trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                 ),
               ),
-              const SizedBox(height: 10.0),
               
               // 회원 탈퇴
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -219,10 +194,9 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10.0),
 
               // 로그아웃
-              if(UserProvider.isLogin)
+              if(userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(
@@ -232,7 +206,7 @@ class _MypageState extends State<Mypage> {
                   color: Colors.white,
                   child: ListTile(
                     onTap: (){
-                      UserProvider().logout();
+                      userProvider.logout();
                       const WelcomeScreen().launch(context,isNewTask: true);
                     },
                     contentPadding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -249,10 +223,9 @@ class _MypageState extends State<Mypage> {
                     trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: kSubTitleColor,),
                   ),
                 ),
-                const SizedBox(height: 10.0,),
               
               // 로그인 바로가기
-              if(!UserProvider.isLogin)
+              if(!userProvider.isLogin)
                 Card(
                   elevation: 1.3,
                   shape: RoundedRectangleBorder(

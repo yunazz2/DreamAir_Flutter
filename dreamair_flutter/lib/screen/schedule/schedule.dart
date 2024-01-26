@@ -1,6 +1,4 @@
 class Schedule {
-
-  // 플라이 여부
   int? flightNo;
   String? flightName;
   int? routeNo;
@@ -12,7 +10,6 @@ class Schedule {
   String? destinationTime;
   
   Schedule(
-    // requried : 객체 생성 시, 필수로 전달해야할 값으로 지정
     {
       required this.flightNo,
       required this.flightName,

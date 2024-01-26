@@ -5,20 +5,17 @@ class Board {
   final String content;
   final String regDate;
   final String updDate;
-  final String date;
   final int views;
-  final int userNo;
-  final int adminNo;
   final int like;
 
-
-Board(this.regDate, this.updDate, this.date, this.views, this.userNo, this.adminNo, this.like, {
-  required this.boardNo,
-  required this.writer,
-  required this.title,
-  required this.content,
-});
-
+  Board({
+    required this.boardNo,
+    required this.writer,
+    required this.title,
+    required this.content,
+    required this.regDate,
+    required this.updDate,
+    required this.views,
+    required this.like,
+  });
 }
-
-List<Board> boardList = [];

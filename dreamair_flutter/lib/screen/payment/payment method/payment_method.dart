@@ -7,7 +7,7 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../ticket detail/ticket_detail_screen.dart';
+import '../../ticket_detail/ticket_detail_screen.dart';
 
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
@@ -60,7 +60,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 ),
                 const SizedBox(height: 20.0),
                 const Text(
-                  'Payment Succeed!',
+                  '결제가 완료되었습니다!',
                   style: TextStyle(
                     color: kTitleColor,
                     fontWeight: FontWeight.bold,
@@ -74,13 +74,15 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 ),
                 const SizedBox(height: 10.0),
                 ButtonGlobalWithoutIcon(
-                  buttontext: 'View Ticket ',
+                  buttontext: '탑승권 보기',
                   buttonDecoration:
                       kButtonDecoration.copyWith(color: kPrimaryColor),
                   onPressed: () {
                     setState(() {
                       finish(context);
-                      const TicketDetailScreen().launch(context);
+                      // 티켓 번호 넘겨주어야 함 - 우선 하드 코딩
+                      int ticketNo = 1;
+                      TicketDetailScreen(ticketNo: ticketNo,).launch(context);
                     });
                   },
                   buttonTextColor: kWhite,
@@ -92,7 +94,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       finish(context);
                     });
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -100,11 +102,16 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         FeatherIcons.arrowLeft,
                         color: kSubTitleColor,
                       ),
-                      Text(
-                        'Back to Home',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: kSubTitleColor),
-                      ),
+
+                     TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                        );
+                      },
+                      child: Text('메인으로'),
+                    ),
                     ],
                   ),
                 ),
@@ -124,7 +131,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: kPrimaryColor,
-        title: Text(lang.S.of(context).paymentMethod),
+        title: Text('결제', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Container(
@@ -140,11 +147,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10.0),
-            Text(
-              lang.S.of(context).paymentCardTitle,
-              style: const TextStyle(
-                  color: kTitleColor, fontWeight: FontWeight.bold),
-            ),
             CreditCardWidget(
               // padding: AppConstants.creditCardPadding,
               backgroundImage: 'images/card1.png',
@@ -179,46 +181,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   },
                 ),
                 const Text(
-                  'Use as the payment methord',
-                  style: TextStyle(color: kTitleColor),
-                ),
-              ],
-            ),
-            CreditCardWidget(
-              padding: 5,
-              backgroundImage: 'images/card1.png',
-              textStyle:
-                  kTextStyle.copyWith(fontSize: 10.0, color: Colors.white),
-              cardNumber: cardNumber,
-              expiryDate: expiryDate,
-              cardHolderName: cardHolderName,
-              cvvCode: cvvCode,
-              showBackView: isCvvFocused,
-              obscureCardNumber: true,
-              obscureCardCvv: true,
-              isHolderNameVisible: true,
-              cardBgColor: Colors.deepOrangeAccent,
-              isSwipeGestureEnabled: true,
-              onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
-            ),
-            Row(
-              children: [
-                Checkbox(
-                  activeColor: kPrimaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2.0),
-                  ),
-                  value: isChecked,
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        isChecked = val!;
-                      },
-                    );
-                  },
-                ),
-                const Text(
-                  'Use as the payment method',
+                  '카드 선택',
                   style: TextStyle(color: kTitleColor),
                 ),
               ],
@@ -231,7 +194,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
           color: Colors.white,
         ),
         child: ButtonGlobalWithoutIcon(
-          buttontext: 'Pay',
+          buttontext: '결제하기',
           buttonDecoration: kButtonDecoration.copyWith(
             color: kPrimaryColor,
             borderRadius: BorderRadius.circular(30.0),

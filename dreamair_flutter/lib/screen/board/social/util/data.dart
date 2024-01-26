@@ -58,7 +58,7 @@ List posts = List.generate(
           "name": names[random.nextInt(10)],
           "dp": "assets/images/cm${random.nextInt(10)}.jpeg",
           "time": "${random.nextInt(50)} min ago",
-          "img": "assets/images/cm${random.nextInt(10)}.jpeg"
+          "img": "assets/images/slide${random.nextInt(10)}.jpeg"
         });
 
 List chats = List.generate(
@@ -103,4 +103,12 @@ List friends = List.generate(
           "dp": "assets/images/cm${random.nextInt(10)}.jpeg",
           "status": "Anything could be here",
           "isAccept": random.nextBool(),
+        });
+
+List comments = List.generate(
+    13,
+    (index) => {
+          "name": names[random.nextInt(10)],
+          "time": "${random.nextInt(50)} min ago",
+          "img": "assets/images/cm${random.nextInt(10)}.jpeg"
         });
