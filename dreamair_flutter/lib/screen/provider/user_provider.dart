@@ -42,7 +42,7 @@ class UserProvider extends ChangeNotifier {
   /// 
   /// 2. jwt 토큰을 SecureStorage 에 저장
   Future<void> login(String username, String password) async {
-    const url = 'http://10.0.2.2:9090/login';
+    const url = 'http://13.209.3.162/login';
     final requestUrl = Uri.parse('$url?username=$username&password=$password');
     try {
       // 로그인 요청
@@ -142,7 +142,7 @@ class UserProvider extends ChangeNotifier {
     print(userId);
 
 
-    final url = 'http://10.0.2.2:9090/user/$userId';
+    final url = 'http://13.209.3.162/user/$userId';
     try {
       // 저장된 jwt 가져오기
       String? token = await storage.read(key: 'jwtToken');

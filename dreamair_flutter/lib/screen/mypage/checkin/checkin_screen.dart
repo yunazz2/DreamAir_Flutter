@@ -36,7 +36,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
   // 체크인 처리
   Future<void> checkIn(String ticketNumber) async {
     try {
-      final url = 'http://10.0.2.2:9090/user/checkin';
+      final url = 'http://13.209.3.162/user/checkin';
 
       Map<String, dynamic> requestData = {
         'ticketNo': ticketNumber,
@@ -74,7 +74,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
     int ticketNo = int.tryParse(ticketNumber) ?? 0;
     String userId = userProvider.userId;
 
-    final url = 'http://10.0.2.2:9090/user/booking/ticketInfo/$ticketNo?userId=$userId';
+    final url = 'http://13.209.3.162/user/booking/ticketInfo/$ticketNo?userId=$userId';
 
     try {
       final response = await http.get(Uri.parse(url));

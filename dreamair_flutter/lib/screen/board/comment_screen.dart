@@ -39,7 +39,7 @@ class _CommentScreenState extends State<CommentScreen> {
 
   Future<void> getCommentList(int boardNo) async {
     try{
-      var url = 'http://10.0.2.2:9090/comment/$boardNo';
+      var url = 'http://13.209.3.162/comment/$boardNo';
       var response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200 || response.statusCode == 201) {

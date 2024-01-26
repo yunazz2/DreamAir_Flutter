@@ -52,8 +52,8 @@ class _BoardScreenState extends State<BoardScreen> {
 
     try {
       // 데이터를 가져오는 비동기 작업
-      // var url = 'http://10.0.2.2:9090/board';
-      var url = 'http://10.0.2.2:9090/board';
+      // var url = 'http://13.209.3.162/board';
+      var url = 'http://13.209.3.162/board';
       var response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -97,7 +97,7 @@ class _BoardScreenState extends State<BoardScreen> {
 // 이미지 가져오기
 Future<void> getImage(int boardNo) async {
   try {
-    var url = 'http://10.0.2.2:9090/board/$boardNo';
+    var url = 'http://13.209.3.162/board/$boardNo';
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200 || response.statusCode == 201) {

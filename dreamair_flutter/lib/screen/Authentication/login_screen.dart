@@ -31,7 +31,7 @@ class _LogInState extends State<LogIn> {
   // ) async {
   //   print('로그인 요청 시작');
 
-  //   final url = 'http://10.0.2.2:9090/login?username=$userId&password=$userPw';
+  //   final url = 'http://13.209.3.162/login?username=$userId&password=$userPw';
 
   //   try {
   //     final response = await http.post(

@@ -25,7 +25,7 @@ class _CommentInputState extends State<CommentInput> {
 
   // postComment 메소드 정의
   Future<void> _postComment(int boardNo, String content) async {
-    var uri = Uri.parse('http://10.0.2.2:9090/comment/$boardNo');
+    var uri = Uri.parse('http://13.209.3.162/comment/$boardNo');
 
     _writerController.text = '작성자'; // 여기 내용 나중에 userId로 받아야함
     try {

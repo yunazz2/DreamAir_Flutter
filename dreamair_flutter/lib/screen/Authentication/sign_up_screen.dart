@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp> {
       UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
       print('회원 가입 요청 시작');
 
-      final url = 'http://10.0.2.2:9090/user';
+      final url = 'http://13.209.3.162/user';
 
       try {
         final response = await http.post(
