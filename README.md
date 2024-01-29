@@ -1,8 +1,7 @@
 # 프로젝트: DreamAir_Flutter
 <p align="center"><img src="https://github.com/ybm1968/DreamAir/assets/132187402/2ec7629c-e5f7-4b0f-9c09-16b8ef20024b" style="" width="800" height="400"/></p>
 
-[시연영상](https://youtu.be/F8P5uQIcmKE?si=AYKt2G4qUoEMMzmt)
- 
+
 ## 목차
 ### 1. 프로젝트 개요
   - 프로젝트 주제
@@ -119,7 +118,7 @@
  
 # 4. 프로젝트 수행절차 및 방법
 ## 4-1. 프로젝트 수행 절차
-- 2023-12-01 ~ 2023-12-20
+- 2023-01-12 ~ 2023-01-29
 <img src="https://github.com/yunazz2/DreamAir_React/blob/LSM/img/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B0%9C%EC%9A%94/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A0%88%EC%B0%A8.png" width="900" height="500"/>
 
 
